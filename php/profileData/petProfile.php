@@ -1,9 +1,9 @@
 <?php
     require("../connector.php");
 
-    $account = $_GET["userid"];
+    $petaccount = $_GET["userid"];
     $sql = "SELECT * FROM alagapp_db.tbl_petprofile
-        WHERE userid = ".$account." ";
+        WHERE userid = ".$petaccount." ";
 
     $res = $connect->prepare($sql);
     $res->execute();

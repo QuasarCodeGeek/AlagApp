@@ -61,7 +61,7 @@
                   </div>
                 <div class="row m-1 overflow-x overflow-auto">
                     <ul class="list-group list-group-flush">
-                    <?php include("php/userAcccount.php"); ?>
+                    <?php include("php/accountList.php"); ?>
                     </ul>
                     <div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                       <div class="modal-dialog modal-lg">

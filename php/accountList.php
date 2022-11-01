@@ -16,7 +16,7 @@
         while($row = $res->fetch(PDO::FETCH_ASSOC)){
             echo "
             <li class='list-group-item bg bg-light'>
-            <a type='button' class='btn' onclick='_showProfile(".$row['userid'].")'>
+            <a type='button' class='btn' href='php/profile.php?userid=".$row['userid']."'>
             <label class='text-wrap'>".$row['userfname']." ".$row['userlname']."</label>
             </a>
             </li>";

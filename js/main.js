@@ -13,14 +13,14 @@ function _showProfile(userid) {
   xhttp.onload = function() {
     document.getElementById("userProfile").innerHTML = this.responseText;
   }
-  xhttp.open("GET", "php/profileData/userProfile.php?userid="+userid);
+  xhttp.open("GET", "php/accountList.php?userid="+userid);
   xhttp.send();
 
   const pet = new XMLHttpRequest();
   pet.onload = function() {
     document.getElementById("petProfile").innerHTML = this.responseText;
   }
-  pet.open("GET", "php/profileData/petProfile.php?userid="+userid);
+  pet.open("GET", "php/petProfile.php?userid="+userid);
   pet.send();
 }
 
