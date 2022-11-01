@@ -1,0 +1,109 @@
+header {
+    /*background-color:#388E3C; green(700)*/
+    background: linear-gradient(to right, rgba(255,0,0,0), rgb(38, 143, 68)),url('../assets/img/clinic1.jpg');
+    background-size: cover;
+}
+/*
+body {
+   /* background-color: #E8F5E9; /*Green(50)
+}*/
+
+footer {
+    background-color:#388E3C; /*green(700)*/
+}
+
+body {
+    font-family: 'Fuzzy Bubbles', sans-serif;
+}
+
+.userProfile {
+    width: 12rem;
+}
+
+.edit_icon {
+    width: 2px;
+}
+
+.team {
+    text-align: center;
+    color: white;
+    background-color: #81C784; /*Green(300)*/
+}
+.profile {
+    width: 18rem;
+}
+.card {
+    color: black;
+    background-color: #C8E6C9; /*green(100)*/
+}
+.catleenoverlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-size: cover;
+}
+.jayceoverlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-size: cover;
+}
+.jerronoverlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-size: cover;
+}
+.lanceoverlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-size: cover;
+}
+
+.over:hover .catleenoverlay{
+    opacity: 1;
+}
+.over:hover .jayceoverlay {
+    opacity: 1;
+}
+
+.over:hover .jerronoverlay {
+    opacity: 1;
+}
+.over:hover .lanceoverlay {
+    opacity: 1;
+}
+
+.fbicon {
+    height: 1rem;
+}
+
+.indexThumbnail {
+    width: 100%;
+    background-size: cover;
+}
