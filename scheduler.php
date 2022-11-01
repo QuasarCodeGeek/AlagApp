@@ -34,9 +34,6 @@
               <li class="nav-item">
                 <a class="nav-link" href="dashboard.php">Dashboard</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="report.php">Generate Report</a>
-              </li>
             </ul>
             <form class="d-flex" role="search">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

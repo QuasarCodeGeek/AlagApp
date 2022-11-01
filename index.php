@@ -28,7 +28,6 @@
         <a class="nav-link" href="scheduler.php">Scheduler</a>
         <a class="nav-link" href="dashboard.php">Dashboard</a>
         <a class="nav-link" href="consultation.php">Consultation</a>
-        <a class="nav-link" href="report.php">Generate Report</a>
       </div>
       <div class="row function">
         <button class="col-md-4 col-sm-6 btn fs-1" type="button" href="#userprofile">User Profile</button>
