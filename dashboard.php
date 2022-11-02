@@ -42,6 +42,9 @@
           </div>
         </div>
       </nav>
+      <main>
+        
+      </main>
 <!-- Footer -->
 <footer class="position-bottom text-white py-3">
   <div class="container">
