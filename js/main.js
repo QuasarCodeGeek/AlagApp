@@ -138,7 +138,7 @@ function userEdit(userid) {
     xhttp.onload = function() {
       document.getElementById("modalHere").innerHTML = this.responseText;
     }
-    xhttp.open("GET", "php/editData/userEdit.php?id="+userid);
+    xhttp.open("GET", "editData/userEdit.php?id="+userid);
     xhttp.send();
 }
 
@@ -147,7 +147,7 @@ function petEdit(petid) {
     xhttp.onload = function() {
       document.getElementById("modalHere").innerHTML = this.responseText;
     }
-    xhttp.open("GET", "php/editData/petEdit.php?id="+petid);
+    xhttp.open("GET", "editData/petEdit.php?id="+petid);
     xhttp.send();
 }
 
@@ -156,7 +156,7 @@ function vaccineEdit(vaxid) {
     xhttp.onload = function() {
       document.getElementById("modalHere").innerHTML = this.responseText;
     }
-    xhttp.open("GET", "php/editData/vaccineEdit.php?id="+vaxid);
+    xhttp.open("GET", "editData/vaccineEdit.php?id="+vaxid);
     xhttp.send();
 }
 
@@ -165,7 +165,7 @@ function cardEdit(cid) {
     xhttp.onload = function() {
       document.getElementById("modalHere").innerHTML = this.responseText;
     }
-    xhttp.open("GET", "php/editData/cardEdit.php?id="+cid);
+    xhttp.open("GET", "editData/cardEdit.php?id="+cid);
     xhttp.send();
 }
 
@@ -174,7 +174,7 @@ function prescriptionEdit(nid) {
     xhttp.onload = function() {
       document.getElementById("modalHere").innerHTML = this.responseText;
     }
-    xhttp.open("GET", "php/editData/prescriptionEdit.php?id="+nid);
+    xhttp.open("GET", "editData/prescriptionEdit.php?id="+nid);
     xhttp.send();
 }
 
@@ -183,7 +183,7 @@ function scheduleEdit(qid) {
     xhttp.onload = function() {
       document.getElementById("modalHere").innerHTML = this.responseText;
     }
-    xhttp.open("GET", "php/editData/scheduleEdit.php?id="+qid);
+    xhttp.open("GET", "editData/scheduleEdit.php?id="+qid);
     xhttp.send();
 }
 

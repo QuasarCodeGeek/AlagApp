@@ -1,5 +1,5 @@
 <?php
-    require("API/connector.php");
+    require("connector.php");
 
     // User Analytics
     // Total User

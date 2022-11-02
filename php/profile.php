@@ -1,4 +1,7 @@
-<?php require("connector.php"); ?>
+<?php 
+  require("connector.php"); 
+  require("dataAnalytics.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -129,18 +132,25 @@
                             <img class='userProfile m-auto rounded' src='../assets/img/diluc.png' alt='profile_picture'><br>
                             </div>
                             <div class='col-4 p-2 rounded bg bg-light'>
-                                <button type='button' class='btn float-end' onClick='userEdit(".$row['userid'].")' data-bs-toggle='modal' data-bs-target='#boxModal')>
-                                    <i class='bi bi-pencil-square'></i>    
-                                </button><br>
                                 <label>Name: ".$row['userfname']." ".$row['usermname']." ".$row['userlname']."</label><br>
                                 <label>username: ".$row['useremail']."</label><br>
                                 <label>Birth Date: ".$row['userbdate']."</label><br>
                                 <label>Gender: ".$row['usergender']."</label><br>
                                 <label>Address: ".$row['userstreet']." ".$row['userdistrict']." ".$row['usermunicipality']." ".$row['userprovince']."</label>
                             </div>
-                            <div class='col-5'>
-                                <button type='button' class='btn btn-light'>Generate Report</button><br>
-                                <label>Number of Pets:</label>
+                            <div class='col-1'>"; ?> 
+                                <button type='button' class='btn btn-light m-1' data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Print">
+                                  <i class='bi bi-printer-fill'></i></button><br>
+                                <button type='button' class='btn btn-light m-1' onClick='userEdit("<?php $row['userid']; ?>")' data-bs-toggle='modal' data-bs-target='#boxModal' data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Edit">
+                                  <i class='bi bi-pencil-square'></i></button><br><br> <?php echo "
+                            </div>
+                            <div class='col-4 p-2 bg bg-light rounded'>
+                              <label>Number of Pets:</label>
+                              <label>Male Pets:</label>
+                              <label>Female Pets:</label>
+                              <label>Number of Schedules:</label>
+                              <label>Number of Vaccine Cards:</label>
+                              <label>Number of Prescription Notes:</label>
                             </div>";
                     } else {
                         echo "No Record";
@@ -262,7 +272,6 @@
       <label class=" float-end">PROGRAM SLAYER</label>
   </div>
 </footer>
-
 <!-- Main Functions -->
 <script src="../js/main.js"></script>
 <!-- Ajax Function -->
@@ -278,6 +287,10 @@
 <!-- Chart Javascript Library -->
 <script
   src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+</script>
+<script>
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 </script>
 </body>
 </html>
