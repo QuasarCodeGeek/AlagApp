@@ -29,7 +29,7 @@
                 <a class="nav-link" href="scheduler.php">Scheduler</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="consultation.php">Consultation</a>
+                <a class="nav-link text-success" href="consultation.php" active><strong>Consultation</strong></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="dashboard.php">Dashboard</a>
@@ -42,6 +42,18 @@
           </div>
         </div>
       </nav> 
+<main class="container container-fluid">
+  <div class="row">
+    <div class="col-3">
+      <div class="row">
+        <button type="button" class="btn btn-light">Conversation</button>
+      </div>
+      <div class="row">
+
+      </div>
+    </div>
+  </div>
+</main>
 <!-- Footer -->
 <footer class="position-bottom text-white py-3">
   <div class="container">

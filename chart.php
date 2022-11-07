@@ -218,6 +218,9 @@
       }]
     }, option: {
         plugins: {
+          legend: {
+            display: true,
+          },
           title: {
             display: true,
             text: 'Custom Chart Title',

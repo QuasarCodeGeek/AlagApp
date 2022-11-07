@@ -32,7 +32,7 @@
                 <a class="nav-link" href="consultation.php">Consultation</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="dashboard.php">Dashboard</a>
+                <a class="nav-link text-success" href="dashboard.php" active><strong>Dashboard</strong></a>
               </li>
             </ul>
             <form class="d-flex" role="search">

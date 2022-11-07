@@ -26,7 +26,7 @@
                 <a class="nav-link" href="account.php">Account</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="scheduler.php">Scheduler</a>
+                <a class="nav-link text-success" href="scheduler.php" active><strong>Scheduler</strong></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="consultation.php">Consultation</a>

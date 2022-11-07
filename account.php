@@ -23,7 +23,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link" href="account.php">Account</a>
+                <a class="nav-link text-success" href="account.php" active><strong>Account</strong></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="scheduler.php">Scheduler</a>
