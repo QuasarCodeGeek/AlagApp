@@ -44,12 +44,31 @@
       </nav> 
 <main class="container container-fluid">
   <div class="row">
-    <div class="col-3">
+    <div class="col-3 overflow-auto overflow-y vh-100" >
+      <ul class="list-group list-group-flush">
+        <?php include("php/accountList.php"); ?>
+      </ul>
+    </div>
+    <div class="col-9 position-relative bg bg-light vh-100">
+      <?php 
+        $chat;
+      ?>
       <div class="row">
-        <button type="button" class="btn btn-light">Conversation</button>
+            <label class="col m-auto">Name</label>
+            <button type="button" class="col btn">
+              <i class="bi bi-telephone-fill float-end"></i>
+            </button>
       </div>
-      <div class="row">
+      <div class="row position overflow-auto overflow-y">
 
+      </div>
+      <div class="row position-absolute bottom-0 start-0">
+        <div class="w-100 m-2">
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
