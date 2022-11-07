@@ -46,41 +46,41 @@
   <div class="row">
     <div class="col-3 overflow-auto overflow-y vh-100" >
       <ul class="list-group list-group-flush">
-        <?php include("php/accountList.php"); ?>
+        <?php
+          require("php/connector.php");
+
+          $sql = "SELECT * FROM alagapp_db.tbl_userlist";
+      
+          $res = $connect->prepare($sql);
+          $res->execute();
+      
+          $sql2 = "SELECT COUNT(userid) AS entry FROM alagapp_db.tbl_userlist";
+          $res2 = $connect->query($sql2);
+          $res2->execute();
+          $row1 = $res2->fetch(PDO::FETCH_ASSOC);
+      
+          if($res->rowCount()>0){
+              $i=1;
+              while($row = $res->fetch(PDO::FETCH_ASSOC)){
+                  echo "
+                  <li class='list-group-item bg bg-light'>
+                  <a type='button' class='btn' href='php/chat.php?userid=".$row['userid']."'>
+                  <label class='text-wrap'>".$row['userfname']." ".$row['userlname']."</label>
+                  </a>
+                  </li>";
+                  $i++;
+              }
+          } else {
+              echo "Nothing follows";
+          }
+        ?>
       </ul>
     </div>
     <div class="col-9 position-relative bg bg-light vh-100">
-      <?php 
-        $chat;
-      ?>
-      <div class="row">
-            <label class="col m-auto">Name</label>
-            <button type="button" class="col btn">
-              <i class="bi bi-telephone-fill float-end"></i>
-            </button>
-      </div>
-      <div class="row position overflow-auto overflow-y">
-
-      </div>
-      <div class="row position-absolute bottom-0 start-0">
-        <div class="w-100 m-2">
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
-        </div>
-      </div>
+      <label>Select Conversation</label>
     </div>
   </div>
 </main>
-<!-- Footer -->
-<footer class="position-bottom text-white py-3">
-  <div class="container">
-      <label class="float-start">@2022</label>
-      <label>User Guide</label>
-      <label class=" float-end">PROGRAM SLAYER</label>
-  </div>
-</footer>
 
 <!-- Main Functions -->
 <script> src="js/main.js"</script>

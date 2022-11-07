@@ -55,7 +55,7 @@
                 </div>
                 <div class="m-1" id="accountHere">
                   
-                  </div>
+                </div>
                 <div class="row m-1 overflow-x overflow-auto">
                     <ul class="list-group list-group-flush">
                     <?php include("php/accountList.php"); ?>
@@ -87,11 +87,24 @@
                 </div>
             </div>
             <div class="col-9 container bg bg-light">
-                <div class="row m-2 p-2 bg bg-success rounded" style="--bs-bg-opacity: .5;" id="userProfile">
-                  <!-- User Account profile Here -->
+                <div class="row m-2 p-2 bg bg-success rounded" style="--bs-bg-opacity: .5;">
+                  <label>This is the accounts area. Please select one of the following
+                     users from the list on the left side and begin monitoring their informations</label>
                 </div>
-                <div class="row m-2 p-2 bg bg-success rounded" style="--bs-bg-opacity: .5;" id="petProfile">
-                  <!-- Pet Profile Content Here -->
+                <div class="row m-2 p-2 bg bg-success rounded" style="--bs-bg-opacity: .5;">
+                  <label>Features:</label>
+                  <label>Add User</label>
+                  <label>Edit User</label>
+                  <label>Add Pet</label>
+                  <label>Edit Pet</label>
+                  <label>Add Vaccination</label>
+                  <label>Edit Vaccination</label>
+                  <label>Add Prescription</label>
+                  <label>Edit Prescription</label>
+                  <label>Monitor User Information</label>
+                  <label>Monitor Pet Information</label>
+                  <label>Monitor Pet Vaccination</label>
+                  <label>Monitor Pet Prescription</label>
                 </div>
             </div>
         </div>

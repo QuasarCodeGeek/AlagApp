@@ -1,3 +1,6 @@
+<?php
+  include ("php/dataAnalytics.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,8 +45,24 @@
           </div>
         </div>
       </nav>
-      <main>
-        
+      <main class="container container-fluid">
+        <div class="row bg bg-light">
+          <div class="col-6">
+            <canvas id="barbar" width="50" height="50"></canvas>
+          </div>
+          <div class="col-3">
+            <div class="text-center">
+              <label>User Gender Ratio</label>
+            </div>
+            <canvas id="donutuser" width="50" height="50"></canvas>
+          </div>
+          <div class="col-3">
+            <div class="text-center">
+              <label>Pet Type Ratio</label>
+            </div>
+            <canvas id="donutpet" width="50" height="50"></canvas>
+          </div>
+        </div>
       </main>
 <!-- Footer -->
 <footer class="position-bottom text-white py-3">
@@ -69,6 +88,107 @@
 <!-- Chart Javascript Library -->
 <script
   src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+</script>
+<!-- Chart JS Library -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- Chart Data -->
+<script>
+  const bar = document.getElementById('barbar');
+  const myBar = new Chart(bar, {
+    type: 'bar',
+    data: {
+      labels: ['Users', 'Pets', 'Vaccines', 'Cards', 'Notes', 'Schedules', 'Chats', 'Calls'],
+      datasets: [{
+        label: 'Total Data Count',
+        data: [ 
+          <?php echo $totaluser; ?>
+          , 47, 8, 52, 51, 57, 68, 62],
+        backgroundColor: [
+          '#F44336',
+          '#FF9800',
+          '#FFEB3B',
+          '#4CAF50',
+          '#2196F3',
+          '#3F51B5',
+          '#9C27B0',
+          '#607D8B'
+        ]
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      },
+      layout: {
+        padding: 20,
+        width: 50,
+        height: 50
+      },
+      plugins: {
+        title: {
+          display: true,
+          text: 'User Account Ratio'
+        }
+      }
+    }
+  });
+
+  const user = document.getElementById('donutuser');
+  const userratio = new Chart(user, {
+    type: 'doughnut',
+    data: {
+      labels: [
+        'Male',
+        'Female'
+      ],
+      datasets: [{
+        label: 'User Account Gender Ratio',
+        data: [
+          <?php echo $maleuser; ?>,
+          <?php echo $femaleuser; ?>
+        ],
+        backgroundColor: [
+          '#3F51B5',
+          '#F44336',
+        ],
+        hoverOffset: 4
+      }]
+    }, option: {
+        plugins: {
+
+        }
+    }
+  });
+
+    const pet = document.getElementById('donutpet');
+  const petratio = new Chart(pet, {
+    type: 'doughnut',
+    data: {
+      labels: [
+        'Dog',
+        'Cat',
+        'Mouse',
+        'Bird'
+      ],
+      datasets: [{
+        label: 'Pet Type Ratio',
+        data: [28, 12, 2, 5],
+        backgroundColor: [
+          '#3F51B5',
+          '#F44336',
+          '#FFEB3B',
+          '#FF9800'
+        ],
+        hoverOffset: 4
+      }]
+    }, option: {
+        plugins: {
+
+        }
+    }
+  });
 </script>
 </body>
 </html>
