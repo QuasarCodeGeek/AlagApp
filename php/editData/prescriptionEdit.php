@@ -1,7 +1,7 @@
 <?php
     require("../connector.php");
 
-    if(isset($_POST["Update"])){
+    if(isset($_POST["submit"])){
         $nid = $_POST["nid"];
         $user = $_POST["userid"];
         $pet = $_POST["petid"];
@@ -11,7 +11,7 @@
 
         if($user=="" || $pet=="" || $description=="" || $date=="" || $status==""){
             echo "<script>alert('Please complete the fields required!');
-                window.location='../../account.php'</script>";
+            window.location='../profile.php?userid=".$userr."'</script>";
         } else {
             $sql = "UPDATE alagapp_db.tbl_notedetail SET
                 userid = :userid,
@@ -36,16 +36,16 @@
 
             if($result->rowCount()>0) {
                 echo "<script>alert('Record has been updated!');
-                window.location='../../account.php'</script>";
+                window.location='../profile.php?userid=".$user."'</script>";
              } else {
-                 echo "<script>alert('Unable to update record!')
-                 window.location='../../account.php'</script>";
+                 echo "<script>alert('Unable to update record!');
+                 window.location='../profile.php?userid=".$user."'</script>";
              }
         }
     }
     echo "<form action='editData/prescriptionEdit.php' method='POST'>";
 
-    $nid = $_REQUEST["id"];
+    $nid = $_REQUEST["nid"];
     $sql_note = "SELECT * FROM alagapp_db.tbl_notedetail WHERE nid = :nid";
 
     try{
@@ -68,16 +68,36 @@
             $date = $note_row["ndate"];
             $status = $note_row["nstatus"];
         }
+
+        $ownern = "SELECT * FROM alagapp_db.tbl_userlist WHERE userid = ".$userid."";
+        $ownerres = $connect->prepare($ownern);
+        $ownerres->execute();
+        if($ownerres->rowCount()==1){
+            $ownernrow = $ownerres->fetch(PDO::FETCH_ASSOC);
+            $ownername = $ownernrow['userfname'];
+        }
+
+        $petn = "SELECT * FROM alagapp_db.tbl_petprofile WHERE petid = ".$petid."";
+        $res = $connect->prepare($petn);
+        $res->execute();
+        if($res->rowCount()==1){
+            $petnrow = $res->fetch(PDO::FETCH_ASSOC);
+            $petname = $petnrow['petname'];
+        }
+
+
     } catch(PDOException $e){
         die("An error has occured!");
     }
     echo "<input type='hidden' name='nid' value=".$nid.">
                 <h1>Prescription Information</h1><br>
                 <div class='input-group'>
-                    <label class='input-group-text'>Owner ID</label>
-                    <input type='text' class='form-control' name='userid' value=".$userid.">
-                    <label class='input-group-text'>Pet ID</label>
-                    <input type='text' class='form-control' name='petid' value=".$petid.">
+                    <label class='input-group-text'>Pet Owner</label>
+                    <input type='hidden' class='form-control' name='userid' value=".$userid.">
+                    <input type='text' class='form-control' name='owner' value=".$ownername." readonly>
+                    <label class='input-group-text'>Pet Name</label>
+                    <input type='hidden' class='form-control' name='petid' value=".$petid.">
+                    <input type='text' class='form-control' name='pet' value=".$petname." readonly>
                 </div><br>
 
                 <div class='input-group'>
@@ -94,6 +114,6 @@
 
                 <div class='d-grid gap-2 d-md-flex justify-content-md-end'>
                 <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
-                <button id='submitPetEdit' type='submit' name='submit' class='btn btn-primary'>Save changes</button>
+                <button type='submit' name='submit' class='btn btn-primary'>Save changes</button>
             </div>
         </form>";

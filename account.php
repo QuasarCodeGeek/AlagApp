@@ -34,10 +34,6 @@
               <li class="nav-item">
                 <a class="nav-link" href="dashboard.php">Dashboard</a>
               </li>
-              <li class="nav-item">
-              <button type='button' class='btn' onClick='userNew()' data-bs-toggle='modal' data-bs-target='#newModal')>Add User</button>
-              <button type='button' class='btn' onClick='petNew()' data-bs-toggle='modal' data-bs-target='#newModal')>Add Pet</button>
-              </li>
             </ul>
             <form class="d-flex" role="search">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -50,9 +46,9 @@
       <main class="container container-fluid">
         <div class="row">
             <div class="col-3 container p-2 bg bg-light">
-                <div class="row m-2">
+                <!--<div class="row m-2">
                 <input type="text" onkeyup="_searchAccount()" class="form-control rounded-start" id="searchAccount" placeholder="Search">
-                </div>
+                </div>-->
                 <div class="m-1" id="accountHere">
                   
                 </div>
@@ -87,6 +83,14 @@
                 </div>
             </div>
             <div class="col-9 container bg bg-light">
+              <div class="row p-2">
+                <div class="col-6 m-auto">
+                  <button type='button' class='p-2 btn btn-info w-100' onClick='userNew()' data-bs-toggle='modal' data-bs-target='#newModal')>Add User</button>
+                </div>
+                <div class="col-6 m-auto">
+                 <button type='button' class='p-2 btn btn-info w-100' onClick='petNew()' data-bs-toggle='modal' data-bs-target='#newModal')>Add Pet</button>
+                </div>
+              </div>
                 <div class="row m-2 p-2 bg bg-success rounded" style="--bs-bg-opacity: .5;">
                   <label>This is the accounts area. Please select one of the following
                      users from the list on the left side and begin monitoring their informations</label>

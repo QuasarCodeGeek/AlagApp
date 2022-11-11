@@ -13,7 +13,7 @@
         while($row = $res->fetch(PDO::FETCH_ASSOC)){
             echo "
             <li class='list-group-item list-group-item-light'>
-            <a type='button' class='btn' onClick='showProfile(".$row['userid'].")'>
+            <a type='button' class='btn' href='php/profile.php?userid=".$row['userid']."'>
             <label>".$row['userfname']." ".$row['userlname']."</label>
             </a>
             </li>";

@@ -10,16 +10,16 @@ require("../connector.php");
         $sdose = $_POST["sdose"];
         $booster = $_POST["booster"];
 
-        if($owner=="" || $name=="" || $vax=="" || $fdose==""){
+        if($owner=="" || $pet=="" || $vax=="" || $fdose==""){
             echo "<script>alert('Complete Required Fields!');
-            window.location='../../account.php'</script>";
+            window.location='../profile.php?userid=".$owner."'</script>";
         } else {
             $sql = "UPDATE alagapp_db.tbl_vaxxcard SET
                 userid = :userid,
-                petname = :petname,
+                petid = :petid,
                 vaxid = :vaxid,
-                fdose :fdose,
-                sdose :sdose,
+                fdose = :fdose,
+                sdose = :sdose,
                 booster = :booster
 
                 WHERE cid = :cid";
@@ -39,17 +39,17 @@ require("../connector.php");
 
             if($result->rowCount()>0) {
                 echo "<script>alert('Record has been updated!');
-                window.location='../../account.php'</script>";
+                window.location='../profile.php?userid=".$owner."'</script>";
              } else {
                  echo "<script>alert('Unable to update record!')
-                 window.location='../../account.php'</script>";
+                window.location='../profile.php?userid=".$owner."'</script>";
              }
         }
     }
 
     echo "<form action='editData/cardEdit.php' method='POST'>";
 
-    $card = $_REQUEST["id"];
+    $card = $_REQUEST["cid"];
     $sql_card = "SELECT * FROM alagapp_db.tbl_vaxxcard WHERE cid = :cid";
 
     try{
@@ -78,15 +78,42 @@ require("../connector.php");
         die("An error has occured!");
     }
 
+    $ownern = "SELECT * FROM alagapp_db.tbl_userlist WHERE userid = ".$owner."";
+    $ownerres = $connect->prepare($ownern);
+    $ownerres->execute();
+    if($ownerres->rowCount()==1){
+        $ownernrow = $ownerres->fetch(PDO::FETCH_ASSOC);
+        $ownername = $ownernrow['userfname'];
+    }
+    
+    $petn = "SELECT * FROM alagapp_db.tbl_petprofile WHERE petid = ".$pet."";
+    $petres = $connect->prepare($petn);
+    $petres->execute();
+    if($petres->rowCount()==1){
+        $petnrow = $petres->fetch(PDO::FETCH_ASSOC);
+        $petname = $petnrow['petname'];
+    }
+
+    $vaxn = "SELECT * FROM alagapp_db.tbl_vaxxinfo WHERE vaxid = ".$vax."";
+    $vaxres = $connect->prepare($vaxn);
+    $vaxres->execute();
+    if($vaxres->rowCount()==1){
+        $vaxnrow = $vaxres->fetch(PDO::FETCH_ASSOC);
+        $vaxname = $vaxnrow['vaxname'];
+    }
+
     echo    "<input type='hidden' name='cid' value=".$card.">
             <h1>Card Information</h1><br>
             <div class='input-group'>
             <span class='input-group-text'>Owner</span>
-            <input class='form-control' type='text' placeholder=\"Owner ID\" name='userid' value=".$owner.">
+            <input class='form-control' type='text' placeholder=\"Owner Name\" name='userfname' value=".$ownername." readonly>
+            <input class='form-control' type='hidden' placeholder=\"Owner ID\" name='userid' value=".$owner.">
             <span class='input-group-text'>Pet Name</span>
-            <input class='form-control' type='text' placeholder=\"Pet ID\" name='petid' value=".$pet.">
+            <input class='form-control' type='text' placeholder=\"Pet Name\" name='petname' value=".$petname." readonly>
+            <input class='form-control' type='hidden' placeholder=\"Pet ID\" name='petid' value=".$pet.">
             <span class='input-group-text'>Vaccine</span>
-            <input class='form-control' type='text' placeholder=\"Vaccine ID\" name='petid' value=".$vax.">
+            <input class='form-control' type='hidden' placeholder=\"Vaccine ID\" name='vaxid' value=".$vax.">
+            <input class='form-control' type='text' placeholder=\"Vaccine Name\" name='vaxname' value=".$vaxname." readonly>
             </div><br>
             <div class='input-group'>
             <span class='input-group-text'>First Dose</span>

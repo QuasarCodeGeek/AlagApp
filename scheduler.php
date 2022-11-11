@@ -33,7 +33,7 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="dashboard.php">Dashboard</a>
-              </li>
+</li>
             </ul>
             <form class="d-flex" role="search">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -42,6 +42,78 @@
           </div>
         </div>
       </nav> 
+
+      <main class="container container-fluid">
+        <div class="row">
+          <div class="col text-center bg bg-secondary p-2">
+              <a class="nav-link text-white" type="button" href="php/sched_acc.php"><strong>Account</strong></a>
+          </div>
+          <div class="col text-center bg bg-light p-2">
+              <a class="nav-link" type="button" href="php/sched_chrono.php"><strong>Chronological</strong></a>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-3 container p-2 bg bg-light">
+                <div class="row m-2">
+                <input type="text" onkeyup="_searchAccount()" class="form-control rounded-start" id="searchAccount" placeholder="Search">
+                </div>
+                <div class="m-1" id="accountHere">
+                  
+                </div>
+                <div class="row m-1 overflow-x overflow-auto">
+                    <ul class="list-group list-group-flush">
+                    <?php include("php/accountList.php"); ?>
+                    </ul>
+                    <div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="ModalLabel">New Record</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body d-grid gap-2 container-fluid" id="modalNew">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal fade" id="boxModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="ModalLabel">Edit Data</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                        <div class="modal-body d-grid gap-2 container-fluid" id="modalHere">
+                      </div>
+                    </div>
+            </div>
+            </div>
+                </div>
+            </div>
+            <div class="col-9 container bg bg-light">
+                <div class="row m-2 p-2 bg bg-success rounded" style="--bs-bg-opacity: .5;">
+                  <label>This is the accounts area. Please select one of the following
+                     users from the list on the left side and begin monitoring their informations</label>
+                </div>
+                <div class="row m-2 p-2 bg bg-success rounded" style="--bs-bg-opacity: .5;">
+                  <label>Features:</label>
+                  <label>Add User</label>
+                  <label>Edit User</label>
+                  <label>Add Pet</label>
+                  <label>Edit Pet</label>
+                  <label>Add Vaccination</label>
+                  <label>Edit Vaccination</label>
+                  <label>Add Prescription</label>
+                  <label>Edit Prescription</label>
+                  <label>Monitor User Information</label>
+                  <label>Monitor Pet Information</label>
+                  <label>Monitor Pet Vaccination</label>
+                  <label>Monitor Pet Prescription</label>
+                </div>
+            </div>
+        </div>
+      </main>
+
 <!-- Footer -->
 <footer class="position-bottom text-white py-3">
   <div class="container">

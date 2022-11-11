@@ -98,13 +98,21 @@ function petNew(){
     }
     xhttp.open("GET", "php/newData/petNew.php");
     xhttp.send();
-  }s
+  }
+function PetNew(){
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function() {
+      document.getElementById("modalNew").innerHTML = this.responseText;
+    }
+    xhttp.open("GET", "newData/petNew.php");
+    xhttp.send();
+  }
 function vaccineNew() {
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
       document.getElementById("modalNew").innerHTML = this.responseText;
     }
-    xhttp.open("GET", "php/newData/vaccineNew.php");
+    xhttp.open("GET", "newData/vaccineNew.php");
     xhttp.send();
   }
 function cardNew() {
@@ -112,15 +120,15 @@ function cardNew() {
     xhttp.onload = function() {
       document.getElementById("modalNew").innerHTML = this.responseText;
     }
-    xhttp.open("GET", "php/newData/cardNew.php");
+    xhttp.open("GET", "newData/cardNew.php");
     xhttp.send();
   }
-function prescriptionNew() {
+function noteNew() {
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
       document.getElementById("modalNew").innerHTML = this.responseText;
     }
-    xhttp.open("GET", "php/newData/prescriptionNew.php");
+    xhttp.open("GET", "newData/noteNew.php");
     xhttp.send();
   }
 function scheduleNew() {
@@ -165,7 +173,7 @@ function cardEdit(cid) {
     xhttp.onload = function() {
       document.getElementById("modalHere").innerHTML = this.responseText;
     }
-    xhttp.open("GET", "editData/cardEdit.php?id="+cid);
+    xhttp.open("GET", "editData/cardEdit.php?cid="+cid);
     xhttp.send();
 }
 
@@ -174,7 +182,7 @@ function prescriptionEdit(nid) {
     xhttp.onload = function() {
       document.getElementById("modalHere").innerHTML = this.responseText;
     }
-    xhttp.open("GET", "editData/prescriptionEdit.php?id="+nid);
+    xhttp.open("GET", "editData/prescriptionEdit.php?nid="+nid);
     xhttp.send();
 }
 
@@ -183,7 +191,7 @@ function scheduleEdit(qid) {
     xhttp.onload = function() {
       document.getElementById("modalHere").innerHTML = this.responseText;
     }
-    xhttp.open("GET", "editData/scheduleEdit.php?id="+qid);
+    xhttp.open("GET", "editData/scheduleEdit.php?qid="+qid);
     xhttp.send();
 }
 

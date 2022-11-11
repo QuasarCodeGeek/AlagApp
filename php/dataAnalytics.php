@@ -94,23 +94,78 @@
     $maleratio = $rowroundm["RoundMale"];
     $femaleratio = $rowroundf["RoundFemale"];
     // Total Vaccine Info
+    $tvaxinfo = "SELECT COUNT(vaxid) AS totalvax FROM alagapp_db.tbl_vaxxinfo";
+    $resvaxinfo = $connect->query($tvaxinfo);
+    $resvaxinfo->execute();
+    $rowvaxinfo = $resvaxinfo->fetch(PDO::FETCH_ASSOC);
+    $totalvaxinfo = $rowvaxinfo["totalvax"];
     // Total Card Issued
+    $tcard = "SELECT COUNT(cid) AS totalcard FROM alagapp_db.tbl_vaxxcard";
+    $rescard = $connect->query($tcard);
+    $rescard->execute();
+    $rowcard = $rescard->fetch(PDO::FETCH_ASSOC);
+    $totalcard = $rowcard["totalcard"];
     // Total Vaccine Administered
+    $tvax = "SELECT COUNT(vaxid) AS totalvaccine FROM alagapp_db.tbl_vaxxcard";
+    $resvax = $connect->query($tvax);
+    $resvax->execute();
+    $rowvax = $resvax->fetch(PDO::FETCH_ASSOC);
+    $totalvax = $rowvax["totalvaccine"];
     // Pet to Card Ratio
     // Total Notes
+    $tnote = "SELECT COUNT(nid) AS totalnote FROM alagapp_db.tbl_notedetail";
+    $resnote = $connect->query($tnote);
+    $resnote->execute();
+    $rownote = $resnote->fetch(PDO::FETCH_ASSOC);
+    $totalnote = $rownote["totalnote"];
     // Pet to Note Ratio
     // Total Active Notes
     // Total Inactive Notes
     // Active to Inactive Notes Ratio
     // Total Schedule
+    $tsched = "SELECT COUNT(qid) AS totalsched FROM alagapp_db.tbl_scheduler";
+    $ressched = $connect->query($tsched);
+    $ressched->execute();
+    $rowsched = $ressched->fetch(PDO::FETCH_ASSOC);
+    $totalsched = $rowsched["totalsched"];
     // Pet to Sched Ratio
     // AM to PM Sched Ratio
     // Total Pending
+    $tpending = "SELECT COUNT(qstatus) AS totalpending FROM alagapp_db.tbl_scheduler WHERE qstatus LIKE 'Pending'";
+    $respending = $connect->query($tpending);
+    $respending->execute();
+    $rowpending = $respending->fetch(PDO::FETCH_ASSOC);
+    $totalpending = $rowpending["totalpending"];
     // Total Accepted
+    $taccepted = "SELECT COUNT(qstatus) AS totalaccepted FROM alagapp_db.tbl_scheduler WHERE qstatus LIKE 'Accepted'";
+    $resaccepted = $connect->query($taccepted);
+    $resaccepted->execute();
+    $rowaccepted = $resaccepted->fetch(PDO::FETCH_ASSOC);
+    $totalaccepted = $rowaccepted["totalaccepted"];
     // Total Denied
+    $tdenied = "SELECT COUNT(qstatus) AS totaldenied FROM alagapp_db.tbl_scheduler WHERE qstatus LIKE 'Denied'";
+    $resdenied = $connect->query($tdenied);
+    $resdenied->execute();
+    $rowdenied = $resdenied->fetch(PDO::FETCH_ASSOC);
+    $totaldenied = $rowdenied["totaldenied"];
     // Total Cancelled
+    $tcancelled = "SELECT COUNT(qstatus) AS totalcancelled FROM alagapp_db.tbl_scheduler WHERE qstatus LIKE 'Cancelled'";
+    $rescancelled = $connect->query($tcancelled);
+    $rescancelled->execute();
+    $rowcancelled = $rescancelled->fetch(PDO::FETCH_ASSOC);
+    $totalcancelled = $rowcancelled["totalcancelled"];
     // Total Finished
+    $tfinished = "SELECT COUNT(qstatus) AS totalfinished FROM alagapp_db.tbl_scheduler WHERE qstatus LIKE 'Finished'";
+    $resfinished = $connect->query($tfinished);
+    $resfinished->execute();
+    $rowfinished = $resfinished->fetch(PDO::FETCH_ASSOC);
+    $totalfinished = $rowfinished["totalfinished"];
     // Total Chat Count
+    $tchat = "SELECT COUNT(mid) AS totalchat FROM alagapp_db.tbl_chat";
+    $reschat = $connect->query($tchat);
+    $reschat->execute();
+    $rowchat = $reschat->fetch(PDO::FETCH_ASSOC);
+    $totalchat = $rowchat["totalchat"];
     // Total Call Count
     // Total Voice Call
     // Total Video Call

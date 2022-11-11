@@ -17,10 +17,10 @@
 
         if($fname=="" || $lname=="" || $bdate=="" || $gender=="" || $district=="" || $municipality=="" || $province ==""){
             echo "<script>alert('Complete Required Fields!');
-            window.location='../../account.php'</script>";
+            window.location='../profile.php?userid=".$id."'</script>";
         } else if ($email=="" || $password =="") 
             echo "<script>alert('Email and Password Required!');
-            window.location='../../account.php'</script>";
+            window.location='../profile.php?userid=".$id."'</script>";
         else {
             $sql = "UPDATE alagapp_db.tbl_userlist SET
                 useremail = :useremail,
@@ -60,10 +60,10 @@
 
             if($result->rowCount()>0) {
                 echo "<script>alert('Record has been updated!');
-                window.location='../../account.php'</script>";
+                window.location='../profile.php?userid=".$id."'</script>";
              } else {
                  echo "<script>alert('Unable to update record!')
-                 window.location='../../account.php'</script>";
+                 window.location='../profile.php?userid=".$id."'</script>";
              }
         }
     }

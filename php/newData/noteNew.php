@@ -44,13 +44,16 @@
              }
         }
     }
+
     echo "
     <form action='php/newData/prescriptionNew.php' method='POST'>
         <h1>New E-Prescription Note</h1><br>
         <div class='input-group'>
-            <label class='input-group-text'>Pet Owner</label>
-            <input type='text' placeholder=\"Pet Owner\" class='form-control' name='userid'>
+            <label class='input-group-text'>Owner</label>
+            <input type='hidden' placeholder=\"Owner ID\" class='form-control' name='userid'>
+            <input type='text' placeholder=\"Owner Name\" class='form-control' name='userid'>
             <label class='input-group-text'>Pet Name</label>
+            <input type='hidden' placeholder=\"Pet ID\" class='form-control' name='userid'>
             <input type='text' placeholder=\"Pet Name\" class='form-control' name='petid'>
         </div><br>
 
@@ -63,7 +66,11 @@
             <label class='input-group-text'>Date Issued</label>
             <input type='date' class='form-control' name='date'>
             <label class='input-group-text'>Status</label>
-            <input type='text' placeholder=\"Status\" class='form-control' name='status'>
+            <select class='form-select' name='status' id='inputGroupSelect'>
+                    <option selected''>-- Set Status --</option>
+                    <option name='status' value='Active'>Active</option>
+                    <option name='status' value='Inactive'>Inactive</option>
+                </select>
         </div><br>
         <div class='d-grid gap-2 d-md-flex justify-content-md-end'> 
             <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>

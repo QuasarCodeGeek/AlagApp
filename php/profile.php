@@ -38,10 +38,6 @@
                 <li class="nav-item">
                   <a class="nav-link" href="../dashboard.php">Dashboard</a>
                 </li>
-                <li class="nav-item">
-                <button type='button' class='btn' onClick='userNew()' data-bs-toggle='modal' data-bs-target='#newModal')>Add User</button>
-                <button type='button' class='btn' onClick='petNew()' data-bs-toggle='modal' data-bs-target='#newModal')>Add Pet</button>
-                </li>
               </ul>
               <form class="d-flex" role="search">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -54,9 +50,9 @@
         <main class="container container-fluid">
           <div class="row">
               <div class="col-3 container p-2 bg bg-light">
-                  <div class="row m-2">
+                  <!--<div class="row m-2">
                   <input type="text" onkeyup="_searchAccount()" class="form-control rounded-start" id="searchAccount" placeholder="Search">
-                  </div>
+                  </div>-->
                   <div class="m-1" id="accountHere">
                     
                     </div>
@@ -101,6 +97,7 @@
                           </div>
                         </div>
                       </div>
+                      
                       <div class="modal fade" id="boxModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                           <div class="modal-content">
@@ -152,11 +149,13 @@
                                     <label>Prescription Note: #</label>
                                 </div>
                               </div>
-                              <div class='col-1'>
+                              <div class='col-2'>
                                   <button type='button' class='btn btn-light mb-2' data-bs-toggle='tooltip' data-bs-placement='right' data-bs-title='Print'>
                                     <i class='bi bi-printer-fill'></i></button><br>
-                                  <button type='button' class='btn btn-light' onClick='userEdit(".$row['userid'].")' data-bs-toggle='tooltip'  data-bs-placement='right' data-bs-title='Edit'>
+                                  <button type='button' class='btn btn-light mb-2' onClick='userEdit(".$row['userid'].")' data-bs-toggle='tooltip'  data-bs-placement='right' data-bs-title='Edit'>
                                     <i class='bi bi-pencil-square' data-bs-toggle='modal' data-bs-target='#boxModal'></i></button>
+                                  <button type='button' class='p-2 btn btn-info w-100' onClick='PetNew()' data-bs-toggle='modal' data-bs-target='#newModal')>
+                                    <i class='bi bi-plus-square'></i> Add Pet</button>
                               </div>";
                       } else {
                           echo "No Record";
@@ -198,7 +197,7 @@
                                           <label>Gender: ".$row['petgender']."</label>
                                         </div>
                                         <div class='row-2 m-auto mb-2 w-auto h-auto p-2 rounded bg bg-light'>
-                                          <label>DOP: ".$row['petbdate']."</label>
+                                          <label>DOB: ".$row['petbdate']."</label>
                                         </div>
                                         <div class='row-2 m-auto mb-2 w-auto h-auto p-2 rounded bg bg-light'>
                                           <label>Age: ".$row['petage']."</label>
@@ -248,8 +247,8 @@
                                       <label>Second Dose: ".$rowvax['sdose']."</label><br>
                                       <label>Booster: ".$rowvax['booster']."</label>
 
-                                      <button type='button' class='btn btn-info' onClick='cardEdit(".$rowvax['cid'].")'>
-                                      <i class='bi bi-pencil-square' data-bs-toggle='modal' data-bs-target='#boxModal'></i>
+                                      <button type='button' class='btn btn-info' onClick='cardEdit(".$rowvax['cid'].")' data-bs-toggle='modal' data-bs-target='#boxModal'>
+                                      <i class='bi bi-pencil-square'></i>
                                       Edit</button>
                                       </div>";
                                       $j++;
@@ -281,18 +280,18 @@
                                           <label>Date Issued: ".$rownote['ndate']."</label><br>
                                           <label>Status: ".$rownote['nstatus']."</label>
 
-                                          <button type='button' class='btn btn-info' onClick='prescriptionEdit(".$rownote['nid'].")'>
-                                          <i class='bi bi-pencil-square' data-bs-toggle='modal' data-bs-target='#boxModal'></i>
+                                          <button type='button' class='btn btn-info' onClick='prescriptionEdit(".$rownote['nid'].")' data-bs-toggle='modal' data-bs-target='#boxModal'>
+                                          <i class='bi bi-pencil-square'></i>
                                           Edit</button>
                                             </div>";
                                             $p++;
                                         }
-                                        echo "<div class='row m-2 bg bg-light rounded'><button type='button' class='btn btn-light' onClick='prescriptionNew()' data-bs-toggle='modal' data-bs-target='#newModal')>
+                                        echo "<div class='row m-2 bg bg-light rounded'><button type='button' class='btn btn-light' onClick='noteNew()' data-bs-toggle='modal' data-bs-target='#newModal')>
                                         <i class='bi bi-plus-square'></i>
                                         Add Prescription</button></div>";
                                     } else {
                                         echo "<div class='row m-2 bg bg-light rounded'><label class='p-2 text-center '>No Record</label></div>";
-                                        echo "<div class='row m-2'><button type='button' class='btn btn-light' onClick='prescriptionNew()' data-bs-toggle='modal' data-bs-target='#newModal')>
+                                        echo "<div class='row m-2'><button type='button' class='btn btn-light' onClick='noteNew()' data-bs-toggle='modal' data-bs-target='#newModal')>
                                         <i class='bi bi-plus-square'></i>
                                         Add Prescription</button></div>";
                                     }

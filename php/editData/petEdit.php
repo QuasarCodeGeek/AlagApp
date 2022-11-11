@@ -15,7 +15,7 @@
 
         if($owner=="" || $petname=="" || $pettype=="" || $petbreed=="" || $petbdate=="" || $petage =="" || $petgender=="" || $petweight =="" || $petheight==""){
             echo "<script>alert('Comeplete all fields required!');
-            window.location='../../account.php'</script>";
+            window.location='../profile.php?userid=".$owner."'</script>";
         } else {
             $update = "UPDATE alagapp_db.tbl_petprofile SET 
                 userid = :userid,
@@ -49,10 +49,10 @@
 
             if($result->rowCount()>0) {
                 echo "<script>alert('Record has been updated!');
-                window.location='../../account.php'</script>";
+                window.location='../profile.php?userid=".$owner."'</script>";
              } else {
                  echo "<script>alert('Unable to update record!')
-                 window.location='../../account.php'</script>";
+                 window.location='../profile.php?userid=".$owner."'</script>";
              }
         }
     }

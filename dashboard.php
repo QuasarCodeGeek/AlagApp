@@ -46,10 +46,15 @@
         </div>
       </nav>
       <main class="container container-fluid">
-        <div class="row bg bg-light">
+        <div class="row p-2 bg bg-light">
           <div class="col-6">
             <canvas id="barbar" width="50" height="50"></canvas>
           </div>
+          <div class="col-6">
+            <canvas id="schedulebar" width="50" height="50"></canvas>
+          </div>
+        </div>  
+        <div class="row p-2 bg bg-light">
           <div class="col-3">
             <div class="text-center">
               <label>User Gender Ratio</label>
@@ -61,6 +66,12 @@
               <label>Pet Type Ratio</label>
             </div>
             <canvas id="donutpet" width="50" height="50"></canvas>
+          </div>
+          <div class="col-3">
+            <div class="text-center">
+              <label>Vaccine Administered Ratio</label>
+            </div>
+            <canvas id="donutvax" width="50" height="50"></canvas>
           </div>
         </div>
       </main>
@@ -101,8 +112,14 @@
       datasets: [{
         label: 'Total Data Count',
         data: [ 
-          <?php echo $totaluser; ?>
-          , 47, 8, 52, 51, 57, 68, 62],
+          <?php echo $totaluser; ?>, 
+          <?php echo $totalpet; ?>, 
+          <?php echo $totalvaxinfo; ?>, 
+          <?php echo $totalcard; ?>, 
+          <?php echo $totalnote; ?>, 
+          <?php echo $totalsched; ?>, 
+          <?php echo $totalchat; ?>, 
+          62],
         backgroundColor: [
           '#F44336',
           '#FF9800',
@@ -187,6 +204,79 @@
         plugins: {
 
         }
+    }
+  });
+
+  const vax = document.getElementById('donutvax');
+  const vaxratio = new Chart(vax, {
+    type: 'doughnut',
+    data: {
+      labels: [
+        'Rabies',
+        'Leptospirosis',
+        'Distemper',
+        'Deworming'
+      ],
+      datasets: [{
+        label: 'Vaccine Administered Ratio',
+        data: [
+          16, 45, 12, 31
+        ],
+        backgroundColor: [
+          '#3F51B5',
+          '#F44336',
+          '#FFEB3B',
+          '#FF9800'
+        ],
+        hoverOffset: 4
+      }]
+    }, option: {
+        plugins: {
+
+        }
+    }
+  });
+
+  const schedbar = document.getElementById('schedulebar');
+  const mySched = new Chart(schedbar, {
+    type: 'bar',
+    data: {
+      labels: ['Pending', 'Accepted', 'Denied', 'Cancelled', 'Finished'],
+      datasets: [{
+        label: 'Total Data Count',
+        data: [ 
+          <?php echo $totalpending; ?>, 
+          <?php echo $totalaccepted; ?>, 
+          <?php echo $totaldenied; ?>, 
+          <?php echo $totalcancelled; ?>, 
+          <?php echo $totalfinished; ?>
+        ],
+        backgroundColor: [
+          '#F44336',
+          '#FF9800',
+          '#FFEB3B',
+          '#4CAF50',
+          '#2196F3'
+        ]
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      },
+      layout: {
+        padding: 20,
+        width: 50,
+        height: 50
+      },
+      plugins: {
+        title: {
+          display: true,
+          text: 'Schedule Status'
+        }
+      }
     }
   });
 </script>

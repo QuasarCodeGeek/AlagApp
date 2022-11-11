@@ -13,7 +13,7 @@ require("../connector.php");
 
         if($owner=="" || $name=="" || $type=="" || $breed=="" || $age ==""){
             echo "<script>alert('Complete all fields required!');
-            wwindow.location='../../account.php'</script>";
+            window.location='../../account.php'</script>";
         } else {
             $sql = "INSERT INTO alagapp_db.tbl_petprofile(
                 userid,
@@ -53,10 +53,10 @@ require("../connector.php");
 
             if($result->rowCount()>0) {
                echo "<script>alert('Record has been save!');
-               window.location='../../account.php'</script>";
+               window.location='../../account.php?userid=".$owner."'</script>";
             } else {
                 echo "<script>alert('Unable to add record!');
-                window.location='../../account.php'</script>";
+                window.location='../../account.php?userid=".$owner."'</script>";
             }
         }
     }
