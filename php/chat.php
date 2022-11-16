@@ -132,7 +132,7 @@
           }
         ?>
       </div>
-      <div class="row position-absolute bottom-0 start-0">
+      <div class="row bg bg-info w-100">
         <div class="m-2">
           <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

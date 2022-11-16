@@ -45,7 +45,7 @@
           </div>
         </div>
       </nav>
-      <main class="container container-fluid">
+      <main class="container container-fluid vh-100">
         <div class="row p-2 bg bg-light">
           <div class="col-6">
             <canvas id="barbar" width="50" height="50"></canvas>
@@ -54,7 +54,7 @@
             <canvas id="schedulebar" width="50" height="50"></canvas>
           </div>
         </div>  
-        <div class="row p-2 bg bg-light">
+        <div class="row p-2 bg bg-light pb-5">
           <div class="col-3">
             <div class="text-center">
               <label>User Gender Ratio</label>
@@ -75,14 +75,6 @@
           </div>
         </div>
       </main>
-<!-- Footer -->
-<footer class="position-bottom text-white py-3">
-  <div class="container">
-      <label class="float-start">@2022</label>
-      <label>User Guide</label>
-      <label class=" float-end">PROGRAM SLAYER</label>
-  </div>
-</footer>
 
 <!-- Main Functions -->
 <script> src="js/main.js"</script>

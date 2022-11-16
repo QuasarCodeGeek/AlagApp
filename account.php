@@ -82,7 +82,7 @@
             </div>
                 </div>
             </div>
-            <div class="col-9 container bg bg-light">
+            <div class="col-9 container bg bg-light pb-5">
               <div class="row p-2">
                 <div class="col-6 m-auto">
                   <button type='button' class='p-2 btn btn-info w-100' onClick='userNew()' data-bs-toggle='modal' data-bs-target='#newModal')>Add User</button>
@@ -113,14 +113,6 @@
             </div>
         </div>
       </main>
-<!-- Footer -->
-<footer class="position-bottom text-white py-3">
-  <div class="container">
-      <label class="float-start">@2022</label>
-      <label>User Guide</label>
-      <label class=" float-end">PROGRAM SLAYER</label>
-  </div>
-</footer>
 
 <!-- Main Functions -->
 <script src="js/main.js"></script>

@@ -76,7 +76,7 @@
         ?>
       </ul>
     </div>
-    <div class="col-9 position-relative bg bg-light vh-100">
+    <div class="col-9 position-relative bg bg-light pb-5">
       <label>Select Conversation</label>
     </div>
   </div>

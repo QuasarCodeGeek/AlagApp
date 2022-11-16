@@ -1,20 +1,17 @@
-<?php
-  require("php/connector.php");
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scheduler | AlagApp</title>
+    <title>Scheduler Chronological | AlagApp</title>
     <!-- Bootstrap CSS v5.2.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="../../css/styles.css">
 </head>
 <body class="bg bg-info">
     <nav class="navbar navbar-expand-lg bg-light">
@@ -26,16 +23,16 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-                <a class="nav-link" href="account.php">Account</a>
+                <a class="nav-link" href="../../account.php">Account</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-success" href="scheduler.php" active><strong>Scheduler</strong></a>
+                <a class="nav-link text-success" href="../../scheduler.php" active><strong>Scheduler</strong></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="consultation.php">Consultation</a>
+                <a class="nav-link" href="../../consultation.php">Consultation</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="dashboard.php">Dashboard</a>
+                <a class="nav-link" href="../../dashboard.php">Dashboard</a>
 </li>
             </ul>
             <form class="d-flex" role="search">
@@ -76,73 +73,42 @@
                         </div>
 
         <div class="row">
-          <div class="col text-center bg bg-success">
-              <a class="nav-link text-white p-2" type="button" href="scheduler.php"><strong>Account</strong></a>
-          </div>
           <div class="col text-center bg bg-light">
-              <a class="nav-link p-2" type="button" href="php/sched_chrono.php"><strong>Chronological</strong></a>
+              <a class="nav-link p-2" type="button" href="../../scheduler.php"><strong>Account</strong></a>
+          </div>
+          <div class="col text-center bg bg-success">
+              <a class="nav-link p-2 text-white" type="button" href="../sched_chrono.php"><strong>Chronological</strong></a>
           </div>
         </div>
         <div class="row">
-            <div class="col-3 container p-2 bg bg-light">
-                <div class="row m-1 overflow-x overflow-auto">
-                  <ul class="list-group list-group-flush">
-                      <?php 
-                          $sql = "SELECT * FROM alagapp_db.tbl_userlist";
-                      
-                          $res = $connect->prepare($sql);
-                          $res->execute();
-                      
-                          $sql2 = "SELECT COUNT(userid) AS entry FROM alagapp_db.tbl_userlist";
-                          $res2 = $connect->query($sql2);
-                          $res2->execute();
-                          $row1 = $res2->fetch(PDO::FETCH_ASSOC);
-                      
-                          if($res->rowCount()>0){
-                              $i=1;
-                              while($row = $res->fetch(PDO::FETCH_ASSOC)){
-                                  echo "
-                                  <li class='list-group-item bg bg-light'>
-                                  <a type='button' class='btn w-100 text-start' href='php/sched_profile.php?userid=".$row['userid']."'>
-                                  <label class='text-wrap'>".$row['userfname']." ".$row['userlname']."</label>
-                                  </a>
-                                  </li>";
-                                  $i++;
-                              }
-                          } else {
-                              echo "Nothing follows";
-                          }
-                      ?>
-                      </ul>
-                    <div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-                      <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="ModalLabel">New Record</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body d-grid gap-2 container-fluid" id="modalNew">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="modal fade" id="boxModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-                      <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="ModalLabel">Edit Data</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                        <div class="modal-body d-grid gap-2 container-fluid" id="modalHere">
-                      </div>
-                    </div>
-            </div>
-            </div>
+            <div class="col-3 p-2 bg bg-light vh-100">
+                <div class="row m-auto p-2 bg bg-success rounded" style="--bs-bg-opacity: .5;">
+                <ul class="nav nav-pills nav-justified">
+                    <li class="nav-item">
+                        <a class="nav-link bg bg-success text-light" aria-current="page" href="#"><strong>Day</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#">Week</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#">Month</a>
+                    </li>
+                </ul>
+                </div>
+
+                <div class="row m-2">
+                    <button class="btn w-100 bg bg-success text-white mb-1" style="--bs-bg-opacity: .5;" onclick="location.href='schedPending.php'">Pending</button>
+                    <button class="btn w-100 bg bg-success text-white mb-1" style="--bs-bg-opacity: .5;" onclick="location.href='schedDenied.php'">Denied</button>
+                    <button class="btn w-100 bg bg-success text-white mb-1" style="--bs-bg-opacity: .5;" onclick="location.href='schedAccepted.php'">Accepted</button>
+                    <button class="btn w-100 bg bg-success text-white mb-1" onclick="location.href='schedCancelled.php'"><strong>Cancelled</strong></button>
+                    <button class="btn w-100 bg bg-success text-white mb-1" style="--bs-bg-opacity: .5;" onclick="location.href='schedFinished.php'">Finished</button>
                 </div>
             </div>
             <div class="col-9 container bg bg-light pt-2 pb-5">
             <?php
-                  $sql = "SELECT * FROM alagapp_db.tbl_scheduler";
+                  require("../connector.php");
+
+                  $sql = "SELECT * FROM alagapp_db.tbl_scheduler WHERE qstatus = 'Cancelled' ";
               
                   $res = $connect->prepare($sql);
                   $res->execute();
@@ -186,12 +152,11 @@
               }
                 ?>
             </div>
-            </div>
         </div>
       </main>
 
 <!-- Main Functions -->
-<script> src="js/main.js"</script>
+<script> src="../../js/main.js"</script>
 <!-- Ajax Function -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!-- Bootstrap Popper -->

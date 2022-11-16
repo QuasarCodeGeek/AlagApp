@@ -31,10 +31,10 @@ body {
 }
 .profile {
     width: 18rem;
+    background-color: #C8E6C9;
 }
 .card {
     color: black;
-    background-color: #C8E6C9; /*green(100)*/
 }
 .catleenoverlay {
     position: absolute;

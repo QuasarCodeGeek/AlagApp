@@ -49,7 +49,7 @@
 
         <main class="container container-fluid">
           <div class="row">
-              <div class="col-3 container p-2 bg bg-light">
+              <div class="col-3 container p-2 bg bg-light vh-100">
                   <!--<div class="row m-2">
                   <input type="text" onkeyup="_searchAccount()" class="form-control rounded-start" id="searchAccount" placeholder="Search">
                   </div>-->
@@ -74,7 +74,7 @@
                               while($row = $res->fetch(PDO::FETCH_ASSOC)){
                                   echo "
                                   <li class='list-group-item bg bg-light'>
-                                  <a type='button' class='btn' href='profile.php?userid=".$row['userid']."'>
+                                  <a type='button' class='btn w-100 text-start' href='profile.php?userid=".$row['userid']."'>
                                   <label class='text-wrap'>".$row['userfname']." ".$row['userlname']."</label>
                                   </a>
                                   </li>";
@@ -112,7 +112,7 @@
               </div>
                   </div>
               </div>
-              <div class="col-9 container bg bg-light">
+              <div class="col-9 container bg bg-light pb-5">
                   <div class="row mb-2 p-2 bg bg-success rounded" style="--bs-bg-opacity: .75;" id="userProfile">
                     <?php
                       $account = $_GET["userid"];
@@ -150,10 +150,10 @@
                                 </div>
                               </div>
                               <div class='col-2'>
-                                  <button type='button' class='btn btn-light mb-2' data-bs-toggle='tooltip' data-bs-placement='right' data-bs-title='Print'>
-                                    <i class='bi bi-printer-fill'></i></button><br>
-                                  <button type='button' class='btn btn-light mb-2' onClick='userEdit(".$row['userid'].")' data-bs-toggle='tooltip'  data-bs-placement='right' data-bs-title='Edit'>
-                                    <i class='bi bi-pencil-square' data-bs-toggle='modal' data-bs-target='#boxModal'></i></button>
+                                  <button type='button' class='btn btn-light mb-2 w-100'>
+                                    <i class='bi bi-printer-fill'></i> Print</button><br>
+                                  <button type='button' class='btn btn-light mb-2 w-100' onClick='userEdit(".$row['userid'].")' data-bs-toggle='modal' data-bs-target='#boxModal'>
+                                    <i class='bi bi-pencil-square'></i> Edit</button>
                                   <button type='button' class='p-2 btn btn-info w-100' onClick='PetNew()' data-bs-toggle='modal' data-bs-target='#newModal')>
                                     <i class='bi bi-plus-square'></i> Add Pet</button>
                               </div>";
@@ -162,7 +162,7 @@
                       }
                     ?>
                   </div>
-                  <div class="row p-2 bg bg-success rounded" style="--bs-bg-opacity: .5;" id="petProfile">
+                  <div class="row p-2 bg bg-success rounded mb-5" style="--bs-bg-opacity: .5;" id="petProfile">
                     <?php
                       $petaccount = $_GET["userid"];
                       $sql = "SELECT * FROM alagapp_db.tbl_petprofile
@@ -170,15 +170,17 @@
                   
                       $res = $connect->prepare($sql);
                       $res->execute();
-                  
+
                       if($res->rowCount()>0){
                           $i=1;
                           while($row = $res->fetch(PDO::FETCH_ASSOC)){
                               echo"
                               <div class='row m-auto mb-2 p-2 bg bg-success rounded' style='--bs-bg-opacity: .5'>
-                                  <div class='col-3'>
-                                      <img class='userProfile m-auto rounded' src='../assets/img/albedo.png' alt='profile_picture'><br>
-                                  </div>
+                                  <div class='col-3'>";
+
+                                  echo "<img class='userProfile m-auto rounded' src='../assets/img/albedo.png' alt=''><br>";
+                                  
+                                  echo "</div>
                                   <div class='col-8'>
                                     <div class='row'>
                                       <div class='col-4'>
@@ -214,10 +216,10 @@
                                     </div> 
                                   </div>
                                   <div class='col-1'>
-                                    <button type='button' class='btn btn-light mb-2' data-bs-toggle='tooltip' data-bs-placement='right' data-bs-title='Print'>
-                                      <i class='bi bi-printer-fill'></i></button><br>
-                                    <button type='button' class='btn btn-light' onClick='petEdit(".$row['petid'].")' data-bs-toggle='tooltip'  data-bs-placement='right' data-bs-title='Edit'>
-                                      <i class='bi bi-pencil-square' data-bs-toggle='modal' data-bs-target='#boxModal'></i></button>
+                                    <button type='button' class='btn btn-light mb-2 w-100' data-bs-toggle='tooltip' data-bs-placement='right' data-bs-title='Print'>
+                                      <i class='bi bi-printer-fill'></i> Print</button><br>
+                                    <button type='button' class='btn btn-light w-100' onClick='petEdit(".$row['petid'].")' data-bs-toggle='tooltip'  data-bs-placement='right' data-bs-title='Edit'>
+                                      <i class='bi bi-pencil-square' data-bs-toggle='modal' data-bs-target='#boxModal'></i> Edit</button>
                                   </div><br>
                   
                               <div class='row mx-auto my-2'>
@@ -315,14 +317,7 @@
               </div>
           </div>
         </main>
-  <!-- Footer -->
-  <footer class="position-bottom text-white py-3">
-    <div class="container">
-        <label class="float-start">@2022</label>
-        <label>User Guide</label>
-        <label class=" float-end">PROGRAM SLAYER</label>
-    </div>
-  </footer>
+
   <!-- Main Functions -->
   <script src="../js/main.js"></script>
   <!-- Ajax Function -->
