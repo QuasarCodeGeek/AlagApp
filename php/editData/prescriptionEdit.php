@@ -11,7 +11,7 @@
 
         if($user=="" || $pet=="" || $description=="" || $date=="" || $status==""){
             echo "<script>alert('Please complete the fields required!');
-            window.location='../profile.php?userid=".$userr."'</script>";
+            window.location='profile.php?userid=".$user."'</script>";
         } else {
             $sql = "UPDATE alagapp_db.tbl_notedetail SET
                 userid = :userid,
@@ -43,6 +43,7 @@
              }
         }
     }
+
     echo "<form action='editData/prescriptionEdit.php' method='POST'>";
 
     $nid = $_REQUEST["nid"];
