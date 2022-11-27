@@ -154,7 +154,7 @@
                                     <i class='bi bi-printer-fill'></i> Print</button><br>
                                   <button type='button' class='btn btn-light mb-2 w-100' onClick='userEdit(".$row['userid'].")' data-bs-toggle='modal' data-bs-target='#boxModal'>
                                     <i class='bi bi-pencil-square'></i> Edit</button>
-                                  <button type='button' class='p-2 btn btn-info w-100' onClick='PetNew()' data-bs-toggle='modal' data-bs-target='#newModal')>
+                                  <button type='button' class='p-2 btn btn-info w-100' onClick='PetNew(".$row['userid'].")' data-bs-toggle='modal' data-bs-target='#newModal')>
                                     <i class='bi bi-plus-square'></i> Add Pet</button>
                               </div>";
                       } else {
@@ -162,7 +162,7 @@
                       }
                     ?>
                   </div>
-                  <div class="row p-2 bg bg-success rounded mb-5" style="--bs-bg-opacity: .5;" id="petProfile">
+                  <div class="row p-2 bg bg-success rounded mb-5" id="petProfile" style="--bs-bg-opacity: .75;">
                     <?php
                       $petaccount = $_GET["userid"];
                       $sql = "SELECT * FROM alagapp_db.tbl_petprofile
@@ -175,11 +175,20 @@
                           $i=1;
                           while($row = $res->fetch(PDO::FETCH_ASSOC)){
                               echo"
-                              <div class='row m-auto mb-2 p-2 bg bg-success rounded' style='--bs-bg-opacity: .5'>
-                                  <div class='col-3'>";
-
-                                  echo "<img class='userProfile m-auto rounded' src='../assets/img/albedo.png' alt=''><br>";
-                                  
+                              <div class='row m-auto mb-2 p-2 rounded' style='background-color: #81C784;'>  
+                                <div class='col-3'>";
+                                  if ($row['pettype'] == 'Dog') {
+                                    echo "<img class='userProfile m-auto rounded' src='../assets/img/dog/Dog_PembrokeWelshCorgi.jpg' alt='dog'><br>";
+                                  }
+                                  else if ($row['pettype'] == 'Cat') {
+                                    echo "<img class='userProfile m-auto rounded' src='../assets/img/cat/Cat_ScottishFold.jpg' alt='cat'><br>";
+                                  }
+                                  else if ($row['pettype'] == 'Bird') {
+                                    echo "<img class='userProfile m-auto rounded' src='../assets/img/bird/Bird_ConuresSmall.jpg' alt='bird'><br>";
+                                  }
+                                  else if ($row['pettype'] == 'Mouse') {
+                                    echo "<img class='userProfile m-auto rounded' src='../assets/img/mouse/Mouse_Marked.jpg' alt='mouse'><br>";
+                                  };
                                   echo "</div>
                                   <div class='col-8'>
                                     <div class='row'>
@@ -216,10 +225,10 @@
                                     </div> 
                                   </div>
                                   <div class='col-1'>
-                                    <button type='button' class='btn btn-light mb-2 w-100' data-bs-toggle='tooltip' data-bs-placement='right' data-bs-title='Print'>
+                                    <button type='button' class='btn btn-light mb-2 w-100'>
                                       <i class='bi bi-printer-fill'></i> Print</button><br>
-                                    <button type='button' class='btn btn-light w-100' onClick='petEdit(".$row['petid'].")' data-bs-toggle='tooltip'  data-bs-placement='right' data-bs-title='Edit'>
-                                      <i class='bi bi-pencil-square' data-bs-toggle='modal' data-bs-target='#boxModal'></i> Edit</button>
+                                    <button type='button' class='btn btn-light w-100' onClick='petEdit(".$row['petid'].")' data-bs-toggle='modal' data-bs-target='#boxModal'>
+                                      <i class='bi bi-pencil-square'></i> Edit</button>
                                   </div><br>
                   
                               <div class='row mx-auto my-2'>
@@ -255,12 +264,12 @@
                                       </div>";
                                       $j++;
                                     }
-                                      echo "<div class='row m-2'><button type='button' class='btn btn-light' onClick='cardNew()' data-bs-toggle='modal' data-bs-target='#newModal')>
+                                      echo "<div class='row m-2'><button type='button' class='btn btn-light' onClick='cardNew(".$row['petid'].")' data-bs-toggle='modal' data-bs-target='#newModal')>
                                       <i class='bi bi-plus-square'></i>
                                       Add Vaccination</button></div>";
                                   } else {
                                     echo "<div class='row m-2 bg bg-light rounded'><label class='p-2 text-center '>No Record</label></div>";
-                                    echo "<div class='row m-2'><button type='button' class='btn btn-light' onClick='cardNew()' data-bs-toggle='modal' data-bs-target='#newModal')>
+                                    echo "<div class='row m-2'><button type='button' class='btn btn-light' onClick='cardNew(".$row['petid'].")' data-bs-toggle='modal' data-bs-target='#newModal')>
                                     <i class='bi bi-plus-square'></i>
                                     Add Vaccination</button></div>";
                                   }
@@ -288,12 +297,12 @@
                                             </div>";
                                             $p++;
                                         }
-                                        echo "<div class='row m-2 bg bg-light rounded'><button type='button' class='btn btn-light' onClick='noteNew()' data-bs-toggle='modal' data-bs-target='#newModal')>
+                                        echo "<div class='row m-2 bg bg-light rounded'><button type='button' class='btn btn-light' onClick='noteNew(".$row['petid'].")' data-bs-toggle='modal' data-bs-target='#newModal')>
                                         <i class='bi bi-plus-square'></i>
                                         Add Prescription</button></div>";
                                     } else {
                                         echo "<div class='row m-2 bg bg-light rounded'><label class='p-2 text-center '>No Record</label></div>";
-                                        echo "<div class='row m-2'><button type='button' class='btn btn-light' onClick='noteNew()' data-bs-toggle='modal' data-bs-target='#newModal')>
+                                        echo "<div class='row m-2'><button type='button' class='btn btn-light' onClick='noteNew(".$row['petid'].")' data-bs-toggle='modal' data-bs-target='#newModal')>
                                         <i class='bi bi-plus-square'></i>
                                         Add Prescription</button></div>";
                                     }

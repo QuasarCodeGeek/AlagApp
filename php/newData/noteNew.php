@@ -9,7 +9,7 @@
 
         if($user=="" || $pet=="" || $description=="" || $date=="" || $status==""){
             echo "<script>alert('Please complete the fields required!');
-            window.location='../../account.php'</script>";
+            window.location='../profile.php?userid=".$user."'</script>";
         } else {
             $sql = "INSERT INTO alagapp_db.tbl_notedetail(
                 userid,
@@ -37,24 +37,37 @@
 
             if($result->rowCount()>0) {
                 echo "<script>alert('Record has been save!');
-                window.location='../../account.php'</script>";
+                window.location='../profile.php?userid=".$user."'</script>";
              } else {
                  echo "<script>alert('Unable to add record!');
-                 window.location='../../account.php'</script>";
+                 window.location='../profile.php?userid=".$user."'</script>";
              }
         }
-    }
+    };
+
+    $pid = $_REQUEST["petid"];
+    $sql_note = "SELECT * FROM alagapp_db.tbl_petprofile WHERE petid = ".$pid."";
+
+    $note_res = $connect->prepare($sql_note);
+    $note_res->execute();
+    $row = $note_res->fetch(PDO::FETCH_ASSOC);
+
+    $user = "SELECT * FROM alagapp_db.tbl_userlist WHERE userid = ".$row['userid']."";
+
+    $user_res = $connect->prepare($user);
+    $user_res->execute();
+    $userrow = $user_res->fetch(PDO::FETCH_ASSOC);
 
     echo "
-    <form action='php/newData/prescriptionNew.php' method='POST'>
+    <form action='newData/noteNew.php' method='POST'>
         <h1>New E-Prescription Note</h1><br>
         <div class='input-group'>
             <label class='input-group-text'>Owner</label>
-            <input type='hidden' placeholder=\"Owner ID\" class='form-control' name='userid'>
-            <input type='text' placeholder=\"Owner Name\" class='form-control' name='userid'>
+            <input type='hidden' placeholder=\"Owner ID\" class='form-control' value='".$userrow['userid']."' name='userid'>
+            <input type='text' placeholder=\"Owner Name\" class='form-control' value='".$userrow['userfname']."' name='userfname'>
             <label class='input-group-text'>Pet Name</label>
-            <input type='hidden' placeholder=\"Pet ID\" class='form-control' name='userid'>
-            <input type='text' placeholder=\"Pet Name\" class='form-control' name='petid'>
+            <input type='hidden' placeholder=\"Pet ID\" class='form-control' value='".$row['petid']."' name='petid'>
+            <input type='text' placeholder=\"Pet Name\" class='form-control' value='".$row['petname']."' name='petname'>
         </div><br>
 
         <div class='input-group'>

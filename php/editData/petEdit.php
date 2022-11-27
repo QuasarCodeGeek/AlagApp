@@ -57,7 +57,7 @@
         }
     }
 
-    echo "<form action='php/editData/petEdit.php' method='POST'>";
+    echo "<form action='editData/petEdit.php' method='POST'>";
 
     $pet = $_REQUEST["id"];
     $sql_pet = "SELECT * FROM alagapp_db.tbl_petprofile WHERE petid = :petid";

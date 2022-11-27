@@ -1,19 +1,19 @@
 <?php
     require("../connector.php");
 
-    if(isset($_POST["add_sched"])){
+    if(isset($_POST["submit"])){
         $user = $_POST["userid"];
         $pet = $_POST["petid"];
         $vax = $_POST["vaxid"];
-        $fdose = $_POST["fdose"];
-        $sdose = $_POST["sdose"];
+        $fdose = $_POST["fdate"];
+        $sdose = $_POST["sdate"];
         $booster = $_POST["booster"];
 
-        if($user=="" || $pet=="" || $vaxid=="" || $fdose==""){
-            echo "<script>alert('Please complete the fields required!')
-            window.location='../../account.php'</script>";
+        if($user=="" || $pet=="" || $vax=="" || $fdose==""){
+            echo "<script>alert('Please complete the fields required!');
+            window.location='../profile.php?userid=".$user."'</script>";
         } else {
-            $sql = "INSERT INTO alagapp_db.tbl_scheduler(
+            $sql = "INSERT INTO alagapp_db.tbl_vaxxcard(
                 userid,
                 petid,
                 vaxid,
@@ -42,27 +42,42 @@
 
             if($result->rowCount()>0) {
                 echo "<script>alert('Record has been save!');
-                window.location='../../account.php'</script>";
+                window.location='../profile.php?userid=".$user."'</script>";
              } else {
                  echo "<script>alert('Unable to add record!');
-                 window.location='../../account.php'</script>";
+                 window.location='../profile.php?userid=".$user."'</script>";
              }
         }
     }
+
+    $pid = $_REQUEST["petid"];
+    $sql_card = "SELECT * FROM alagapp_db.tbl_petprofile WHERE petid = ".$pid."";
+
+    $card_res = $connect->prepare($sql_card);
+    $card_res->execute();
+    $row = $card_res->fetch(PDO::FETCH_ASSOC);
+
+    
     $sqlvax = "SELECT * FROM alagapp_db.tbl_vaxxinfo";
     $resvax = $connect->query($sqlvax);
     $resvax->execute();
 
+    $user = "SELECT * FROM alagapp_db.tbl_userlist WHERE userid = ".$row['userid']."";
+
+    $user_res = $connect->prepare($user);
+    $user_res->execute();
+    $userrow = $user_res->fetch(PDO::FETCH_ASSOC);
+
     echo "
-    <form action='php/newData/cardNew.php' method='POST'>
+    <form action='newData/cardNew.php' method='POST'>
     <h1>New E-Vaccine Card</h1><br>
         <div class='input-group'>
             <label class='input-group-text'>Owner</label>
-                <input placeholder=\"Owner ID\" type='hidden' class='form-control' name='userid'>
-                <input placeholder=\"Owner Name\" type='text' class='form-control' name='userfname'>
+                <input placeholder=\"Owner ID\" type='hidden' class='form-control' value='".$userrow['userid']."' name='userid'>
+                <input placeholder=\"Owner Name\" type='text' class='form-control' value='".$userrow['userfname']."' name='userfname'>
             <label class='input-group-text'>Pet Name</label>
-                <input placeholder=\"Pet ID\" type='hidden' class='form-control' name='petid'>
-                <input placeholder=\"Pet Name\" type='text' class='form-control' name='petname'>
+                <input placeholder=\"Pet ID\" type='hidden' class='form-control' value='".$row['petid']."' name='petid'>
+                <input placeholder=\"Pet Name\" type='text' class='form-control' value='".$row['petname']."' name='petname'>
             <label class='input-group-text'>Vaccine ID</label>
                 <select class='form-select' name='vaxid' id='inputGroupSelect'>
                 <option selected=''>-- Select Vaccine--</option>";

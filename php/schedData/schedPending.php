@@ -44,7 +44,7 @@
       </nav> 
 
       <main class="container container-fluid">
-      <div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+                      <div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                           <div class="modal-content">
                             <div class="modal-header">
@@ -137,7 +137,8 @@
                   echo
                   "<div class='card m-1 p-1 col-flex' style='width: 11rem;'>
                       <div class='card-body'>
-                          <button type='button' class='btn btn-success w-100' onClick='scheduleEdit(".$row['qid'].")' data-bs-toggle='modal' data-bs-target='#boxModal')><h6 class='card-title'>".$rowentry2['petname']."</h6></button><br>
+                          <button type='button' class='btn btn-success' onClick='SchedEdut(".$row['qid'].")' data-bs-toggle='modal' data-bs-target='#boxModal'>Click</button>
+                          <button type='button' class='btn btn-success w-100' onClick='SchedEdit(".$row['qid'].")' data-bs-toggle='modal' data-bs-target='#boxModal')><h6 class='card-title'>".$rowentry2['petname']."</h6></button><br>
                           <label class='card-text' style='font-size: 12px;'>Owner: ".$rowentry1['userfname']."</label><br>
                           <label class='card-text' style='font-size: 12px;'>Description: ".$row['qdescription']."</label><br>
                           <label class='card-text' style='font-size: 12px;'>Date Issued: ".$row['qdate']."</label><br>

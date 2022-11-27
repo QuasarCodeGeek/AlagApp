@@ -1,7 +1,7 @@
 <?php
     require("../connector.php");
 
-    if(isset($_POST["Update"])){
+    if(isset($_POST["submit"])){
         $qid = $_POST["qid"];
         $user = $_POST["userid"];
         $pet = $_POST["petid"];
@@ -46,7 +46,7 @@
 
     echo    "<form action='editData/scheduleEdit.php' method='POST'>";
 
-    $qid = $_REQUEST["id"];
+    $qid = $_REQUEST["qid"];
     $sql_sched = "SELECT * FROM alagapp_db.tbl_scheduler WHERE qid = :qid";
 
     try{

@@ -13,7 +13,7 @@ require("../connector.php");
 
         if($owner=="" || $name=="" || $type=="" || $breed=="" || $age ==""){
             echo "<script>alert('Complete all fields required!');
-            window.location='../../account.php'</script>";
+            window.location='../profile.php?userid=".$owner."'</script>";
         } else {
             $sql = "INSERT INTO alagapp_db.tbl_petprofile(
                 userid,
@@ -53,20 +53,21 @@ require("../connector.php");
 
             if($result->rowCount()>0) {
                echo "<script>alert('Record has been save!');
-               window.location='../../account.php?userid=".$owner."'</script>";
+               window.location='../profile.php?userid=".$owner."'</script>";
             } else {
                 echo "<script>alert('Unable to add record!');
-                window.location='../../account.php?userid=".$owner."'</script>";
+                window.location='../profile.php?userid=".$owner."'</script>";
             }
         }
     }
 
-    $sqlOwner = "SELECT * FROM alagapp_db.tbl_userlist";
+    $user = $_REQUEST['userid'];
+    $sqlOwner = "SELECT * FROM alagapp_db.tbl_userlist WHERE userid = ".$user."";
     $resOwner = $connect->query($sqlOwner);
     $resOwner->execute();
-
+    $OwnerRow = $resOwner->fetch(PDO::FETCH_ASSOC);
     echo    "
-            <form action='php/newData/petNew.php' method='POST'>
+            <form action='newData/petNew.php' method='POST'>
             <h1>New Pet Profile</h1><br>
             <div class='input-group'>
             <span class='input-group-text'>Pet Name</span>
@@ -90,17 +91,8 @@ require("../connector.php");
             </div><br>
             <div class='input-group'>
             <label class='input-group-text' for='inputGroupSelect'>Owner</label>
-                <select class='form-select' name='userid' id='inputGroupSelect'>
-                    <option selected=''>-- Select Owner --</option>";
-                if($resOwner->rowCount()>0){
-                    $counter=1;
-                    while($OwnerRow = $resOwner->fetch(PDO::FETCH_ASSOC)){
-                        echo "<option name='userid' value='".$OwnerRow['userid']."'>".$OwnerRow['userfname']."</option>";
-                        $counter++;
-                    }
-                }
-
-            echo "<select>
+            <input class='form-control' type='text' value='".$OwnerRow['userid']."' name='userid' hidden>
+            <input class='form-control' type='text' value='".$OwnerRow['userfname']."' name='userfname'>
             <span class='input-group-text'>Weight(kg)</span>
             <input class='form-control' type='float' placeholder=\"Weight\" name='petweight'>
             <span class='input-group-text'>Height(ft)</span>

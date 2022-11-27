@@ -99,12 +99,12 @@ function petNew(){
     xhttp.open("GET", "php/newData/petNew.php");
     xhttp.send();
   }
-function PetNew(){
+function PetNew(userid){
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
       document.getElementById("modalNew").innerHTML = this.responseText;
     }
-    xhttp.open("GET", "newData/petNew.php");
+    xhttp.open("GET", "newData/petNew.php?userid="+userid);
     xhttp.send();
   }
 function vaccineNew() {
@@ -112,23 +112,23 @@ function vaccineNew() {
     xhttp.onload = function() {
       document.getElementById("modalNew").innerHTML = this.responseText;
     }
-    xhttp.open("GET", "newData/vaccineNew.php");
+    xhttp.open("GET", "php/newData/vaccineNew.php");
     xhttp.send();
   }
-function cardNew() {
+function cardNew(petid) {
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
       document.getElementById("modalNew").innerHTML = this.responseText;
     }
-    xhttp.open("GET", "newData/cardNew.php");
+    xhttp.open("GET", "newData/cardNew.php?petid="+petid);
     xhttp.send();
   }
-function noteNew() {
+function noteNew(petid) {
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
       document.getElementById("modalNew").innerHTML = this.responseText;
     }
-    xhttp.open("GET", "newData/noteNew.php");
+    xhttp.open("GET", "newData/noteNew.php?petid="+petid);
     xhttp.send();
   }
 function scheduleNew() {
@@ -136,7 +136,7 @@ function scheduleNew() {
     xhttp.onload = function() {
       document.getElementById("modalNew").innerHTML = this.responseText;
     }
-    xhttp.open("GET", "php/newData/scheduleNew.php");
+    xhttp.open("GET", "newData/scheduleNew.php");
     xhttp.send();
   }
 
@@ -186,13 +186,33 @@ function prescriptionEdit(nid) {
     xhttp.send();
 }
 
-function scheduleEdit(qid) {
+
+function scheduleEdit() {
+  var qid = document.getElementById("queue").value;
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    document.getElementById("modalHere").innerHTML = this.responseText;
+  }
+  xhttp.open("GET", "php/editData/scheduleEdit.php?qid="+qid);
+  xhttp.send();
+}
+
+function schedEdit(qid) {
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
       document.getElementById("modalHere").innerHTML = this.responseText;
     }
     xhttp.open("GET", "editData/scheduleEdit.php?qid="+qid);
     xhttp.send();
+}
+
+function SchedEdit(qid) {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    document.getElementById("modalHere").innerHTML = this.responseText;
+  }
+  xhttp.open("GET", "../editData/scheduleEdit.php?qid="+qid);
+  xhttp.send();
 }
 
 // Search Functions
@@ -207,108 +227,6 @@ function _searchAccount() {
       xhttp.send();
     } else {
       document.getElementById("accountHere").innerHTML = "";
-    }
-}
-
-function searchBy() { 
-    var input = document.getElementById("search").value;
-    var searchinput = document.getElementById("searchby").value
-    if(searchinput == 1){
-      if(input!==""){
-        const xhttp = new XMLHttpRequest();
-        xhttp.onload = function() {
-          document.getElementById("contentHere").innerHTML = this.responseText;
-        }
-        xhttp.open("GET", "php/searchData/searchUser.php?search="+input);
-        xhttp.send();
-      } else {
-        const xhttp = new XMLHttpRequest();
-        xhttp.onload = function() {
-          document.getElementById("contentHere").innerHTML = this.responseText;
-        }
-        xhttp.open("GET", "php/userProfile.php");
-        xhttp.send();
-      }
-    } else if(searchinput == 2){
-        if(input!==""){
-          const xhttp = new XMLHttpRequest();
-          xhttp.onload = function() {
-            document.getElementById("contentHere").innerHTML = this.responseText;
-          }
-          xhttp.open("GET", "php/searchData/searchPet.php?search="+input);
-          xhttp.send();
-        } else {
-          const xhttp = new XMLHttpRequest();
-          xhttp.onload = function() {
-            document.getElementById("contentHere").innerHTML = this.responseText;
-          }
-          xhttp.open("GET", "php/petProfile.php");
-          xhttp.send();
-        }
-    } else if(searchinput == 3){
-        if(input!==""){
-          const xhttp = new XMLHttpRequest();
-          xhttp.onload = function() {
-            document.getElementById("contentHere").innerHTML = this.responseText;
-          }
-          xhttp.open("GET", "php/searchData/searchCard.php?search="+input);
-          xhttp.send();
-        } else {
-          const xhttp = new XMLHttpRequest();
-          xhttp.onload = function() {
-            document.getElementById("contentHere").innerHTML = this.responseText;
-          }
-          xhttp.open("GET", "php/vaccineCard.php");
-          xhttp.send();
-        }
-    } else if(searchinput == 4){
-      if(input!==""){
-        const xhttp = new XMLHttpRequest();
-        xhttp.onload = function() {
-          document.getElementById("contentHere").innerHTML = this.responseText;
-        }
-        xhttp.open("GET", "php/searchData/searchVaccine.php?search="+input);
-        xhttp.send();
-      } else {
-        const xhttp = new XMLHttpRequest();
-        xhttp.onload = function() {
-          document.getElementById("contentHere").innerHTML = this.responseText;
-        }
-        xhttp.open("GET", "php/vaccineInfo.php");
-        xhttp.send();
-      }
-    } else if(searchinput == 5){
-      if(input!==""){
-        const xhttp = new XMLHttpRequest();
-        xhttp.onload = function() {
-          document.getElementById("contentHere").innerHTML = this.responseText;
-        }
-        xhttp.open("GET", "php/searchData/searchNote.php?search="+input);
-        xhttp.send();
-      } else {
-        const xhttp = new XMLHttpRequest();
-        xhttp.onload = function() {
-          document.getElementById("contentHere").innerHTML = this.responseText;
-        }
-        xhttp.open("GET", "php/prescriptionNote.php");
-        xhttp.send();
-      }
-    } else if(searchinput == 6){
-      if(input!==""){
-        const xhttp = new XMLHttpRequest();
-        xhttp.onload = function() {
-          document.getElementById("contentHere").innerHTML = this.responseText;
-        }
-        xhttp.open("GET", "php/searchData/searchSchedule.php?search="+input);
-        xhttp.send();
-      } else {
-        const xhttp = new XMLHttpRequest();
-        xhttp.onload = function() {
-          document.getElementById("contentHere").innerHTML = this.responseText;
-        }
-        xhttp.open("GET", "schedList.php");
-        xhttp.send();
-      }
     }
 }
 

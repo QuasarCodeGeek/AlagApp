@@ -12,7 +12,7 @@ require("../connector.php");
 
         if($owner=="" || $pet=="" || $vax=="" || $fdose==""){
             echo "<script>alert('Complete Required Fields!');
-            window.location='../profile.php?userid=".$owner."'</script>";
+            window.location='profile.php?userid=".$owner."'</script>";
         } else {
             $sql = "UPDATE alagapp_db.tbl_vaxxcard SET
                 userid = :userid,

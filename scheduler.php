@@ -69,7 +69,7 @@
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body d-grid gap-2 container-fluid" id="modalHere">
-                              Content Edit Here
+                              Content Edit Here No Record Retrieved
                             </div>
                           </div>
                         </div>
@@ -84,7 +84,7 @@
           </div>
         </div>
         <div class="row">
-            <div class="col-3 container p-2 bg bg-light">
+              <div class="col-3 container p-2 bg bg-light">
                 <div class="row m-1 overflow-x overflow-auto">
                   <ul class="list-group list-group-flush">
                       <?php 
@@ -113,31 +113,7 @@
                               echo "Nothing follows";
                           }
                       ?>
-                      </ul>
-                    <div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-                      <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="ModalLabel">New Record</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body d-grid gap-2 container-fluid" id="modalNew">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="modal fade" id="boxModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-                      <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="ModalLabel">Edit Data</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                        <div class="modal-body d-grid gap-2 container-fluid" id="modalHere">
-                      </div>
-                    </div>
-            </div>
-            </div>
+                  </ul>
                 </div>
             </div>
             <div class="col-9 container bg bg-light pt-2 pb-5">
@@ -171,7 +147,7 @@
                   echo
                   "<div class='card m-1 p-1 col-flex' style='width: 11rem;'>
                       <div class='card-body'>
-                          <button type='button' class='btn btn-success w-100' onClick='scheduleEdit(".$row['qid'].")' data-bs-toggle='modal' data-bs-target='#boxModal')><h6 class='card-title'>".$rowentry2['petname']."</h6></button><br>
+                          <button type='button' class='btn btn-success w-100' onClick='scheduleEdit()' id='queue' value='".$row['qid']."' data-bs-toggle='modal' data-bs-target='#boxModal')><h6 class='card-title'>".$rowentry2['petname']."</h6></button><br>
                           <label class='card-text' style='font-size: 12px;'>Owner: ".$rowentry1['userfname']."</label><br>
                           <label class='card-text' style='font-size: 12px;'>Description: ".$row['qdescription']."</label><br>
                           <label class='card-text' style='font-size: 12px;'>Date Issued: ".$row['qdate']."</label><br>

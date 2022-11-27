@@ -11,6 +11,7 @@
     <!-- Bootstrap CSS v5.2.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link href="node_modules/bootstrap/dist/css/bootstrap-grid.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <!-- Custom CSS -->
@@ -18,58 +19,169 @@
 </head>
 <body class="bg bg-success">
     <nav class="navbar navbar-expand-lg bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="../index.html">AlagApp</a>
+        <div class="container container-fluid">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-                <a class="nav-link" href="account.php">Account</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="scheduler.php">Scheduler</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="consultation.php">Consultation</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-success" href="dashboard.php" active><strong>Dashboard</strong></a>
-              </li>
-            </ul>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+          <div class="row collapse navbar-collapse mx-auto" id="navbarSupportedContent">
+            <div class="col text-center">
+              <a class="nav-link" href="account.php">Account</a>
+            </div>
+            <div class="col text-center">
+            <a class="nav-link" href="scheduler.php">Scheduler</a>
+            </div>
+            <div class="col text-center">
+              <a class="navbar-brand" href="../index.html"><strong>AlagApp</strong></a>
+            </div>
+            <div class="col text-center">
+              <a class="nav-link" href="consultation.php">Consultation</a>
+            </div>
+            <div class="col text-center border-bottom border-success border-5">
+              <a class="nav-link text-success" href="dashboard.php" active><strong>Dashboard</strong></a> 
+            </div>
           </div>
         </div>
       </nav>
-      <main class="container container-fluid vh-100">
-        <div class="row p-2 bg bg-light">
-          <div class="col-6">
-            <canvas id="barbar" width="50" height="50"></canvas>
-          </div>
+      <main class="container container-fluid bg bg-light">
+          <div class="row p-5"><!-- First Graph -->
+            <div class="col-6 m-auto">
+              <div class="row">
+                <div class="col bg bg-success border-end border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
+                  <i class="bi bi-chat m-1"></i><strong> Users</strong>
+                  <label class="float-end"><?php echo $totaluser; ?></label>
+                </div>
+                <div class="col bg bg-success border-end border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
+                  <i class="bi bi-chat m-1"></i><strong> Pets</strong>
+                  <label class="float-end"><?php echo $totalpet; ?></label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col bg bg-success border-end border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
+                  <i class="bi bi-chat m-1"></i><strong> Vaccine</strong>
+                  <label class="float-end"><?php echo $totalvaxinfo; ?></label>
+                </div>
+                <div class="col bg bg-success border-end border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
+                <i class="bi bi-chat m-1"></i><strong> Card</strong>
+                  <label class="float-end"><?php echo $totalcard; ?></label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col bg bg-success border-end border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
+                  <i class="bi bi-chat m-1"></i><strong> Notes</strong>
+                  <label class="float-end"><?php echo $totalnote; ?></label>
+                </div>
+                <div class="col bg bg-success border-end border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
+                  <i class="bi bi-chat m-1"></i><strong> Schedules</strong>
+                  <label class="float-end"><?php echo $totalsched; ?></label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col bg bg-success border-end border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
+                  <i class="bi bi-chat m-1"></i><strong> Chats</strong>
+                  <label class="float-end"><?php echo $totalchat; ?></label>
+                </div>
+                <div class="col bg bg-success border-end border-5 border-success m-2 p-3 rounded " style="--bs-bg-opacity: .1;">
+                  <i class="bi bi-chat m-1"></i><strong> Calls</strong>
+                  <label class="float-end">62</label>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <canvas id="barbar" width="50" height="50"></canvas>
+            </div>
+          </div><!-- First Graph End Tag -->
+        <div class="row p-5"><!-- Second Graph -->
           <div class="col-6">
             <canvas id="schedulebar" width="50" height="50"></canvas>
           </div>
-        </div>  
-        <div class="row p-2 bg bg-light pb-5">
-          <div class="col-3">
-            <div class="text-center">
+          <div class="col-6 m-auto">
+              <div class="col bg bg-success border-start border-5 border-success m-2 p-3 rounded w-50" style="--bs-bg-opacity: .1;">
+                <i class="bi bi-chat m-1"></i><strong> Pending</strong>
+                <label class="float-end"><?php echo $totalpending; ?></label>
+              </div>
+              <div class="col bg bg-success border-start border-5 border-success m-2 p-3 rounded w-50" style="--bs-bg-opacity: .1;">
+                <i class="bi bi-chat m-1"></i><strong> Denied</strong>
+                <label class="float-end"><?php echo $totaldenied; ?></label>
+              </div>
+              <div class="col bg bg-success border-start border-5 border-success m-2 p-3 rounded w-50" style="--bs-bg-opacity: .1;">
+                <i class="bi bi-chat m-1"></i><strong>Accepted</strong>
+                <label class="float-end"><?php echo $totalaccepted; ?></label>
+              </div>
+              <div class="col bg bg-success border-start border-5 border-success m-2 p-3 rounded w-50" style="--bs-bg-opacity: .1;">
+                <i class="bi bi-chat m-1"></i><strong> Cancelled</strong>
+                <label class="float-end"><?php echo $totalcancelled; ?></label>
+              </div>
+              <div class="col bg bg-success border-start border-5 border-success m-2 p-3 rounded w-50" style="--bs-bg-opacity: .1;">
+                <i class="bi bi-chat m-1"></i><strong> Finished</strong>
+                <label class="float-end"><?php echo $totalfinished; ?></label>
+              </div>
+          </div>
+        </div><!-- Second Graph End Tag -->
+  
+      <div class="row p-5"><!-- Second Graph -->
+          <div class="col-3 m-auto">
+            <div class="col text-center">
               <label>User Gender Ratio</label>
+            </div>
+            <div class="row">
+            <div class="col bg bg-success border-bottom border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
+                <i class="bi bi-chat m-1"></i><strong> Male</strong>
+                <label class="float-end"><?php echo $maleuser; ?></label>
+              </div>
+              <div class="col bg bg-success border-bottom border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
+                <i class="bi bi-chat m-1"></i><strong> Female</strong>
+                <label class="float-end"><?php echo $femaleuser; ?></label>
+              </div>
             </div>
             <canvas id="donutuser" width="50" height="50"></canvas>
           </div>
-          <div class="col-3">
-            <div class="text-center">
+          <div class="col-3 m-auto">
+            <div class="col text-center">
               <label>Pet Type Ratio</label>
+            </div>
+            <div class="row">
+              <div class="col bg bg-success border-bottom border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
+                <i class="bi bi-chat m-1"></i><strong> Dog</strong>
+                <label class="float-end">28</label>
+              </div>
+              <div class="col bg bg-success border-bottom border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
+                <i class="bi bi-chat m-1"></i><strong> Cat</strong>
+                <label class="float-end">12</label>
+              </div>
+            </div>
+            <div class="row">
+            <div class="col bg bg-success border-bottom border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
+                <i class="bi bi-chat m-1"></i><strong> Bird</strong>
+                <label class="float-end">2</label>
+              </div>
+              <div class="col bg bg-success border-bottom border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
+                <i class="bi bi-chat m-1"></i><strong> Mouse</strong>
+                <label class="float-end">5</label>
+              </div>
             </div>
             <canvas id="donutpet" width="50" height="50"></canvas>
           </div>
-          <div class="col-3">
-            <div class="text-center">
+          <div class="col-3 m-auto">
+            <div class="row text-center">
               <label>Vaccine Administered Ratio</label>
+            </div>
+            <div class="row">
+              <div class="row bg bg-success border-bottom border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
+                <i class="bi bi-chat m-1"></i><strong> Rabies</strong>
+                <label class="float-end">28</label>
+              </div>
+              <div class="row bg bg-success border-bottom border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
+                <i class="bi bi-chat m-1"></i><strong> Leptospirosis</strong>
+                <label class="float-end">12</label>
+              </div>
+            <div class="row bg bg-success border-bottom border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
+                <i class="bi bi-chat m-1"></i><strong> Distemper</strong>
+                <label class="float-end">2</label>
+              </div>
+              <div class="row bg bg-success border-bottom border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
+                <i class="bi bi-chat m-1"></i><strong> Deworming</strong>
+                <label class="float-end">5</label>
+              </div>
             </div>
             <canvas id="donutvax" width="50" height="50"></canvas>
           </div>
