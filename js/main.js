@@ -1,11 +1,11 @@
 
 // Call List Function
-const xhttp = new XMLHttpRequest();
+/*const xhttp = new XMLHttpRequest();
 xhttp.onload = function() {
     document.getElementById("userAccount").innerHTML = this.responseText;
 }
 xhttp.open("GET", "php/userAccount.php");
-xhttp.send();
+xhttp.send();*/
 
 //Get Account Profile
 function _showProfile(userid) {
@@ -187,11 +187,10 @@ function prescriptionEdit(nid) {
 }
 
 
-function scheduleEdit() {
-  var qid = document.getElementById("queue").value;
+function noteEdit(qid) {
   const xhttp = new XMLHttpRequest();
   xhttp.onload = function() {
-    document.getElementById("modalHere").innerHTML = this.responseText;
+    document.getElementById("schedHere").innerHTML = this.responseText;
   }
   xhttp.open("GET", "php/editData/scheduleEdit.php?qid="+qid);
   xhttp.send();
@@ -200,7 +199,7 @@ function scheduleEdit() {
 function schedEdit(qid) {
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
-      document.getElementById("modalHere").innerHTML = this.responseText;
+      document.getElementById("schedHere").innerHTML = this.responseText;
     }
     xhttp.open("GET", "editData/scheduleEdit.php?qid="+qid);
     xhttp.send();
@@ -209,7 +208,7 @@ function schedEdit(qid) {
 function SchedEdit(qid) {
   const xhttp = new XMLHttpRequest();
   xhttp.onload = function() {
-    document.getElementById("modalHere").innerHTML = this.responseText;
+    document.getElementById("schedHere").innerHTML = this.responseText;
   }
   xhttp.open("GET", "../editData/scheduleEdit.php?qid="+qid);
   xhttp.send();

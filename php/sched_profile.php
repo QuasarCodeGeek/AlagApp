@@ -54,7 +54,7 @@
                               <h1 class="modal-title fs-5" id="ModalLabel">New Record</h1>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <div class="modal-body d-grid gap-2 container-fluid" id="modalNew">
+                            <div class="modal-body d-grid gap-2 container-fluid" id="schedNew">
                               Content Here
                             </div>
                           </div>
@@ -68,7 +68,7 @@
                               <h1 class="modal-title fs-5" id="ModalLabel">Edit Data</h1>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <div class="modal-body d-grid gap-2 container-fluid" id="modalHere">
+                            <div class="modal-body d-grid gap-2 container-fluid" id="schedHere">
                               Content Edit Here
                             </div>
                           </div>
@@ -174,7 +174,7 @@
       </main>
 
 <!-- Main Functions -->
-<script> src="../js/main.js"</script>
+<script src="../js/main.js"></script>
 <!-- Ajax Function -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!-- Bootstrap Popper -->

@@ -54,7 +54,7 @@
                               <h1 class="modal-title fs-5" id="ModalLabel">New Record</h1>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <div class="modal-body d-grid gap-2 container-fluid" id="modalNew">
+                            <div class="modal-body d-grid gap-2 container-fluid" id="schedNew">
                               Content Here
                             </div>
                           </div>
@@ -68,7 +68,7 @@
                               <h1 class="modal-title fs-5" id="ModalLabel">Edit Data</h1>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <div class="modal-body d-grid gap-2 container-fluid" id="modalHere">
+                            <div class="modal-body d-grid gap-2 container-fluid" id="schedHere">
                               Content Edit Here No Record Retrieved
                             </div>
                           </div>
@@ -147,7 +147,7 @@
                   echo
                   "<div class='card m-1 p-1 col-flex' style='width: 11rem;'>
                       <div class='card-body'>
-                          <button type='button' class='btn btn-success w-100' onClick='scheduleEdit()' id='queue' value='".$row['qid']."' data-bs-toggle='modal' data-bs-target='#boxModal')><h6 class='card-title'>".$rowentry2['petname']."</h6></button><br>
+                        <button type='button' class='btn btn-success' onClick='noteEdit(".$row['qid'].")' data-bs-toggle='modal' data-bs-target='#boxModal')><h6 class='card-title'>".$rowentry2['petname']."</h6></button><br>
                           <label class='card-text' style='font-size: 12px;'>Owner: ".$rowentry1['userfname']."</label><br>
                           <label class='card-text' style='font-size: 12px;'>Description: ".$row['qdescription']."</label><br>
                           <label class='card-text' style='font-size: 12px;'>Date Issued: ".$row['qdate']."</label><br>
@@ -167,7 +167,7 @@
       </main>
 
 <!-- Main Functions -->
-<script> src="js/main.js"</script>
+<script src="js/main.js"></script>
 <!-- Ajax Function -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!-- Bootstrap Popper -->
