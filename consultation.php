@@ -44,7 +44,7 @@
       </nav> 
 <main class="container container-fluid">
   <div class="row">
-    <div class="col-3 overflow-auto overflow-y vh-100" >
+    <div class="col-3 overflow-auto overflow-y" >
       <ul class="list-group list-group-flush">
         <?php
           require("php/connector.php");

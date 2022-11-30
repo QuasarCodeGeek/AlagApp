@@ -17,37 +17,24 @@
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body class="bg bg-warning">
-    <nav class="navbar navbar-expand-lg bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="../index.html">AlagApp</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-                <a class="nav-link" href="../account.php">Account</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="../scheduler.php">Scheduler</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-success" href="../consultation.php" active><strong>Consultation</strong></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="../dashboard.php">Dashboard</a>
-              </li>
-            </ul>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-          </div>
-        </div>
-      </nav> 
-<main class="container container-fluid">
-  <div class="row">
-    <div class="col-3 overflow-auto overflow-y vh-100" >
+<main class=" row container container-fluid">
+  <div class="col-2 bg bg-success">
+    <ul class="list-goup mb-2 mb-lg-0">
+      <li class="list-group-item">
+        <a class="text-white" href="../account.php">Account</a>
+      </li>
+      <li class="list-group-item">
+        <a class="text-white" href="../scheduler.php">Scheduler</a>
+      </li>
+      <li class="list-group-item">
+        <a class="text-white" href="../consultation.php" active><strong>Consultation</strong></a>
+      </li>
+      <li class="list-group-item">
+        <a class="text-white" href="../dashboard.php">Dashboard</a>
+      </li>
+    </ul>
+  </div>
+    <div class="col-3 overflow-auto overflow-y vh-100">
       <ul class="list-group list-group-flush">
         <?php
             $sql = "SELECT * FROM alagapp_db.tbl_userlist";
@@ -72,14 +59,10 @@
         ?>
       </ul>
     </div>
-    <div class="col-9 position-relative bg bg-light vh-100">
+    <div class="col-7 position-relative bg bg-light">
       <?php 
         $id = $_REQUEST['userid'];
         $channel = $id;
-        echo "ID: ";
-        echo $id;
-        echo "Channel: ";
-        echo $channel;
         $_account = "SELECT * FROM alagapp_db.tbl_userlist WHERE userid = ".$id." ";
 
         $_result = $connect->prepare($_account);
@@ -91,57 +74,54 @@
             $_lname = $_rowe['userlname'];
         };
       ?>
-      <div class="row bg bg-info">
+      <div class="row position overflow-auto overflow-y vh-100">
+        <div class="row bg bg-success" style="--bs-bg-opacity: .5">
             <label class="col m-auto"><?php echo $_rowe['userfname']." ".$_rowe['userlname']; ?></label>
               <button type="button" class="col btn">
                 <i class="bi bi-telephone-fill float-end"></i>
               </button>
-      </div>
-      <div class="row position overflow-auto overflow-y">
-        <?php
-          $chat = "SELECT * FROM alagapp_db.tbl_chat WHERE mchannel = ".$channel."";
+        </div>
+        <div class="row">
+          <?php
+            $chat = "SELECT * FROM alagapp_db.tbl_chat WHERE mchannel = ".$channel."";
 
-          $reschat = $connect->prepare($chat);
-          $reschat->execute();
-          if($reschat->rowCount()>0){
-              $j=1;
-              echo "<ul class='list-group list-group-flush'>";
-              while($rowchat = $reschat->fetch(PDO::FETCH_ASSOC)){
-                if($rowchat['msender']!=0){
-                  echo "<li class='list-group-item'>
-                    <div class='float-start'>
-                    <label>".$rowchat['mchannel']."</label><br>
-                    <label>".$rowchat['msender']."</label><br>
-                    <label>".$rowchat['mdatetime']."</label><br>
-                    <label>".$rowchat['mcontent']."</label>
-                    </div>
-                    </li>";
-              } else {
-                echo "<li class='list-group-item'>
-                    <div class='float-end'>
-                    <label>".$rowchat['mchannel']."</label><br>
-                    <label>".$rowchat['msender']."</label><br>
-                    <label>".$rowchat['mdatetime']."</label><br>
-                    <label>".$rowchat['mcontent']."</label>
-                    </div>    
-                    </li>"; 
-              }
-                  $j++;
-              }
-              echo "</ul>";
-          }
-        ?>
-      </div>
-      <div class="row bg bg-info w-100">
-        <div class="m-2">
+            $reschat = $connect->prepare($chat);
+            $reschat->execute();
+            if($reschat->rowCount()>0){
+                $j=1;
+                echo "<ul class='list-group list-group-flush'>";
+                while($rowchat = $reschat->fetch(PDO::FETCH_ASSOC)){
+                  if($rowchat['msender']!=0){
+                    echo "<li class='list-group-item border-0'>
+                      <div class='float-start p-3' style='background-color: #E8F5E9;'>
+                      <label>Vet</label><br>
+                      <label>".$rowchat['mdatetime']."</label><br>
+                      <label>".$rowchat['mcontent']."</label>
+                      </div>
+                      </li>";
+                } else {
+                  echo "<li class='list-group-item border-0'>
+                      <div class='float-end p-3' style='background-color: #81C784 ;'>
+                      <label>You</label><br>
+                      <label>".$rowchat['mdatetime']."</label><br>
+                      <label>".$rowchat['mcontent']."</label>
+                      </div>    
+                      </li>"; 
+                }
+                    $j++;
+                }
+                echo "</ul>";
+            }
+          ?>
+        </div>
+        <div class="row bg bg-success w-100 m-2">
           <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            <input class="form-control me-2" type="search" name="message" placeholder="Search" aria-label="Search">
+            <button class="btn btn-light" type="submit">Send</button>
           </form>
         </div>
       </div>
     </div>
-  </div>
 </main>
 <!-- Main Functions -->
 <script> src="../js/main.js"</script>
