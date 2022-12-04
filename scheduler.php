@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="bg bg-info">
-<nav class="navbar navbar-expand-lg bg-light">
+      <nav class="navbar navbar-expand-lg bg-light">
         <div class="container container-fluid">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -143,7 +143,7 @@
                   echo
                   "<div class='card m-1 p-1 col-flex' style='width: 11rem;'>
                       <div class='card-body'>
-                        <button type='button' class='btn btn-success' onClick='noteEdit(".$row['qid'].")' data-bs-toggle='modal' data-bs-target='#boxModal')><h6 class='card-title'>".$rowentry2['petname']."</h6></button><br>
+                        <button type='button' class='btn btn-success w-100' onClick='noteEdit(".$row['qid'].")' data-bs-toggle='modal' data-bs-target='#boxModal')><h6 class='card-title'>".$rowentry2['petname']."</h6></button><br>
                           <label class='card-text' style='font-size: 12px;'>Owner: ".$rowentry1['userfname']."</label><br>
                           <label class='card-text' style='font-size: 12px;'>Description: ".$row['qdescription']."</label><br>
                           <label class='card-text' style='font-size: 12px;'>Date Issued: ".$row['qdate']."</label><br>

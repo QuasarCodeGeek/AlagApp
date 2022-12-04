@@ -47,7 +47,11 @@
     echo    "<form action='editData/scheduleEdit.php' method='POST'>";
 
     $qid = $_REQUEST["qid"];
-    $sql_sched = "SELECT * FROM alagapp_db.tbl_scheduler WHERE qid = :qid";
+    $sql_sched = "SELECT alagapp_db.tbl_scheduler.*, alagapp_db.tbl_userlist.userfname as user, alagapp_db.tbl_petprofile.petname as pet
+    FROM ((alagapp_db.tbl_scheduler
+    INNER JOIN alagapp_db.tbl_userlist ON alagapp_db.tbl_scheduler.userid = alagapp_db.tbl_userlist.userid)
+    INNER JOIN alagapp_db.tbl_petprofile ON alagapp_db.tbl_scheduler.petid = alagapp_db.tbl_petprofile.petid)  
+    WHERE qid = :qid";
 
     try{
         $sched_res = $connect->prepare($sql_sched);
@@ -64,7 +68,9 @@
             $sched_row = $sched_res->fetch(PDO::FETCH_ASSOC);
 
             $userid = $sched_row["userid"];
+            $user = $sched_row["user"];
             $petid = $sched_row["petid"];
+            $pet = $sched_row["pet"];
             $description = $sched_row["qdescription"];
             $date = $sched_row["qdate"];
             $status = $sched_row["qstatus"];
@@ -75,10 +81,12 @@
     echo        "<input type='hidden' name='qid' value=".$qid.">
                 <h1>Schedule Information</h1><br>
                 <div class='input-group'>
-                    <label class='input-group-text'>Owner ID</label>
-                    <input type='text' class='form-control' name='userid' value=".$userid.">
-                    <label class='input-group-text'>Pet ID</label>
-                    <input type='text' class='form-control' name='petid' value=".$petid.">
+                    <label class='input-group-text'>Owner</label>
+                    <input type='text' class='form-control' name='userid' value=".$userid." hidden>
+                    <input type='text' class='form-control' name='userid' value=".$user.">
+                    <label class='input-group-text'>Pet</label>
+                    <input type='text' class='form-control' name='petid' value=".$petid." hidden>
+                    <input type='text' class='form-control' name='userid' value=".$pet.">
                 </div><br>
 
                 <div class='input-group'>

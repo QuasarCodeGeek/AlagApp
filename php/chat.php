@@ -1,5 +1,50 @@
 <?php
   require("connector.php");
+
+  if(isset($_POST["submit"])){
+    $userid = $_POST["userid"];
+    $sender = $_POST["sender"];
+    $channel = $_POST["channel"];
+    $message = $_POST["message"];
+    $date = date("Y-m-d h:i:sa");
+
+    if($userid=="" || $sender=="" || $channel=="" || $message==""){
+        echo "<script>alert('Invalid!');
+        window.location='chat.php?userid=".$userid."'</script>";
+    } else {
+        $sql = "INSERT INTO alagapp_db.tbl_chat(
+            userid,
+            mchannel,
+            msender,
+            mcontent,
+            mdatetime) VALUES(
+                :userid,
+                :mchannel,
+                :msender,
+                :mcontent,
+                :mdatetime)";
+
+        $result = $connect->prepare($sql);
+
+        $values = array(
+            ":userid"=>$userid,
+            ":mchannel"=>$channel,
+            ":msender"=>$sender,
+            ":mcontent"=>$message,
+            ":mdatetime"=>$date
+        );
+
+        $result->execute($values);
+
+        if($result->rowCount()>0) {
+            echo "<script>alert('Message Sent!');
+            window.location='chat.php?userid=".$userid."'</script>";
+         } else {
+             echo "<script>alert('Unable to send message!');
+             window.location='chat.php?userid=".$userid."'</script>";
+         }
+    }
+};
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,23 +62,32 @@
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body class="bg bg-warning">
-<main class=" row container container-fluid">
-  <div class="col-2 bg bg-success">
-    <ul class="list-goup mb-2 mb-lg-0">
-      <li class="list-group-item">
-        <a class="text-white" href="../account.php">Account</a>
-      </li>
-      <li class="list-group-item">
-        <a class="text-white" href="../scheduler.php">Scheduler</a>
-      </li>
-      <li class="list-group-item">
-        <a class="text-white" href="../consultation.php" active><strong>Consultation</strong></a>
-      </li>
-      <li class="list-group-item">
-        <a class="text-white" href="../dashboard.php">Dashboard</a>
-      </li>
-    </ul>
-  </div>
+<nav class="navbar navbar-expand-lg bg-light">
+        <div class="container container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="row collapse navbar-collapse mx-auto" id="navbarSupportedContent">
+            <div class="col text-center">
+              <a class="nav-link" href="../account.php">Account</a>
+            </div>
+            <div class="col text-center">
+            <a class="nav-link" href="../scheduler.php">Scheduler</a>
+            </div>
+            <div class="col text-center">
+              <a class="navbar-brand" href="../index.html"><strong>AlagApp</strong></a>
+            </div>
+            <div class="col text-center border-bottom border-success border-5">
+              <a class="nav-link" href="../consultation.php" active><strong>Consultation</strong></a>
+            </div>
+            <div class="col text-center">
+              <a class="nav-link text-success" href="../dashboard.php">Dashboard</a> 
+            </div>
+          </div>
+        </div>
+      </nav>
+<main class="container container-fluid">
+  <div class="row bg bg-light">
     <div class="col-3 overflow-auto overflow-y vh-100">
       <ul class="list-group list-group-flush">
         <?php
@@ -59,7 +113,7 @@
         ?>
       </ul>
     </div>
-    <div class="col-7 position-relative bg bg-light">
+    <div class="col-9">
       <?php 
         $id = $_REQUEST['userid'];
         $channel = $id;
@@ -74,12 +128,9 @@
             $_lname = $_rowe['userlname'];
         };
       ?>
-      <div class="row position overflow-auto overflow-y vh-100">
-        <div class="row bg bg-success" style="--bs-bg-opacity: .5">
-            <label class="col m-auto"><?php echo $_rowe['userfname']." ".$_rowe['userlname']; ?></label>
-              <button type="button" class="col btn">
-                <i class="bi bi-telephone-fill float-end"></i>
-              </button>
+      <div class="overflow-auto overflow-y vh-100">
+        <div class="bg bg-success text-white">
+            <label class="m-2"><strong><?php echo $_rowe['userfname']." ".$_rowe['userlname']; ?></strong></label>
         </div>
         <div class="row">
           <?php
@@ -93,18 +144,18 @@
                 while($rowchat = $reschat->fetch(PDO::FETCH_ASSOC)){
                   if($rowchat['msender']!=0){
                     echo "<li class='list-group-item border-0'>
-                      <div class='float-start p-3' style='background-color: #E8F5E9;'>
+                      <div class='float-start p-3' style='background-color: #E8F5E9; border-radius: 5px;'>
                       <label>Vet</label><br>
-                      <label>".$rowchat['mdatetime']."</label><br>
-                      <label>".$rowchat['mcontent']."</label>
+                      <label>".$rowchat['mcontent']."</label><br>
+                      <span>".$rowchat['mdatetime']."</span>
                       </div>
                       </li>";
                 } else {
                   echo "<li class='list-group-item border-0'>
-                      <div class='float-end p-3' style='background-color: #81C784 ;'>
+                      <div class='float-end p-3' style='background-color: #81C784; border-radius: 5px;'>
                       <label>You</label><br>
-                      <label>".$rowchat['mdatetime']."</label><br>
-                      <label>".$rowchat['mcontent']."</label>
+                      <label>".$rowchat['mcontent']."</label><br>
+                      <span>".$rowchat['mdatetime']."</span>
                       </div>    
                       </li>"; 
                 }
@@ -114,14 +165,18 @@
             }
           ?>
         </div>
-        <div class="row bg bg-success w-100 m-2">
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" name="message" placeholder="Search" aria-label="Search">
-            <button class="btn btn-light" type="submit">Send</button>
+        <div class="row bg bg-success m-2">
+          <form method="POST" action="chat.php" class="d-flex p-2">
+            <input type="number" class="form-control" value="<?php echo $id ?>" placeholder="Userid" name="userid" hidden>
+            <input type="number" class="form-control" value="<?php echo $channel ?>" placeholder="Channel" name="channel" hidden>
+            <input type="number" class="form-control" value="0" placeholder="Sender" name="sender" hidden>
+            <input type="text" class="form-control me-2" name="message" placeholder="Enter Message">
+            <button class="btn btn-light" type="submit" name="submit">Send</button>
           </form>
         </div>
       </div>
     </div>
+  </div>
 </main>
 <!-- Main Functions -->
 <script> src="../js/main.js"</script>
