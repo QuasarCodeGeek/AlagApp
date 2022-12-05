@@ -67,82 +67,23 @@
                         </div>
                       </div>
                     </div>
-          <div class="row p-5"><!-- First Graph -->
-            <div class="col-6 m-auto">
-              <div class="row">
-                <div class="col bg bg-success border-end border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
-                  <i class="bi bi-chat m-1"></i><strong> Users</strong>
-                  <label class="float-end"><?php echo $totaluser; ?></label>
-                </div>
-                <div class="col bg bg-success border-end border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
-                  <i class="bi bi-chat m-1"></i><strong> Pets</strong>
-                  <label class="float-end"><?php echo $totalpet; ?></label>
-                </div>
+
+          <div class="row p-2"><!-- First Graph -->
+            <div class="col bg bg-light rounded m-2 p-2">
+              <div class="text-center">
+                <h3>Overall Data Counter</h3>
               </div>
-              <div class="row">
-                <div class="col bg bg-success border-end border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
-                  <i class="bi bi-chat m-1"></i><strong> Vaccine</strong>
-                  <label class="float-end"><?php echo $totalvaxinfo; ?></label>
-                </div>
-                <div class="col bg bg-success border-end border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
-                <i class="bi bi-chat m-1"></i><strong> Card</strong>
-                  <label class="float-end"><?php echo $totalcard; ?></label>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col bg bg-success border-end border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
-                  <i class="bi bi-chat m-1"></i><strong> Notes</strong>
-                  <label class="float-end"><?php echo $totalnote; ?></label>
-                </div>
-                <div class="col bg bg-success border-end border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
-                  <i class="bi bi-chat m-1"></i><strong> Schedules</strong>
-                  <label class="float-end"><?php echo $totalsched; ?></label>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col bg bg-success border-end border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
-                  <i class="bi bi-chat m-1"></i><strong> Chats</strong>
-                  <label class="float-end"><?php echo $totalchat; ?></label>
-                </div>
-                <div class="col bg bg-success border-end border-5 border-success m-2 p-3 rounded " style="--bs-bg-opacity: .1;">
-                  <i class="bi bi-chat m-1"></i><strong> Calls</strong>
-                  <label class="float-end">62</label>
-                </div>
-              </div>
-            </div>
-            <div class="col-6">
               <canvas id="barbar" width="50" height="50"></canvas>
             </div>
-          </div><!-- First Graph End Tag -->
-        <div class="row p-5"><!-- Second Graph -->
-          <div class="col-6">
-            <canvas id="schedulebar" width="50" height="50"></canvas>
-          </div>
-          <div class="col-6 m-auto">
-              <div class="col bg bg-success border-start border-5 border-success m-2 p-3 rounded w-50" style="--bs-bg-opacity: .1;">
-                <i class="bi bi-chat m-1"></i><strong> Pending</strong>
-                <label class="float-end"><?php echo $totalpending; ?></label>
+            <div class="col bg bg-light rounded m-2 p-2">
+            <div class="text-center">
+                <h3>Scheduler Data Counter</h3>
               </div>
-              <div class="col bg bg-success border-start border-5 border-success m-2 p-3 rounded w-50" style="--bs-bg-opacity: .1;">
-                <i class="bi bi-chat m-1"></i><strong> Denied</strong>
-                <label class="float-end"><?php echo $totaldenied; ?></label>
-              </div>
-              <div class="col bg bg-success border-start border-5 border-success m-2 p-3 rounded w-50" style="--bs-bg-opacity: .1;">
-                <i class="bi bi-chat m-1"></i><strong>Accepted</strong>
-                <label class="float-end"><?php echo $totalaccepted; ?></label>
-              </div>
-              <div class="col bg bg-success border-start border-5 border-success m-2 p-3 rounded w-50" style="--bs-bg-opacity: .1;">
-                <i class="bi bi-chat m-1"></i><strong> Cancelled</strong>
-                <label class="float-end"><?php echo $totalcancelled; ?></label>
-              </div>
-              <div class="col bg bg-success border-start border-5 border-success m-2 p-3 rounded w-50" style="--bs-bg-opacity: .1;">
-                <i class="bi bi-chat m-1"></i><strong> Finished</strong>
-                <label class="float-end"><?php echo $totalfinished; ?></label>
-              </div>
-          </div>
-        </div><!-- Second Graph End Tag -->
+              <canvas id="schedulebar" width="50" height="50"></canvas>
+            </div>
+          </div><br><!-- First Graph End Tag -->
   
-      <div class="row p-5"><!-- Second Graph -->
+      <div class="row bg bg-light rounded m-2 p-2"><!-- Second Graph -->
           <div class="col-3 m-auto">
             <div class="col text-center">
               <label>User Gender Ratio</label>
@@ -165,51 +106,28 @@
             </div>
             <div class="row">
               <div class="col bg bg-success border-bottom border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
-                <i class="bi bi-chat m-1"></i><strong> Dog</strong>
-                <label class="float-end">28</label>
+                <i class="bi bi-chat m-1"></i><strong>Dog</strong>
+                <label class="float-end"><?php echo $totaldog; ?></label>
               </div>
               <div class="col bg bg-success border-bottom border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
-                <i class="bi bi-chat m-1"></i><strong> Cat</strong>
-                <label class="float-end">12</label>
+                <i class="bi bi-chat m-1"></i><strong>Cat</strong>
+                <label class="float-end"><?php echo $totalcat; ?></label>
               </div>
             </div>
             <div class="row">
             <div class="col bg bg-success border-bottom border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
-                <i class="bi bi-chat m-1"></i><strong> Bird</strong>
-                <label class="float-end">2</label>
+                <i class="bi bi-chat m-1"></i><strong>Mouse</strong>
+                <label class="float-end"><?php echo $totalmouse; ?></label>
               </div>
               <div class="col bg bg-success border-bottom border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
-                <i class="bi bi-chat m-1"></i><strong> Mouse</strong>
-                <label class="float-end">5</label>
+                <i class="bi bi-chat m-1"></i><strong>Bird</strong>
+                <label class="float-end"><?php echo $totalbird; ?></label>
               </div>
             </div>
             <canvas id="donutpet" width="50" height="50"></canvas>
           </div>
-          <div class="col-3 m-auto">
-            <div class="row text-center">
-              <label>Vaccine Administered Ratio</label>
-            </div>
-            <div class="row">
-              <div class="row bg bg-success border-bottom border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
-                <i class="bi bi-chat m-1"></i><strong> Rabies</strong>
-                <label class="float-end">28</label>
-              </div>
-              <div class="row bg bg-success border-bottom border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
-                <i class="bi bi-chat m-1"></i><strong> Leptospirosis</strong>
-                <label class="float-end">12</label>
-              </div>
-            <div class="row bg bg-success border-bottom border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
-                <i class="bi bi-chat m-1"></i><strong> Distemper</strong>
-                <label class="float-end">2</label>
-              </div>
-              <div class="row bg bg-success border-bottom border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
-                <i class="bi bi-chat m-1"></i><strong> Deworming</strong>
-                <label class="float-end">5</label>
-              </div>
-            </div>
-            <canvas id="donutvax" width="50" height="50"></canvas>
-          </div>
-        </div>
+      </div><br>
+    
     <div class="row bg bg-light rounded m-2 p-2"><!-- Vaccine Information -->
       <div class="row">
         <div class="col">
@@ -229,6 +147,7 @@
             <th>Type</th>
             <th>Brand</th>
             <th>Description</th>
+            <th># Administered</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -240,12 +159,19 @@
           if($resvax->rowCount()>0){
             $i=1;
             while($rowvaxx = $resvaxx->fetch(PDO::FETCH_ASSOC)){
+
+              $vaxdata = "SELECT COUNT(vaxid) AS vaxx FROM alagapp_db.tbl_vaxxcard WHERE vaxid LIKE ".$rowvaxx['vaxid']."";
+              $resdata = $connect->query($vaxdata);
+              $resdata->execute();
+              $rowdata = $resdata->fetch(PDO::FETCH_ASSOC);
+
               echo "<tr>
               <td>".$i."</td>
               <td>".$rowvaxx['vaxname']."</td>
               <td>".$rowvaxx['vaxtype']."</td>
               <td>".$rowvaxx['vaxbrand']."</td>
               <td>".$rowvaxx['vaxdes']."</td>
+              <td>".$rowdata["vaxx"]."</td>
               <td><button class='btn' onClick='vaccineEdit(".$rowvaxx['vaxid'].")' data-bs-toggle='modal' data-bs-target='#boxModal'><i class='bi bi-pencil-square'></i></button></td>
             </tr>";
             $i++;
@@ -257,8 +183,52 @@
       </div>
     </div><br>
     <div class="row bg bg-light rounded m-2 p-2"><!-- Pet Symptoms -->
-
-    </div>
+    <div class="row">
+        <div class="col">
+          <h3>Pet Symptoms Diagnosis</h3>
+        </div>
+        <div class="col">
+          <button class="btn btn-success float-end">Print Data</button>
+          <button class="btn btn-success float-end me-2" onClick="symptomNew()" data-bs-toggle='modal' data-bs-target='#newModal'>Add Diagnosis</button>
+        </div>
+      </div>
+      <div class="row">
+      <table class="table m-2">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Pet Type</th>
+            <th>Body Part</th>
+            <th>Symptom</th>
+            <th>Diagnosis</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+        <?php
+          $symptom = "SELECT * FROM alagapp_db.tbl_symptom";
+          $ress = $connect->query($symptom);
+          $ress->execute();
+          if($ress->rowCount()>0){
+            $i=1;
+            while($roww = $ress->fetch(PDO::FETCH_ASSOC)){
+              echo "<tr>
+              <td>".$i."</td>
+              <td>".$roww['pettype']."</td>
+              <td>".$roww['bodypart']."</td>
+              <td>".$roww['symptom']."</td>
+              <td>".$roww['diagnosis']."</td>
+              <td>".$roww['description']."</td>
+              <td><button class='btn' onClick='symptomEdit(".$roww['sid'].")' data-bs-toggle='modal' data-bs-target='#boxModal'><i class='bi bi-pencil-square'></i></button></td>
+            </tr>";
+            $i++;
+            }
+          }
+        ?>
+        </tbody>
+      </table>
+      </div>
+    </div><br>
   </main>
 
 <!-- Main Functions -->
@@ -322,8 +292,6 @@
       },
       plugins: {
         title: {
-          display: true,
-          text: 'User Account Ratio'
         }
       }
     }
@@ -368,37 +336,11 @@
       ],
       datasets: [{
         label: 'Pet Type Ratio',
-        data: [28, 12, 2, 5],
-        backgroundColor: [
-          '#3F51B5',
-          '#F44336',
-          '#FFEB3B',
-          '#FF9800'
-        ],
-        hoverOffset: 4
-      }]
-    }, option: {
-        plugins: {
-
-        }
-    }
-  });
-
-  const vax = document.getElementById('donutvax');
-  const vaxratio = new Chart(vax, {
-    type: 'doughnut',
-    data: {
-      labels: [
-        'Rabies',
-        'Leptospirosis',
-        'Distemper',
-        'Deworming'
-      ],
-      datasets: [{
-        label: 'Vaccine Administered Ratio',
         data: [
-          16, 45, 12, 31
-        ],
+          <?php echo $totaldog; ?>, 
+          <?php echo $totalcat ?>,
+          <?php echo $totalmouse ?>,
+          <?php echo $totalbird; ?> ],
         backgroundColor: [
           '#3F51B5',
           '#F44336',
@@ -450,8 +392,6 @@
       },
       plugins: {
         title: {
-          display: true,
-          text: 'Schedule Status'
         }
       }
     }

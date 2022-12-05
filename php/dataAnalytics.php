@@ -170,4 +170,27 @@
     // Total Voice Call
     // Total Video Call
     // Voice to Video Call Ratio
+    // Total Dog
+    $dog = "SELECT COUNT(pettype) AS dog FROM alagapp_db.tbl_petprofile WHERE pettype LIKE 'Dog'";
+    $resdog = $connect->query($dog);
+    $resdog->execute();
+    $rowdog = $resdog->fetch(PDO::FETCH_ASSOC);
+    $totaldog = $rowdog["dog"];
+    // Total Cat
+    $cat = "SELECT COUNT(pettype) AS cat FROM alagapp_db.tbl_petprofile WHERE pettype LIKE 'Cat'";
+    $rescat = $connect->query($cat);
+    $rescat->execute();
+    $rowcat = $rescat->fetch(PDO::FETCH_ASSOC);
+    $totalcat = $rowcat["cat"];
+    // Total Mouse
+    $mouse = "SELECT COUNT(pettype) AS mouse FROM alagapp_db.tbl_petprofile WHERE pettype LIKE 'Mouse'";
+    $resmouse = $connect->query($mouse);
+    $resmouse->execute();
+    $rowmouse = $resmouse->fetch(PDO::FETCH_ASSOC);
+    $totalmouse = $rowmouse["mouse"];
+    $bird = "SELECT COUNT(pettype) AS bird FROM alagapp_db.tbl_petprofile WHERE pettype LIKE 'Bird'";
+    $resbird = $connect->query($bird);
+    $resbird->execute();
+    $rowbird = $resbird->fetch(PDO::FETCH_ASSOC);
+    $totalbird = $rowbird["bird"];
 ?>
