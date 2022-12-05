@@ -164,7 +164,7 @@ function vaccineEdit(vaxid) {
     xhttp.onload = function() {
       document.getElementById("modalHere").innerHTML = this.responseText;
     }
-    xhttp.open("GET", "editData/vaccineEdit.php?id="+vaxid);
+    xhttp.open("GET", "php/editData/vaccineEdit.php?id="+vaxid);
     xhttp.send();
 }
 

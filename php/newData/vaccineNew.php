@@ -5,21 +5,21 @@
         $name = $_POST["name"];
         $type = $_POST["type"];
         $brand = $_POST["brand"];
-        $usage = $_POST["usage"];
+        $description = $_POST["description"];
 
         if($name=="" || $type=="" || $brand==""){
             echo "<script>alert('Please complete the fields required!');
-            window.location='../../account.php'</script>";
+            window.location='../../dashboard.php'</script>";
         } else {
             $sql = "INSERT INTO alagapp_db.tbl_vaxxinfo(
                 vaxname,
                 vaxtype,
                 vaxbrand,
-                vaxused) VALUES(
+                vaxdes) VALUES(
                     :vaxname,
                     :vaxtype,
                     :vaxbrand,
-                    :vaxused)";
+                    :vaxdes)";
 
             $result = $connect->prepare($sql);
 
@@ -27,17 +27,17 @@
                 ":vaxname"=>$name,
                 ":vaxtype"=>$type,
                 ":vaxbrand"=>$brand,
-                ":vaxused"=>$usage
+                ":vaxdes"=>$description
             );
 
             $result->execute($values);
 
             if($result->rowCount()>0) {
                 echo "<script>alert('Record has been save!');
-                window.location='../../account.php'</script>";
+                window.location='../../dashboard.php'</script>";
              } else {
                  echo "<script>alert('Unable to add record!');
-                 window.location='../../account.php'</script>";
+                 window.location='../../dashboard.php'</script>";
              }
         }
     }
@@ -51,8 +51,8 @@ echo "
                 <input placeholder=\"Type\" type='text' class='form-control' name='type'>
                 <label class='input-group-text'>Brand</label>
                 <input placeholder=\"Brand\" type='text' class='form-control' name='brand'>
-                <label class='input-group-text'>Usage</label>
-                <input placeholder=\"Usage\" type='text' class='form-control' name='usage'>
+                <label class='input-group-text'>Description</label>
+                <input placeholder=\"Enter Description\" type='text' class='form-control' name='description'>
             </div><br>
         <div class='d-grid gap-2 d-md-flex justify-content-md-end'>
             <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>

@@ -6,17 +6,17 @@
         $name = $_POST["name"];
         $type = $_POST["type"];
         $brand = $_POST["brand"];
-        $usage = $_POST["usage"];
+        $description = $_POST["description"];
         
-        if($name=="" || $type=="" || $brand=="" || $usage==""){
+        if($name=="" || $type=="" || $brand=="" || $description==""){
             echo "<script>alert('Please complete the fields required!');
-            window.location='../../account.php'</script>";
+            window.location='../../dashboard.php'</script>";
         } else {
             $sql = "UPDATE alagapp_db.tbl_vaxxinfo SET
                 vaxname = :vaxname,
                 vaxtype = :vaxtype,
                 vaxbrand = :vaxbrand,
-                vaxused = :vaxused
+                vaxdes = :vaxdes
 
                 WHERE vaxid = :vaxid";
 
@@ -25,7 +25,7 @@
                 ":vaxname"=>$name,
                 ":vaxtype"=>$type,
                 ":vaxbrand"=>$brand,
-                ":vaxused"=>$usage
+                ":vaxdes"=>$description
             );
 
             $result = $connect->prepare($sql);
@@ -33,17 +33,17 @@
 
             if($result->rowCount()>0) {
                echo "<script>alert('Record has been updated!');
-               window.location='../../account.php'</script>";
+               window.location='../../dashboard.php'</script>";
             } else {
                 echo "<script>alert('Unable to update record!')
-                window.location='../../account.php'</script>";
+                window.location='../../dashboard.php'</script>";
             }
         }
     }
 ?>
-        <form action="editData/vaxx_edit.php" method="POST">
+        <form action="editData/vaccineEdit.php" method="POST">
 <?php
-    $vid = $_REQUEST["id"];
+    $vid = $_REQUEST["vaxid"];
     $sql_vaxx = "SELECT * FROM alagapp_db.tbl_vaxxinfo WHERE vaxid = :vaxid";
 
     try{
@@ -54,7 +54,7 @@
         $name = "";
         $type = "";
         $brand = "";
-        $usage = "";
+        $description = "";
         
         if($vaxx_res->rowCount()==1){
             $vaxx_row = $vaxx_res->fetch(PDO::FETCH_ASSOC);
@@ -62,7 +62,7 @@
             $name = $vaxx_row["vaxname"];
             $type = $vaxx_row["vaxtype"];
             $brand = $vaxx_row["vaxbrand"];
-            $usage = $vaxx_row["vaxused"];
+            $description = $vaxx_row["vaxdes"];
         }
     } catch(PDOException $e){
         die("An error has occured!");
@@ -77,8 +77,8 @@
                     <input class='form-control' type="text" class="form-control" placeholder="Type" name="type" value="<?php echo $type; ?>">
                     <label class="input-group-text">Brand</label>
                     <input class='form-control' type="text" class="form-control" placeholder="Brand" name="brand" value="<?php echo $brand; ?>">
-                    <label class="input-group-text">Usage</label>
-                    <input class='form-control' type="text" class="form-control" placeholder="Usage" name="usage" value="<?php echo $usage; ?>">
+                    <label class="input-group-text">Description</label>
+                    <input class='form-control' type="text" class="form-control" placeholder="Description" name="description" value="<?php echo $description; ?>">
                 </div><br>
                 <div class='d-grid gap-2 d-md-flex justify-content-md-end'>
                 <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>

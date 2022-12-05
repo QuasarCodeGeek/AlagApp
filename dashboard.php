@@ -43,6 +43,30 @@
         </div>
       </nav>
       <main class="container container-fluid" style="background-color: #E0E0E0;">
+                    <div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="ModalLabel">New Record</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body d-grid gap-2 container-fluid" id="modalNew">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal fade" id="boxModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="ModalLabel">Edit Data</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body d-grid gap-2 container-fluid" id="modalHere">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
           <div class="row p-5"><!-- First Graph -->
             <div class="col-6 m-auto">
               <div class="row">
@@ -186,14 +210,14 @@
             <canvas id="donutvax" width="50" height="50"></canvas>
           </div>
         </div>
-    <div class="row bg bg-light rounded m-2 p-2">
+    <div class="row bg bg-light rounded m-2 p-2"><!-- Vaccine Information -->
       <div class="row">
         <div class="col">
-          <h3 class="">Vaccine Information</h3>
+          <h3>Vaccine Information</h3>
         </div>
-        <div class="col flex-end">
-          <button class="btn btn-success me-2">Print Data</button>
-          <button class="btn btn-success">Add Vaccine</button>
+        <div class="col">
+          <button class="btn btn-success float-end">Print Data</button>
+          <button class="btn btn-success float-end me-2" onClick="vaccineNew()" data-bs-toggle='modal' data-bs-target='#newModal'>Add Vaccine</button>
         </div>
       </div>
       <div class="row">
@@ -222,7 +246,7 @@
               <td>".$rowvaxx['vaxtype']."</td>
               <td>".$rowvaxx['vaxbrand']."</td>
               <td>".$rowvaxx['vaxdes']."</td>
-              <td><button class='btn' onClick='vaccineEdit(".$rowvaxx['vaxid'].")'><i class='bi bi-pencil-square'></i></button></td>
+              <td><button class='btn' onClick='vaccineEdit(".$rowvaxx['vaxid'].")' data-bs-toggle='modal' data-bs-target='#boxModal'><i class='bi bi-pencil-square'></i></button></td>
             </tr>";
             $i++;
             }
@@ -232,6 +256,9 @@
       </table>
       </div>
     </div><br>
+    <div class="row bg bg-light rounded m-2 p-2"><!-- Pet Symptoms -->
+
+    </div>
   </main>
 
 <!-- Main Functions -->
