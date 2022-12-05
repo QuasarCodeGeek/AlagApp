@@ -87,9 +87,9 @@
                             <div class="modal-header">
                               <h1 class="modal-title fs-5" id="ModalLabel">New Record</h1>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                              </div>
-                              <div class="modal-body d-grid gap-2 container-fluid" id="modalNew">
                             </div>
+                              <div class="modal-body d-grid gap-2 container-fluid" id="modalNew">
+                              </div>
                           </div>
                         </div>
                       </div>
@@ -101,11 +101,28 @@
                               <h1 class="modal-title fs-5" id="ModalLabel">Edit Data</h1>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                          <div class="modal-body d-grid gap-2 container-fluid" id="modalHere">
+                            <div class="modal-body d-grid gap-2 container-fluid" id="modalHere">
+                            </div>
+                          </div>
                         </div>
                       </div>
-              </div>
-              </div>
+
+                      <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h1 class="modal-title fs-5" id="ModalLabel">Choose Profile Picture</h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body d-grid gap-2 container-fluid" id="modalPict">
+                              <div class="input-group mb-3">
+                                <input type="file" class="form-control" id="inputGroupFile02">
+                                <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                   </div>
               </div>
               <div class="col-9 container bg bg-light pb-5">
@@ -123,6 +140,7 @@
                           echo"
                               <div class='col-3'>
                               <img class='userProfile m-auto rounded' src='../assets/img/diluc.png' alt='profile_picture'><br>
+                              <button class='btn btn-light m-2' data-bs-toggle='modal' data-bs-target='#profileModal'><i class='bi bi-pencil-square'></i> Edit Profile</button>
                               </div>
                               <div class='col-4 p-2 rounded bg bg-light'>
                                   <label>Name: ".$row['userfname']." ".$row['usermname']." ".$row['userlname']."</label><br>
