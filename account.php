@@ -13,7 +13,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="bg bg-light">
+<body class="bg bg-success">
 <nav class="navbar navbar-expand-lg bg-light">
         <div class="container container-fluid">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -81,10 +81,10 @@
             <div class="col-9 container bg bg-light pb-5">
               <div class="row p-2">
                 <div class="col-6 m-auto">
-                  <button type='button' class='p-2 btn btn-info w-100' onClick='userNew()' data-bs-toggle='modal' data-bs-target='#newModal')>Add User</button>
+                  <button type='button' class='p-2 btn btn-success w-100' onClick='userNew()' data-bs-toggle='modal' data-bs-target='#newModal')>Add User</button>
                 </div>
                 <div class="col-6 m-auto">
-                 <button type='button' class='p-2 btn btn-info w-100' onClick='petNew()' data-bs-toggle='modal' data-bs-target='#newModal')>Add Pet</button>
+                 <button type='button' class='p-2 btn btn-success w-100' onClick='petNew()' data-bs-toggle='modal' data-bs-target='#newModal')>Add Pet</button>
                 </div>
               </div>
             </div>

@@ -13,7 +13,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="bg bg-warning">
+<body class="bg bg-success">
 <nav class="navbar navbar-expand-lg bg-light">
         <div class="container container-fluid">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
