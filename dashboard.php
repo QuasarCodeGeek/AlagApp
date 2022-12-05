@@ -42,7 +42,7 @@
           </div>
         </div>
       </nav>
-      <main class="container container-fluid bg bg-light">
+      <main class="container container-fluid" style="background-color: #E0E0E0;">
           <div class="row p-5"><!-- First Graph -->
             <div class="col-6 m-auto">
               <div class="row">
@@ -186,7 +186,53 @@
             <canvas id="donutvax" width="50" height="50"></canvas>
           </div>
         </div>
-      </main>
+    <div class="row bg bg-light rounded m-2 p-2">
+      <div class="row">
+        <div class="col">
+          <h3 class="">Vaccine Information</h3>
+        </div>
+        <div class="col flex-end">
+          <button class="btn btn-success me-2">Print Data</button>
+          <button class="btn btn-success">Add Vaccine</button>
+        </div>
+      </div>
+      <div class="row">
+      <table class="table m-2">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Brand</th>
+            <th>Description</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        <?php
+          $vaxx = "SELECT * FROM alagapp_db.tbl_vaxxinfo";
+          $resvaxx = $connect->query($vaxx);
+          $resvaxx->execute();
+          if($resvax->rowCount()>0){
+            $i=1;
+            while($rowvaxx = $resvaxx->fetch(PDO::FETCH_ASSOC)){
+              echo "<tr>
+              <td>".$i."</td>
+              <td>".$rowvaxx['vaxname']."</td>
+              <td>".$rowvaxx['vaxtype']."</td>
+              <td>".$rowvaxx['vaxbrand']."</td>
+              <td>".$rowvaxx['vaxdes']."</td>
+              <td><button class='btn' onClick='vaccineEdit(".$rowvaxx['vaxid'].")'><i class='bi bi-pencil-square'></i></button></td>
+            </tr>";
+            $i++;
+            }
+          }
+        ?>
+        </tbody>
+      </table>
+      </div>
+    </div><br>
+  </main>
 
 <!-- Main Functions -->
 <script> src="js/main.js"</script>

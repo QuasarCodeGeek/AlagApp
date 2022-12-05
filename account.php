@@ -90,7 +90,6 @@
             </div>
         </div>
       </main>
-
 <!-- Main Functions -->
 <script src="js/main.js"></script>
 <!-- Ajax Function -->

@@ -170,5 +170,4 @@
     // Total Voice Call
     // Total Video Call
     // Voice to Video Call Ratio
-
 ?>
