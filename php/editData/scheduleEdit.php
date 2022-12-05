@@ -11,7 +11,7 @@
 
         if($user=="" || $pet=="" || $description=="" || $date=="" || $status==""){
             echo "<script>alert('Please complete the fields required!');
-            window.location='../../account.php'</script>";
+            window.location='../../scheduler.php'</script>";
         } else {
             $sql = "UPDATE alagapp_db.tbl_scheduler SET
                 userid = :userid,
@@ -36,22 +36,18 @@
 
             if($result->rowCount()>0) {
                 echo "<script>alert('Record has been updated!');
-                window.location='../../account.php'</script>";
+                window.location='../../scheduler.php'</script>";
              } else {
                  echo "<script>alert('Unable to update record!')
-                 window.location='../../account.php'</script>";
+                 window.location='../../scheduler.php'</script>";
              }
         }
     }
 
-    echo    "<form action='editData/scheduleEdit.php' method='POST'>";
+    echo    "<form action='php/editData/scheduleEdit.php' method='POST'>";
 
     $qid = $_REQUEST["qid"];
-    $sql_sched = "SELECT alagapp_db.tbl_scheduler.*, alagapp_db.tbl_userlist.userfname as user, alagapp_db.tbl_petprofile.petname as pet
-    FROM ((alagapp_db.tbl_scheduler
-    INNER JOIN alagapp_db.tbl_userlist ON alagapp_db.tbl_scheduler.userid = alagapp_db.tbl_userlist.userid)
-    INNER JOIN alagapp_db.tbl_petprofile ON alagapp_db.tbl_scheduler.petid = alagapp_db.tbl_petprofile.petid)  
-    WHERE qid = :qid";
+    $sql_sched = "SELECT * FROM alagapp_db.tbl_scheduler WHERE qid = :qid";
 
     try{
         $sched_res = $connect->prepare($sql_sched);
@@ -67,10 +63,20 @@
         if($sched_res->rowCount()==1){
             $sched_row = $sched_res->fetch(PDO::FETCH_ASSOC);
 
+            $sql_pet = "SELECT * FROM alagapp_db.tbl_petprofile WHERE petid = ".$sched_row["petid"]." ";
+            $pet_res = $connect->prepare($sql_pet);
+            $pet_res->execute();
+            $pet_row = $pet_res->fetch(PDO::FETCH_ASSOC);
+
+            $sql_owner = "SELECT * FROM alagapp_db.tbl_userlist WHERE userid = ".$pet_row["userid"]." ";
+            $owner_res = $connect->prepare($sql_owner);
+            $owner_res->execute();
+            $owner_row = $owner_res->fetch(PDO::FETCH_ASSOC);
+
             $userid = $sched_row["userid"];
-            $user = $sched_row["user"];
+            $user = $owner_row["userfname"];
             $petid = $sched_row["petid"];
-            $pet = $sched_row["pet"];
+            $pet = $pet_row["petname"];
             $description = $sched_row["qdescription"];
             $date = $sched_row["qdate"];
             $status = $sched_row["qstatus"];
@@ -83,10 +89,10 @@
                 <div class='input-group'>
                     <label class='input-group-text'>Owner</label>
                     <input type='text' class='form-control' name='userid' value=".$userid." hidden>
-                    <input type='text' class='form-control' name='userid' value=".$user.">
+                    <input type='text' class='form-control' name='user' value=".$user.">
                     <label class='input-group-text'>Pet</label>
                     <input type='text' class='form-control' name='petid' value=".$petid." hidden>
-                    <input type='text' class='form-control' name='userid' value=".$pet.">
+                    <input type='text' class='form-control' name='pet' value=".$pet.">
                 </div><br>
 
                 <div class='input-group'>

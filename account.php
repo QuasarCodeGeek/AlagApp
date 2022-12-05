@@ -87,25 +87,6 @@
                  <button type='button' class='p-2 btn btn-info w-100' onClick='petNew()' data-bs-toggle='modal' data-bs-target='#newModal')>Add Pet</button>
                 </div>
               </div>
-                <div class="row m-2 p-2 bg bg-success rounded" style="--bs-bg-opacity: .5;">
-                  <label>This is the accounts area. Please select one of the following
-                     users from the list on the left side and begin monitoring their informations</label>
-                </div>
-                <div class="row m-2 p-2 bg bg-success rounded" style="--bs-bg-opacity: .5;">
-                  <label>Features:</label>
-                  <label>Add User</label>
-                  <label>Edit User</label>
-                  <label>Add Pet</label>
-                  <label>Edit Pet</label>
-                  <label>Add Vaccination</label>
-                  <label>Edit Vaccination</label>
-                  <label>Add Prescription</label>
-                  <label>Edit Prescription</label>
-                  <label>Monitor User Information</label>
-                  <label>Monitor Pet Information</label>
-                  <label>Monitor Pet Vaccination</label>
-                  <label>Monitor Pet Prescription</label>
-                </div>
             </div>
         </div>
       </main>

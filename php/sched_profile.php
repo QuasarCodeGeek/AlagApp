@@ -79,7 +79,7 @@
               <a class="nav-link text-white p-2" type="button" href="../scheduler.php"><strong>Account</strong></a>
           </div>
           <div class="col text-center bg bg-light">
-              <a class="nav-link p-2" type="button" href="sched_chrono.php"><strong>Chronological</strong></a>
+              <a class="nav-link p-2" type="button" href="sched_chrono.php"><strong>Status</strong></a>
           </div>
         </div>
         <div class="row">
@@ -121,37 +121,26 @@
 
                   $userid = $_REQUEST['userid'];
 
-                  $sql = "SELECT * FROM alagapp_db.tbl_scheduler WHERE userid = ".$userid." ";
+                  $sql = "SELECT alagapp_db.tbl_scheduler.*, alagapp_db.tbl_userlist.userfname, alagapp_db.tbl_petprofile.petname
+                  FROM ((alagapp_db.tbl_scheduler
+                  INNER JOIN alagapp_db.tbl_userlist ON alagapp_db.tbl_scheduler.userid = alagapp_db.tbl_userlist.userid)
+                  INNER JOIN alagapp_db.tbl_petprofile ON alagapp_db.tbl_scheduler.petid = alagapp_db.tbl_petprofile.petid)
+                  WHERE alagapp_db.tbl_scheduler.userid = ".$userid." ";
               
                   $res = $connect->prepare($sql);
                   $res->execute();
-              
-                  $join1 = "SELECT alagapp_db.tbl_userlist.userfname
-                  FROM alagapp_db.tbl_scheduler
-                  INNER JOIN alagapp_db.tbl_userlist ON alagapp_db.tbl_scheduler.userid = alagapp_db.tbl_userlist.userid";
-                  $entry1 = $connect->query($join1);
-                  $entry1->execute();
-              
-                  $join2 = "SELECT alagapp_db.tbl_petprofile.petname
-                  FROM alagapp_db.tbl_scheduler
-                  INNER JOIN alagapp_db.tbl_petprofile ON alagapp_db.tbl_scheduler.petid = alagapp_db.tbl_petprofile.petid";
-                  $entry2 = $connect->query($join2);
-                  $entry2->execute();
-
               ?>
               <div class="container row">
               <?php 
           
-              if($res->rowCount()>0 && $entry1->rowCount()>0 && $entry2->rowCount()>0){
+              if($res->rowCount()>0){
                   $i=1;
                   while($row = $res->fetch(PDO::FETCH_ASSOC)){
-                      $rowentry1 = $entry1->fetch(PDO::FETCH_ASSOC);
-                      $rowentry2 = $entry2->fetch(PDO::FETCH_ASSOC);
                   echo
                   "<div class='card m-1 p-1 col-flex' style='width: 11rem;'>
                       <div class='card-body'>
-                          <button type='button' class='btn btn-success w-100' onClick='schedEdit(".$row['qid'].")' data-bs-toggle='modal' data-bs-target='#boxModal')><h6 class='card-title'>".$rowentry2['petname']."</h6></button><br>
-                          <label class='card-text' style='font-size: 12px;'>Owner: ".$rowentry1['userfname']."</label><br>
+                          <button type='button' class='btn btn-success w-100' onClick='schedEdit(".$row['qid'].")' data-bs-toggle='modal' data-bs-target='#boxModal')><h6 class='card-title'>".$row['petname']."</h6></button><br>
+                          <label class='card-text' style='font-size: 12px;'>Owner: ".$row['userfname']."</label><br>
                           <label class='card-text' style='font-size: 12px;'>Description: ".$row['qdescription']."</label><br>
                           <label class='card-text' style='font-size: 12px;'>Date Issued: ".$row['qdate']."</label><br>
                           <label class='card-text' style='font-size: 12px;'>Status: ".$row['qstatus']."</label>
