@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <title>Modern Admin Dashboard</title>
-    <link rel="stylesheet" href="sched_chrono1.css">
+    <link rel="stylesheet" href="css/schedPending1.css">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <!-- Bootstrap CSS v5.2.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -112,31 +112,32 @@
 
         <div class="row">
           <div class="col text-center bg bg-light">
-              <a class="nav-link p-2" type="button" href="../scheduler1.php"><strong>Account</strong></a>
+              <a class="nav-link p-2" type="button" href="../../scheduler.php"><strong>Account</strong></a>
           </div>
           <div class="col text-center bg bg-success">
-              <a class="nav-link p-2 text-white" type="button" href="php/sched_chrono.php" disable><strong>Status</strong></a>
+              <a class="nav-link p-2 text-white" type="button" href="../sched_chrono.php"><strong>Status</strong></a>
           </div>
         </div>
         <div class="row">
-            <div class="col-3 container p-2 bg bg-light">
+            <div class="col-3 p-2 bg bg-light vh-100">
                 <div class="row m-2">
-                    <button class="btn w-100 bg bg-success text-white mb-1" onclick="location.href='sched_chrono1.php'">All</button>
-                    <button class="btn w-100 bg bg-success text-white mb-1" style="--bs-bg-opacity: .5;" onclick="location.href='schedData/schedPending1.php'">Pending</button>
-                    <button class="btn w-100 bg bg-success text-white mb-1" style="--bs-bg-opacity: .5;" onclick="location.href='schedData/schedDenied.php'">Denied</button>
-                    <button class="btn w-100 bg bg-success text-white mb-1" style="--bs-bg-opacity: .5;" onclick="location.href='schedData/schedAccepted.php'">Accepted</button>
-                    <button class="btn w-100 bg bg-success text-white mb-1" style="--bs-bg-opacity: .5;" onclick="location.href='schedData/schedCancelled.php'">Cancelled</button>
-                    <button class="btn w-100 bg bg-success text-white mb-1" style="--bs-bg-opacity: .5;" onclick="location.href='schedData/schedFinished.php'">Finished</button>
+                    <button class="btn w-100 bg bg-success text-white mb-1" style="--bs-bg-opacity: .5;" onclick="location.href='../sched_chrono1.php'">All</button>
+                    <button class="btn w-100 bg bg-success text-white mb-1" onclick="location.href='schedPending1.php'"><strong>Pending</strong></button>
+                    <button class="btn w-100 bg bg-success text-white mb-1" style="--bs-bg-opacity: .5;" onclick="location.href='schedDenied1.php'">Denied</button>
+                    <button class="btn w-100 bg bg-success text-white mb-1" style="--bs-bg-opacity: .5;" onclick="location.href='schedAccepted1.php'">Accepted</button>
+                    <button class="btn w-100 bg bg-success text-white mb-1" style="--bs-bg-opacity: .5;" onclick="location.href='schedCancelled1.php'">Cancelled</button>
+                    <button class="btn w-100 bg bg-success text-white mb-1" style="--bs-bg-opacity: .5;" onclick="location.href='schedFinished1.php'">Finished</button>
                 </div>
             </div>
             <div class="col-9 container bg bg-light pt-2 pb-5">
             <?php
-                  require("connector.php");
+                  require("../connector.php");
 
                   $sql = "SELECT alagapp_db.tbl_scheduler.*, alagapp_db.tbl_userlist.userfname, alagapp_db.tbl_petprofile.petname
                   FROM ((alagapp_db.tbl_scheduler
                   INNER JOIN alagapp_db.tbl_userlist ON alagapp_db.tbl_scheduler.userid = alagapp_db.tbl_userlist.userid)
-                  INNER JOIN alagapp_db.tbl_petprofile ON alagapp_db.tbl_scheduler.petid = alagapp_db.tbl_petprofile.petid)";
+                  INNER JOIN alagapp_db.tbl_petprofile ON alagapp_db.tbl_scheduler.petid = alagapp_db.tbl_petprofile.petid)
+                  WHERE alagapp_db.tbl_scheduler.qstatus = 'Pending' ";
               
                   $res = $connect->prepare($sql);
                   $res->execute();
@@ -150,7 +151,7 @@
                   echo
                   "<div class='card m-1 p-1 col-flex' style='width: 11rem;'>
                       <div class='card-body'>
-                          <button type='button' class='btn btn-success w-100' onClick='schedEdit(".$row['qid'].")' data-bs-toggle='modal' data-bs-target='#boxModal')><h6 class='card-title'>".$row['petname']."</h6></button><br>
+                          <button type='button' class='btn btn-success w-100' onClick='SchedEdit(".$row['qid'].")' data-bs-toggle='modal' data-bs-target='#boxModal')><h6 class='card-title'>".$row['petname']."</h6></button><br>
                           <label class='card-text' style='font-size: 12px;'>Owner: ".$row['userfname']."</label><br>
                           <label class='card-text' style='font-size: 12px;'>Description: ".$row['qdescription']."</label><br>
                           <label class='card-text' style='font-size: 12px;'>Date Issued: ".$row['qdate']."</label><br>
@@ -169,7 +170,7 @@
       </main>
 
 <!-- Main Functions -->
-<script src="../js/main.js"></script>
+<script src="../../js/main.js"></script>
 <!-- Ajax Function -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!-- Bootstrap Popper -->
