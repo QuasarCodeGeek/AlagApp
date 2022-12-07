@@ -1,7 +1,7 @@
 <?php
     require("../connector.php");
 
-    if(isset($_POST["Update"])){
+    if(isset($_POST["submit"])){
         $vid = $_POST["vaxid"];
         $name = $_POST["name"];
         $type = $_POST["type"];
@@ -43,7 +43,7 @@
 ?>
         <form action="editData/vaccineEdit.php" method="POST">
 <?php
-    $vid = $_REQUEST["vaxid"];
+    $vid = $_REQUEST["id"];
     $sql_vaxx = "SELECT * FROM alagapp_db.tbl_vaxxinfo WHERE vaxid = :vaxid";
 
     try{
@@ -68,7 +68,7 @@
         die("An error has occured!");
     }
 ?>
-                <input type='hidden' name='vaxid' value="<?php echo $vid; ?>">
+                <input type="hidden" name="vaxid" value="<?php echo $vid; ?>">
                 <h1>Vaccine Information</h1><br>
                 <div class="input-group">
                     <label class="input-group-text">Name</label>
@@ -77,11 +77,14 @@
                     <input class='form-control' type="text" class="form-control" placeholder="Type" name="type" value="<?php echo $type; ?>">
                     <label class="input-group-text">Brand</label>
                     <input class='form-control' type="text" class="form-control" placeholder="Brand" name="brand" value="<?php echo $brand; ?>">
+                </div><br>
+                <div class="input-group">
                     <label class="input-group-text">Description</label>
                     <input class='form-control' type="text" class="form-control" placeholder="Description" name="description" value="<?php echo $description; ?>">
+                </div>
                 </div><br>
                 <div class='d-grid gap-2 d-md-flex justify-content-md-end'>
                 <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
-                <button id='submitVaccineEdit' type='submit' name='submit' class='btn btn-primary'>Save changes</button>
+                <button type='submit' name='submit' class='btn btn-primary'>Save changes</button>
             </div>
         </form>

@@ -1,3 +1,51 @@
+<?php
+  require("php/connector.php");
+
+  if(isset($_POST["submit"])){
+    $userid = $_POST["userid"];
+    $sender = $_POST["sender"];
+    $channel = $_POST["channel"];
+    $message = $_POST["message"];
+    $date = date("Y-m-d h:i:sa");
+
+    if($userid=="" || $sender=="" || $channel=="" || $message==""){
+        echo "<script>alert('Invalid!');
+        window.location='chat.php?userid=".$userid."'</script>";
+    } else {
+        $sql = "INSERT INTO alagapp_db.tbl_chat(
+            userid,
+            mchannel,
+            msender,
+            mcontent,
+            mdatetime) VALUES(
+                :userid,
+                :mchannel,
+                :msender,
+                :mcontent,
+                :mdatetime)";
+
+        $result = $connect->prepare($sql);
+
+        $values = array(
+            ":userid"=>$userid,
+            ":mchannel"=>$channel,
+            ":msender"=>$sender,
+            ":mcontent"=>$message,
+            ":mdatetime"=>$date
+        );
+
+        $result->execute($values);
+
+        if($result->rowCount()>0) {
+            echo "<script>alert('Message Sent!');
+            window.location='chat.php?userid=".$userid."'</script>";
+         } else {
+             echo "<script>alert('Unable to send message!');
+             window.location='chat.php?userid=".$userid."'</script>";
+         }
+    }
+};
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,45 +87,99 @@
         </div>
       </nav>
 <main class="container container-fluid">
-  <div class="row">
-    <div class="col-3 overflow-auto overflow-y" >
+  <div class="row bg bg-light">
+    <div class="col-3">
       <ul class="list-group list-group-flush">
         <?php
-          require("php/connector.php");
-
-          $sql = "SELECT * FROM alagapp_db.tbl_userlist";
-      
-          $res = $connect->prepare($sql);
-          $res->execute();
-      
-          $sql2 = "SELECT COUNT(userid) AS entry FROM alagapp_db.tbl_userlist";
-          $res2 = $connect->query($sql2);
-          $res2->execute();
-          $row1 = $res2->fetch(PDO::FETCH_ASSOC);
-      
-          if($res->rowCount()>0){
-              $i=1;
-              while($row = $res->fetch(PDO::FETCH_ASSOC)){
-                  echo "
-                  <li class='list-group-item bg bg-light'>
-                  <a type='button' class='btn' href='php/chat.php?userid=".$row['userid']."'>
-                  <label class='text-wrap'>".$row['userfname']." ".$row['userlname']."</label>
-                  </a>
-                  </li>";
-                  $i++;
-              }
-          } else {
-              echo "Nothing follows";
-          }
+            $sql = "SELECT * FROM alagapp_db.tbl_userlist";
+        
+            $res = $connect->prepare($sql);
+            $res->execute();
+        
+            if($res->rowCount()>0){
+                $i=1;
+                while($row = $res->fetch(PDO::FETCH_ASSOC)){
+                    echo "
+                    <li class='list-group-item bg bg-light'>
+                    <a type='button' class='btn' href='php/chat.php?userid=".$row['userid']."'>
+                    <label class='text-wrap'>".$row['userfname']." ".$row['userlname']."</label>
+                    </a>
+                    </li>";
+                    $i++;
+                }
+            } else {
+                echo "Nothing follows";
+            }
         ?>
       </ul>
     </div>
-    <div class="col-9 position-relative bg bg-light pb-5">
-      <label>Select Conversation</label>
+    <div class="col-9">
+      <?php 
+        $id = 1;
+        $channel = $id;
+        $_account = "SELECT * FROM alagapp_db.tbl_userlist WHERE userid = ".$id." ";
+
+        $_result = $connect->prepare($_account);
+        $_result->execute();
+
+        if($_result->rowCount()>0){
+            $_rowe = $_result->fetch(PDO::FETCH_ASSOC);
+            $_fname = $_rowe['userfname'];
+            $_lname = $_rowe['userlname'];
+        };
+      ?>
+      <div class="">
+        <div class="row m-2 p-2 bg bg-success text-white rounded">
+            <label><strong><?php echo $_rowe['userfname']." ".$_rowe['userlname']; ?></strong></label>
+        </div>
+        <div class="row m-2 p-2 rounded">
+          <?php
+            $chat = "SELECT * FROM alagapp_db.tbl_chat WHERE mchannel = ".$channel."";
+
+            $reschat = $connect->prepare($chat);
+            $reschat->execute();
+            if($reschat->rowCount()>0){
+                $j=1;
+                echo "<ul class='list-group'>";
+                while($rowchat = $reschat->fetch(PDO::FETCH_ASSOC)){
+                  if($rowchat['msender']!=0){
+                    echo "<li class='list-group-item border-0'>
+                      <div class='float-start p-3' style='background-color: #E8F5E9; border-radius: 10px;'>
+                      <label>Client</label><br>
+                      <label>".$rowchat['mcontent']."</label><br>
+                      <span style='font-size: 12px;'>".$rowchat['mdatetime']."</span>
+                      </div>
+                      </li>";
+                } else {
+                  echo "<li class='list-group-item border-0'>
+                      <div class='float-end p-3' style='background-color: #81C784; border-radius: 10px;'>
+                      <label>You</label><br>
+                      <label>".$rowchat['mcontent']."</label><br>
+                      <span style='font-size: 12px;'>".$rowchat['mdatetime']."</span>
+                      </div>    
+                      </li>"; 
+                }
+                    $j++;
+                }
+                echo "</ul>";
+            }
+          ?>
+        </div>
+        <div class="row m-2 p-2 bg bg-success rounded">
+          <form method="POST" action="chat.php" class="d-flex">
+              <input type="number" class="form-control" value="<?php echo $id ?>" placeholder="Userid" name="userid" hidden>
+              <input type="number" class="form-control" value="<?php echo $channel ?>" placeholder="Channel" name="channel" hidden>
+              <input type="number" class="form-control" value="0" placeholder="Sender" name="sender" hidden>
+                <input type="text" class="form-control me-2 d-flex" name="message" placeholder="Enter Message">
+                <button class="btn btn-light" type="submit" name="submit">Send</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </main>
-
 <!-- Main Functions -->
 <script> src="js/main.js"</script>
 <!-- Ajax Function -->

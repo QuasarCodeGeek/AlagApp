@@ -73,10 +73,10 @@
               <a type="button" class="text-white nav-link" href="dashboard.php"><strong>Main</strong></a>
             </div>
             <div class="col text-center p-1" style="background-color: #81C784;">
-              <a type="button" class="text-white nav-link" href="php/reportData/userDashboard.php">User</a>
+              <a type="button" class="text-white nav-link" href="php/reportData/userDashboard.php">User List</a>
             </div>
             <div class="col text-center p-1" style="background-color: #81C784;">
-              <a type="button" class="text-white nav-link" href="php/reportData/petDashboard.php">Pet</a>
+              <a type="button" class="text-white nav-link" href="php/reportData/petDashboard.php">Pet List</a>
             </div>
             <div class="col text-center p-1" style="background-color: #81C784;">
               <a type="button" class="text-white nav-link" href="php/reportData/cardDashboard.php">Vaccine Card</a>
@@ -255,7 +255,7 @@
   </main>
 
 <!-- Main Functions -->
-<script> src="js/main.js"</script>
+<script src="js/main.js"></script>
 <!-- Ajax Function -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!-- Bootstrap Popper -->

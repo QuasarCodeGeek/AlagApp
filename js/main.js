@@ -99,6 +99,7 @@ function petNew(){
     xhttp.open("GET", "php/newData/addPet.php");
     xhttp.send()
   }
+
 function PetNew(userid){
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
@@ -107,6 +108,7 @@ function PetNew(userid){
     xhttp.open("GET", "newData/petNew.php?userid="+userid);
     xhttp.send();
   }
+
 function vaccineNew() {
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
@@ -115,6 +117,7 @@ function vaccineNew() {
     xhttp.open("GET", "../newData/vaccineNew.php");
     xhttp.send();
   }
+
 function cardNew(petid) {
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
@@ -164,7 +167,7 @@ function vaccineEdit(vaxid) {
     xhttp.onload = function() {
       document.getElementById("modalHere").innerHTML = this.responseText;
     }
-    xhttp.open("GET", "php/editData/vaccineEdit.php?id="+vaxid);
+    xhttp.open("GET", "../editData/vaccineEdit.php?id="+vaxid);
     xhttp.send();
 }
 

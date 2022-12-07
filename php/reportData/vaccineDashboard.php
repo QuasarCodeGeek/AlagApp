@@ -15,7 +15,7 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="../../css/styles.css">
 </head>
 <body class="bg bg-success">
     <nav class="navbar navbar-expand-lg bg-light">
@@ -25,19 +25,19 @@
           </button>
           <div class="row collapse navbar-collapse mx-auto" id="navbarSupportedContent">
             <div class="col text-center">
-              <a class="nav-link" href="account.php">Account</a>
+              <a class="nav-link" href="../../account.php">Account</a>
             </div>
             <div class="col text-center">
-            <a class="nav-link" href="scheduler.php">Scheduler</a>
+            <a class="nav-link" href="../../scheduler.php">Scheduler</a>
             </div>
             <div class="col text-center">
-              <a class="navbar-brand" href="index.html"><strong>AlagApp</strong></a>
+              <a class="navbar-brand" href="../../index.html"><strong>AlagApp</strong></a>
             </div>
             <div class="col text-center">
-              <a class="nav-link" href="consultation.php">Consultation</a>
+              <a class="nav-link" href="../../consultation.php">Consultation</a>
             </div>
             <div class="col text-center border-bottom border-success border-5">
-              <a class="nav-link text-success" href="dashboard.php" active><strong>Dashboard</strong></a> 
+              <a class="nav-link text-success" href="../../dashboard.php" active><strong>Dashboard</strong></a> 
             </div>
           </div>
         </div>
@@ -73,22 +73,22 @@
               <a type="button" class="text-white nav-link" href="../../dashboard.php">Main</a>
             </div>
             <div class="col text-center p-1" style="background-color: #81C784;">
-              <a type="button" class="text-white nav-link" href="php/reportData/userDashboard.php">User</a>
+              <a type="button" class="text-white nav-link" href="userDashboard.php">User List</a>
             </div>
             <div class="col text-center p-1" style="background-color: #81C784;">
-              <a type="button" class="text-white nav-link" href="php/reportData/petDashboard.php">Pet</a>
+              <a type="button" class="text-white nav-link" href="petDashboard.php">Pet List</a>
             </div>
             <div class="col text-center p-1" style="background-color: #81C784;">
-              <a type="button" class="text-white nav-link" href="php/reportData/cardDashboard.php">Vaccine Card</a>
+              <a type="button" class="text-white nav-link" href="cardDashboard.php">Vaccine Card</a>
             </div>
             <div class="col text-center p-1" style="background-color: #81C784;">
-              <a type="button" class="text-white nav-link" href="php/reportData/noteDashboard.php">Prescription Note</a>
+              <a type="button" class="text-white nav-link" href="noteDashboard.php">Prescription Note</a>
             </div>
             <div class="col text-center p-1 bg bg-success">
-              <a type="button" class="text-white nav-link" href="php/reportData/vaccineDashboard.php"><strong>Vaccine List</strong></a>
+              <a type="button" class="text-white nav-link" href="vaccineDashboard.php"><strong>Vaccine List</strong></a>
             </div>
             <div class="col text-center p-1" style="background-color: #81C784;">
-              <a type="button" class="text-white nav-link" href="php/reportData/symptomDashboard.php">Symptoms Diagnosis</a>
+              <a type="button" class="text-white nav-link" href="symptomDashboard.php">Symptoms Diagnosis</a>
             </div>
           </div>
           
@@ -149,7 +149,7 @@
   </main>
 
 <!-- Main Functions -->
-<script> src="js/main.js"</script>
+<script src="../../js/main.js"></script>
 <!-- Ajax Function -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!-- Bootstrap Popper -->
