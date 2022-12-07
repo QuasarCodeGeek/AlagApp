@@ -21,6 +21,11 @@ body {
     margin: auto;
 }
 
+.petProfile {
+    width: 12rem;
+    margin: auto;
+}
+
 .edit_icon {
     width: 2px;
 }

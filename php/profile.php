@@ -45,7 +45,7 @@
 
         <main class="container container-fluid">
           <div class="row">
-              <div class="col-3 container p-2 bg bg-light vh-100">
+              <div class="col-3 container p-2 bg bg-light">
                   <!--<div class="row m-2">
                   <input type="text" onkeyup="_searchAccount()" class="form-control rounded-start" id="searchAccount" placeholder="Search">
                   </div>-->
@@ -125,8 +125,8 @@
                       </div>
                   </div>
               </div>
-              <div class="col-9 container bg bg-light pb-5">
-                  <div class="row mb-2 p-2 bg bg-success rounded" style="--bs-bg-opacity: .75;" id="userProfile">
+              <div class="col-9 container bg bg-light">
+                  <div class="row m-2 p-2 bg bg-success rounded" style="--bs-bg-opacity: .75;" id="userProfile">
                     <?php
                       $account = $_GET["userid"];
                       $sql = "SELECT * FROM alagapp_db.tbl_userlist
@@ -137,11 +137,15 @@
                   
                       if($res->rowCount()>0){
                           $row = $res->fetch(PDO::FETCH_ASSOC);
-                          echo"
-                              <div class='col-3'>
-                              <img class='userProfile m-auto rounded' src='../assets/img/diluc.png' alt='profile_picture'><br>
-                              <button class='btn btn-light m-2' data-bs-toggle='modal' data-bs-target='#profileModal'><i class='bi bi-pencil-square'></i> Edit Profile</button>
-                              </div>
+                          echo"<div class='col-3'>";
+                              if($row['userpict'] == "" && $row['usergender']=='M'){
+                                echo "<img class='userProfile m-auto rounded' src='../assets/uploads/male.png' alt='profile_picture'>";
+                              } else if ($row['userpict'] == "" && $row['usergender']=='F') {
+                                echo "<img class='userProfile m-auto rounded' src='../assets/uploads/female.png' alt='profile_picture'>";
+                              } else {
+                                echo "<img class='userProfile m-auto rounded' src='../assets/uploads/".$row['userpict']."' alt='profile_picture'>";
+                              }
+                              echo "</div>
                               <div class='col-4 p-2 rounded bg bg-light'>
                                   <label>Name: ".$row['userfname']." ".$row['usermname']." ".$row['userlname']."</label><br>
                                   <label>username: ".$row['useremail']."</label><br>
@@ -167,16 +171,16 @@
                                   <button type='button' class='btn btn-light mb-2 w-100'>
                                     <i class='bi bi-printer-fill'></i> Print</button><br>
                                   <button type='button' class='btn btn-light mb-2 w-100' onClick='userEdit(".$row['userid'].")' data-bs-toggle='modal' data-bs-target='#boxModal'>
-                                    <i class='bi bi-pencil-square'></i> Edit</button>
+                                    <i class='bi bi-pencil-square'></i> Edit</button><br>
                                   <button type='button' class='p-2 btn btn-info w-100' onClick='PetNew(".$row['userid'].")' data-bs-toggle='modal' data-bs-target='#newModal')>
-                                    <i class='bi bi-plus-square'></i> Add Pet</button>
+                                    <i class='bi bi-plus-square'></i> Add Pet</button><br>
                               </div>";
                       } else {
                           echo "No Record";
                       }
                     ?>
                   </div>
-                  <div class="row p-2 bg bg-success rounded mb-5" id="petProfile" style="--bs-bg-opacity: .75;">
+                  <div class="row m-2 p-2" id="petProfile" style="--bs-bg-opacity: .75;">
                     <?php
                       $petaccount = $_GET["userid"];
                       $sql = "SELECT * FROM alagapp_db.tbl_petprofile
@@ -189,22 +193,12 @@
                           $i=1;
                           while($row = $res->fetch(PDO::FETCH_ASSOC)){
                               echo"
-                              <div class='row m-auto mb-2 p-2 rounded' style='background-color: #81C784;'>  
-                                <div class='col-3'>";
-                                  if ($row['pettype'] == 'Dog') {
-                                    echo "<img class='userProfile m-auto rounded' src='../assets/img/dog/Dog_PembrokeWelshCorgi.jpg' alt='dog'><br>";
-                                  }
-                                  else if ($row['pettype'] == 'Cat') {
-                                    echo "<img class='userProfile m-auto rounded' src='../assets/img/cat/Cat_ScottishFold.jpg' alt='cat'><br>";
-                                  }
-                                  else if ($row['pettype'] == 'Bird') {
-                                    echo "<img class='userProfile m-auto rounded' src='../assets/img/bird/Bird_ConuresSmall.jpg' alt='bird'><br>";
-                                  }
-                                  else if ($row['pettype'] == 'Mouse') {
-                                    echo "<img class='userProfile m-auto rounded' src='../assets/img/mouse/Mouse_Marked.jpg' alt='mouse'><br>";
-                                  };
-                                  echo "</div>
-                                  <div class='col-8'>
+                              <div class='row rounded m-auto mb-2' style='background-color: #81C784;'>  
+                                <div class='row m-auto mt-2 p-2 bg bg-success rounded'>
+                                  <div class='col-3'>
+                                    <img class='petProfile m-auto rounded' src='../assets/img/".$row['pettype']."/".$row['petbreed'].".jpg' alt='petProfile'>
+                                  </div>
+                                  <div class='col-7'>
                                     <div class='row'>
                                       <div class='col-4'>
                                         <div class='row-2 m-auto mb-2 w-auto h-auto p-2 rounded bg bg-light'>
@@ -238,12 +232,13 @@
                                       </div>
                                     </div> 
                                   </div>
-                                  <div class='col-1'>
+                                  <div class='col-2'>
                                     <button type='button' class='btn btn-light mb-2 w-100'>
                                       <i class='bi bi-printer-fill'></i> Print</button><br>
                                     <button type='button' class='btn btn-light w-100' onClick='petEdit(".$row['petid'].")' data-bs-toggle='modal' data-bs-target='#boxModal'>
                                       <i class='bi bi-pencil-square'></i> Edit</button>
-                                  </div><br>
+                                  </div>
+                                </div>  
                   
                               <div class='row mx-auto my-2'>
                                 <div class='col-6 bg bg-success rounded-start'>";

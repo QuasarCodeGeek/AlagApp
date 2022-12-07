@@ -42,7 +42,7 @@
                         </a>
                     </li>
                     <li>
-                       <a href="dashboard.php">
+                       <a href="dashboard1.php">
                             <span class="las la-envelope"></span>
                             <small>Dashboard</small>
                         </a>
@@ -119,14 +119,14 @@
           </div>
         </div>
         <div class="row">
-            <div class="col-3 container p-2 bg bg-light">
+            <div class="col-2 container p-2 bg bg-light">
                 <div class="row m-2">
                     <button class="btn w-100 bg bg-success text-white mb-1" onclick="location.href='sched_chrono1.php'">All</button>
                     <button class="btn w-100 bg bg-success text-white mb-1" style="--bs-bg-opacity: .5;" onclick="location.href='schedData/schedPending1.php'">Pending</button>
-                    <button class="btn w-100 bg bg-success text-white mb-1" style="--bs-bg-opacity: .5;" onclick="location.href='schedData/schedDenied.php'">Denied</button>
-                    <button class="btn w-100 bg bg-success text-white mb-1" style="--bs-bg-opacity: .5;" onclick="location.href='schedData/schedAccepted.php'">Accepted</button>
-                    <button class="btn w-100 bg bg-success text-white mb-1" style="--bs-bg-opacity: .5;" onclick="location.href='schedData/schedCancelled.php'">Cancelled</button>
-                    <button class="btn w-100 bg bg-success text-white mb-1" style="--bs-bg-opacity: .5;" onclick="location.href='schedData/schedFinished.php'">Finished</button>
+                    <button class="btn w-100 bg bg-success text-white mb-1" style="--bs-bg-opacity: .5;" onclick="location.href='schedData/schedDenied1.php'">Denied</button>
+                    <button class="btn w-100 bg bg-success text-white mb-1" style="--bs-bg-opacity: .5;" onclick="location.href='schedData/schedAccepted1.php'">Accepted</button>
+                    <button class="btn w-100 bg bg-success text-white mb-1" style="--bs-bg-opacity: .5;" onclick="location.href='schedData/schedCancelled1.php'">Cancelled</button>
+                    <button class="btn w-100 bg bg-success text-white mb-1" style="--bs-bg-opacity: .5;" onclick="location.href='schedData/schedFinished1.php'">Finished</button>
                 </div>
             </div>
             <div class="col-9 container bg bg-light pt-2 pb-5">

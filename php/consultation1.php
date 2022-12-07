@@ -42,13 +42,13 @@
                         </a>
                     </li>
                     <li>
-                       <a href="dashboard.php">
+                       <a href="dashboard1.php">
                             <span class="las la-envelope"></span>
                             <small>Dashboard</small>
                         </a>
                     </li>
                     <li>
-                       <a href="consultation.php">
+                       <a href="consultation1.php">
                             <span class="las la-clipboard-list"></span>
                             <small>Consultation</small>
                         </a>

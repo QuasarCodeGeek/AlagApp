@@ -123,9 +123,9 @@
                 <div class="row m-2">
                     <button class="btn w-100 bg bg-success text-white mb-1" style="--bs-bg-opacity: .5;" onclick="location.href='../sched_chrono1.php'">All</button>
                     <button class="btn w-100 bg bg-success text-white mb-1" style="--bs-bg-opacity: .5;" onclick="location.href='schedPending1.php'">Pending</button>
-                    <button class="btn w-100 bg bg-success text-white mb-1" onclick="location.href='schedDenied1.php'"><strong>Denied</strong></button>
+                    <button class="btn w-100 bg bg-success text-white mb-1" style="--bs-bg-opacity: .5;" onclick="location.href='schedDenied1.php'">Denied</button>
                     <button class="btn w-100 bg bg-success text-white mb-1" style="--bs-bg-opacity: .5;" onclick="location.href='schedAccepted1.php'">Accepted</button>
-                    <button class="btn w-100 bg bg-success text-white mb-1" style="--bs-bg-opacity: .5;" onclick="location.href='schedCancelled1.php'">Cancelled</button>
+                    <button class="btn w-100 bg bg-success text-white mb-1" onclick="location.href='schedCancelled1.php'"><strong>Cancelled</strong></button>
                     <button class="btn w-100 bg bg-success text-white mb-1" style="--bs-bg-opacity: .5;" onclick="location.href='schedFinished1.php'">Finished</button>
                 </div>
             </div>
@@ -137,7 +137,7 @@
                   FROM ((alagapp_db.tbl_scheduler
                   INNER JOIN alagapp_db.tbl_userlist ON alagapp_db.tbl_scheduler.userid = alagapp_db.tbl_userlist.userid)
                   INNER JOIN alagapp_db.tbl_petprofile ON alagapp_db.tbl_scheduler.petid = alagapp_db.tbl_petprofile.petid)
-                  WHERE alagapp_db.tbl_scheduler.qstatus = 'Denied' ";
+                  WHERE alagapp_db.tbl_scheduler.qstatus = 'Cancelled' ";
               
                   $res = $connect->prepare($sql);
                   $res->execute();
@@ -185,7 +185,6 @@
 <script
   src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
 </script>
-    
 </body>
-
+            </div>
 </html>

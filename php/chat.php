@@ -88,7 +88,7 @@
       </nav>
 <main class="container container-fluid">
   <div class="row bg bg-light">
-    <div class="col-3 overflow-auto overflow-y vh-100">
+    <div class="col-3">
       <ul class="list-group list-group-flush">
         <?php
             $sql = "SELECT * FROM alagapp_db.tbl_userlist";
@@ -128,11 +128,11 @@
             $_lname = $_rowe['userlname'];
         };
       ?>
-      <div class="overflow-auto overflow-y vh-100">
-        <div class="bg bg-success text-white">
-            <label class="m-2"><strong><?php echo $_rowe['userfname']." ".$_rowe['userlname']; ?></strong></label>
+      <div class="">
+        <div class="row m-2 p-2 bg bg-success text-white rounded">
+            <label><strong><?php echo $_rowe['userfname']." ".$_rowe['userlname']; ?></strong></label>
         </div>
-        <div class="row">
+        <div class="row m-2 p-2 rounded">
           <?php
             $chat = "SELECT * FROM alagapp_db.tbl_chat WHERE mchannel = ".$channel."";
 
@@ -140,22 +140,22 @@
             $reschat->execute();
             if($reschat->rowCount()>0){
                 $j=1;
-                echo "<ul class='list-group list-group-flush'>";
+                echo "<ul class='list-group'>";
                 while($rowchat = $reschat->fetch(PDO::FETCH_ASSOC)){
                   if($rowchat['msender']!=0){
                     echo "<li class='list-group-item border-0'>
-                      <div class='float-start p-3' style='background-color: #E8F5E9; border-radius: 5px;'>
-                      <label>Vet</label><br>
+                      <div class='float-start p-3' style='background-color: #E8F5E9; border-radius: 10px;'>
+                      <label>Client</label><br>
                       <label>".$rowchat['mcontent']."</label><br>
-                      <span>".$rowchat['mdatetime']."</span>
+                      <span style='font-size: 12px;'>".$rowchat['mdatetime']."</span>
                       </div>
                       </li>";
                 } else {
                   echo "<li class='list-group-item border-0'>
-                      <div class='float-end p-3' style='background-color: #81C784; border-radius: 5px;'>
+                      <div class='float-end p-3' style='background-color: #81C784; border-radius: 10px;'>
                       <label>You</label><br>
                       <label>".$rowchat['mcontent']."</label><br>
-                      <span>".$rowchat['mdatetime']."</span>
+                      <span style='font-size: 12px;'>".$rowchat['mdatetime']."</span>
                       </div>    
                       </li>"; 
                 }
@@ -165,13 +165,15 @@
             }
           ?>
         </div>
-        <div class="row bg bg-success m-2">
-          <form method="POST" action="chat.php" class="d-flex p-2">
-            <input type="number" class="form-control" value="<?php echo $id ?>" placeholder="Userid" name="userid" hidden>
-            <input type="number" class="form-control" value="<?php echo $channel ?>" placeholder="Channel" name="channel" hidden>
-            <input type="number" class="form-control" value="0" placeholder="Sender" name="sender" hidden>
-            <input type="text" class="form-control me-2" name="message" placeholder="Enter Message">
-            <button class="btn btn-light" type="submit" name="submit">Send</button>
+        <div class="row m-2 p-2 bg bg-success rounded">
+          <form method="POST" action="chat.php" class="d-flex">
+              <input type="number" class="form-control" value="<?php echo $id ?>" placeholder="Userid" name="userid" hidden>
+              <input type="number" class="form-control" value="<?php echo $channel ?>" placeholder="Channel" name="channel" hidden>
+              <input type="number" class="form-control" value="0" placeholder="Sender" name="sender" hidden>
+                <input type="text" class="form-control me-2 d-flex" name="message" placeholder="Enter Message">
+                <button class="btn btn-light" type="submit" name="submit">Send</button>
+              </div>
+            </div>
           </form>
         </div>
       </div>
