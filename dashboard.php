@@ -68,6 +68,29 @@
                       </div>
                     </div>
 
+          <div class="row">
+            <div class="col text-center bg bg-success p-1">
+              <a type="button" class="text-white nav-link" href="dashboard.php"><strong>Main</strong></a>
+            </div>
+            <div class="col text-center p-1" style="background-color: #81C784;">
+              <a type="button" class="text-white nav-link" href="php/reportData/userDashboard.php">User</a>
+            </div>
+            <div class="col text-center p-1" style="background-color: #81C784;">
+              <a type="button" class="text-white nav-link" href="php/reportData/petDashboard.php">Pet</a>
+            </div>
+            <div class="col text-center p-1" style="background-color: #81C784;">
+              <a type="button" class="text-white nav-link" href="php/reportData/cardDashboard.php">Vaccine Card</a>
+            </div>
+            <div class="col text-center p-1" style="background-color: #81C784;">
+              <a type="button" class="text-white nav-link" href="php/reportData/noteDashboard.php">Prescription Note</a>
+            </div>
+            <div class="col text-center p-1" style="background-color: #81C784;">
+              <a type="button" class="text-white nav-link" href="php/reportData/vaccineDashboard.php">Vaccine List</a>
+            </div>
+            <div class="col text-center p-1" style="background-color: #81C784;">
+              <a type="button" class="text-white nav-link" href="php/reportData/symptomDashboard.php">Symptoms Diagnosis</a>
+            </div>
+          </div>
           <div class="row p-2"><!-- First Graph -->
             <div class="col bg bg-light rounded m-2 p-2">
               <div class="text-center">

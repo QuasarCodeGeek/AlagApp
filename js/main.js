@@ -112,7 +112,7 @@ function vaccineNew() {
     xhttp.onload = function() {
       document.getElementById("modalNew").innerHTML = this.responseText;
     }
-    xhttp.open("GET", "php/newData/vaccineNew.php");
+    xhttp.open("GET", "../newData/vaccineNew.php");
     xhttp.send();
   }
 function cardNew(petid) {
