@@ -1,5 +1,10 @@
 <?php
     include ("../dataAnalytics.php");
+
+    $userdata = "SELECT COUNT(userid) AS count FROM alagapp_db.tbl_userlist";
+    $resdata = $connect->query($userdata);
+    $resdata->execute();
+    $rowdata = $resdata->fetch(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,7 +39,7 @@
               <a class="navbar-brand" href="../../index.html"><strong>AlagApp</strong></a>
             </div>
             <div class="col text-center">
-              <a class="nav-link" href=".../../consultation.php">Consultation</a>
+              <a class="nav-link" href="../../consultation.php">Consultation</a>
             </div>
             <div class="col text-center border-bottom border-success border-5">
               <a class="nav-link text-success" href="../../dashboard.php" active><strong>Dashboard</strong></a> 
@@ -42,7 +47,7 @@
           </div>
         </div>
       </nav>
-      <main class="container container-fluid vh-100" style="background-color: #E0E0E0;">
+      <main class="container container-fluid" style="background-color: #E0E0E0;">
                     <div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                       <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -92,51 +97,48 @@
             </div>
           </div>
           
-    <div class="row bg bg-light rounded m-2 p-2"><!-- Vaccine Information -->
+          <div class="row bg bg-light rounded m-2 p-2"><!-- Pet List -->
       <div class="row">
         <div class="col">
-          <h3>Vaccine Information</h3>
+          <h3>User List</h3>
+          <label>Number of Users: <?php echo $rowdata['count'];?></label>
         </div>
         <div class="col">
           <button class="btn btn-success float-end">Print Data</button>
-          <button class="btn btn-success float-end me-2" onClick="vaccineNew()" data-bs-toggle='modal' data-bs-target='#newModal'>Add Vaccine</button>
         </div>
       </div>
       <div class="row">
-      <table class="table m-2">
-        <thead>
+      <table class="table table-striped m-2">
+        <thead class="bg bg-success text-white">
           <tr>
             <th>#</th>
             <th>Name</th>
-            <th>Type</th>
-            <th>Brand</th>
-            <th>Description</th>
-            <th># Administered</th>
-            <th>Action</th>
+            <th>Street</th>
+            <th>Baranggay</th>
+            <th>Municipality</th>
+            <th>Province</th>
+            <th>Birth Date</th>
+            <th>Gender</th>
           </tr>
         </thead>
         <tbody>
         <?php
-          $vaxx = "SELECT * FROM alagapp_db.tbl_vaxxinfo";
-          $resvaxx = $connect->query($vaxx);
-          $resvaxx->execute();
-          if($resvax->rowCount()>0){
+          $user = "SELECT * FROM alagapp_db.tbl_userlist";
+          $resuser = $connect->query($user);
+          $resuser->execute();
+          if($resuser->rowCount()>0){
             $i=1;
-            while($rowvaxx = $resvaxx->fetch(PDO::FETCH_ASSOC)){
-
-              $vaxdata = "SELECT COUNT(vaxid) AS vaxx FROM alagapp_db.tbl_vaxxcard WHERE vaxid LIKE ".$rowvaxx['vaxid']."";
-              $resdata = $connect->query($vaxdata);
-              $resdata->execute();
-              $rowdata = $resdata->fetch(PDO::FETCH_ASSOC);
+            while($rowuser = $resuser->fetch(PDO::FETCH_ASSOC)){
 
               echo "<tr>
               <td>".$i."</td>
-              <td>".$rowvaxx['vaxname']."</td>
-              <td>".$rowvaxx['vaxtype']."</td>
-              <td>".$rowvaxx['vaxbrand']."</td>
-              <td>".$rowvaxx['vaxdes']."</td>
-              <td>".$rowdata["vaxx"]."</td>
-              <td><button class='btn' onClick='vaccineEdit(".$rowvaxx['vaxid'].")' data-bs-toggle='modal' data-bs-target='#boxModal'><i class='bi bi-pencil-square'></i></button></td>
+              <td>".$rowuser['userfname']." ".$rowuser['usermname']." ".$rowuser['userlname']."</td>
+              <td>".$rowuser['userstreet']."</td>
+              <td>".$rowuser['userdistrict']."</td>
+              <td>".$rowuser['usermunicipality']."</td>
+              <td>".$rowuser['userprovince']."</td>
+              <td>".$rowuser['userbdate']."</td>
+              <td>".$rowuser['usergender']."</td>
             </tr>";
             $i++;
             }

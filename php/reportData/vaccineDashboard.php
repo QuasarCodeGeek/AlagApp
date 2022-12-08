@@ -1,5 +1,10 @@
 <?php
     include ("../dataAnalytics.php");
+
+    $vdata = "SELECT COUNT(vaxid) AS count FROM alagapp_db.tbl_vaxxinfo";
+    $resdata = $connect->query($vdata);
+    $resdata->execute();
+    $rowdata = $resdata->fetch(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -96,6 +101,7 @@
       <div class="row">
         <div class="col">
           <h3>Vaccine Information</h3>
+          <label>Number of Vaccines: <?php echo $rowdata['count'];?></label>
         </div>
         <div class="col">
           <button class="btn btn-success float-end">Print Data</button>
@@ -103,8 +109,8 @@
         </div>
       </div>
       <div class="row">
-      <table class="table m-2">
-        <thead>
+      <table class="table table-striped m-2">
+        <thead class="bg bg-success text-white">
           <tr>
             <th>#</th>
             <th>Name</th>
@@ -112,7 +118,7 @@
             <th>Brand</th>
             <th>Description</th>
             <th># Administered</th>
-            <th>Action</th>
+            <th>Edit</th>
           </tr>
         </thead>
         <tbody>

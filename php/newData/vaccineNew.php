@@ -51,6 +51,8 @@ echo "
                 <input placeholder=\"Type\" type='text' class='form-control' name='type'>
                 <label class='input-group-text'>Brand</label>
                 <input placeholder=\"Brand\" type='text' class='form-control' name='brand'>
+            </div><br>
+            <div class='input-group'>
                 <label class='input-group-text'>Description</label>
                 <input placeholder=\"Enter Description\" type='text' class='form-control' name='description'>
             </div><br>
