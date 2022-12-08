@@ -104,7 +104,13 @@
                     <label class='input-group-text'>Date</label>
                     <input type='date' class='form-control' name='date' value=".$date.">
                     <label class='input-group-text'>Status</label>
-                <input type='text' class='form-control' name='status' value=".$status.">
+                    <select class='form-select' name='status'>
+                        <option selected value='".$status."'>".$status."</option>
+                        <option value='Pending'>Pend</option>
+                        <option value='Accepted'>Accept</option>
+                        <option value='Denied'>Deny</option>
+                        <option value='Finished'>Finish</option>
+                    </select>
                 </div><br>
 
             <div class='d-grid gap-2 d-md-flex justify-content-md-end'>

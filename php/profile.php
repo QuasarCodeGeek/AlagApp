@@ -43,7 +43,7 @@
         </div>
       </nav>
 
-        <main class="container container-fluid">
+        <main class="container-fluid">
           <div class="row">
               <div class="col-3 container p-2 bg bg-light">
                   <!--<div class="row m-2">
@@ -125,7 +125,7 @@
                       </div>
                   </div>
               </div>
-              <div class="col-9 container bg bg-light">
+              <div class="col-9 bg bg-light">
                   <div class="row m-2 p-2 bg bg-success rounded" style="--bs-bg-opacity: .75;" id="userProfile">
                     <?php
                       $account = $_GET["userid"];

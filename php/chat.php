@@ -88,7 +88,7 @@
       </nav>
 <main class="container-fluid">
   <div class="row bg bg-light">
-    <div class="col-2">
+    <div class="col-3">
       <ul class="list-group list-group-flush">
         <?php
             $sql = "SELECT * FROM alagapp_db.tbl_userlist";
@@ -113,7 +113,7 @@
         ?>
       </ul>
     </div>
-    <div class="col-10">
+    <div class="col-9">
       <?php 
         $id = $_REQUEST['userid'];
         $channel = $id;

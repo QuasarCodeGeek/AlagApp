@@ -72,7 +72,7 @@
                         </div>
 
         <div class="row">
-              <div class="col-2 p-2 bg bg-light">
+              <div class="col-3 p-2 bg bg-light">
                 <div class="row m-1 overflow-x overflow-auto">
                   <ul class="list-group list-group-flush">
                       <?php 
@@ -104,7 +104,7 @@
                   </ul>
                 </div>
             </div>
-            <div class="col-10 bg bg-light pt-2 pb-5">
+            <div class="col-9 bg bg-light pt-2 pb-5">
               <div class="row">
                 <div class="col text-center bg bg-success">
                   <a class="nav-link text-white p-2" type="button" href="scheduler.php"><strong>Account</strong></a>
@@ -129,7 +129,7 @@
                   $i=1;
                   while($row = $res->fetch(PDO::FETCH_ASSOC)){
                   echo
-                  "<div class='card m-1 p-1 col-flex' style='width: 12rem;'>
+                  "<div class='card m-1 p-1 col-flex' style='width: 13rem;'>
                       <div class='card-body'>
                         <button type='button' class='btn btn-success w-100' onClick='scheduleEdit(".$row['qid'].")' data-bs-toggle='modal' data-bs-target='#boxModal')><h6 class='card-title'>".$row['petname']."</h6></button><br>
                           <label class='card-text' style='font-size: 12px;'>Owner: ".$row['userfname']."</label><br>
