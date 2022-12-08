@@ -47,7 +47,7 @@
           </div>
         </div>
       </nav>
-      <main class="container container-fluid vh-100" style="background-color: #E0E0E0;">
+      <main class="container-fluid vh-100" style="background-color: #E0E0E0;">
                     <div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                       <div class="modal-dialog modal-lg">
                         <div class="modal-content">

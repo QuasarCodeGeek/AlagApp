@@ -111,14 +111,6 @@
                         </div>
 
         <div class="row">
-          <div class="col text-center bg bg-light">
-              <a class="nav-link p-2" type="button" href="../../scheduler1.php"><strong>Account</strong></a>
-          </div>
-          <div class="col text-center bg bg-success">
-              <a class="nav-link p-2 text-white" type="button" href="../sched_chrono1.php"><strong>Status</strong></a>
-          </div>
-        </div>
-        <div class="row">
             <div class="col-2 p-2 bg bg-light vh-100">
                 <div class="row m-2">
                     <button class="btn w-100 bg bg-success text-white mb-1" style="--bs-bg-opacity: .5;" onclick="location.href='../sched_chrono1.php'">All</button>
@@ -129,7 +121,15 @@
                     <button class="btn w-100 bg bg-success text-white mb-1" style="--bs-bg-opacity: .5;" onclick="location.href='schedFinished1.php'">Finished</button>
                 </div>
             </div>
-            <div class="col-9 container bg bg-light pt-2 pb-5">
+            <div class="col-9 bg bg-light pt-2 pb-5">
+              <div class="row">
+                <div class="col text-center bg bg-light">
+                  <a class="nav-link p-2" type="button" href="../../scheduler1.php"><strong>Account</strong></a>
+                </div>
+                <div class="col text-center bg bg-success">
+                  <a class="nav-link p-2 text-white" type="button" href="../sched_chrono1.php"><strong>Status</strong></a>
+                </div>
+              </div>
             <?php
                   require("../connector.php");
                   
@@ -142,7 +142,7 @@
                   $res = $connect->prepare($sql);
                   $res->execute();
               ?>
-              <div class="container row">
+              <div class="row">
               <?php 
           
               if($res->rowCount()>0){
