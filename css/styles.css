@@ -16,13 +16,13 @@ body {
     font-family: 'Fuzzy Bubbles', sans-serif;
 }
 
-.userProfile {
-    width: 12rem;
+#userProfile {
+    width: 15rem;
     margin: auto;
 }
 
-.petProfile {
-    width: 12rem;
+#petProfile {
+    width: 15rem;
     margin: auto;
 }
 

@@ -1,0 +1,7 @@
+--- Attribution ---
+pet1.jpg -> Photo by <a href="https://unsplash.com/@alecfavale?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Alec Favale</a> on <a href="https://unsplash.com/s/photos/cat-dog?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+
+pet2.jpg -> https://unsplash.com/photos/ouo1hbizWwo?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink
+  
+pet3.jpg -> Photo by <a href="https://unsplash.com/@krista?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Krista Mangulsone</a> on <a href="https://unsplash.com/s/photos/dog-and-cat?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  
