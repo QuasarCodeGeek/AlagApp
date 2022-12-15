@@ -18,14 +18,8 @@
         if($fname=="" || $lname=="" || $bdate=="" || $gender=="" || $district=="" || $municipality=="" || $province ==""){
             echo "<script>alert('Complete Required Fields!');
             window.location='../profile.php?userid=".$id."'</script>";
-        } else if ($email=="" || $password =="") 
-            echo "<script>alert('Email and Password Required!');
-            window.location='../profile.php?userid=".$id."'</script>";
-        else {
+        } else {
             $sql = "UPDATE alagapp_db.tbl_userlist SET
-                useremail = :useremail,
-                userpassword = :userpassword,
-
                 userfname = :userfname,
                 usermname = :usermname,
                 userlname = :userlname,
@@ -42,8 +36,6 @@
 
             $values = array(
                 ":userid" => $id,
-                ":useremail" => $email,
-                ":userpassword" => $password,
                 ":userfname" => $fname,
                 ":usermname" => $mname,
                 ":userlname" => $lname,
@@ -89,10 +81,7 @@
     $district = "";
     $municipality = "";
     $province = "";
-
-    $email = "";
-    $password = "";
-        
+      
         if($user_res->rowCount()==1){
             $user_row = $user_res->fetch(PDO::FETCH_ASSOC);
 
@@ -105,8 +94,6 @@
             $district = $user_row["userdistrict"];
             $municipality = $user_row["usermunicipality"];
             $province = $user_row["userprovince"];
-            $email = $user_row["useremail"];
-            $passsword = $user_row["userpassword"];
         }
     } catch(PDOException $e){
         die("An error has occured!");
@@ -149,12 +136,6 @@
         <input class='form-control' type='text' name='province' value='".$province."' placeholder=\"Enter Province\">
         </div><br>
 
-        <div class='input-group'>
-        <span class='input-group-text'>Email</span>
-        <input class='form-control' type='email' name='email' value='".$email."' placeholder=\"Enter New Email\">
-        <span class='input-group-text'>Password</span>
-        <input class='form-control' type='text' name='password' value='".$password."' placeholder=\"Enter New Password\">
-        </div><br>
         <div class='d-grid gap-2 d-md-flex justify-content-md-end'>
         <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
         <button type='submit' name='submit' class='btn btn-primary'>Save changes</button>

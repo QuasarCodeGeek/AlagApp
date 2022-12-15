@@ -22,4 +22,27 @@ function checkField() {
         alertPlaceholder.append(wrapper)
     }
 }
+
+function getSched(qid) {
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function() {
+      document.getElementById("EditHere").innerHTML = this.responseText;
+    }
+    xhttp.open("GET", "api/sched/editSched.php?qid="+qid);
+    xhttp.send();
+}
+
+function getSymptom() {
+    var type = document.getElementById("type").value;
+    var part = document.getElementById("part").value;
+    var symptom = document.getElementById("symptom").value;
+    console.log(type+" "+part+" "+symptom);
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function() {
+      document.getElementById("ContentHere").innerHTML = this.responseText;
+    }
+    xhttp.open("GET", "api/symptom.php?type="+type+"&part="+part+"&symptom="+symptom);
+    xhttp.send();
+}
+
     

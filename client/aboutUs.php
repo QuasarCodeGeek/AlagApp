@@ -3,21 +3,21 @@
     $user = $_REQUEST["userid"];
 
     $picture = "SELECT * FROM alagapp_db.tbl_userlist WHERE userid = ".$user." ";
-        $checkpict = $connect->prepare($picture);
-        $checkpict->execute();
+    $checkpict = $connect->prepare($picture);
+    $checkpict->execute();
 
-        if($checkpict->rowCount()>0) {
-          $acc = $checkpict->fetch(PDO::FETCH_ASSOC);
-          $sex = $acc['usergender'];
-          $pict = $acc['userpict'];
-          $name = $acc['userfname'];
-        }
+    if($checkpict->rowCount()>0) {
+      $acc = $checkpict->fetch(PDO::FETCH_ASSOC);
+      $sex = $acc['usergender'];
+      $pict = $acc['userpict'];
+      $name = $acc['userfname'];
+    }
 ?>
 <!doctype html>
 <html lang="en">
 
 <head>
-  <title>Home</title>
+  <title>About Us</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -54,7 +54,7 @@
                             echo "<img class='rounded me-2' style='width: 25px;' src='../assets/default/male.png'>";
                         }
                     
-                    echo "<label class='float-end text-white'>".$name."</label>"; ?>
+                    echo "<label class='float-end text-white'><b>".$name."</b></label>"; ?>
             </a>
           </li>
           <li class="nav-item">
@@ -88,7 +88,7 @@
             <div class="text-center text-white rounded m-2 p-2" style="background-color: #81C784;">
                 <label><b>My Pets</b></label>
             </div>
-            <ul class="list-group list-group-flush rounded">
+            <ul class="list-group list-group-flush">
             <?php
                 $petlist = "SELECT * FROM alagapp_db.tbl_petprofile WHERE userid = ".$user." ";
                 $checklist = $connect->prepare($petlist);

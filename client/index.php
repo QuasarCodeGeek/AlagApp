@@ -56,7 +56,7 @@
             <input id="email" name="email" type="text" class="form-control" placeholder="Email" required>
           </div>
           <div>
-            <input id="password" name="password" type="text" class="form-control" placeholder="Password" required>
+            <input id="password" name="password" type="password" class="form-control" placeholder="Password" required>
           </div><br>
           <div class="mb-2">
             <a href="../php/client/_forgotpassword.php">Forgot Password</a>
@@ -66,7 +66,7 @@
       </div>
     </main>
 
-  <script src="../js/client.js"></script>
+  <script src="js/client.js"></script>
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
     integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">

@@ -27,7 +27,7 @@
             <a class="nav-link" href="scheduler.php">Scheduler</a>
             </div>
             <div class="col text-center">
-              <a class="navbar-brand" href="account.html"><strong>AlagApp</strong></a>
+              <a class="navbar-brand" href="#"><strong>AlagApp</strong></a>
             </div>
             <div class="col text-center">
               <a class="nav-link" href="consultation.php">Consultation</a>

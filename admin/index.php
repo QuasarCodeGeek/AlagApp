@@ -57,7 +57,7 @@
             <input id="admincode" name="admincode" type="text" class="form-control" placeholder="Enter Admin Code" required>
           </div>
           <div>
-            <input id="adminpass" name="adminpass" type="text" class="form-control" placeholder="Enter Admin Password" required>
+            <input id="adminpass" name="adminpass" type="password" class="form-control" placeholder="Enter Admin Password" required>
           </div><br>
           <div class="mb-2">
             <a href="../php/client/_forgotpassword.php">Forgot Password</a>

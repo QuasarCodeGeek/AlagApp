@@ -46,9 +46,6 @@
         <main class="container-fluid">
           <div class="row">
               <div class="col-3 p-2 bg bg-light">
-                  <!--<div class="row m-2">
-                  <input type="text" onkeyup="_searchAccount()" class="form-control rounded-start" id="searchAccount" placeholder="Search">
-                  </div>-->
                   <div class="m-1" id="accountHere">
                     
                     </div>
@@ -139,33 +136,21 @@
                           $row = $res->fetch(PDO::FETCH_ASSOC);
                           echo"<div class='col-3'>";
                               if($row['userpict'] == "" && $row['usergender']=='M'){
-                                echo "<img id='userProfile' class='rounded' src='../../assets/default/male.png' alt='profile_picture'>";
+                                echo "<img id='userProfile' class='m-auto rounded' src='../../assets/default/male.png' alt='profile_picture'>";
                               } else if ($row['userpict'] == "" && $row['usergender']=='F') {
-                                echo "<img id='userProfile' class='rounded' src='../../assets/default/female.png' alt='profile_picture'>";
+                                echo "<img id='userProfile' class='m-auto rounded' src='../../assets/default/female.png' alt='profile_picture'>";
                               } else {
-                                echo "<img id='userProfile' class='rounded' src='../../assets/uploads/".$row['userpict']."' alt='profile_picture'>";
+                                echo "<img id='userProfile' class='m-auto rounded' src='../../assets/uploads/".$row['userpict']."' alt='profile_picture'>";
                               }
                               echo "</div>
-                              <div class='col-5'>
-                                  <div class='row mb-2 p-2 rounded bg bg-light'>
-                                    <label>Name: ".$row['userfname']." ".$row['usermname']." ".$row['userlname']."</label><br>
-                                    <label>Email: ".$row['useremail']."</label><br>
-                                    <label>Birth Date: ".$row['userbdate']."</label><br>
-                                    <label>Gender: ".$row['usergender']."</label><br>
-                                    <label>Address: ".$row['userstreet']." ".$row['userdistrict']." ".$row['usermunicipality']." ".$row['userprovince']."</label>
-                                  </div>
-                                  <div class='row'>
-                                    <div class='col'>
-                                      <button type='button' class='p-2 btn btn-warning w-100' onClick='userEdit(".$row['userid'].")' data-bs-toggle='modal' data-bs-target='#boxModal'>
-                                      <i class='bi bi-pencil-square'></i> Edit</button>
-                                    </div>
-                                    <div class='col'>
-                                      <button type='button' class='p-2 btn btn-info w-100' onClick='PetNew(".$row['userid'].")' data-bs-toggle='modal' data-bs-target='#newModal')>
-                                      <i class='bi bi-plus-square'></i> Add Pet</button>
-                                    </div>
-                                  </div>
+                              <div class='col-4 p-2 rounded bg bg-light'>
+                                  <label>Name: ".$row['userfname']." ".$row['usermname']." ".$row['userlname']."</label><br>
+                                  <label>username: ".$row['useremail']."</label><br>
+                                  <label>Birth Date: ".$row['userbdate']."</label><br>
+                                  <label>Gender: ".$row['usergender']."</label><br>
+                                  <label>Address: ".$row['userstreet']." ".$row['userdistrict']." ".$row['usermunicipality']." ".$row['userprovince']."</label>
                               </div>
-                              <div class='col-4'>
+                              <div class='col-3'>
                                 <div class='row-2 m-auto mb-2 p-2 bg bg-light rounded'>
                                     <label>Pets: #</label>
                                 </div>
@@ -178,13 +163,19 @@
                                 <div class='row-2 m-auto mb-2 p-2 bg bg-light rounded'>
                                     <label>Prescription Note: #</label>
                                 </div>
+                              </div>
+                              <div class='col-2'>
+                                  <button type='button' class='btn btn-warning mb-2 w-100' onClick='userEdit(".$row['userid'].")' data-bs-toggle='modal' data-bs-target='#boxModal'>
+                                    <i class='bi bi-pencil-square'></i> Edit</button><br>
+                                  <button type='button' class='p-2 btn btn-info w-100' onClick='PetNew(".$row['userid'].")' data-bs-toggle='modal' data-bs-target='#newModal')>
+                                    <i class='bi bi-plus-square'></i> Add Pet</button><br>
                               </div>";
                       } else {
                           echo "No Record";
                       }
                     ?>
                   </div>
-                  <div class="row m-2 p-2" style="--bs-bg-opacity: .75;">
+                  <div class="row m-2 p-2" style="--bs-bg-opacity: .75;"><!-- Pet Profile -->
                     <?php
                       $petaccount = $_GET["userid"];
                       $sql = "SELECT * FROM alagapp_db.tbl_petprofile
@@ -244,10 +235,15 @@
                   
                               <div class='row mx-auto my-2'>
                                 <div class='col-6 bg bg-success rounded-start'>";
-                                  $vax = "SELECT alagapp_db.tbl_carddetail.*,
-                                    alagapp_db.tbl_vaxxinfo.vaxname
-                                    FROM alagapp_db.tbl_carddetail
-                                    INNER JOIN alagapp_db.tbl_vaxxinfo ON alagapp_db.tbl_carddetail.vaxid = alagapp_db.tbl_vaxxinfo.vaxid
+                                  $vax = "SELECT alagapp_db.tbl_vaxxcard.cid,
+                                    alagapp_db.tbl_vaxxcard.petid,
+                                    alagapp_db.tbl_vaxxcard.vaxid,
+                                    alagapp_db.tbl_vaxxinfo.vaxname,
+                                    alagapp_db.tbl_vaxxcard.fdose,
+                                    alagapp_db.tbl_vaxxcard.sdose,
+                                    alagapp_db.tbl_vaxxcard.booster 
+                                    FROM alagapp_db.tbl_vaxxcard
+                                    INNER JOIN alagapp_db.tbl_vaxxinfo ON alagapp_db.tbl_vaxxcard.vaxid = alagapp_db.tbl_vaxxinfo.vaxid
                                     WHERE petid = ".$row['petid']."";
                     
                                   $resvax = $connect->prepare($vax);
@@ -258,27 +254,24 @@
                                     while($rowvax = $resvax->fetch(PDO::FETCH_ASSOC)){
                                       echo"
                                       <div class='row m-2 p-2 bg bg-light rounded'>
-                                        <div class='col-6'>
-                                          <label>Vaccine: ".$rowvax['vaxname']."</label><br>
-                                          <label>Veterinarian: ".$rowvax['cvet']."</label>
-                                        </div>
-                                        <div class='col-4'>
-                                          <label>Weight(Kg): ".$rowvax['cweight']."</label><br>
-                                          <label>Date: ".$rowvax['cdate']."</label>
-                                        </div>
-                                        <div class='col-2'>
-                                          <button type='button' class='btn btn-info w-100 h-100' onClick='cardAlterEdit(".$rowvax['cid'].")' data-bs-toggle='modal' data-bs-target='#boxModal'>
-                                          <i class='bi bi-pencil-square'></i></button>
-                                        </div>
+                                
+                                      <label>Vaccine: ".$rowvax['vaxname']."</label><br>
+                                      <label>First Dose: ".$rowvax['fdose']."</label><br>
+                                      <label>Second Dose: ".$rowvax['sdose']."</label><br>
+                                      <label>Booster: ".$rowvax['booster']."</label>
+
+                                      <button type='button' class='btn btn-info' onClick='cardEdit(".$rowvax['cid'].")' data-bs-toggle='modal' data-bs-target='#boxModal'>
+                                      <i class='bi bi-pencil-square'></i>
+                                      Edit</button>
                                       </div>";
                                       $j++;
                                     }
-                                      echo "<div class='row m-2'><button type='button' class='btn btn-light' onClick='cardAlterNew(".$row['petid'].")' data-bs-toggle='modal' data-bs-target='#newModal')>
+                                      echo "<div class='row m-2'><button type='button' class='btn btn-light' onClick='cardNew(".$row['petid'].")' data-bs-toggle='modal' data-bs-target='#newModal')>
                                       <i class='bi bi-plus-square'></i>
                                       Add Vaccination</button></div>";
                                   } else {
                                     echo "<div class='row m-2 bg bg-light rounded'><label class='p-2 text-center '>No Record</label></div>";
-                                    echo "<div class='row m-2'><button type='button' class='btn btn-light' onClick='cardAlterNew(".$row['petid'].")' data-bs-toggle='modal' data-bs-target='#newModal')>
+                                    echo "<div class='row m-2'><button type='button' class='btn btn-light' onClick='cardNew(".$row['petid'].")' data-bs-toggle='modal' data-bs-target='#newModal')>
                                     <i class='bi bi-plus-square'></i>
                                     Add Vaccination</button></div>";
                                   }

@@ -142,7 +142,7 @@
                           <button type='button' class='btn btn-success w-100' onClick='schedEdit(".$row['qid'].")' data-bs-toggle='modal' data-bs-target='#boxModal')><h6 class='card-title'>".$row['petname']."</h6></button><br>
                           <label class='card-text' style='font-size: 12px;'>Owner: ".$row['userfname']."</label><br>
                           <label class='card-text' style='font-size: 12px;'>Description: ".$row['qdescription']."</label><br>
-                          <label class='card-text' style='font-size: 12px;'>Date Issued: ".$row['qdate']."</label><br>
+                          <label class='card-text' style='font-size: 12px;'>Date: ".$row['qdate']."</label><br>
                           <label class='card-text' style='font-size: 12px;'>Status: ".$row['qstatus']."</label>
                       </div>
                   </div>";

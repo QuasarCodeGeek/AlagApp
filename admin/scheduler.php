@@ -30,7 +30,7 @@
             <a class="nav-link" href="scheduler.php" active><strong>Scheduler</strong></a>
             </div>
             <div class="col text-center">
-              <a class="navbar-brand" href="index.html"><strong>AlagApp</strong></a>
+              <a class="navbar-brand" href="#"><strong>AlagApp</strong></a>
             </div>
             <div class="col text-center">
               <a class="nav-link" href="consultation.php">Consultation</a>
@@ -134,7 +134,7 @@
                         <button type='button' class='btn btn-success w-100' onClick='scheduleEdit(".$row['qid'].")' data-bs-toggle='modal' data-bs-target='#boxModal')><h6 class='card-title'>".$row['petname']."</h6></button><br>
                           <label class='card-text' style='font-size: 12px;'>Owner: ".$row['userfname']."</label><br>
                           <label class='card-text' style='font-size: 12px;'>Description: ".$row['qdescription']."</label><br>
-                          <label class='card-text' style='font-size: 12px;'>Date Issued: ".$row['qdate']."</label><br>
+                          <label class='card-text' style='font-size: 12px;'>Date: ".$row['qdate']."</label><br>
                           <label class='card-text' style='font-size: 12px;'>Status: ".$row['qstatus']."</label>
                       </div>
                   </div>";

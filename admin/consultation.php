@@ -75,7 +75,7 @@
             <a class="nav-link" href="scheduler.php">Scheduler</a>
             </div>
             <div class="col text-center">
-              <a class="navbar-brand" href="index.html"><strong>AlagApp</strong></a>
+              <a class="navbar-brand" href="#"><strong>AlagApp</strong></a>
             </div>
             <div class="col text-center border-bottom border-success border-5">
               <a class="nav-link" href="consultation.php" active><strong>Consultation</strong></a>
@@ -128,55 +128,58 @@
             $_lname = $_rowe['userlname'];
         };
       ?>
-      <div class="">
-        <div class="row m-2 p-2 bg bg-success text-white rounded">
-            <label><strong><?php echo $_rowe['userfname']." ".$_rowe['userlname']; ?></strong></label>
+      <div class="row p-2"><!-- Chat Header -->
+        <div class="p-2 bg bg-success text-white rounded"> 
+          <label><strong><?php echo $_rowe['userfname']." ".$_rowe['userlname']; ?></strong></label>
         </div>
-        <div class="row m-2 p-2 rounded">
-          <?php
-            $chat = "SELECT * FROM alagapp_db.tbl_chat WHERE mchannel = ".$channel."";
+      </div><!-- Chat Header -->
+        
+      <div class="rowp-2 "><!-- Chat Conversation -->
+        <div class="m-auto p-2 rounded">
+            <?php
+              $chat = "SELECT * FROM alagapp_db.tbl_chat WHERE mchannel = ".$channel."";
 
-            $reschat = $connect->prepare($chat);
-            $reschat->execute();
-            if($reschat->rowCount()>0){
-                $j=1;
-                echo "<ul class='list-group'>";
-                while($rowchat = $reschat->fetch(PDO::FETCH_ASSOC)){
-                  if($rowchat['msender']!=0){
+              $reschat = $connect->prepare($chat);
+              $reschat->execute();
+              if($reschat->rowCount()>0){
+                  $j=1;
+                  echo "<ul class='list-group'>";
+                  while($rowchat = $reschat->fetch(PDO::FETCH_ASSOC)){
+                    if($rowchat['msender']!=0){
+                      echo "<li class='list-group-item border-0'>
+                        <div class='float-start p-3' style='background-color: #E8F5E9; border-radius: 10px;'>
+                        <label>Client</label><br>
+                        <label>".$rowchat['mcontent']."</label><br>
+                        <span style='font-size: 12px;'>".$rowchat['mdatetime']."</span>
+                        </div>
+                        </li>";
+                  } else {
                     echo "<li class='list-group-item border-0'>
-                      <div class='float-start p-3' style='background-color: #E8F5E9; border-radius: 10px;'>
-                      <label>Client</label><br>
-                      <label>".$rowchat['mcontent']."</label><br>
-                      <span style='font-size: 12px;'>".$rowchat['mdatetime']."</span>
-                      </div>
-                      </li>";
-                } else {
-                  echo "<li class='list-group-item border-0'>
-                      <div class='float-end p-3' style='background-color: #81C784; border-radius: 10px;'>
-                      <label>You</label><br>
-                      <label>".$rowchat['mcontent']."</label><br>
-                      <span style='font-size: 12px;'>".$rowchat['mdatetime']."</span>
-                      </div>    
-                      </li>"; 
-                }
-                    $j++;
-                }
-                echo "</ul>";
-            }
-          ?>
+                        <div class='float-end p-3' style='background-color: #81C784; border-radius: 10px;'>
+                        <label>You</label><br>
+                        <label>".$rowchat['mcontent']."</label><br>
+                        <span style='font-size: 12px;'>".$rowchat['mdatetime']."</span>
+                        </div>    
+                        </li>"; 
+                  }
+                      $j++;
+                  }
+                  echo "</ul>";
+              }
+            ?>
         </div>
-        <div class="row m-2 p-2 bg bg-success rounded">
-          <form method="POST" action="chat.php" class="d-flex">
-              <input type="number" class="form-control" value="<?php echo $id ?>" placeholder="Userid" name="userid" hidden>
-              <input type="number" class="form-control" value="<?php echo $channel ?>" placeholder="Channel" name="channel" hidden>
-              <input type="number" class="form-control" value="0" placeholder="Sender" name="sender" hidden>
-                <input type="text" class="form-control me-2 d-flex" name="message" placeholder="Enter Message">
-                <button class="btn btn-light" type="submit" name="submit">Send</button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
+      </div><!-- Chat Conversation -->
+      <div class="row p-2"><!-- Chat Field -->
+          <div class="mb-2 p-2 bg bg-success rounded">
+            <form method="POST" action="chat.php" class="d-flex">
+                <input type="number" class="form-control" value="<?php echo $id ?>" placeholder="Userid" name="userid" hidden>
+                <input type="number" class="form-control" value="<?php echo $channel ?>" placeholder="Channel" name="channel" hidden>
+                <input type="number" class="form-control" value="0" placeholder="Sender" name="sender" hidden>
+                <input type="text" class="form-control me-2" name="message" placeholder="Enter Message">
+                <button class="btn btn-light" type="submit" name="submit"><i class="bi bi-send-fill" style="color: #388E3C;"></i></button>
+            </form>
+          </div>
+      </div><!-- Chat Field -->
     </div>
   </div>
 </main>
