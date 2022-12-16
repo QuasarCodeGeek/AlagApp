@@ -115,9 +115,24 @@
                 <li class='list-group-item'>
                     <a type="button" class="btn nav-link">Finished</a>
                 </li>
+                <li class='list-group-item'>
+                    <a type="button" class="btn nav-link">Draft</a>
+                </li>
             </ul>
     </div>
-    <div class="modal fade mt-5" id="editModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true"><!-- Edit Modal -->
+    <div class="modal fade mt-5" id="NewModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true"><!-- New Modal -->
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="ModalLabel">New Schedule</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="NewHere">
+                </div>
+            </div>
+        </div>
+    </div><!-- New Edit -->
+    <div class="modal fade mt-5" id="EditModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true"><!-- Edit Modal -->
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -129,7 +144,34 @@
             </div>
         </div>
     </div><!-- Modal Edit -->
+    <div class="modal fade mt-5" id="CancelModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true"><!-- Cancel Modal -->
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="ModalLabel">Cancel Schedule</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="CancelHere">
+                </div>
+            </div>
+        </div>
+    </div><!-- Cancel Edit -->
+    <div class="modal fade mt-5" id="ResubmitModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true"><!-- Resubmit Modal -->
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="ModalLabel">Resubmit Schedule</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="ResubmitHere">
+                </div>
+            </div>
+        </div>
+    </div><!-- Resubmit Edit -->
     <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 d-block"><!-- Scedules -->
+    <div class="m-auto mt-2">
+        <button class='m-1 btn btn-success w-100' data-bs-toggle='modal' data-bs-target='#NewModal' onClick="newSched(<?php echo $user; ?>)">Request Schedule</button>
+    </div>
         <?php
                 
                 $schedlist = "SELECT alagapp_db.tbl_scheduler.*, alagapp_db.tbl_petprofile.petname
@@ -156,18 +198,30 @@
                                         <label>Status: ".$row['qstatus']."</label>
                                     </div>
                                     <div>";
+                                    if(date("Y-m-d")>$row['qdate']){
+                                        echo "<label>This schedule already passed.</label><br>";
+                                        echo "<button class='m-1 btn btn-info' data-bs-toggle='modal' data-bs-target='#ResubmitModal' onClick='resubmitSched(".$row['qid'].")'>Resubmit</button>";
+                                    } else {
                                         if($row['qstatus'] == "Denied"){
-                                            echo "<button id='edit' class='m-1 btn btn-warning' data-bs-toggle='modal' data-bs-target='#editModal' onClick='getSched(".$row['qid'].")'>Edit</button>";
-                                            echo "<button class='m-1 btn btn-info' onClick='getSched(".$row['qid'].")'>Resubmit</button>";
+                                            echo "<button class='m-1 btn btn-info' data-bs-toggle='modal' data-bs-target='#ResubmitModal' onClick='resubmitSched(".$row['qid'].")'>Resubmit</button>";
                                         } else if($row['qstatus'] == "Accepted") {
-                                            echo "<button class='m-1 btn btn-danger' onClick='getSched(".$row['qid'].")'>Cancel</button>";
+                                            $d1=strtotime($row['qdate']);
+                                            $d2=ceil(($d1-time())/60/60/24);
+                                            echo "Days left: " . $d2 ."<br>";
+                                            echo "<button class='m-1 btn btn-danger' data-bs-toggle='modal' data-bs-target='#CancelModal' onClick='cancelSched(".$row['qid'].")'>Cancel</button>";
                                         } else if($row['qstatus'] == "Pending") {
-                                            echo "<button class='m-1 btn btn-warning' data-bs-toggle='modal' data-bs-target='#editModal' onClick='getSched(".$row['qid'].")'>Edit</button>";
-                                            echo "<button class='m-1 btn btn-danger' onClick='getSched(".$row['qid'].")'>Cancel</button>";
+                                            $d1=strtotime($row['qdate']);
+                                            $d2=ceil(($d1-time())/60/60/24);
+                                            echo "Days left: " . $d2."<br>";
+                                            echo "<button class='m-1 btn btn-warning' data-bs-toggle='modal' data-bs-target='#EditModal' onClick='editSched(".$row['qid'].")'>Edit</button>";
+                                            echo "<button class='m-1 btn btn-danger' data-bs-toggle='modal' data-bs-target='#CancelModal' onClick='cancelSched(".$row['qid'].")'>Cancel</button>";
                                         } else if($row['qstatus'] == "Cancelled") {
-                                            echo "<button class='m-1 btn btn-warning' data-bs-toggle='modal' data-bs-target='#editModal' onClick='getSched(".$row['qid'].")'>Edit</button>";
-                                            echo "<button class='m-1 btn btn-info' onClick='getSched(".$row['qid'].")'>Resubmit</button>";
+                                            echo "<label>This schedule is cancelled.</label>";
+                                        } else if ($row['qstatus'] == "Finished") {
+                                            echo "<label>This schedule is already finished.</label>";
+                                            echo "<button class='m-1 btn btn-info' data-bs-toggle='modal' data-bs-target='#ResubmitModal' onClick='resubmitSched(".$row['qid'].")'>Resubmit</button>";
                                         }
+                                    }
                                     echo "</div>
                                   </div>
                                 </div>

@@ -7,7 +7,7 @@
         $pet = $_POST["petid"];
         $description = $_POST["description"];
         $date = $_POST["date"];
-        $status = $_POST["status"];
+        $status = "Pending";
                             
                         
         if($user=="" || $pet=="" || $description=="" || $date=="" || $status==""){
@@ -45,7 +45,7 @@
         }
     }
 ?>
-<form method="POST" action="api/sched/editSched.php">
+<form method="POST" action="api/sched/resubmitSched.php">
     <?php
     $qid = $_REQUEST["qid"];
 
@@ -81,7 +81,7 @@
     }
     ?>
     <div class="form-group">
-        <label class="form-label">You can only edit once and when</label>
+        <label class="form-label">Please edit the information below before resubmitting.</label>
     </div>
     <div class="form-group">
         <input name="qid" type="text" value="<?php echo $qid; ?>"  hidden></input>
@@ -121,6 +121,6 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button name="submit" type="submit" class="btn btn-info">Save</button>
+        <button name="submit" type="submit" class="btn btn-primary">Resubmit</button>
     </div>
 </form>

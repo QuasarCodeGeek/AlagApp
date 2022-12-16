@@ -23,12 +23,39 @@ function checkField() {
     }
 }
 
-function getSched(qid) {
+function editSched(qid) {
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
-      document.getElementById("EditHere").innerHTML = this.responseText;
-    }
+        document.getElementById("EditHere").innerHTML = this.responseText;
+      }
     xhttp.open("GET", "api/sched/editSched.php?qid="+qid);
+    xhttp.send();
+}
+
+function newSched(userid) {
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function() {
+        document.getElementById("NewHere").innerHTML = this.responseText;
+      }
+    xhttp.open("GET", "api/sched/newSched.php?userid="+userid);
+    xhttp.send();
+}
+
+function cancelSched(qid) {
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function() {
+        document.getElementById("CancelHere").innerHTML = this.responseText;
+      }
+    xhttp.open("GET", "api/sched/cancelSched.php?qid="+qid);
+    xhttp.send();
+}
+
+function resubmitSched(qid) {
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function() {
+        document.getElementById("ResubmitHere").innerHTML = this.responseText;
+      }
+    xhttp.open("GET", "api/sched/resubmitSched.php?qid="+qid);
     xhttp.send();
 }
 

@@ -36,7 +36,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
   
-  <link href="../css/client.css" rel="stylesheet">
+  <link href="css/client.css" rel="stylesheet">
 </head>
 
 <body class="background">
