@@ -5,27 +5,27 @@
         $user = $_POST["userid"];
         $pet = $_POST["petid"];
         $vax = $_POST["vaxid"];
-        $vet = $_POST["cvet"];
-        $weight = $_POST["cweight"];
-        $date = $_POST["cdate"];
+        $fdose = $_POST["fdate"];
+        $sdose = $_POST["sdate"];
+        $booster = $_POST["booster"];
 
-        if($user=="" || $pet=="" || $vax=="" || $vet=="" || $date==""){
+        if($user=="" || $pet=="" || $vax=="" || $fdose==""){
             echo "<script>alert('Please complete the fields required!');
-            window.location='../profilealter.php?userid=".$user."'</script>";
+            window.location='../profile.php?userid=".$user."'</script>";
         } else {
             $sql = "INSERT INTO alagapp_db.tbl_vaxxcard(
                 userid,
                 petid,
                 vaxid,
-                cvet,
-                cweight,
-                cdate) VALUES(
+                fdose,
+                sdose,
+                booster) VALUES(
                     :userid,
                     :petid,
                     :vaxid,
-                    :cvet,
-                    :cweight,
-                    :cdate)";
+                    :fdose,
+                    :sdose,
+                    :booster)";
 
             $result = $connect->prepare($sql);
 
@@ -33,19 +33,19 @@
                 ":userid"=>$user,
                 ":petid"=>$pet,
                 ":vaxid"=>$vax,
-                ":cvet"=>$vet,
-                ":cweight"=>$weight,
-                ":cdate"=>$date
+                ":fdose"=>$fdose,
+                ":sdose"=>$sdose,
+                ":booster"=>$booster
             );
 
             $result->execute($values);
 
             if($result->rowCount()>0) {
                 echo "<script>alert('Record has been save!');
-                window.location='../profilealter.php?userid=".$user."'</script>";
+                window.location='../profile.php?userid=".$user."'</script>";
              } else {
                  echo "<script>alert('Unable to add record!');
-                 window.location='../profilealter.php?userid=".$user."'</script>";
+                 window.location='../profile.php?userid=".$user."'</script>";
              }
         }
     }
@@ -69,7 +69,7 @@
     $userrow = $user_res->fetch(PDO::FETCH_ASSOC);
 
     echo "
-    <form action='newData/cardNewalter.php' method='POST'>
+    <form action='newData/cardNew.php' method='POST'>
     <h1>New E-Vaccine Card</h1><br>
         <div class='input-group'>
             <label class='input-group-text'>Owner</label>
@@ -92,12 +92,12 @@
         </div><br>
         <label style='margin-left: auto; margin-right: auto;'>Vaccination Schedule</label><br>
         <div class='input-group'>
-            <label class='input-group-text'>Veterinarian</label>
-            <input type='text' placeholder=\"Enter Veterinarian\" class='form-control' name='cvet'>
-            <label class='input-group-text'>Weight(Kg)</label>
-            <input type='number' placeholder=\"Enter Weight\" class='form-control' name='cweight'>
-            <label class='input-group-text'>Date</label>
-            <input type='date' class='form-control' name='cdate'>
+            <label class='input-group-text'>First Shot</label>
+            <input type='date' class='form-control' name='fdate'>
+            <label class='input-group-text'>Second Shot</label>
+            <input type='date' class='form-control' name='sdate'>
+            <label class='input-group-text'>Booster</label>
+            <input type='date' class='form-control' name='booster'>
             </div><br>
         <div class='d-grid gap-2 d-md-flex justify-content-md-end'>
             <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>

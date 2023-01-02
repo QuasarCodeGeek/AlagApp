@@ -44,7 +44,7 @@
         }
     }
 
-    echo    "<form action='php/editData/scheduleEdit.php' method='POST'>";
+    echo    "<form action='editData/scheduleEdit.php' method='POST'>";
 
     $qid = $_REQUEST["qid"];
     $sql_sched = "SELECT * FROM alagapp_db.tbl_scheduler WHERE qid = :qid";
@@ -88,11 +88,11 @@
                 <h1>Schedule Information</h1><br>
                 <div class='input-group'>
                     <label class='input-group-text'>Owner</label>
-                    <input type='text' class='form-control' name='userid' value=".$userid." hidden>
-                    <input type='text' class='form-control' name='user' value=".$user.">
+                    <input type='text' class='form-control' name='userid' value='".$userid."' hidden>
+                    <input type='text' class='form-control' name='user' value='".$user."'>
                     <label class='input-group-text'>Pet</label>
-                    <input type='text' class='form-control' name='petid' value=".$petid." hidden>
-                    <input type='text' class='form-control' name='pet' value=".$pet.">
+                    <input type='text' class='form-control' name='petid' value='".$petid."' hidden>
+                    <input type='text' class='form-control' name='pet' value='".$pet."'>
                 </div><br>
 
                 <div class='input-group'>
@@ -102,7 +102,7 @@
 
                 <div class='input-group'>
                     <label class='input-group-text'>Date</label>
-                    <input type='date' class='form-control' name='date' value=".$date.">
+                    <input type='date' class='form-control' name='date' value='".$date."'>
                     <label class='input-group-text'>Status</label>
                     <select class='form-select' name='status'>
                         <option selected value='".$status."'>".$status."</option>

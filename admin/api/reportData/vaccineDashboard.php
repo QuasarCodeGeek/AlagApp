@@ -20,7 +20,7 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../css/styles.css">
 </head>
 <body class="bg bg-success">
     <nav class="navbar navbar-expand-lg bg-light">
@@ -104,7 +104,7 @@
           <label>Number of Vaccines: <?php echo $rowdata['count'];?></label>
         </div>
         <div class="col">
-          <button class="btn btn-success float-end me-2" onClick="vaccineNew()" data-bs-toggle='modal' data-bs-target='#newModal'>Add Vaccine</button>
+          <button class="btn btn-success float-end me-2" onclick="vaccineNew()" data-bs-toggle='modal' data-bs-target='#newModal'>Add Vaccine</button>
         </div>
       </div>
       <div class="row">
@@ -141,7 +141,7 @@
               <td>".$rowvaxx['vaxbrand']."</td>
               <td>".$rowvaxx['vaxdes']."</td>
               <td>".$rowdata["vaxx"]."</td>
-              <td><button class='btn' onClick='vaccineEdit(".$rowvaxx['vaxid'].")' data-bs-toggle='modal' data-bs-target='#boxModal'><i class='bi bi-pencil-square'></i></button></td>
+              <td><button class='btn' onclick='vaccineEdit(".$rowvaxx['vaxid'].")' data-bs-toggle='modal' data-bs-target='#boxModal'><i class='bi bi-pencil-square'></i></button></td>
             </tr>";
             $i++;
             }
@@ -154,7 +154,7 @@
   </main>
 
 <!-- Main Functions -->
-<script src="../../../js/main.js"></script>
+<script src="../../js/main.js"></script>
 <!-- Ajax Function -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!-- Bootstrap Popper -->

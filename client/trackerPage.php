@@ -88,17 +88,22 @@
         <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
             <div class="m-2 input-group">
                 <label class="input-group-text">Pet Type</label>
-                <select id="type" name="type" class="form-control form-select" aria-label="SelectPetType">
-                    <option selected>-- Select Pet Type --</option>
-                    <option value="Bird">Bird</option>
-                    <option value="Cat">Cat</option>
-                    <option value="Cow">Cow</option>
-                    <option value="Dog">Dog</option>
-                    <option value="Fish">Fish</option>
-                    <option value="Frog">Frog</option>
-                    <option value="Mouse">Mouse</option>
-                    <option value="Lizard">Lizard</option>
-                    <option value="Snake">Snake</option>
+                <select id="type" onkeyup="setType()" name="type" class="form-control form-select" aria-label="SelectPetType">
+                  <?php
+                      $pet = "SELECT pettype FROM alagapp_db.tbl_symptom GROUP BY pettype HAVING COUNT(pettype) >= 1";
+                      $petlist = $connect->prepare($pet);
+                      $petlist->execute();
+              
+                      if($petlist->rowCount()>0) {
+                        $i=1;
+                        echo "<option selected>-- Select Pet Type --</option>";
+                        while($petrow= $petlist->fetch(PDO::FETCH_ASSOC)){
+                          $pettype = $petrow['pettype'];
+                          echo "<option value='".$pettype."'>".$pettype."</option>";
+                          $i++;
+                        }
+                      }
+                    ?>
                 </select>
             </div>
         </div>
@@ -106,29 +111,21 @@
             <div class="m-2 input-group">
                 <label class="input-group-text">Body Part</label>
                 <select id="part" name="part" class="form-control form-select" aria-label="SelectBodyPart">
-                    <option selected>-- Select Body Part --</option>
-                    <option value="Abdomen">Bird</option>
-                    <option value="Back">Back</option>
-                    <option value="Behavior">Behavior</option>
-                    <option value="Digits">Digits</option>
-                    <option value="Eyes">Eyes</option>
-                    <option value="Ears">Ears</option>
-                    <option value="Fur">Fur</option>
-                    <option value="Gills">Gills</option>
-                    <option value="Gizzard">Gizzard</option>
-                    <option value="Heart">Heart</option>
-                    <option value="Lungs">Lungs</option>
-                    <option value="Mouth">Mouth</option>
-                    <option value="Mucosa">Mucosa</option>
-                    <option value="Nerve (Bronchial)">Nerve (Bronchial)</option>
-                    <option value="Nose">Nose</option>
-                    <option value="Near Tail">Near Tail</option>
-                    <option value="Spleen">Spleen</option>
-                    <option value="Skin">Skin</option>
-                    <option value="Systematic">Systematic</option>
-                    <option value="Tail">Tail</option>
-                    <option value="Toes">Toes</option>
-                    <option value="Tongue">Tongue</option>
+                  <?php
+                    $part = "SELECT bodypart FROM alagapp_db.tbl_symptom GROUP BY bodypart HAVING COUNT(bodypart) >= 1";
+                    $checkpart = $connect->prepare($part);
+                    $checkpart->execute();
+            
+                    if($checkpart->rowCount()>0) {
+                      $h=1;
+                      echo "<option selected>-- Select Body Part --</option>";
+                      while($bodyrow = $checkpart->fetch(PDO::FETCH_ASSOC)){
+                        $body = $bodyrow['bodypart']; 
+                        echo "<option value='".$body."'>".$body."</option>";
+                        $h++;
+                      }
+                    }
+                  ?>
                 </select>
             </div>
         </div>
@@ -136,24 +133,21 @@
             <div class="m-2 input-group">
                 <label class="input-group-text">Symptom</label>
                 <select id="symptom" name="symptom" class="form-control form-select" aria-label="SelectSymptom">
-                    <option selected>-- Select Symptom --</option>
-                    <option value="Abdominal Enlargement">Abdominal Enlargement</option>
-                    <option value="Abnormal Shedding">Abnormal Shedding</option>
-                    <option value="Aggression">Aggression</option>
-                    <option value="Bloating">Bloating</option>
-                    <option value="Cough">Cough</option>
-                    <option value="Diarrhea">Diarrhea</option>
-                    <option value="Dermatitis">Dermatitis</option>
-                    <option value="High Fever">High Fever</option>
-                    <option value="Lethargy">Lethargy</option>
-                    <option value="Loss of Appetite">Loss of Appetite</option>
-                    <option value="Milky Skin">Milky Skin</option>
-                    <option value="Nasal Discharge">Nasal Discharge</option>
-                    <option value="Ocular Discharge">Ocular Discharge</option>
-                    <option value="Paralysis">Paralysis</option>
-                    <option value="Sudden Death">Sudden Death</option>
-                    <option value="Ulceration">Ulceration</option>
-                    <option value="Weight Loss">Weight Loss</ioption>
+                  <?php
+                      $sympt = "SELECT symptom FROM alagapp_db.tbl_symptom GROUP BY symptom HAVING COUNT(symptom) >= 1";
+                      $check = $connect->prepare($sympt);
+                      $check->execute();
+              
+                      if($check->rowCount()>0) {
+                        $j=1;
+                        echo "<option selected>-- Select Symptom --</option>";
+                        while($row = $check->fetch(PDO::FETCH_ASSOC)){
+                          $symptom = $row['symptom']; 
+                          echo "<option value='".$symptom."'>".$symptom."</option>";
+                          $j++;
+                        }
+                      }
+                    ?>
                 </select>
             </div>
         </div>

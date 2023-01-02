@@ -8,8 +8,9 @@
         $description = $_POST["description"];
         $date = $_POST["date"];
         $status = $_POST["status"];
+        $vet = $_POST["vet"];
 
-        if($user=="" || $pet=="" || $description=="" || $date=="" || $status==""){
+        if($user=="" || $pet=="" || $description=="" || $date=="" || $vet==""){
             echo "<script>alert('Please complete the fields required!');
             window.location='profile.php?userid=".$user."'</script>";
         } else {
@@ -18,7 +19,8 @@
                 petid = :petid,
                 ndescription = :ndescription,
                 ndate = :ndate,
-                nstatus = :nstatus
+                nstatus = :nstatus,
+                nvet = :nvet
 
                 WHERE nid = :nid";
 
@@ -28,7 +30,8 @@
                 ":petid"=>$pet,
                 ":ndescription"=>$description,
                 ":ndate"=>$date,
-                ":nstatus"=>$status
+                ":nstatus"=>$status,
+                ":nvet"=>$vet
             );
 
             $result = $connect->prepare($sql);
@@ -59,6 +62,7 @@
         $description = "";
         $date = "";
         $status = "";
+        $vet = "";
         
         if($note_res->rowCount()==1){
             $note_row = $note_res->fetch(PDO::FETCH_ASSOC);
@@ -67,7 +71,8 @@
             $petid = $note_row["petid"];
             $description = $note_row["ndescription"];
             $date = $note_row["ndate"];
-            $status = $note_row["nstatus"];
+            $vet = $note_row["nvet"];
+            //$status = $note_row["nstatus"];
         }
 
         $ownern = "SELECT * FROM alagapp_db.tbl_userlist WHERE userid = ".$userid."";
@@ -94,11 +99,11 @@
                 <h1>Prescription Information</h1><br>
                 <div class='input-group'>
                     <label class='input-group-text'>Pet Owner</label>
-                    <input type='hidden' class='form-control' name='userid' value=".$userid.">
-                    <input type='text' class='form-control' name='owner' value=".$ownername." readonly>
+                    <input type='hidden' class='form-control' name='userid' value='".$userid."'>
+                    <input type='text' class='form-control' name='owner' value='".$ownername."' readonly>
                     <label class='input-group-text'>Pet Name</label>
-                    <input type='hidden' class='form-control' name='petid' value=".$petid.">
-                    <input type='text' class='form-control' name='pet' value=".$petname." readonly>
+                    <input type='hidden' class='form-control' name='petid' value='".$petid."'>
+                    <input type='text' class='form-control' name='pet' value='".$petname."' readonly>
                 </div><br>
 
                 <div class='input-group'>
@@ -108,9 +113,10 @@
 
                 <div class='input-group'>
                     <label class='input-group-text'>Date</label>
-                    <input type='date' class='form-control' name='date' value=".$date.">
-                    <label class='input-group-text'>Status</label>
-                <input type='text' class='form-control' name='status' value=".$status.">
+                    <input type='date' class='form-control' name='date' value='".$date."'>
+                    <label class='input-group-text'>Veterinarian</label>
+                    <input type='text' class='form-control' name='status' value='".$status."' hidden>
+                    <input type='text' class='form-control' name='vet' value='".$vet."'>
                 </div><br>
 
                 <div class='d-grid gap-2 d-md-flex justify-content-md-end'>

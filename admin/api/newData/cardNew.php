@@ -5,27 +5,27 @@
         $user = $_POST["userid"];
         $pet = $_POST["petid"];
         $vax = $_POST["vaxid"];
-        $fdose = $_POST["fdate"];
-        $sdose = $_POST["sdate"];
-        $booster = $_POST["booster"];
+        $vet = $_POST["cvet"];
+        $weight = $_POST["cweight"];
+        $date = $_POST["cdate"];
 
-        if($user=="" || $pet=="" || $vax=="" || $fdose==""){
+        if($user=="" || $pet=="" || $vax=="" || $vet=="" || $date==""){
             echo "<script>alert('Please complete the fields required!');
             window.location='../profile.php?userid=".$user."'</script>";
         } else {
-            $sql = "INSERT INTO alagapp_db.tbl_vaxxcard(
+            $sql = "INSERT INTO alagapp_db.tbl_carddetail(
                 userid,
                 petid,
                 vaxid,
-                fdose,
-                sdose,
-                booster) VALUES(
+                cvet,
+                cweight,
+                cdate) VALUES(
                     :userid,
                     :petid,
                     :vaxid,
-                    :fdose,
-                    :sdose,
-                    :booster)";
+                    :cvet,
+                    :cweight,
+                    :cdate)";
 
             $result = $connect->prepare($sql);
 
@@ -33,9 +33,9 @@
                 ":userid"=>$user,
                 ":petid"=>$pet,
                 ":vaxid"=>$vax,
-                ":fdose"=>$fdose,
-                ":sdose"=>$sdose,
-                ":booster"=>$booster
+                ":cvet"=>$vet,
+                ":cweight"=>$weight,
+                ":cdate"=>$date
             );
 
             $result->execute($values);
@@ -78,7 +78,7 @@
             <label class='input-group-text'>Pet Name</label>
                 <input placeholder=\"Pet ID\" type='hidden' class='form-control' value='".$row['petid']."' name='petid'>
                 <input placeholder=\"Pet Name\" type='text' class='form-control' value='".$row['petname']."' name='petname'>
-            <label class='input-group-text'>Vaccine ID</label>
+            <label class='input-group-text'>Vaccine</label>
                 <select class='form-select' name='vaxid' id='inputGroupSelect'>
                 <option selected=''>-- Select Vaccine--</option>";
                 if($resvax->rowCount()>0){
@@ -90,14 +90,13 @@
                 };
         echo "</select>
         </div><br>
-        <label style='margin-left: auto; margin-right: auto;'>Vaccination Schedule</label><br>
         <div class='input-group'>
-            <label class='input-group-text'>First Shot</label>
-            <input type='date' class='form-control' name='fdate'>
-            <label class='input-group-text'>Second Shot</label>
-            <input type='date' class='form-control' name='sdate'>
-            <label class='input-group-text'>Booster</label>
-            <input type='date' class='form-control' name='booster'>
+            <label class='input-group-text'>Veterinarian</label>
+            <input type='text' placeholder=\"Enter Veterinarian\" class='form-control' name='cvet'>
+            <label class='input-group-text'>Weight(Kg)</label>
+            <input type='text' placeholder=\"Enter Weight\" class='form-control' name='cweight'>
+            <label class='input-group-text'>Date</label>
+            <input type='date' class='form-control' name='cdate'>
             </div><br>
         <div class='d-grid gap-2 d-md-flex justify-content-md-end'>
             <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>

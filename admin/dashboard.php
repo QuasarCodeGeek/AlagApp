@@ -15,34 +15,28 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="bg bg-success">
-    <nav class="navbar navbar-expand-lg bg-light">
-        <div class="container container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="row collapse navbar-collapse mx-auto" id="navbarSupportedContent">
-            <div class="col text-center">
-              <a class="nav-link" href="account.php">Account</a>
-            </div>
-            <div class="col text-center">
-            <a class="nav-link" href="scheduler.php">Scheduler</a>
-            </div>
-            <div class="col text-center">
-              <a class="navbar-brand" href="#"><strong>AlagApp</strong></a>
-            </div>
-            <div class="col text-center">
-              <a class="nav-link" href="consultation.php">Consultation</a>
-            </div>
-            <div class="col text-center border-bottom border-success border-5">
-              <a class="nav-link text-success" href="dashboard.php" active><strong>Dashboard</strong></a> 
-            </div>
-          </div>
+  <main class="row container-fluid px-2">
+      <div class="col-2">
+        <div class="col text-center my-3">
+          <a class="nav-link text-white nav-brand" href="#"><h2>AlagApp</h2></a>
+        </div><br>
+        <div class="col text-center my-3">
+          <a class="nav-link text-white" href="dashboard.php" active><h4>Dashboard</h4></a> 
         </div>
-      </nav>
-      <main class="container-fluid" style="background-color: #E0E0E0;">
+        <div class="col text-center my-3">
+          <a class="nav-link text-white" href="account.php">Account</a>
+        </div>
+        <div class="col text-center my-3">
+          <a class="nav-link text-white" href="scheduler.php">Scheduler</a>
+        </div>
+        <div class="col text-center my-3">
+          <a class="nav-link text-white" href="consultation.php">Consultation</a>
+        </div>
+      </div>
+      <div class="col-10 container-fluid" style="background-color: #E0E0E0;">
                     <div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                       <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -67,8 +61,13 @@
                         </div>
                       </div>
                     </div>
-
-          <div class="row">
+          <div class="row p-3">
+            <div class="rounded bg bg-light p-3">
+              <Label>Sgined in as: <b>Admin101</b> </Label>
+              <button class="btn bg bg-info text-white">Log Out</button>
+            </div>
+          </div>
+          <div class="row p-2">
             <div class="col text-center bg bg-success p-1">
               <a type="button" class="text-white nav-link" href="dashboard.php"><strong>Main</strong></a>
             </div>
@@ -152,10 +151,11 @@
           </div>
         </div>
     </div> 
-  </main>
+  </div>
+</main>
 
 <!-- Main Functions -->
-<script src="../js/main.js"></script>
+<script src="js/main.js"></script>
 <!-- Ajax Function -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!-- Bootstrap Popper -->

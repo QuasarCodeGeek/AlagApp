@@ -5,9 +5,9 @@
         $pet = $_POST["petid"];
         $description = $_POST["description"];
         $date = $_POST["date"];
-        $status = $_POST["status"];
+        $vet = $_POST["vet"];
 
-        if($user=="" || $pet=="" || $description=="" || $date=="" || $status==""){
+        if($user=="" || $pet=="" || $description=="" || $date=="" || $vet==""){
             echo "<script>alert('Please complete the fields required!');
             window.location='../profile.php?userid=".$user."'</script>";
         } else {
@@ -16,12 +16,12 @@
                 petid,
                 ndescription,
                 ndate,
-                nstatus) VALUES(
+                nvet) VALUES(
                     :userid,
                     :petid,
                     :ndescription,
                     :ndate,
-                    :nstatus)";
+                    :nvet)";
 
             $result = $connect->prepare($sql);
 
@@ -30,7 +30,7 @@
                 ":petid"=>$pet,
                 ":ndescription"=>$description,
                 ":ndate"=>$date,
-                ":nstatus"=>$status
+                ":nvet"=>$vet
             );
 
             $result->execute($values);
@@ -78,12 +78,13 @@
         <div class='input-group'>
             <label class='input-group-text'>Date Issued</label>
             <input type='date' class='form-control' name='date'>
-            <label class='input-group-text'>Status</label>
-            <select class='form-select' name='status' id='inputGroupSelect'>
+            <label class='input-group-text'>Veterinarian</label>
+            <input type='text' class='form-control' name='vet'>
+            <!--<select class='form-select' name='status' id='inputGroupSelect'>
                     <option selected''>-- Set Status --</option>
                     <option name='status' value='Active'>Active</option>
                     <option name='status' value='Inactive'>Inactive</option>
-                </select>
+                </select>-->
         </div><br>
         <div class='d-grid gap-2 d-md-flex justify-content-md-end'> 
             <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>

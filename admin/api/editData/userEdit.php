@@ -3,8 +3,6 @@
 
     if(isset($_POST["submit"])){
         $id = $_POST["id"];
-        $email = $_POST["email"];
-        $password = $_POST["password"];
         $fname = $_POST["fname"];
         $mname = $_POST["mname"];
         $lname = $_POST["lname"];
@@ -113,10 +111,10 @@
 
         <div class='input-group'>
         <span class='input-group-text'>Birth Date</span>
-        <input class='form-control' type='date' name='bdate' value=".$bdate.">
+        <input class='form-control' type='date' name='bdate' value='".$bdate."'>
         <label class='input-group-text' for='genderSelect'>Sex</label>
         <select class='form-select' name='gender' id='genderSelect'>
-            <option selected=".$gender." value=".$gender.">".$gender."</option>
+            <option selected='".$gender."' value='".$gender."'>".$gender."</option>
             <option value=''>-- Select Gender --</option>
             <option name='gender' value='M'>Male</option>
             <option name='gender' value='F'>Female</option>
@@ -124,9 +122,9 @@
         </div><br>
 
         <div class='input-group'>
-        <span class='input-group-text'>Baranggay</span>
-        <input class='form-control' type='text' name='district' value='".$street."' placeholder=\"Enter Street\">
         <span class='input-group-text'>Street</span>
+        <input class='form-control' type='text' name='street' value='".$street."' placeholder=\"Enter Street\">
+        <span class='input-group-text'>Barangay</span>
         <input class='form-control' type='text' name='district' value='".$district."' placeholder=\"Enter Barangay\">
         </div><br>
         <div class='input-group'>

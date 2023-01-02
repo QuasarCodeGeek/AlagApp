@@ -1,6 +1,31 @@
   <?php 
     require("connector.php"); 
     require("dataAnalytics.php");
+    $prof = $_GET["userid"];
+    
+    $npet = "SELECT COUNT(userid) AS numpet FROM alagapp_db.tbl_petprofile WHERE userid = ".$prof."";
+    $res1 = $connect->query($npet);
+    $res1->execute();
+    $row1 = $res1->fetch(PDO::FETCH_ASSOC);
+    $totalnpet = $row1["numpet"];
+
+    $nsched = "SELECT COUNT(userid) AS numsched FROM alagapp_db.tbl_scheduler WHERE userid = ".$prof."";
+    $res2 = $connect->query($nsched);
+    $res2->execute();
+    $row2 = $res2->fetch(PDO::FETCH_ASSOC);
+    $totalnsched = $row2["numsched"];
+
+    $ncard = "SELECT COUNT(userid) AS numcard FROM alagapp_db.tbl_carddetail WHERE userid = ".$prof."";
+    $res3 = $connect->query($ncard);
+    $res3->execute();
+    $row3 = $res3->fetch(PDO::FETCH_ASSOC);
+    $totalncard = $row3["numcard"];
+
+    $nnote = "SELECT COUNT(userid) AS numnote FROM alagapp_db.tbl_notedetail WHERE userid = ".$prof."";
+    $res4 = $connect->query($nnote);
+    $res4->execute();
+    $row4 = $res4->fetch(PDO::FETCH_ASSOC);
+    $totalnnonte = $row4["numnote"];
   ?>
   <!DOCTYPE html>
   <html lang="en">
@@ -15,7 +40,7 @@
       <!-- Bootstrap Icons -->
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
       <!-- Custom CSS -->
-      <link rel="stylesheet" href="../../css/styles.css">
+      <link rel="stylesheet" href="../css/styles.css">
   </head>
   <body class="bg bg-success">
   <nav class="navbar navbar-expand-lg bg-light">
@@ -167,16 +192,16 @@
                               </div>
                               <div class='col-4'>
                                 <div class='row-2 m-auto mb-2 p-2 bg bg-light rounded'>
-                                    <label>Pets: #</label>
+                                    <label>Pets: ".$totalnpet."</label>
                                 </div>
                                 <div class='row-2 m-auto mb-2 p-2 bg bg-light rounded'>
-                                    <label>Schedules: #</label>
+                                    <label>Schedules: ".$totalnsched."</label>
                                 </div>
                                 <div class='row-2 m-auto mb-2 p-2 bg bg-light rounded'>
-                                    <label>Vaccine Card: #</label>
+                                    <label>Vaccine Card: ".$totalncard."</label>
                                 </div>
                                 <div class='row-2 m-auto mb-2 p-2 bg bg-light rounded'>
-                                    <label>Prescription Note: #</label>
+                                    <label>Prescription Note: ".$totalnnonte."</label>
                                 </div>
                               </div>";
                       } else {
@@ -267,18 +292,18 @@
                                           <label>Date: ".$rowvax['cdate']."</label>
                                         </div>
                                         <div class='col-2'>
-                                          <button type='button' class='btn btn-info w-100 h-100' onClick='cardAlterEdit(".$rowvax['cid'].")' data-bs-toggle='modal' data-bs-target='#boxModal'>
+                                          <button type='button' class='btn btn-info w-100 h-100' onClick='cardEdit(".$rowvax['cid'].")' data-bs-toggle='modal' data-bs-target='#boxModal'>
                                           <i class='bi bi-pencil-square'></i></button>
                                         </div>
                                       </div>";
                                       $j++;
                                     }
-                                      echo "<div class='row m-2'><button type='button' class='btn btn-light' onClick='cardAlterNew(".$row['petid'].")' data-bs-toggle='modal' data-bs-target='#newModal')>
+                                      echo "<div class='row m-2'><button type='button' class='btn btn-light' onClick='cardNew(".$row['petid'].")' data-bs-toggle='modal' data-bs-target='#newModal')>
                                       <i class='bi bi-plus-square'></i>
                                       Add Vaccination</button></div>";
                                   } else {
                                     echo "<div class='row m-2 bg bg-light rounded'><label class='p-2 text-center '>No Record</label></div>";
-                                    echo "<div class='row m-2'><button type='button' class='btn btn-light' onClick='cardAlterNew(".$row['petid'].")' data-bs-toggle='modal' data-bs-target='#newModal')>
+                                    echo "<div class='row m-2'><button type='button' class='btn btn-light' onClick='cardNew(".$row['petid'].")' data-bs-toggle='modal' data-bs-target='#newModal')>
                                     <i class='bi bi-plus-square'></i>
                                     Add Vaccination</button></div>";
                                   }
@@ -298,7 +323,7 @@
                                         <div class='row m-2 p-2 bg bg-light rounded'>
                                           <label>Description: ".$rownote['ndescription']."</label><br>
                                           <label>Date Issued: ".$rownote['ndate']."</label><br>
-                                          <label>Status: ".$rownote['nstatus']."</label>
+                                          <label>Veterinarian: ".$rownote['nvet']."</label>
 
                                           <button type='button' class='btn btn-info' onClick='prescriptionEdit(".$rownote['nid'].")' data-bs-toggle='modal' data-bs-target='#boxModal'>
                                           <i class='bi bi-pencil-square'></i>
@@ -337,7 +362,7 @@
         </main>
 
   <!-- Main Functions -->
-  <script src="../../js/main.js"></script>
+  <script src="../js/main.js"></script>
   <!-- Ajax Function -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <!-- Bootstrap Popper -->

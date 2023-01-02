@@ -42,7 +42,7 @@
         }
     }
 echo "
-    <form action='php/newData/vaccineNew.php' method='POST'>
+    <form action='api/newData/vaccineNew.php' method='POST'>
         <h1>New Vaccine Information</h1><br>
             <div class='input-group'>
                 <label class='input-group-text'>Name</label>

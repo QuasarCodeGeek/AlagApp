@@ -1,11 +1,11 @@
 header {
     /*background-color:#388E3C; green(700)*/
-    background: linear-gradient(to right, rgba(255,0,0,0), rgb(38, 143, 68)),url('../assets/img/clinic1.jpg');
+    background: linear-gradient(to right, rgba(255,0,0,0), rgb(38, 143, 68)),url('../../assets/img/clinic1.jpg');
     background-size: cover;
 }
 
 .background {
-    background: linear-gradient(to right, rgba(153, 197, 160, 0.65), rgb(20, 177, 99)), url("../assets/img/resource/pet3.jpg");
+    background: linear-gradient(to right, rgba(153, 197, 160, 0.65), rgb(20, 177, 99)), url("../../assets/img/resource/pet3.jpg");
     background-size: cover;
 }
 

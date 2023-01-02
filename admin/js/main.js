@@ -43,14 +43,14 @@ function cardNew(petid) {
     xhttp.send();
   }
 
-function cardAlterNew(petid) {
+/*function cardAlterNew(petid) {
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
       document.getElementById("modalNew").innerHTML = this.responseText;
     }
     xhttp.open("GET", "newData/cardNewalter.php?petid="+petid);
     xhttp.send();
-  }
+  }*/
 
 function noteNew(petid) {
     const xhttp = new XMLHttpRequest();
@@ -60,14 +60,24 @@ function noteNew(petid) {
     xhttp.open("GET", "newData/noteNew.php?petid="+petid);
     xhttp.send();
   }
-function scheduleNew() {
+
+  function symptomNew() {
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function() {
+      document.getElementById("modalNew").innerHTML = this.responseText;
+    }
+    xhttp.open("GET", "../newData/newSymptom.php");
+    xhttp.send();
+  }
+
+/*function scheduleNew() {
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
       document.getElementById("modalNew").innerHTML = this.responseText;
     }
     xhttp.open("GET", "newData/scheduleNew.php");
     xhttp.send();
-  }
+  }*/
 
 // Edit Functions
 function userEdit(userid) {
@@ -106,14 +116,14 @@ function cardEdit(cid) {
     xhttp.send();
 }
 
-function cardAlterEdit(cid) {
+/*function cardAlterEdit(cid) {
   const xhttp = new XMLHttpRequest();
   xhttp.onload = function() {
     document.getElementById("modalHere").innerHTML = this.responseText;
   }
   xhttp.open("GET", "editData/cardEditalter.php?cid="+cid);
   xhttp.send();
-}
+}*/
 
 function prescriptionEdit(nid) {
     const xhttp = new XMLHttpRequest();
@@ -150,6 +160,15 @@ function SchedEdit(qid) {
   xhttp.send();
 }
 
+function symptomEdit(sid) {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    document.getElementById("modalHere").innerHTML = this.responseText;
+  }
+  xhttp.open("GET", "../editData/editSymptom.php?sid="+sid);
+  xhttp.send();
+}
+
 // Search Functions
 function _searchAccount() {
   var account = document.getElementById("searchAccount").value;
@@ -158,7 +177,7 @@ function _searchAccount() {
       xhttp.onload = function() {
         document.getElementById("accountHere").innerHTML = this.responseText;
       }
-      xhttp.open("GET", "api/searchData/searchAccount.php?account="+account);
+      xhttp.open("GET", "../searchData/searchAccount.php?account="+account);
       xhttp.send();
     } else {
       document.getElementById("accountHere").innerHTML = "";

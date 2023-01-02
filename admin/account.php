@@ -11,10 +11,10 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="bg bg-success">
-<nav class="navbar navbar-expand-lg bg-light">
+<!--<nav class="navbar navbar-expand-lg bg-light">
         <div class="container container-fluid">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -37,10 +37,27 @@
             </div>
           </div>
         </div>
-      </nav>
+      </nav>-->
 
-      <main class="container-fluid">
-        <div class="row">
+      <main class="container-fluid px-2 row">
+        <div class="col-2">
+          <div class="col text-center my-3">
+            <a class="nav-link text-white nav-brand" href="#"><h2>AlagApp</h2></a>
+          </div><br>
+          <div class="col text-center my-3">
+            <a class="nav-link text-white" href="dashboard.php" active>Dashboard</a> 
+          </div>
+          <div class="col text-center my-3">
+            <a class="nav-link text-white" href="account.php"><h4>Account</h4></a>
+          </div>
+          <div class="col text-center my-3">
+            <a class="nav-link text-white" href="scheduler.php">Scheduler</a>
+          </div>
+          <div class="col text-center my-3">
+            <a class="nav-link text-white" href="consultation.php">Consultation</a>
+          </div>
+        </div>
+        <div class="col row">
             <div class="col-3 p-2 bg bg-light">
                 <!--<div class="row m-2">
                 <input type="text" onkeyup="_searchAccount()" class="form-control rounded-start" id="searchAccount" placeholder="Search">
@@ -91,7 +108,7 @@
         </div>
       </main>
 <!-- Main Functions -->
-<script src="../js/main.js"></script>
+<script src="js/main.js"></script>
 <!-- Ajax Function -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!-- Bootstrap Popper -->

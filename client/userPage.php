@@ -105,11 +105,11 @@
                       <div class='row p-2'>
                         <div class='col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3'>";
                             if($pict!=''){
-                                echo "<img class='m-auto mb-2 rounded' style='width: 16rem;' src='../assets/uploads/".$pict."' alt='userProfile'>";
+                                echo "<img class='m-auto mb-2 rounded' style='width: 16rem; max-height: 18rem;' src='../assets/uploads/".$pict."' alt='userProfile'>";
                             } else if ($sex=='F') {
-                                echo "<img class='m-auto mb-2 rounded' style='width: 16rem;' src='../assets/default/female.png' alt='userProfile'>";
+                                echo "<img class='m-auto mb-2 rounded' style='width: 16rem; max-height: 18rem;' src='../assets/default/female.png' alt='userProfile'>";
                             } else {
-                                echo "<img class='m-auto mb-2 rounded' style='width: 16rem;' src='../assets/default/male.png' alt='userProfile'>";
+                                echo "<img class='m-auto mb-2 rounded' style='width: 16rem; max-height: 18rem;' src='../assets/default/male.png' alt='userProfile'>";
                             }
                             echo "
                         </div>
@@ -133,7 +133,7 @@
                                 ?>
                                 <div class="col row mt-5">
                                   <div class='col-6 mb-2'>
-                                      <button class='btn btn-success w-100'>Edit</button>
+                                      <button class='btn btn-success w-100' onclick="window.location='api/editProfile.php?userid=<?php echo $user; ?>'">Edit</button>
                                   </div>
                                   <div class='col-6'>
                                       <button class='btn btn-warning w-100' onclick="window.location='index.php'">Log Out</button>

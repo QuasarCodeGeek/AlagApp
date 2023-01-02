@@ -111,21 +111,21 @@
             <h1>Pet Profile</h1><br>
             <div class='input-group'>
             <span class='input-group-text'>Pet Name</span>
-            <input class='form-control' type='text' placeholder=\"Name\" name='petname' value=".$petname.">
+            <input class='form-control' type='text' placeholder=\"Name\" name='petname' value='".$petname."'>
             <span class='input-group-text'>Species</span>
-            <input class='form-control' type='text' placeholder=\"Species\" name='pettype' value=".$pettype.">
+            <input class='form-control' type='text' placeholder=\"Species\" name='pettype' value='".$pettype."'>
             <span class='input-group-text'>Breed</span>
-            <input class='form-control' type='text' placeholder=\"Breed\" name='petbreed' value=".$petbreed.">
+            <input class='form-control' type='text' placeholder=\"Breed\" name='petbreed' value='".$petbreed."'>
             </div><br>
 
             <div class='input-group'>
             <span class='input-group-text'>Birth Date</span>
-            <input class='form-control' type='date' name='petbdate' value=".$petbdate.">
+            <input class='form-control' type='date' name='petbdate' value='".$petbdate."'>
             <span class='input-group-text'>Age</span>
-            <input class='form-control' type='number' placeholder=\"Age\" name='petage' value=".$petage.">
+            <input class='form-control' type='number' placeholder=\"Age\" name='petage' value='".$petage."'>
             <label class='input-group-text' for='inputGenderSelect'>Gender</label>
                 <select class='form-select' name='petgender' id='inputGenderSelect'>
-                    <option selected=".$petgender." value=".$petgender.">".$petgender."</option>
+                    <option selected=".$petgender." value='".$petgender."'>".$petgender."</option>
                     <option value=''>-- Select Gender --</option>
                     <option value='M'>M</option>
                     <option value='F'>F</option>
@@ -137,21 +137,21 @@
             <div class='input-group'>
             <label class='input-group-text' for='inputGroupSelect'>Owner</label>
                 <select class='form-select' name='userid' id='inputGroupSelect'>
-                    <option selected=".$owner." value=".$owner.">".$joinrow['userfname']."</option>
+                    <option selected=".$owner." value='".$owner."'>".$joinrow['userfname']."</option>
                     <option value=''>-- Select Owner --</option>";
                 if($resOwner->rowCount()>0){
                     $counter=1;
                     while($OwnerRow = $resOwner->fetch(PDO::FETCH_ASSOC)){
-                        echo "<option name='userid' value=".$OwnerRow['userid'].">".$OwnerRow['userfname']."</option>";
+                        echo "<option name='userid' value='".$OwnerRow['userid']."'>".$OwnerRow['userfname']."</option>";
                         $counter++;
                     }
                 }; 
                 
             echo "</select>
             <span class='input-group-text'>Weight</span>
-            <input class='form-control' type='float' placeholder=\"Weight\" name='petweight' value=".$petweight.">
+            <input class='form-control' type='float' placeholder=\"Weight\" name='petweight' value='".$petweight."'>
             <span class='input-group-text'>Height</span>
-            <input class='form-control' type='float' placeholder=\"Height\" name='petheight' value=".$petheight.">
+            <input class='form-control' type='float' placeholder=\"Height\" name='petheight' value='".$petheight."'>
             </div><br>
             
             <div class='d-grid gap-2 d-md-flex justify-content-md-end'>

@@ -20,7 +20,7 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../css/styles.css">
 </head>
 <body class="bg bg-success">
     <nav class="navbar navbar-expand-lg bg-light">
@@ -52,7 +52,7 @@
                       <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="ModalLabel">New Record</h1>
+                            <h1 class="modal-title fs-5" id="ModalLabel">Add New Symptom</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body d-grid gap-2 container-fluid" id="modalNew">
@@ -64,7 +64,7 @@
                       <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="ModalLabel">Edit Data</h1>
+                            <h1 class="modal-title fs-5" id="ModalLabel">Edit Existing Symptom</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body d-grid gap-2 container-fluid" id="modalHere">
@@ -148,7 +148,7 @@
   </main>
 
 <!-- Main Functions -->
-<script src="../../../js/main.js"></script>
+<script src="../../js/main.js"></script>
 <!-- Ajax Function -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!-- Bootstrap Popper -->

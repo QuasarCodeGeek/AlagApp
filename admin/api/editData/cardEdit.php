@@ -6,21 +6,21 @@ require("../connector.php");
         $owner = $_POST["userid"];
         $pet = $_POST["petid"];
         $vax = $_POST["vaxid"];
-        $fdose = $_POST["fdose"];
-        $sdose = $_POST["sdose"];
-        $booster = $_POST["booster"];
+        $vet = $_POST["cvet"];
+        $weight = $_POST["cweight"];
+        $date = $_POST["cdate"];
 
-        if($owner=="" || $pet=="" || $vax=="" || $fdose==""){
+        if($owner=="" || $pet=="" || $vet=="" || $vax=="" || $date==""){
             echo "<script>alert('Complete Required Fields!');
             window.location='profile.php?userid=".$owner."'</script>";
         } else {
-            $sql = "UPDATE alagapp_db.tbl_vaxxcard SET
+            $sql = "UPDATE alagapp_db.tbl_carddetail SET
                 userid = :userid,
                 petid = :petid,
                 vaxid = :vaxid,
-                fdose = :fdose,
-                sdose = :sdose,
-                booster = :booster
+                cvet = :cvet,
+                cweight = :cweight,
+                cdate = :cdate
 
                 WHERE cid = :cid";
 
@@ -29,9 +29,9 @@ require("../connector.php");
                 ":userid" => $owner,
                 ":petid" => $pet,
                 ":vaxid" => $vax,
-                ":fdose" => $fdose,
-                ":sdose" => $sdose,
-                ":booster" => $booster
+                ":cvet" => $vet,
+                ":cweight" => $weight,
+                ":cdate" => $date
             );
 
             $result = $connect->prepare($sql);
@@ -50,7 +50,7 @@ require("../connector.php");
     echo "<form action='editData/cardEdit.php' method='POST'>";
 
     $card = $_REQUEST["cid"];
-    $sql_card = "SELECT * FROM alagapp_db.tbl_vaxxcard WHERE cid = :cid";
+    $sql_card = "SELECT * FROM alagapp_db.tbl_carddetail WHERE cid = :cid";
 
     try{
         $card_res = $connect->prepare($sql_card);
@@ -60,9 +60,9 @@ require("../connector.php");
         $owner = "";
         $pet = "";
         $vax = "";
-        $fdose = "";
-        $sdose = "";
-        $booster = "";
+        $vet = "";
+        $weight = "";
+        $date = "";
         
         if($card_res->rowCount()==1){
             $card_row = $card_res->fetch(PDO::FETCH_ASSOC);
@@ -70,9 +70,9 @@ require("../connector.php");
             $owner = $card_row["userid"];
             $pet = $card_row["petid"];
             $vax = $card_row["vaxid"];
-            $fdose = $card_row["fdose"];
-            $sdose = $card_row["sdose"];
-            $booster = $card_row["booster"];
+            $vet = $card_row["cvet"];
+            $weight = $card_row["cweight"];
+            $date = $card_row["cdate"];
         }
     } catch(PDOException $e){
         die("An error has occured!");
@@ -106,22 +106,35 @@ require("../connector.php");
             <h1>Card Information</h1><br>
             <div class='input-group'>
             <span class='input-group-text'>Owner</span>
-            <input class='form-control' type='text' placeholder=\"Owner Name\" name='userfname' value=".$ownername." readonly>
-            <input class='form-control' type='hidden' placeholder=\"Owner ID\" name='userid' value=".$owner.">
+            <input class='form-control' type='text' placeholder=\"Owner Name\" name='userfname' value='".$ownername."' readonly>
+            <input class='form-control' type='hidden' placeholder=\"Owner ID\" name='userid' value='".$owner."'>
             <span class='input-group-text'>Pet Name</span>
-            <input class='form-control' type='text' placeholder=\"Pet Name\" name='petname' value=".$petname." readonly>
-            <input class='form-control' type='hidden' placeholder=\"Pet ID\" name='petid' value=".$pet.">
+            <input class='form-control' type='text' placeholder=\"Pet Name\" name='petname' value='".$petname."' readonly>
+            <input class='form-control' type='hidden' placeholder=\"Pet ID\" name='petid' value='".$pet."'>
             <span class='input-group-text'>Vaccine</span>
-            <input class='form-control' type='hidden' placeholder=\"Vaccine ID\" name='vaxid' value=".$vax.">
-            <input class='form-control' type='text' placeholder=\"Vaccine Name\" name='vaxname' value=".$vaxname." readonly>
+                <select class='form-select' name='vaxid' id='inputGroupSelect'>
+                    <option value='".$vax."' selected=''>".$vaxname."</option>";
+                    $sqlvax = "SELECT * FROM alagapp_db.tbl_vaxxinfo";
+                    $resvax = $connect->query($sqlvax);
+                    $resvax->execute();
+
+                    if($resvax->rowCount()>0){
+                        $counter=1;
+                        echo "<option>-- Select Vaccine--</option>";
+                        while($vaxr = $resvax->fetch(PDO::FETCH_ASSOC)){
+                            echo "<option value='".$vaxr['vaxid']."'>".$vaxr['vaxname']."</option>";
+                            $counter++;
+                        }
+                    };
+            echo "</select>
             </div><br>
             <div class='input-group'>
-            <span class='input-group-text'>First Dose</span>
-            <input class='form-control' type='date' placeholder=\"First Dose\" name='fdose' value=".$fdose.">
-            <span class='input-group-text'>Second Dose</span>
-            <input class='form-control' type='date' placeholder=\"Second Dose\" name='sdose' value=".$sdose.">
-            <span class='input-group-text'>Booster</span>
-            <input class='form-control' type='date' placeholder=\"Booster\" name='booster' value=".$booster.">
+            <span class='input-group-text'>Veterinarian</span>
+            <input class='form-control' type='text' placeholder=\"Veterinarian\" name='cvet' value='".$vet."'>
+            <span class='input-group-text'>Weight(Kg)</span>
+            <input class='form-control' type='text' placeholder=\"Weight in Kilos\" name='cweight' value='".$weight."'>
+            <span class='input-group-text'>Date</span>
+            <input class='form-control' type='date' placeholder=\"Date\" name='cdate' value='".$date."'>
             </div><br>
             
             <div class='d-grid gap-2 d-md-flex justify-content-md-end'>

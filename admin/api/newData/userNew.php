@@ -60,7 +60,7 @@
         }
     }
 echo "
-        <form action='php/newData/userNew.php' method='POST'>
+        <form action='api/newData/userNew.php' method='POST'>
         <h1>New User Profile</h1><br>
         <div class='input-group'>
         <span class='input-group-text'>Given Name</span>

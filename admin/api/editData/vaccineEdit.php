@@ -41,7 +41,7 @@
         }
     }
 ?>
-        <form action="editData/vaccineEdit.php" method="POST">
+        <form action="api/editData/vaccineEdit.php" method="POST">
 <?php
     $vid = $_REQUEST["id"];
     $sql_vaxx = "SELECT * FROM alagapp_db.tbl_vaxxinfo WHERE vaxid = :vaxid";

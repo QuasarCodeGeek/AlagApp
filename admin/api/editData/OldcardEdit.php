@@ -6,21 +6,21 @@ require("../connector.php");
         $owner = $_POST["userid"];
         $pet = $_POST["petid"];
         $vax = $_POST["vaxid"];
-        $vet = $_POST["cvet"];
-        $weight = $_POST["cweight"];
-        $date = $_POST["cdate"];
+        $fdose = $_POST["fdose"];
+        $sdose = $_POST["sdose"];
+        $booster = $_POST["booster"];
 
-        if($owner=="" || $pet=="" || $vet=="" || $vax=="" || $date==""){
+        if($owner=="" || $pet=="" || $vax=="" || $fdose==""){
             echo "<script>alert('Complete Required Fields!');
-            window.location='profilealter.php?userid=".$owner."'</script>";
+            window.location='profile.php?userid=".$owner."'</script>";
         } else {
-            $sql = "UPDATE alagapp_db.tbl_carddetail SET
+            $sql = "UPDATE alagapp_db.tbl_vaxxcard SET
                 userid = :userid,
                 petid = :petid,
                 vaxid = :vaxid,
-                cvet = :cvet,
-                cweight = :cweight,
-                cdate = :cdate
+                fdose = :fdose,
+                sdose = :sdose,
+                booster = :booster
 
                 WHERE cid = :cid";
 
@@ -29,9 +29,9 @@ require("../connector.php");
                 ":userid" => $owner,
                 ":petid" => $pet,
                 ":vaxid" => $vax,
-                ":cvet" => $vet,
-                ":cweight" => $weight,
-                ":cdate" => $date
+                ":fdose" => $fdose,
+                ":sdose" => $sdose,
+                ":booster" => $booster
             );
 
             $result = $connect->prepare($sql);
@@ -39,18 +39,18 @@ require("../connector.php");
 
             if($result->rowCount()>0) {
                 echo "<script>alert('Record has been updated!');
-                window.location='../profilealter.php?userid=".$owner."'</script>";
+                window.location='../profile.php?userid=".$owner."'</script>";
              } else {
                  echo "<script>alert('Unable to update record!')
-                window.location='../profilealter.php?userid=".$owner."'</script>";
+                window.location='../profile.php?userid=".$owner."'</script>";
              }
         }
     }
 
-    echo "<form action='editData/cardEditalter.php' method='POST'>";
+    echo "<form action='editData/cardEdit.php' method='POST'>";
 
     $card = $_REQUEST["cid"];
-    $sql_card = "SELECT * FROM alagapp_db.tbl_carddetail WHERE cid = :cid";
+    $sql_card = "SELECT * FROM alagapp_db.tbl_vaxxcard WHERE cid = :cid";
 
     try{
         $card_res = $connect->prepare($sql_card);
@@ -60,9 +60,9 @@ require("../connector.php");
         $owner = "";
         $pet = "";
         $vax = "";
-        $vet = "";
-        $weight = "";
-        $date = "";
+        $fdose = "";
+        $sdose = "";
+        $booster = "";
         
         if($card_res->rowCount()==1){
             $card_row = $card_res->fetch(PDO::FETCH_ASSOC);
@@ -70,9 +70,9 @@ require("../connector.php");
             $owner = $card_row["userid"];
             $pet = $card_row["petid"];
             $vax = $card_row["vaxid"];
-            $vet = $card_row["cvet"];
-            $weight = $card_row["cweight"];
-            $date = $card_row["cdate"];
+            $fdose = $card_row["fdose"];
+            $sdose = $card_row["sdose"];
+            $booster = $card_row["booster"];
         }
     } catch(PDOException $e){
         die("An error has occured!");
@@ -116,12 +116,12 @@ require("../connector.php");
             <input class='form-control' type='text' placeholder=\"Vaccine Name\" name='vaxname' value=".$vaxname." readonly>
             </div><br>
             <div class='input-group'>
-            <span class='input-group-text'>Veterinarian</span>
-            <input class='form-control' type='text' placeholder=\"Veterinarian\" name='cvet' value=".$vet.">
-            <span class='input-group-text'>Weight(Kg)</span>
-            <input class='form-control' type='number' placeholder=\"Weight in Kilos\" name='cweight' value=".$weight.">
-            <span class='input-group-text'>Date</span>
-            <input class='form-control' type='date' placeholder=\"Date\" name='cdate' value=".$date.">
+            <span class='input-group-text'>First Dose</span>
+            <input class='form-control' type='date' placeholder=\"First Dose\" name='fdose' value=".$fdose.">
+            <span class='input-group-text'>Second Dose</span>
+            <input class='form-control' type='date' placeholder=\"Second Dose\" name='sdose' value=".$sdose.">
+            <span class='input-group-text'>Booster</span>
+            <input class='form-control' type='date' placeholder=\"Booster\" name='booster' value=".$booster.">
             </div><br>
             
             <div class='d-grid gap-2 d-md-flex justify-content-md-end'>

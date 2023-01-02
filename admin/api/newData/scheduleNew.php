@@ -46,7 +46,7 @@
         }
     }
     echo "
-    <form action='php/newData/scheduleNew.php' method='POST'>
+    <form action='api/newData/scheduleNew.php' method='POST'>
     <h1>New Schedule</h1><br>
         <div class='input-group'>
                     <label class='input-group-text'>Owner ID</label>
