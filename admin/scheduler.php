@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="bg bg-success">
-      <nav class="navbar navbar-expand-lg bg-light">
+      <!--<nav class="navbar navbar-expand-lg bg-light">
         <div class="container container-fluid">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -40,10 +40,11 @@
             </div>
           </div>
         </div>
-      </nav>
+      </nav>-->
 
-      <main class="container-fluid">
-      <div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+<main class="container-fluid">
+  <div class="row m-auto">
+                      <div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                           <div class="modal-content">
                             <div class="modal-header">
@@ -70,85 +71,41 @@
                           </div>
                         </div>
                         </div>
-
-        <div class="row">
-              <div class="col-3 p-2 bg bg-light">
-                <div class="row m-1 overflow-x overflow-auto">
-                  <ul class="list-group list-group-flush">
-                      <?php 
-                          $sql = "SELECT * FROM alagapp_db.tbl_userlist";
-                      
-                          $res = $connect->prepare($sql);
-                          $res->execute();
-                      
-                          $sql2 = "SELECT COUNT(userid) AS entry FROM alagapp_db.tbl_userlist";
-                          $res2 = $connect->query($sql2);
-                          $res2->execute();
-                          $row1 = $res2->fetch(PDO::FETCH_ASSOC);
-                      
-                          if($res->rowCount()>0){
-                              $i=1;
-                              while($row = $res->fetch(PDO::FETCH_ASSOC)){
-                                  echo "
-                                  <li class='list-group-item bg bg-light'>
-                                  <a type='button' class='btn w-100 text-start' href='api/sched_profile.php?userid=".$row['userid']."'>
-                                  <label class='text-wrap'>".$row['userfname']." ".$row['userlname']."</label>
-                                  </a>
-                                  </li>";
-                                  $i++;
-                              }
-                          } else {
-                              echo "Nothing follows";
-                          }
-                      ?>
-                  </ul>
+  <div class="col-2">
+          <div class="col text-center my-3">
+            <a class="nav-link text-white nav-brand" href="#"><h2>AlagApp</h2></a>
+          </div><br>
+          <div class="col text-center my-3">
+            <a class="nav-link text-white" href="dashboard.php" active>Dashboard</a> 
+          </div>
+          <div class="col text-center my-3">
+            <a class="nav-link text-white" href="account.php">Account</a>
+          </div>
+          <div class="col text-center my-3">
+            <a class="nav-link text-white" href="scheduler.php"><h4>Scheduler</h4></a>
+          </div>
+          <div class="col text-center my-3">
+            <a class="nav-link text-white" href="consultation.php">Consultation</a>
+          </div>
+</div>
+            <div class="col-10">
+              <div class="row m-auto">
+                <div class="col-6 text-center bg bg-success">
+                  <a class="nav-link text-white p-3" type="button" href="scheduler.php"><strong>Account</strong></a>
                 </div>
-            </div>
-            <div class="col-9 bg bg-light pt-2 pb-5">
-              <div class="row">
-                <div class="col text-center bg bg-success">
-                  <a class="nav-link text-white p-2" type="button" href="scheduler.php"><strong>Account</strong></a>
-                </div>
-                <div class="col text-center bg bg-light">
-                  <a class="nav-link p-2" type="button" href="api/sched_chrono.php"><strong>Status</strong></a>
+                <div class="col-6 text-center bg bg-light">
+                  <a class="nav-link p-3" type="button" href="api/sched_chrono.php"><strong>Status</strong></a>
                 </div>
               </div>
-            <?php
-                  $sql = "SELECT alagapp_db.tbl_scheduler.*, alagapp_db.tbl_userlist.userfname, alagapp_db.tbl_petprofile.petname
-                  FROM ((alagapp_db.tbl_scheduler
-                  INNER JOIN alagapp_db.tbl_userlist ON alagapp_db.tbl_scheduler.userid = alagapp_db.tbl_userlist.userid)
-                  INNER JOIN alagapp_db.tbl_petprofile ON alagapp_db.tbl_scheduler.petid = alagapp_db.tbl_petprofile.petid)";
-              
-                  $res = $connect->prepare($sql);
-                  $res->execute();
-              ?>
-              <div class="row">
-              <?php 
-          
-              if($res->rowCount()>0){
-                  $i=1;
-                  while($row = $res->fetch(PDO::FETCH_ASSOC)){
-                  echo
-                  "<div class='card m-1 p-1 col-flex' style='width: 13rem;'>
-                      <div class='card-body'>
-                        <button type='button' class='btn btn-success w-100' onClick='scheduleEdit(".$row['qid'].")' data-bs-toggle='modal' data-bs-target='#boxModal')><h6 class='card-title'>".$row['petname']."</h6></button><br>
-                          <label class='card-text' style='font-size: 12px;'>Owner: ".$row['userfname']."</label><br>
-                          <label class='card-text' style='font-size: 12px;'>Description: ".$row['qdescription']."</label><br>
-                          <label class='card-text' style='font-size: 12px;'>Date: ".$row['qdate']."</label><br>
-                          <label class='card-text' style='font-size: 12px;'>Status: ".$row['qstatus']."</label>
-                      </div>
-                  </div>";
-                  $i++;
-                  }
-              }  else {
-                  echo "
-                  </div>";
-              }
-                ?>
+              <div class="row m-auto">
+                <div class="col vh-100 bg bg-light pb-2 pt-2 overflow-x overflow-auto bg bg-light">
+                  <div class="row m-auto">
+                    <?php include("./api/userSchedCard.php"); ?>
+                  </div>
+                </div>
+              </div>
             </div>
-            </div>
-        </div>
-      </main>
+</div></main>
 
 <!-- Main Functions -->
 <script src="js/main.js"></script>

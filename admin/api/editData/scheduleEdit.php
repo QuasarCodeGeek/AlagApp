@@ -11,7 +11,7 @@
 
         if($user=="" || $pet=="" || $description=="" || $date=="" || $status==""){
             echo "<script>alert('Please complete the fields required!');
-            window.location='../../scheduler.php'</script>";
+            window.location='../sched_profile.php?userid=".$user."'</script>";
         } else {
             $sql = "UPDATE alagapp_db.tbl_scheduler SET
                 userid = :userid,
@@ -36,10 +36,10 @@
 
             if($result->rowCount()>0) {
                 echo "<script>alert('Record has been updated!');
-                window.location='../../scheduler.php'</script>";
+                window.location='../sched_profile.php?userid=".$user."'</script>";
              } else {
                  echo "<script>alert('Unable to update record!')
-                 window.location='../../scheduler.php'</script>";
+                 window.location='..sched_profile.php?userid=".$user."'</script>";
              }
         }
     }

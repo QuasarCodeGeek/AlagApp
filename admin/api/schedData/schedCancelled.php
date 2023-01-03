@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../../css/styles.css">
 </head>
 <body class="bg bg-success">
-<nav class="navbar navbar-expand-lg bg-light">
+<!--<nav class="navbar navbar-expand-lg bg-light">
         <div class="container container-fluid">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -37,7 +37,7 @@
             </div>
           </div>
         </div>
-      </nav>
+      </nav>-->
 
       <main class="container-fluid">
       <div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
@@ -67,27 +67,43 @@
                           </div>
                         </div>
                         </div>
-          <div class="row">
-            <div class="col-2 p-2 bg bg-light vh-100">
-                <div class="row m-2">
-                    <button class="btn w-100 bg bg-success text-white mb-1" style="--bs-bg-opacity: .5;" onclick="location.href='../sched_chrono.php'">All</button>
-                    <button class="btn w-100 bg bg-success text-white mb-1" style="--bs-bg-opacity: .5;" onclick="location.href='schedPending.php'">Pending</button>
-                    <button class="btn w-100 bg bg-success text-white mb-1" style="--bs-bg-opacity: .5;" onclick="location.href='schedDenied.php'">Denied</button>
-                    <button class="btn w-100 bg bg-success text-white mb-1" style="--bs-bg-opacity: .5;" onclick="location.href='schedAccepted.php'">Accepted</button>
-                    <button class="btn w-100 bg bg-success text-white mb-1" onclick="location.href='schedCancelled.php'"><strong>Cancelled</strong></button>
-                    <button class="btn w-100 bg bg-success text-white mb-1" style="--bs-bg-opacity: .5;" onclick="location.href='schedFinished.php'">Finished</button>
-                </div>
-            </div>
-            <div class="col-10 bg bg-light pt-2 pb-5">
-              <div class="row">
-                <div class="col text-center bg bg-light">
-                  <a class="nav-link p-2" type="button" href="../../scheduler.php"><strong>Account</strong></a>
-                </div>
-                <div class="col text-center bg bg-success">
-                  <a class="nav-link p-2 text-white" type="button" href="../sched_chrono.php"><strong>Status</strong></a>
-                </div>
-              </div>
-
+          <div class="row m-auto">
+          <div class="col-2">
+      <div class="col text-center my-3">
+        <a class="nav-link text-white nav-brand" href="#"><h2>AlagApp</h2></a>
+      </div><br>
+      <div class="col text-center my-3">
+        <a class="nav-link text-white" href="../../dashboard.php" active>Dashboard</a> 
+      </div>
+      <div class="col text-center my-3">
+        <a class="nav-link text-white" href="../../account.php">Account</a>
+      </div>
+      <div class="col text-center my-3">
+        <a class="nav-link text-white" href="../../scheduler.php"><h4>Scheduler</h4></a>
+      </div>
+      <div class="col text-center my-3">
+        <a class="nav-link text-white" href="../../consultation.php">Consultation</a>
+      </div><br>
+      <div class="row m-auto m-2">
+                    <button class="btn w-100 bg bg-light text-white mb-1" style="--bs-bg-opacity: .5;"onclick="location.href='../sched_chrono.php'">All</button>
+                    <button class="btn w-100 bg bg-light text-white mb-1" style="--bs-bg-opacity: .5;" onclick="location.href='schedPending.php'">Pending</button>
+                    <button class="btn w-100 bg bg-light text-white mb-1" style="--bs-bg-opacity: .5;" onclick="location.href='schedDenied.php'">Denied</button>
+                    <button class="btn w-100 bg bg-light text-white mb-1" style="--bs-bg-opacity: .5;" onclick="location.href='schedAccepted.php'">Accepted</button>
+                    <button class="btn w-100 bg bg-success border border-3 border-light text-white fw-bold mb-1" onclick="location.href='schedCancelled.php'">Cancelled</button>
+                    <button class="btn w-100 bg bg-light text-white mb-1" style="--bs-bg-opacity: .5;" onclick="location.href='schedFinished.php'">Finished</button>
+    </div>
+  </div>
+  <div class="col-10 vh-100">
+    <div class="row m-auto">
+      <div class="col-6 text-center bg bg-light">
+        <a class="nav-link p-3" type="button" href="../../scheduler.php"><strong>Account</strong></a>
+      </div>
+      <div class="col-6 text-center bg bg-success">
+        <a class="nav-link p-3 text-white" type="button" href="../sched_chrono.php" disable><strong>Status</strong></a>
+      </div>
+    </div>
+    <div class="row m-auto">
+      <div class="bg bg-light col vh-100 pt-2 pb-3 overflow-auto overflow-y">
             <?php
                   require("../connector.php");
 
@@ -100,14 +116,14 @@
                   $res = $connect->prepare($sql);
                   $res->execute();
               ?>
-              <div class="row">
+              <div class="row m-auto">
               <?php 
           
               if($res->rowCount()>0){
                   $i=1;
                   while($row = $res->fetch(PDO::FETCH_ASSOC)){
                   echo
-                  "<div class='card m-1 p-1 col-flex' style='width: 12rem;'>
+                  "<div class='card m-1 p-1 col-flex' style='width: 15rem;'>
                       <div class='card-body'>
                           <button type='button' class='btn btn-success w-100' onClick='SchedEdit(".$row['qid'].")' data-bs-toggle='modal' data-bs-target='#boxModal')><h6 class='card-title'>".$row['petname']."</h6></button><br>
                           <label class='card-text' style='font-size: 12px;'>Owner: ".$row['userfname']."</label><br>

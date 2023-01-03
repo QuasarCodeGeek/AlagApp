@@ -39,8 +39,45 @@
         </div>
       </nav>-->
 
-      <main class="container-fluid px-2 row">
-        <div class="col-2">
+  <!-- Profile Panel -->
+            <!-- <div class="col-3 p-2 bg bg-light">
+                <div class="row m-2">
+                <input type="text" onkeyup="_searchAccount()" class="form-control rounded-start" id="searchAccount" placeholder="Search">
+                </div>
+                <div class="m-1" id="accountHere">
+                  
+                </div>-->
+      <!-- Modal New Data-->
+                    <div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="ModalLabel">New Record</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body d-grid gap-2 container-fluid" id="modalNew">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+      <!-- Modal New Data-->
+      <!-- Modal Edit Data-->
+                    <div class="modal fade" id="boxModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="ModalLabel">Edit Data</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                        <div class="modal-body d-grid gap-2 container-fluid" id="modalHere">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+      <!-- Modal Edit Data --> 
+<main class="container-fluid"><div class="row m-auto">
+<div class="col-2">
           <div class="col text-center my-3">
             <a class="nav-link text-white nav-brand" href="#"><h2>AlagApp</h2></a>
           </div><br>
@@ -56,57 +93,23 @@
           <div class="col text-center my-3">
             <a class="nav-link text-white" href="consultation.php">Consultation</a>
           </div>
+</div>         
+    <div class="col-10 bg bg-light pb-3"><!-- Profile Panel-->
+    <!-- Buttons Section -->
+      <div class="row m-auto p-3">
+        <div class="col-6 m-auto">
+          <button type='button' class='p-3 btn btn-success w-100' onClick='userNew()' data-bs-toggle='modal' data-bs-target='#newModal')>Add User</button>
         </div>
-        <div class="col row">
-            <div class="col-3 p-2 bg bg-light">
-                <!--<div class="row m-2">
-                <input type="text" onkeyup="_searchAccount()" class="form-control rounded-start" id="searchAccount" placeholder="Search">
-                </div>-->
-                <div class="m-1" id="accountHere">
-                  
-                </div>
-                <div class="row m-1 overflow-x overflow-auto">
-                    <ul class="list-group list-group-flush">
-                    <?php include("api/accountList.php"); ?>
-                    </ul>
-                    <div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-                      <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="ModalLabel">New Record</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body d-grid gap-2 container-fluid" id="modalNew">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="modal fade" id="boxModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-                      <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="ModalLabel">Edit Data</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                        <div class="modal-body d-grid gap-2 container-fluid" id="modalHere">
-                      </div>
-                    </div>
-            </div>
-            </div>
-                </div>
-            </div>
-            <div class="col-9 container bg bg-light pb-5">
-              <div class="row p-2">
-                <div class="col-6 m-auto">
-                  <button type='button' class='p-2 btn btn-success w-100' onClick='userNew()' data-bs-toggle='modal' data-bs-target='#newModal')>Add User</button>
-                </div>
-                <div class="col-6 m-auto">
-                 <button type='button' class='p-2 btn btn-success w-100' onClick='petNew()' data-bs-toggle='modal' data-bs-target='#newModal')>Add Pet</button>
-                </div>
-              </div>
-            </div>
+        <div class="col-6 m-auto">
+          <button type='button' class='p-3 btn btn-success w-100' onClick='petNew()' data-bs-toggle='modal' data-bs-target='#newModal')>Add Pet</button>
         </div>
-      </main>
+      </div>
+    <!-- Buttons Section -->
+    <div class="row m-auto"><!-- Account Card-->
+      <?php include("api/userCard.php"); ?>
+    </div><!-- Accounnt Card-->
+  </div><!-- Profile Panel -->
+</div></main>
 <!-- Main Functions -->
 <script src="js/main.js"></script>
 <!-- Ajax Function -->

@@ -1,12 +1,12 @@
 <?php
-    require("_connector.php");
+    require("../_connector.php");
     
         $type = $_REQUEST['type'];
         $part = $_REQUEST['part'];
         $symptom = $_REQUEST['symptom'];
         
         $find = "SELECT * FROM alagapp_db.tbl_symptom
-            WHERE pettype LIKE '".$type."'
+            WHERE pettype = '".$type."'
             AND bodypart LIKE '%".$part."%'
             AND symptom LIKE '%".$symptom."%' ";
         
@@ -17,10 +17,10 @@
                 $k=1;
                 while($row = $checkfind->fetch(PDO::FETCH_ASSOC)){
                     echo "
-                        <div class='m-2 card card-body'>
-                            <div>
-                                <label><strong>".$row['diagnosis']."</strong></label><br>
-                                <label>".$row['description']."</label>
+                        <div class='card m-2' >
+                            <div class='card-body'
+                                <h5 class='card-title'><b>".$row['diagnosis']."</b></h5>
+                                <p class='card-text'>".$row['description']."</p>
                             </div>
                         </div>";
                     $k++;

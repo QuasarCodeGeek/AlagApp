@@ -1,7 +1,5 @@
 <?php
-  require("connector.php");
-
-  $id = $_REQUEST['userid'];
+  require("api/connector.php");
 
   if(isset($_POST["submit"])){
     $userid = $_POST["userid"];
@@ -61,7 +59,7 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="bg bg-success">
 <!--<nav class="navbar navbar-expand-lg bg-light">
@@ -71,48 +69,79 @@
           </button>
           <div class="row collapse navbar-collapse mx-auto" id="navbarSupportedContent">
             <div class="col text-center">
-              <a class="nav-link" href="../account.php">Account</a>
+              <a class="nav-link" href="account.php">Account</a>
             </div>
             <div class="col text-center">
-            <a class="nav-link" href="../scheduler.php">Scheduler</a>
+            <a class="nav-link" href="scheduler.php">Scheduler</a>
             </div>
             <div class="col text-center">
               <a class="navbar-brand" href="#"><strong>AlagApp</strong></a>
             </div>
             <div class="col text-center border-bottom border-success border-5">
-              <a class="nav-link" href="../consultation.php" active><strong>Consultation</strong></a>
+              <a class="nav-link" href="consultation.php" active><strong>Consultation</strong></a>
             </div>
             <div class="col text-center">
-              <a class="nav-link text-success" href="../dashboard.php">Dashboard</a> 
+              <a class="nav-link text-success" href="dashboard.php">Dashboard</a> 
             </div>
           </div>
         </div>
       </nav>-->
-      <main class="container-fluid">
-  <div class="row m-auto">
-  <div class="col-2">
-          <div class="col text-center my-3">
-            <a class="nav-link text-white nav-brand" href="#"><h2>AlagApp</h2></a>
-          </div><br>
-          <div class="col text-center my-3">
-            <a class="nav-link text-white" href="../dashboard.php" active>Dashboard</a> 
-          </div>
-          <div class="col text-center my-3">
-            <a class="nav-link text-white" href="../account.php">Account</a>
-          </div>
-          <div class="col text-center my-3">
-            <a class="nav-link text-white" href="../scheduler.php">Scheduler</a>
-          </div>
-          <div class="col text-center my-3">
-            <a class="nav-link text-white" href="../consultation.php"><h4>Consultation</h4></a>
-          </div>
-</div>
-    <div class="col-2 pt-2 vh-100 bg bg-light overflow-auto overflow-y">
-      <?php include("./chatList.php");?>
-    </div>
-    <div class="col-8 pt-2 vh-100 overflow-auto overflow-y">
+<main class="container-fluid"><div class="row m-auto">
+      <?php  include("./sideBar.php"); ?>
+    <div class="col-2 pt-2 bg bg-light vh-100 overflow-auto overflow-y"><!-- Users List -->
+      <ul class="list-group list-group-flush">
+        <?php
+            $sql = "SELECT * FROM alagapp_db.tbl_userlist";
+        
+            $res = $connect->prepare($sql);
+            $res->execute();
+        
+            if($res->rowCount()>0){
+                $i=1;
+                while($row = $res->fetch(PDO::FETCH_ASSOC)){
+                  if($row['userid'] == $userid){
+                    echo "<li class='list-group-item bg bg-success rounded-pill mb-2'>";
+                  } else {
+                      echo "<li class='list-group-item border border-3 border-success bg bg-light rounded-pill mb-2'>";
+                  }
+                  echo "
+                                  <a type='button' class='btn w-100 text-start' href='api/chat.php?userid=".$row['userid']."'>
+                                    <div class='row'>
+                                        <div class='col-4'>";
+                                            if($row['userpict'] == "" && $row['usergender']=='M'){
+                                                echo "<img style='width: 3rem; height: 3rem;' class='rounded-circle' src='../assets/default/male.png' alt='profile_picture'>";
+                                            } else if ($row['userpict'] == "" && $row['usergender']=='F') {
+                                                echo "<img style='width: 3rem; height: 3rem;' class='rounded-circle' src='../assets/default/female.png' alt='profile_picture'>";
+                                            } else {
+                                                echo "<img style='width: 3rem; height: 3rem;' class='rounded-circle' src='../assets/uploads/".$row['userpict']."' alt='profile_picture'>";
+                                            }
+                                    echo "</div>
+                                    <div class='col-8 m-auto'>
+                                        <label class='text-wrap ";
+                                        if($row['userid'] == $userid){
+                                          echo "text-white";
+                                        }
+                                        echo" '><b>".$row['userfname']."</b> ".$row['userlname']."</label>
+                                    </div>
+                                  </div>
+                                  </a>
+                                  </li>
+                    <!--<li class='list-group-item bg bg-light'>
+                    <a type='button' class='btn' href='api/chat.php?userid=".$row['userid']."'>
+                    <label class='text-wrap'>".$row['userfname']." ".$row['userlname']."</label>
+                    </a>-->
+                    </li>";
+                    $i++;
+                }
+            } else {
+                echo "Nothing follows";
+            }
+        ?>
+      </ul>
+    </div><!-- Users List -->
+    <div class="col-8 vh-100 overflow-auto overflow-y">
       <?php 
-        $id = $_REQUEST['userid'];
+        $id = 1;
         $channel = $id;
         $_account = "SELECT * FROM alagapp_db.tbl_userlist WHERE userid = ".$id." ";
 
@@ -175,13 +204,11 @@
                 <input type="text" class="form-control me-2" name="message" placeholder="Enter Message">
                 <button class="btn btn-light" type="submit" name="submit"><i class="bi bi-send-fill" style="color: #388E3C;"></i></button>
             </form>
-          </div>
-      </div><!-- Chat Field -->
+          </div><!-- Chat Field -->
     </div>
-  </div>
-</main>
+</div></main>
 <!-- Main Functions -->
-<script> src="../js/main.js"</script>
+<script src="js/main.js"></script>
 <!-- Ajax Function -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!-- Bootstrap Popper -->

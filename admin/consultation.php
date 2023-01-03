@@ -1,50 +1,5 @@
 <?php
-  require("api/connector.php");
-
-  if(isset($_POST["submit"])){
-    $userid = $_POST["userid"];
-    $sender = $_POST["sender"];
-    $channel = $_POST["channel"];
-    $message = $_POST["message"];
-    $date = date("Y-m-d h:i:sa");
-
-    if($userid=="" || $sender=="" || $channel=="" || $message==""){
-        echo "<script>alert('Invalid!');
-        window.location='chat.php?userid=".$userid."'</script>";
-    } else {
-        $sql = "INSERT INTO alagapp_db.tbl_chat(
-            userid,
-            mchannel,
-            msender,
-            mcontent,
-            mdatetime) VALUES(
-                :userid,
-                :mchannel,
-                :msender,
-                :mcontent,
-                :mdatetime)";
-
-        $result = $connect->prepare($sql);
-
-        $values = array(
-            ":userid"=>$userid,
-            ":mchannel"=>$channel,
-            ":msender"=>$sender,
-            ":mcontent"=>$message,
-            ":mdatetime"=>$date
-        );
-
-        $result->execute($values);
-
-        if($result->rowCount()>0) {
-            echo "<script>alert('Message Sent!');
-            window.location='chat.php?userid=".$userid."'</script>";
-         } else {
-             echo "<script>alert('Unable to send message!');
-             window.location='chat.php?userid=".$userid."'</script>";
-         }
-    }
-};
+    include("./api/connector.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,7 +17,7 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="bg bg-success">
-<nav class="navbar navbar-expand-lg bg-light">
+<!--<nav class="navbar navbar-expand-lg bg-light">
         <div class="container container-fluid">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -85,104 +40,70 @@
             </div>
           </div>
         </div>
-      </nav>
+      </nav>-->
 <main class="container-fluid">
-  <div class="row bg bg-light">
-    <div class="col-3">
-      <ul class="list-group list-group-flush">
-        <?php
-            $sql = "SELECT * FROM alagapp_db.tbl_userlist";
-        
-            $res = $connect->prepare($sql);
-            $res->execute();
-        
-            if($res->rowCount()>0){
-                $i=1;
-                while($row = $res->fetch(PDO::FETCH_ASSOC)){
-                    echo "
-                    <li class='list-group-item bg bg-light'>
-                    <a type='button' class='btn' href='api/chat.php?userid=".$row['userid']."'>
-                    <label class='text-wrap'>".$row['userfname']." ".$row['userlname']."</label>
-                    </a>
-                    </li>";
-                    $i++;
-                }
-            } else {
-                echo "Nothing follows";
-            }
-        ?>
-      </ul>
-    </div>
-    <div class="col-9">
-      <?php 
-        $id = 1;
-        $channel = $id;
-        $_account = "SELECT * FROM alagapp_db.tbl_userlist WHERE userid = ".$id." ";
-
-        $_result = $connect->prepare($_account);
-        $_result->execute();
-
-        if($_result->rowCount()>0){
-            $_rowe = $_result->fetch(PDO::FETCH_ASSOC);
-            $_fname = $_rowe['userfname'];
-            $_lname = $_rowe['userlname'];
-        };
-      ?>
-      <div class="row p-2"><!-- Chat Header -->
-        <div class="p-2 bg bg-success text-white rounded"> 
-          <label><strong><?php echo $_rowe['userfname']." ".$_rowe['userlname']; ?></strong></label>
-        </div>
-      </div><!-- Chat Header -->
-        
-      <div class="rowp-2 "><!-- Chat Conversation -->
-        <div class="m-auto p-2 rounded">
-            <?php
-              $chat = "SELECT * FROM alagapp_db.tbl_chat WHERE mchannel = ".$channel."";
-
-              $reschat = $connect->prepare($chat);
-              $reschat->execute();
-              if($reschat->rowCount()>0){
-                  $j=1;
-                  echo "<ul class='list-group'>";
-                  while($rowchat = $reschat->fetch(PDO::FETCH_ASSOC)){
-                    if($rowchat['msender']!=0){
-                      echo "<li class='list-group-item border-0'>
-                        <div class='float-start p-3' style='background-color: #E8F5E9; border-radius: 10px;'>
-                        <label>Client</label><br>
-                        <label>".$rowchat['mcontent']."</label><br>
-                        <span style='font-size: 12px;'>".$rowchat['mdatetime']."</span>
+  <div class="row m-auto">
+                      <div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h1 class="modal-title fs-5" id="ModalLabel">New Record</h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body d-grid gap-2 container-fluid" id="schedNew">
+                              Content Here
+                            </div>
+                          </div>
                         </div>
-                        </li>";
-                  } else {
-                    echo "<li class='list-group-item border-0'>
-                        <div class='float-end p-3' style='background-color: #81C784; border-radius: 10px;'>
-                        <label>You</label><br>
-                        <label>".$rowchat['mcontent']."</label><br>
-                        <span style='font-size: 12px;'>".$rowchat['mdatetime']."</span>
-                        </div>    
-                        </li>"; 
-                  }
-                      $j++;
-                  }
-                  echo "</ul>";
-              }
-            ?>
-        </div>
-      </div><!-- Chat Conversation -->
-      <div class="row p-2"><!-- Chat Field -->
-          <div class="mb-2 p-2 bg bg-success rounded">
-            <form method="POST" action="chat.php" class="d-flex">
-                <input type="number" class="form-control" value="<?php echo $id ?>" placeholder="Userid" name="userid" hidden>
-                <input type="number" class="form-control" value="<?php echo $channel ?>" placeholder="Channel" name="channel" hidden>
-                <input type="number" class="form-control" value="0" placeholder="Sender" name="sender" hidden>
-                <input type="text" class="form-control me-2" name="message" placeholder="Enter Message">
-                <button class="btn btn-light" type="submit" name="submit"><i class="bi bi-send-fill" style="color: #388E3C;"></i></button>
-            </form>
+                      </div>
+                      
+                      <div class="modal fade" id="boxModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h1 class="modal-title fs-5" id="ModalLabel">Edit Data</h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body d-grid gap-2 container-fluid" id="schedHere">
+                              Content Edit Here No Record Retrieved
+                            </div>
+                          </div>
+                        </div>
+                        </div>
+  <div class="col-2">
+          <div class="col text-center my-3">
+            <a class="nav-link text-white nav-brand" href="#"><h2>AlagApp</h2></a>
+          </div><br>
+          <div class="col text-center my-3">
+            <a class="nav-link text-white" href="dashboard.php" active>Dashboard</a> 
           </div>
-      </div><!-- Chat Field -->
-    </div>
-  </div>
-</main>
+          <div class="col text-center my-3">
+            <a class="nav-link text-white" href="account.php">Account</a>
+          </div>
+          <div class="col text-center my-3">
+            <a class="nav-link text-white" href="scheduler.php">Scheduler</a>
+          </div>
+          <div class="col text-center my-3">
+            <a class="nav-link text-white" href="consultation.php"><h4>Consultation<h4></a>
+          </div>
+</div>
+            <div class="col-10">
+              <div class="row m-auto">
+                <div class="col bg bg-light p-3">
+                    <label class="bg bg-success w-100 text-white rounded-pill p-4 text-center text-white">
+                        Select Account to open conversation
+                    </label>
+                </div>
+              </div>
+              <div class="row m-auto">
+                <div class="col vh-100 bg bg-light pb-2 pt-2 overflow-x overflow-auto bg bg-light">
+                  <div class="row m-auto">
+                    <?php include("./api/chatCard.php"); ?>
+                  </div>
+                </div>
+              </div>
+            </div>
+</div></main>
 <!-- Main Functions -->
 <script src="js/main.js"></script>
 <!-- Ajax Function -->

@@ -88,7 +88,7 @@
         <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
             <div class="m-2 input-group">
                 <label class="input-group-text">Pet Type</label>
-                <select id="type" onkeyup="setType()" name="type" class="form-control form-select" aria-label="SelectPetType">
+                <select id="type" onchange="typeSelect()" name="type" class="form-control form-select" aria-label="SelectPetType">
                   <?php
                       $pet = "SELECT pettype FROM alagapp_db.tbl_symptom GROUP BY pettype HAVING COUNT(pettype) >= 1";
                       $petlist = $connect->prepare($pet);
@@ -108,48 +108,12 @@
             </div>
         </div>
         <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
-            <div class="m-2 input-group">
-                <label class="input-group-text">Body Part</label>
-                <select id="part" name="part" class="form-control form-select" aria-label="SelectBodyPart">
-                  <?php
-                    $part = "SELECT bodypart FROM alagapp_db.tbl_symptom GROUP BY bodypart HAVING COUNT(bodypart) >= 1";
-                    $checkpart = $connect->prepare($part);
-                    $checkpart->execute();
-            
-                    if($checkpart->rowCount()>0) {
-                      $h=1;
-                      echo "<option selected>-- Select Body Part --</option>";
-                      while($bodyrow = $checkpart->fetch(PDO::FETCH_ASSOC)){
-                        $body = $bodyrow['bodypart']; 
-                        echo "<option value='".$body."'>".$body."</option>";
-                        $h++;
-                      }
-                    }
-                  ?>
-                </select>
-            </div>
+          <div id="bodySelect">
+          </div>
         </div>
         <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
-            <div class="m-2 input-group">
-                <label class="input-group-text">Symptom</label>
-                <select id="symptom" name="symptom" class="form-control form-select" aria-label="SelectSymptom">
-                  <?php
-                      $sympt = "SELECT symptom FROM alagapp_db.tbl_symptom GROUP BY symptom HAVING COUNT(symptom) >= 1";
-                      $check = $connect->prepare($sympt);
-                      $check->execute();
-              
-                      if($check->rowCount()>0) {
-                        $j=1;
-                        echo "<option selected>-- Select Symptom --</option>";
-                        while($row = $check->fetch(PDO::FETCH_ASSOC)){
-                          $symptom = $row['symptom']; 
-                          echo "<option value='".$symptom."'>".$symptom."</option>";
-                          $j++;
-                        }
-                      }
-                    ?>
-                </select>
-            </div>
+          <div id="symptomSelect">
+          </div>
         </div>
         <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
             <div class="m-auto">
@@ -163,12 +127,34 @@
                 <label class="text-white"><strong>Results</strong></label>
             </div>
             <div id="ContentHere">
-
             </div>
         </div>
     </div>
 </div>
   </main>
+  <script>
+    function typeSelect(){
+      var type = document.getElementById("type").value;
+      const xhttp = new XMLHttpRequest();
+      console.log(type);
+      xhttp.onload = function() {
+          document.getElementById("bodySelect").innerHTML = this.responseText;
+        }
+      xhttp.open("GET", "api/tracker/body.php?type="+type);
+      xhttp.send();
+    }
+    function bodySelect(){
+      var type = document.getElementById("type").value;
+      var body = document.getElementById("body").value;
+      console.log(type, body);
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function() {
+          document.getElementById("symptomSelect").innerHTML = this.responseText;
+        }
+      xhttp.open("GET", "api/tracker/symptom.php?type="+type+"&body="+body);
+      xhttp.send();
+    }
+  </script>
   <script src="js/client.js"></script>
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"

@@ -43,7 +43,7 @@
       <link rel="stylesheet" href="../css/styles.css">
   </head>
   <body class="bg bg-success">
-  <nav class="navbar navbar-expand-lg bg-light">
+  <!-- <nav class="navbar navbar-expand-lg bg-light">
         <div class="container container-fluid">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -66,46 +66,16 @@
             </div>
           </div>
         </div>
-      </nav>
+      </nav>-->
 
-        <main class="container-fluid">
-          <div class="row">
-              <div class="col-3 p-2 bg bg-light">
+<main class="container-fluid"><div class="row m-auto">
                   <!--<div class="row m-2">
                   <input type="text" onkeyup="_searchAccount()" class="form-control rounded-start" id="searchAccount" placeholder="Search">
-                  </div>-->
+                  </div>
                   <div class="m-1" id="accountHere">
                     
-                    </div>
-                  <div class="row m-1 overflow-x overflow-auto">
-                      <ul class="list-group list-group-flush">
-                      <?php 
-                          $sql = "SELECT * FROM alagapp_db.tbl_userlist";
-                      
-                          $res = $connect->prepare($sql);
-                          $res->execute();
-                      
-                          $sql2 = "SELECT COUNT(userid) AS entry FROM alagapp_db.tbl_userlist";
-                          $res2 = $connect->query($sql2);
-                          $res2->execute();
-                          $row1 = $res2->fetch(PDO::FETCH_ASSOC);
-                      
-                          if($res->rowCount()>0){
-                              $i=1;
-                              while($row = $res->fetch(PDO::FETCH_ASSOC)){
-                                  echo "
-                                  <li class='list-group-item bg bg-light'>
-                                  <a type='button' class='btn w-100 text-start' href='profile.php?userid=".$row['userid']."'>
-                                  <label class='text-wrap'>".$row['userfname']." ".$row['userlname']."</label>
-                                  </a>
-                                  </li>";
-                                  $i++;
-                              }
-                          } else {
-                              echo "Nothing follows";
-                          }
-                      ?>
-                      </ul>
+                    </div>-->
+<!-- Modal New Data -->
                       <div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                           <div class="modal-content">
@@ -118,7 +88,8 @@
                           </div>
                         </div>
                       </div>
-                      
+<!-- Modal New Data -->
+<!-- Modal Edit Data -->
                       <div class="modal fade" id="boxModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                           <div class="modal-content">
@@ -131,7 +102,8 @@
                           </div>
                         </div>
                       </div>
-
+<!-- Modal Edit Data -->
+<!-- Modal Profile -->
                       <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                           <div class="modal-content">
@@ -148,218 +120,20 @@
                           </div>
                         </div>
                       </div>
-                  </div>
-              </div>
-              <div class="col-9 bg bg-light">
+<!-- Modal Profile -->
+ <?php include("./sideNav.php"); ?>
+              <div class="col-2 bg bg-light pt-2 vh-100 overflow-auto overflow-y"><!-- Users List-->
+                <?php include("./userList.php");?>
+              </div><!-- Users List-->
+              <div class="col-8 vh-100 overflow-auto overflow-y bg bg-light">
                   <div class="row m-2 p-2 bg bg-success rounded" style="--bs-bg-opacity: .75;">
-                    <?php
-                      $account = $_GET["userid"];
-                      $sql = "SELECT * FROM alagapp_db.tbl_userlist
-                          WHERE userid = ".$account." ";
-                  
-                      $res = $connect->prepare($sql);
-                      $res->execute();
-                  
-                      if($res->rowCount()>0){
-                          $row = $res->fetch(PDO::FETCH_ASSOC);
-                          echo"<div class='col-3'>";
-                              if($row['userpict'] == "" && $row['usergender']=='M'){
-                                echo "<img id='userProfile' class='rounded' src='../../assets/default/male.png' alt='profile_picture'>";
-                              } else if ($row['userpict'] == "" && $row['usergender']=='F') {
-                                echo "<img id='userProfile' class='rounded' src='../../assets/default/female.png' alt='profile_picture'>";
-                              } else {
-                                echo "<img id='userProfile' class='rounded' src='../../assets/uploads/".$row['userpict']."' alt='profile_picture'>";
-                              }
-                              echo "</div>
-                              <div class='col-5'>
-                                  <div class='row mb-2 p-2 rounded bg bg-light'>
-                                    <label>Name: ".$row['userfname']." ".$row['usermname']." ".$row['userlname']."</label><br>
-                                    <label>Email: ".$row['useremail']."</label><br>
-                                    <label>Birth Date: ".$row['userbdate']."</label><br>
-                                    <label>Gender: ".$row['usergender']."</label><br>
-                                    <label>Address: ".$row['userstreet']." ".$row['userdistrict']." ".$row['usermunicipality']." ".$row['userprovince']."</label>
-                                  </div>
-                                  <div class='row'>
-                                    <div class='col'>
-                                      <button type='button' class='p-2 btn btn-warning w-100' onClick='userEdit(".$row['userid'].")' data-bs-toggle='modal' data-bs-target='#boxModal'>
-                                      <i class='bi bi-pencil-square'></i> Edit</button>
-                                    </div>
-                                    <div class='col'>
-                                      <button type='button' class='p-2 btn btn-info w-100' onClick='PetNew(".$row['userid'].")' data-bs-toggle='modal' data-bs-target='#newModal')>
-                                      <i class='bi bi-plus-square'></i> Add Pet</button>
-                                    </div>
-                                  </div>
-                              </div>
-                              <div class='col-4'>
-                                <div class='row-2 m-auto mb-2 p-2 bg bg-light rounded'>
-                                    <label>Pets: ".$totalnpet."</label>
-                                </div>
-                                <div class='row-2 m-auto mb-2 p-2 bg bg-light rounded'>
-                                    <label>Schedules: ".$totalnsched."</label>
-                                </div>
-                                <div class='row-2 m-auto mb-2 p-2 bg bg-light rounded'>
-                                    <label>Vaccine Card: ".$totalncard."</label>
-                                </div>
-                                <div class='row-2 m-auto mb-2 p-2 bg bg-light rounded'>
-                                    <label>Prescription Note: ".$totalnnonte."</label>
-                                </div>
-                              </div>";
-                      } else {
-                          echo "No Record";
-                      }
-                    ?>
+                    <?php include("./profileUser.php"); ?>
                   </div>
                   <div class="row m-2 p-2" style="--bs-bg-opacity: .75;">
-                    <?php
-                      $petaccount = $_GET["userid"];
-                      $sql = "SELECT * FROM alagapp_db.tbl_petprofile
-                          WHERE userid = ".$petaccount." ";
-                  
-                      $res = $connect->prepare($sql);
-                      $res->execute();
-
-                      if($res->rowCount()>0){
-                          $i=1;
-                          while($row = $res->fetch(PDO::FETCH_ASSOC)){
-                              echo"
-                              <div class='row rounded m-auto mb-2' style='background-color: #81C784;'>  
-                                <div class='row m-auto mt-2 p-2 bg bg-success rounded'>
-                                  <div class='col-3'>
-                                    <img id='petProfile' class='m-auto rounded' src='../../assets/img/".$row['pettype']."/".$row['petbreed'].".jpg' alt='petProfile'>
-                                  </div>
-                                  <div class='col-9'>
-                                    <div class='row mt-2'>
-                                      <div class='col-4'>
-                                        <div class='row-2 m-auto mb-2 w-auto h-auto p-2 rounded bg bg-light'>
-                                          <label>Name: ".$row['petname']."</label>
-                                        </div>
-                                        <div class='row-2 m-auto mb-2 w-auto h-auto p-2 rounded bg bg-light'>
-                                          <label>Species: ".$row['pettype']."</label>
-                                        </div>
-                                        <div class='row-2 m-auto mb-2 w-auto h-auto p-2 rounded bg bg-light'>
-                                          <label>Breed: ".$row['petbreed']."</label>
-                                        </div>
-                                      </div>
-                                      <div class='col-4'>
-                                        <div class='row-2 m-auto mb-2 w-auto h-auto p-2 rounded bg bg-light'>
-                                          <label>Gender: ".$row['petgender']."</label>
-                                        </div>
-                                        <div class='row-2 m-auto mb-2 w-auto h-auto p-2 rounded bg bg-light'>
-                                          <label>DOB: ".$row['petbdate']."</label>
-                                        </div>
-                                        <div class='row-2 m-auto mb-2 w-auto h-auto p-2 rounded bg bg-light'>
-                                          <label>Age: ".$row['petage']."</label>
-                                        </div>
-                                      </div>
-                                      <div class='col-4'>
-                                        <div class='row-2 m-auto mb-2 w-auto h-auto p-2 rounded bg bg-light'>
-                                          <label>Weight(Kg): ".$row['petweight']."</label>
-                                        </div>
-                                        <div class='row-2 m-auto mb-2 w-auto h-auto p-2 rounded bg bg-light'>
-                                          <label>Height(Ft): ".$row['petheight']."</label>
-                                        </div>
-                                        <div>
-                                          <button type='button' class='btn btn-warning w-100' onClick='petEdit(".$row['petid'].")' data-bs-toggle='modal' data-bs-target='#boxModal'>
-                                          <i class='bi bi-pencil-square'></i> Edit</button>
-                                        </div>
-                                      </div>
-                                    </div> 
-                                  </div>
-                                </div>  
-                  
-                              <div class='row mx-auto my-2'>
-                                <div class='col-6 bg bg-success rounded-start'>";
-                                  $vax = "SELECT alagapp_db.tbl_carddetail.*,
-                                    alagapp_db.tbl_vaxxinfo.vaxname
-                                    FROM alagapp_db.tbl_carddetail
-                                    INNER JOIN alagapp_db.tbl_vaxxinfo ON alagapp_db.tbl_carddetail.vaxid = alagapp_db.tbl_vaxxinfo.vaxid
-                                    WHERE petid = ".$row['petid']."";
-                    
-                                  $resvax = $connect->prepare($vax);
-                                  $resvax->execute();
-                    
-                                  if($resvax->rowCount()>0){
-                                    $j=1;
-                                    while($rowvax = $resvax->fetch(PDO::FETCH_ASSOC)){
-                                      echo"
-                                      <div class='row m-2 p-2 bg bg-light rounded'>
-                                        <div class='col-6'>
-                                          <label>Vaccine: ".$rowvax['vaxname']."</label><br>
-                                          <label>Veterinarian: ".$rowvax['cvet']."</label>
-                                        </div>
-                                        <div class='col-4'>
-                                          <label>Weight(Kg): ".$rowvax['cweight']."</label><br>
-                                          <label>Date: ".$rowvax['cdate']."</label>
-                                        </div>
-                                        <div class='col-2'>
-                                          <button type='button' class='btn btn-info w-100 h-100' onClick='cardEdit(".$rowvax['cid'].")' data-bs-toggle='modal' data-bs-target='#boxModal'>
-                                          <i class='bi bi-pencil-square'></i></button>
-                                        </div>
-                                      </div>";
-                                      $j++;
-                                    }
-                                      echo "<div class='row m-2'><button type='button' class='btn btn-light' onClick='cardNew(".$row['petid'].")' data-bs-toggle='modal' data-bs-target='#newModal')>
-                                      <i class='bi bi-plus-square'></i>
-                                      Add Vaccination</button></div>";
-                                  } else {
-                                    echo "<div class='row m-2 bg bg-light rounded'><label class='p-2 text-center '>No Record</label></div>";
-                                    echo "<div class='row m-2'><button type='button' class='btn btn-light' onClick='cardNew(".$row['petid'].")' data-bs-toggle='modal' data-bs-target='#newModal')>
-                                    <i class='bi bi-plus-square'></i>
-                                    Add Vaccination</button></div>";
-                                  }
-                                  echo "
-                                </div>
-                                <div class='col-6 bg bg-success rounded-end'>";
-                                  $note = "SELECT * FROM alagapp_db.tbl_notedetail
-                                    WHERE petid = ".$row['petid']."";
-                    
-                                  $resnote = $connect->prepare($note);
-                                  $resnote->execute();
-                    
-                                  if($resnote->rowCount()>0){
-                                    $p=1;
-                                    while($rownote = $resnote->fetch(PDO::FETCH_ASSOC)){
-                                      echo"
-                                        <div class='row m-2 p-2 bg bg-light rounded'>
-                                          <label>Description: ".$rownote['ndescription']."</label><br>
-                                          <label>Date Issued: ".$rownote['ndate']."</label><br>
-                                          <label>Veterinarian: ".$rownote['nvet']."</label>
-
-                                          <button type='button' class='btn btn-info' onClick='prescriptionEdit(".$rownote['nid'].")' data-bs-toggle='modal' data-bs-target='#boxModal'>
-                                          <i class='bi bi-pencil-square'></i>
-                                          Edit</button>
-                                            </div>";
-                                            $p++;
-                                        }
-                                        echo "<div class='row m-2 bg bg-light rounded'><button type='button' class='btn btn-light' onClick='noteNew(".$row['petid'].")' data-bs-toggle='modal' data-bs-target='#newModal')>
-                                        <i class='bi bi-plus-square'></i>
-                                        Add Prescription</button></div>";
-                                    } else {
-                                        echo "<div class='row m-2 bg bg-light rounded'><label class='p-2 text-center '>No Record</label></div>";
-                                        echo "<div class='row m-2'><button type='button' class='btn btn-light' onClick='noteNew(".$row['petid'].")' data-bs-toggle='modal' data-bs-target='#newModal')>
-                                        <i class='bi bi-plus-square'></i>
-                                        Add Prescription</button></div>";
-                                    }
-                    
-                                echo "
-                                </div>
-                            </div>
-                            </div>";
-                              $i++;
-                          }
-                      } else {
-                          echo "<div class='col'>
-                          <div class='row bg bg-light rounded'>
-                            <label class='p-2 text-center '>No Record
-                            </label></div>
-                          </div>
-                          </div><br>";
-                      }
-                    ?>
+                    <?php include("./profilePet.php"); ?>
                   </div>
               </div>
-          </div>
-        </main>
+</div></main>
 
   <!-- Main Functions -->
   <script src="../js/main.js"></script>

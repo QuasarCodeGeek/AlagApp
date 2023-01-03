@@ -61,14 +61,14 @@ function resubmitSched(qid) {
 
 function getSymptom() {
     var type = document.getElementById("type").value;
-    var part = document.getElementById("part").value;
+    var part = document.getElementById("body").value;
     var symptom = document.getElementById("symptom").value;
     console.log(type+" "+part+" "+symptom);
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
       document.getElementById("ContentHere").innerHTML = this.responseText;
     }
-    xhttp.open("GET", "api/symptom.php?type="+type+"&part="+part+"&symptom="+symptom);
+    xhttp.open("GET", "api/tracker/diagnosis.php?type="+type+"&part="+part+"&symptom="+symptom);
     xhttp.send();
 }
 

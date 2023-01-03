@@ -18,25 +18,25 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="bg bg-success">
-  <main class="row container-fluid px-2">
-      <div class="col-2">
-        <div class="col text-center my-3">
-          <a class="nav-link text-white nav-brand" href="#"><h2>AlagApp</h2></a>
-        </div><br>
-        <div class="col text-center my-3">
-          <a class="nav-link text-white" href="dashboard.php" active><h4>Dashboard</h4></a> 
-        </div>
-        <div class="col text-center my-3">
-          <a class="nav-link text-white" href="account.php">Account</a>
-        </div>
-        <div class="col text-center my-3">
-          <a class="nav-link text-white" href="scheduler.php">Scheduler</a>
-        </div>
-        <div class="col text-center my-3">
-          <a class="nav-link text-white" href="consultation.php">Consultation</a>
-        </div>
-      </div>
-      <div class="col-10 container-fluid" style="background-color: #E0E0E0;">
+  <main class="row m-auto">
+  <div class="col-2">
+          <div class="col text-center my-3">
+            <a class="nav-link text-white nav-brand" href="#"><h2>AlagApp</h2></a>
+          </div><br>
+          <div class="col text-center my-3">
+            <a class="nav-link text-white" href="dashboard.php" active><h4>Dashboard</h4></a> 
+          </div>
+          <div class="col text-center my-3">
+            <a class="nav-link text-white" href="account.php">Account</a>
+          </div>
+          <div class="col text-center my-3">
+            <a class="nav-link text-white" href="scheduler.php">Scheduler</a>
+          </div>
+          <div class="col text-center my-3">
+            <a class="nav-link text-white" href="consultation.php">Consultation</a>
+          </div>
+  </div>
+      <div class="col-10" style="background-color: #E0E0E0;">
                     <div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                       <div class="modal-dialog modal-lg">
                         <div class="modal-content">
