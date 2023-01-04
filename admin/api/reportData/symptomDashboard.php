@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="../../css/styles.css">
 </head>
 <body class="bg bg-success">
-    <nav class="navbar navbar-expand-lg bg-light">
+    <!--<nav class="navbar navbar-expand-lg bg-light">
         <div class="container container-fluid">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -46,8 +46,25 @@
             </div>
           </div>
         </div>
-      </nav>
-      <main class="container-fluid" style="background-color: #E0E0E0;">
+      </nav>-->
+      <main class="container-fluid"><div class="row m-auto">
+      <div class="col-2">
+          <div class="col text-center my-3">
+            <a class="nav-link text-white nav-brand" href="#"><h2>AlagApp</h2></a>
+          </div><br>
+          <div class="col text-center my-3">
+            <a class="nav-link text-white" href="../../dashboard.php" active><h4>Dashboard</h4></a> 
+          </div>
+          <div class="col text-center my-3">
+            <a class="nav-link text-white" href="../../account.php">Account</a>
+          </div>
+          <div class="col text-center my-3">
+            <a class="nav-link text-white" href="../../scheduler.php">Scheduler</a>
+          </div>
+          <div class="col text-center my-3">
+            <a class="nav-link text-white" href="../../consultation.php">Consultation</a>
+          </div>
+  </div>
                     <div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                       <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -72,8 +89,8 @@
                         </div>
                       </div>
                     </div>
-
-          <div class="row">
+<div class="col-10 vh-100">
+  <div class="row m-auto mb-2">
             <div class="col text-center p-1" style="background-color: #81C784;">
               <a type="button" class="text-white nav-link" href="../../dashboard.php">Main</a>
             </div>
@@ -95,10 +112,10 @@
             <div class="col text-center p-1 bg bg-success">
               <a type="button" class="text-white nav-link" href="symptomDashboard.php"><strong>Symptoms Diagnosis</strong></a>
             </div>
-          </div>
+  </div>
           
-          <div class="row bg bg-light rounded m-2 p-2"><!-- Pet Symptoms -->
-    <div class="row">
+  <div class="row m-auto bg bg-light rounded m-2 p-2"><!-- Pet Symptoms -->
+    <div class="row m-auto">
         <div class="col">
           <h3>Pet Symptoms Diagnosis</h3>
           <label>Number of Records: <?php echo $rowdata['count'];?></label>
@@ -106,8 +123,8 @@
         <div class="col">
           <button class="btn btn-success float-end me-2" onClick="symptomNew()" data-bs-toggle='modal' data-bs-target='#newModal'>Add Diagnosis</button>
         </div>
-      </div>
-      <div class="row">
+    </div>
+    <div class="row m-auto">
       <table class="table table-striped m-2">
         <thead class="bg bg-success text-white">
           <tr>
@@ -145,7 +162,7 @@
       </table>
       </div>
     </div><br>
-  </main>
+        </div></div></main>
 
 <!-- Main Functions -->
 <script src="../../js/main.js"></script>

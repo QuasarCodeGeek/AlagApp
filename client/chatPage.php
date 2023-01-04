@@ -152,17 +152,25 @@
                   if($rowchat['msender']==0){
                     echo "<li class='list-group-item border-0'>
                       <div class='float-start p-3' style='background-color: #E8F5E9; border-radius: 10px;'>
-                      <label style='font-size: 14px;'>Vet</label><br>
-                      <label>".$rowchat['mcontent']."</label><br>
-                      <span style='font-size: 12px;'>".$rowchat['mdatetime']."</span>
+                      <label style='font-size: 14px;'>Vet</label><br>";
+                      if($rowchat['mtype'] == "Img"){
+                        echo "<img src='../assets/chat/".$rowchat['mcontent']."' style='width: 15rem; height: auto;'></img><br>";
+                      } else {
+                        echo "<label>".$rowchat['mcontent']."</label><br>";
+                      }
+                      echo "<span style='font-size: 12px;'>".$rowchat['mdatetime']."</span>
                       </div>
                       </li>";
                     } else {
                     echo "<li class='list-group-item border-0'>
                         <div class='float-end p-3' style='background-color: #81C784; border-radius: 10px;'>
-                        <label style='font-size: 14px;'>You</label><br>
-                        <label>".$rowchat['mcontent']."</label><br>
-                        <span style='font-size: 12px;'>".$rowchat['mdatetime']."</span>
+                        <label style='font-size: 14px;'>You</label><br>";
+                        if($rowchat['mtype'] == "Img"){
+                          echo "<img src='../assets/chat/".$rowchat['mcontent']."' style='width: 15rem; height: auto;'></img><br>";
+                        } else {
+                          echo "<label>".$rowchat['mcontent']."</label><br>";
+                        }
+                        echo "<span style='font-size: 12px;'>".$rowchat['mdatetime']."</span>
                         </div>    
                         </li>"; 
                     }
@@ -173,14 +181,42 @@
           ?>
         </div>
     </div>
-        <div class="row">
+    <!--Modal Image User Upload-->
+    <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="profileModalLabel">Upload Image</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form action="api/sendImg.php" method="POST" enctype="multipart/form-data">
+                      <div class="input-group mb-3">
+                        <input type="file" class="form-control col-12 col-sm-12 col-md col-lg col-xl-4" name="fileToUpload" id="fileToUpload">
+                        <input type="number" class="form-control" value="<?php echo $id ?>" name="userid" hidden>
+                        <input type="number" class="form-control" value="<?php echo $channel ?>" name="mchannel" hidden>
+                        <input type="number" class="form-control" value="<?php echo $user ?>" name="msender" hidden>
+                      </div>
+                      <div class="row">
+                        <button type="button" class="col m-1 btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" value="Upload Image" name="submit" class="col m-1 btn btn-primary">Upload</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+    <!--Modal Image User Upload-->
+        <div class="row m-auto">
             <div class="mb-2 p-2 bg bg-success rounded">
-                <form method="POST" action="chatPage.php" class="d-flex">
+                <form method="POST" action="chatPage.php" class="d-flex gap-2">
+                <button class='btn btn-light' type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#profileModal'><i class="bi bi-image"></i></button>
+                      
                     <input type="number" class="form-control" value="<?php echo $id ?>" placeholder="Userid" name="userid" hidden>
                     <input type="number" class="form-control" value="<?php echo $channel ?>" placeholder="Channel" name="channel" hidden>
                     <input type="number" class="form-control" value="<?php echo $user ?>" placeholder="Sender" name="sender" hidden>
                     <input type="text" class="form-control me-2" name="message" placeholder="Enter Message">
-                    <button class="btn btn-light" type="submit" name="submit"><i class="bi bi-send-fill" style="color: #388E3C;"></i></button>
+                    <button class="btn btn-light" type="submit" name="submit"><i class="bi bi-send-fill" style="color: #388E3C;">Send</i></button>
                 </form>
             </div>
         </div>

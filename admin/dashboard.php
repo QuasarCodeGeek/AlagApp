@@ -19,7 +19,7 @@
 </head>
 <body class="bg bg-success">
   <main class="row m-auto">
-  <div class="col-2">
+    <div class="col-2">
           <div class="col text-center my-3">
             <a class="nav-link text-white nav-brand" href="#"><h2>AlagApp</h2></a>
           </div><br>
@@ -35,9 +35,8 @@
           <div class="col text-center my-3">
             <a class="nav-link text-white" href="consultation.php">Consultation</a>
           </div>
-  </div>
-      <div class="col-10" style="background-color: #E0E0E0;">
-                    <div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+    </div>
+      <div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true"><!---->
                       <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                           <div class="modal-header">
@@ -60,14 +59,9 @@
                           </div>
                         </div>
                       </div>
-                    </div>
-          <div class="row p-3">
-            <div class="rounded bg bg-light p-3">
-              <Label>Sgined in as: <b>Admin101</b> </Label>
-              <button class="btn bg bg-info text-white">Log Out</button>
-            </div>
-          </div>
-          <div class="row p-2">
+    </div><!---->
+<div class="col-10 vh-100">
+  <div class="row m-auto mb-2">
             <div class="col text-center bg bg-success p-1">
               <a type="button" class="text-white nav-link" href="dashboard.php"><strong>Main</strong></a>
             </div>
@@ -89,9 +83,14 @@
             <div class="col text-center p-1" style="background-color: #81C784;">
               <a type="button" class="text-white nav-link" href="api/reportData/symptomDashboard.php">Symptoms Diagnosis</a>
             </div>
-          </div>
-    <div class="container pb-5">
-          <div class="row p-2"><!-- First Graph -->
+  </div><!-- -->
+  <div class="row m-auto p-3"><!-- -->
+    <div class="rounded bg bg-light p-3">
+      <Label>Sgined in as: <b>Admin101</b> </Label>
+      <button class="btn bg bg-info text-white">Log Out</button>
+    </div>
+  </div><!-- -->
+  <div class="row m-auto pb-5 p-2"><!-- First Graph -->
             <div class="col bg bg-light rounded m-2 p-2">
               <div class="text-center">
                 <h3>Overall Data Counter</h3>
@@ -99,60 +98,61 @@
               <canvas id="barbar" width="50" height="50"></canvas>
             </div>
             <div class="col bg bg-light rounded m-2 p-2">
-            <div class="text-center">
+              <div class="text-center">
                 <h3>Scheduler Data Counter</h3>
               </div>
               <canvas id="schedulebar" width="50" height="50"></canvas>
             </div>
-          </div><br><!-- First Graph End Tag -->
+  </div><br><!-- First Graph End Tag -->
   
-        <div class="row bg bg-light rounded m-2 p-2"><!-- Second Graph -->
-          <div class="col-3 m-auto">
-            <div class="col text-center">
-              <label>User Gender Ratio</label>
-            </div>
-            <div class="row">
-            <div class="col bg bg-success border-bottom border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
-                <i class="bi bi-chat m-1"></i><strong> Male</strong>
-                <label class="float-end"><?php echo $maleuser; ?></label>
-              </div>
-              <div class="col bg bg-success border-bottom border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
-                <i class="bi bi-chat m-1"></i><strong> Female</strong>
-                <label class="float-end"><?php echo $femaleuser; ?></label>
-              </div>
-            </div>
-            <canvas id="donutuser" width="50" height="50"></canvas>
-          </div>
-          <div class="col-3 m-auto">
-            <div class="col text-center">
-              <label>Pet Type Ratio</label>
-            </div>
-            <div class="row">
-              <div class="col bg bg-success border-bottom border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
-                <i class="bi bi-chat m-1"></i><strong>Dog</strong>
-                <label class="float-end"><?php echo $totaldog; ?></label>
-              </div>
-              <div class="col bg bg-success border-bottom border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
-                <i class="bi bi-chat m-1"></i><strong>Cat</strong>
-                <label class="float-end"><?php echo $totalcat; ?></label>
-              </div>
-            </div>
-            <div class="row">
-            <div class="col bg bg-success border-bottom border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
-                <i class="bi bi-chat m-1"></i><strong>Mouse</strong>
-                <label class="float-end"><?php echo $totalmouse; ?></label>
-              </div>
-              <div class="col bg bg-success border-bottom border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
-                <i class="bi bi-chat m-1"></i><strong>Bird</strong>
-                <label class="float-end"><?php echo $totalbird; ?></label>
-              </div>
-            </div>
-            <canvas id="donutpet" width="50" height="50"></canvas>
-          </div>
+  <div class="row m-auto bg bg-light rounded m-2 p-2"><!-- Second Graph -->
+    <div class="col-3">
+      <div class="col text-center">
+        <label>User Gender Ratio</label>
+      </div>
+      <div class="row m-auto">
+        <div class="col bg bg-success border-bottom border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
+          <i class="bi bi-chat m-1"></i><strong> Male</strong>
+          <label class="float-end"><?php echo $maleuser; ?></label>
         </div>
-    </div> 
+        <div class="col bg bg-success border-bottom border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
+          <i class="bi bi-chat m-1"></i><strong> Female</strong>
+          <label class="float-end"><?php echo $femaleuser; ?></label>
+        </div>
+      </div>
+      <canvas id="donutuser" width="50" height="50"></canvas>
+    </div>
+    <div class="col-3">
+      <div class="col text-center">
+        <label>Pet Type Ratio</label>
+      </div>
+      <div class="row m-auto">
+        <div class="col bg bg-success border-bottom border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
+          <i class="bi bi-chat m-1"></i><strong>Dog</strong>
+          <label class="float-end"><?php echo $totaldog; ?></label>
+        </div>
+        <div class="col bg bg-success border-bottom border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
+          <i class="bi bi-chat m-1"></i><strong>Cat</strong>
+          <label class="float-end"><?php echo $totalcat; ?></label>
+        </div>
+      </div>
+      <div class="row m-auto">
+        <div class="col bg bg-success border-bottom border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
+          <i class="bi bi-chat m-1"></i><strong>Mouse</strong>
+          <label class="float-end"><?php echo $totalmouse; ?></label>
+        </div>
+        <div class="col bg bg-success border-bottom border-5 border-success m-2 p-3 rounded" style="--bs-bg-opacity: .1;">
+          <i class="bi bi-chat m-1"></i><strong>Bird</strong>
+          <label class="float-end"><?php echo $totalbird; ?></label>
+        </div>
+      </div>
+      <canvas id="donutpet" width="50" height="50"></canvas>
+    </div>
+          <!-- -->
   </div>
-</main>
+  <!-- -->
+    </div> 
+  </div></div></main>
 
 <!-- Main Functions -->
 <script src="js/main.js"></script>
