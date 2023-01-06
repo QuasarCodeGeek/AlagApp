@@ -210,7 +210,7 @@ function searchNote() {
       xhttp.onload = function() {
         document.getElementById("alter").innerHTML = this.responseText;
       }
-      xhttp.open("GET", "../searchData/getNote.php?search="+search);
+      xhttp.open("GET", "../searchData/getConsult.php?search="+search);
       xhttp.send();
     } else {
       document.getElementById("altertable").style.display = "none";
@@ -219,7 +219,7 @@ function searchNote() {
 }
 
 function searchUser() {
-  var search = document.getElementById("card").value;
+  var search = document.getElementById("user").value;
     if(search != "") {
       document.getElementById("table").style.display = "none";
       const xhttp = new XMLHttpRequest();
@@ -235,7 +235,7 @@ function searchUser() {
 }
 
 function searchPet() {
-  var search = document.getElementById("card").value;
+  var search = document.getElementById("pet").value;
     if(search != "") {
       document.getElementById("table").style.display = "none";
       const xhttp = new XMLHttpRequest();
@@ -251,7 +251,7 @@ function searchPet() {
 }
 
 function searchSched() {
-  var search = document.getElementById("card").value;
+  var search = document.getElementById("sched").value;
     if(search != "") {
       document.getElementById("table").style.display = "none";
       const xhttp = new XMLHttpRequest();
@@ -267,7 +267,7 @@ function searchSched() {
 }
 
 function searchSympt() {
-  var search = document.getElementById("card").value;
+  var search = document.getElementById("symptom").value;
     if(search != "") {
       document.getElementById("table").style.display = "none";
       const xhttp = new XMLHttpRequest();
@@ -283,7 +283,7 @@ function searchSympt() {
 }
 
 function searchVaxx() {
-  var search = document.getElementById("card").value;
+  var search = document.getElementById("vaxx").value;
     if(search != "") {
       document.getElementById("table").style.display = "none";
       const xhttp = new XMLHttpRequest();
@@ -299,7 +299,7 @@ function searchVaxx() {
 }
 
 function searchConsult() {
-  var search = document.getElementById("card").value;
+  var search = document.getElementById("consult").value;
     if(search != "") {
       document.getElementById("table").style.display = "none";
       const xhttp = new XMLHttpRequest();

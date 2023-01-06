@@ -133,7 +133,7 @@
         </div>
         <div class="col">
           <form action="#" class="input-group" classd="d-flex gap-2">
-            <input class="form-control" id="card" type="text">
+            <input class="form-control" id="consult" type="text">
             <button onclick="searchConsult()" class="btn btn-success">Search</button>
           </form>
         </div>
