@@ -22,7 +22,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../../css/styles.css">
 </head>
-<body class="bg bg-success">
+<body class="bg bg-light">
     <!--<nav class="navbar navbar-expand-lg bg-light">
         <div class="container container-fluid">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,23 +48,27 @@
         </div>
       </nav>-->
       <main class="container-fluid"><div class="row m-auto">
-      <div class="col-2">
-          <div class="col text-center my-3">
-            <a class="nav-link text-white nav-brand" href="#"><h2>AlagApp</h2></a>
+      <div class="col-2 vh-100 bg bg-success">
+          <div class="row m-auto text-center my-3">
+            <a class="nav-link text-white nav-brand" href="#"><h1><b>AlagApp</b></h1></a>
           </div><br>
-          <div class="col text-center my-3">
-            <a class="nav-link text-white" href="../../dashboard.php" active><h4>Dashboard</h4></a> 
+          <div class="row m-auto text-center my-3">
+            <a class="nav-link text-success bg bg-light rounded p-2" href="../../dashboard.php" active><h4><i class="bi bi-speedometer2"></i> Dashboard</h4></a> 
           </div>
-          <div class="col text-center my-3">
-            <a class="nav-link text-white" href="../../account.php">Account</a>
+          <div class="row m-auto text-center my-3">
+            <a class="nav-link text-white" href="../../account.php"><h5><i class="bi bi-person-circle"></i> Account</h5></a>
           </div>
-          <div class="col text-center my-3">
-            <a class="nav-link text-white" href="../../scheduler.php">Scheduler</a>
+          <div class="row m-auto text-center my-3">
+            <a class="nav-link text-white" href="../../scheduler.php"><h5><i class="bi bi-calendar"></i> Scheduler</h5></a>
           </div>
-          <div class="col text-center my-3">
-            <a class="nav-link text-white" href="../../consultation.php">Consultation</a>
+          <div class="row m-auto text-center my-3">
+            <a class="nav-link text-white" href="../../consultation.php"><h5><i class="bi bi-chat"></i> Consultation</h5></a>
           </div>
-      </div>
+          <div class="row m-auto text-center my-3 float-bottom">
+            <a class="nav-link text-white" href="#"><h5>Admin<h5></a>
+            <a class="nav-link text-white" href="#"><h5>Log Out<h5></a>
+          </div>
+    </div>
                     <div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                       <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -89,8 +93,9 @@
                         </div>
                       </div>
                     </div>
-<div class="col-10 vh-100">
+<div class="col-10 vh-100 overflow-auto overflow-y">
           <div class="row m-auto mb-2">
+            <h2 class="text-success p-3"><b>Dashboard</b> | Vaccine Card</h2>
             <div class="col text-center p-1" style="background-color: #81C784;">
               <a type="button" class="text-white nav-link" href="../../dashboard.php">Main</a>
             </div>
@@ -114,10 +119,9 @@
             </div>
           </div>
           
-    <div class="row m-auto bg bg-light rounded m-2 p-2"><!-- Vaccine Card -->
+    <div class="row m-auto border border-3 border-success rounded m-2 p-2"><!-- Vaccine Card -->
       <div class="row m-auto">
         <div class="col">
-          <h3>Vaccine Card</h3>
           <label>Number of Cards: <?php echo $rowdata['count'];?></label>
         </div>
         <div class="col">
@@ -132,18 +136,18 @@
             <th>Pet</th>
             <th>Owner</th>
             <th>Vaccine</th>
-            <th>First Dose</th>
-            <th>Second Dose</th>
-            <th>Booster</th>
+            <th>Veterinarian</th>
+            <th>Weight(Kg)</th>
+            <th>Date</th>
           </tr>
         </thead>
         <tbody>
         <?php
-          $card = "SELECT alagapp_db.tbl_vaxxcard.*, alagapp_db.tbl_userlist.userfname, alagapp_db.tbl_userlist.userlname, alagapp_db.tbl_petprofile.petname, alagapp_db.tbl_vaxxinfo.vaxname
-          FROM (((alagapp_db.tbl_vaxxcard
-          INNER JOIN alagapp_db.tbl_userlist ON alagapp_db.tbl_vaxxcard.userid = alagapp_db.tbl_userlist.userid)
-          INNER JOIN alagapp_db.tbl_petprofile ON alagapp_db.tbl_vaxxcard.petid = alagapp_db.tbl_petprofile.petid)
-          INNER JOIN alagapp_db.tbl_vaxxinfo ON alagapp_db.tbl_vaxxcard.vaxid = alagapp_db.tbl_vaxxinfo.vaxid)";
+          $card = "SELECT alagapp_db.tbl_carddetail.*, alagapp_db.tbl_userlist.userfname, alagapp_db.tbl_userlist.userlname, alagapp_db.tbl_petprofile.petname, alagapp_db.tbl_vaxxinfo.vaxname
+          FROM (((alagapp_db.tbl_carddetail
+          INNER JOIN alagapp_db.tbl_userlist ON alagapp_db.tbl_carddetail.userid = alagapp_db.tbl_userlist.userid)
+          INNER JOIN alagapp_db.tbl_petprofile ON alagapp_db.tbl_carddetail.petid = alagapp_db.tbl_petprofile.petid)
+          INNER JOIN alagapp_db.tbl_vaxxinfo ON alagapp_db.tbl_carddetail.vaxid = alagapp_db.tbl_vaxxinfo.vaxid)";
           $rescard = $connect->query($card);
           $rescard->execute();
           if($rescard->rowCount()>0){
@@ -155,9 +159,9 @@
               <td>".$rowcard['petname']."</td>
               <td>".$rowcard['userfname']." ".$rowcard['userlname']."</td>
               <td>".$rowcard['vaxname']."</td>
-              <td>".$rowcard['fdose']."</td>
-              <td>".$rowcard['sdose']."</td>
-              <td>".$rowcard['booster']."</td>
+              <td>".$rowcard['cvet']."</td>
+              <td>".$rowcard['cweight']."</td>
+              <td>".$rowcard['cdate']."</td>
             </tr>";
             $i++;
             }

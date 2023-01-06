@@ -63,7 +63,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/styles.css">
 </head>
-<body class="bg bg-success">
+<body class="bg bg-light">
 <!--<nav class="navbar navbar-expand-lg bg-light">
         <div class="container container-fluid">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -90,23 +90,27 @@
       </nav>-->
       <main class="container-fluid">
   <div class="row m-auto">
-  <div class="col-2">
-          <div class="col text-center my-3">
-            <a class="nav-link text-white nav-brand" href="#"><h2>AlagApp</h2></a>
+  <div class="col-2 vh-100 bg bg-success"><!--SideBar-->
+          <div class="row m-auto text-center my-3"><!--aa-->
+            <a class="nav-link text-white nav-brand" href="#"><h1><b>AlagApp</b></h1></a>
           </div><br>
-          <div class="col text-center my-3">
-            <a class="nav-link text-white" href="../dashboard.php" active>Dashboard</a> 
+          <div class="row m-auto text-center my-3">
+            <a class="nav-link text-white" href="../dashboard.php"><h5><i class="bi bi-speedometer2"></i> Dashboard</h5></a> 
           </div>
-          <div class="col text-center my-3">
-            <a class="nav-link text-white" href="../account.php">Account</a>
+          <div class="row m-auto text-center my-3">
+            <a class="nav-link text-white" href="../account.php" active><h5><i class="bi bi-person-circle"></i> Account</h5></a>
           </div>
-          <div class="col text-center my-3">
-            <a class="nav-link text-white" href="../scheduler.php">Scheduler</a>
+          <div class="row m-auto text-center my-3">
+            <a class="nav-link text-white" href="../scheduler.php"><h5><i class="bi bi-calendar"></i> Scheduler</h5></a>
           </div>
-          <div class="col text-center my-3">
-            <a class="nav-link text-white" href="../consultation.php"><h4>Consultation</h4></a>
+          <div class="row m-auto text-center my-3 bg bg-light rounded p-2">
+            <a class="nav-link text-success" href="../consultation.php"><h4><i class="bi bi-chat"></i> Consultation</h4></a>
           </div>
-</div>
+          <div class="row m-auto text-center my-3 float-bottom">
+            <a class="nav-link text-white" href="#"><h5>Admin<h5></a>
+            <a class="nav-link text-white" href="#"><h5>Log Out<h5></a>
+          </div><!--aa-->
+        </div><!--SideBar-->
     <div class="col-2 pt-2 vh-100 bg bg-light overflow-auto overflow-y">
       <?php include("./chatList.php");?>
     </div>
@@ -126,13 +130,14 @@
         };
       ?>
       <div class="row p-2"><!-- Chat Header -->
-        <div class="p-2 bg bg-light text-success rounded"> 
+        <div class="p-2 border border-3 border-success text-success rounded-pill">
+          <img class="ms-2  me-2 rounded-circle" src="../../assets/uploads/<?php echo $_rowe['userpict']; ?>" alt="" style="width: 3rem; height: 3rem;"> 
           <label><strong><?php echo $_rowe['userfname']." ".$_rowe['userlname']; ?></strong></label>
         </div>
       </div><!-- Chat Header -->
         
       <div class="rowp-2 "><!-- Chat Conversation -->
-        <div class="m-auto p-2 rounded">
+        <div class="m-auto p-2 border border-3 border-success rounded mb-2 ">
             <?php
               $chat = "SELECT * FROM alagapp_db.tbl_chat WHERE mchannel = ".$channel."";
 
@@ -201,7 +206,7 @@
             </div>
       <!--Modal Upload Image-->
       <div class="row m-auto"><!-- Chat Field -->
-          <div class="mb-2 p-2 bg bg-light rounded">
+          <div class="mb-2 p-2 border border-3 border-success rounded">
             <form method="POST" action="chat.php" class="d-flex gap-2">
                 <button class='btn btn-success' type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#profileModal'><i class="bi bi-image"></i></button>
                 <input type="number" class="form-control" value="<?php echo $id ?>" placeholder="Userid" name="userid" hidden>

@@ -23,7 +23,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../../css/styles.css">
 </head>
-<body class="bg bg-success">
+<body class="bg bg-light">
     <!--<nav class="navbar navbar-expand-lg bg-light">
         <div class="container container-fluid">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,23 +49,27 @@
         </div>
       </nav>-->
       <main class="container-fluid"><div class="row m-auto">
-      <div class="col-2">
-          <div class="col text-center my-3">
-            <a class="nav-link text-white nav-brand" href="#"><h2>AlagApp</h2></a>
+      <div class="col-2 vh-100 bg bg-success">
+          <div class="row m-auto text-center my-3">
+            <a class="nav-link text-white nav-brand" href="#"><h1><b>AlagApp</b></h1></a>
           </div><br>
-          <div class="col text-center my-3">
-            <a class="nav-link text-white" href="../../dashboard.php" active><h4>Dashboard</h4></a> 
+          <div class="row m-auto text-center my-3">
+            <a class="nav-link text-success bg bg-light rounded p-2" href="../../dashboard.php" active><h4><i class="bi bi-speedometer2"></i> Dashboard</h4></a> 
           </div>
-          <div class="col text-center my-3">
-            <a class="nav-link text-white" href="../../account.php">Account</a>
+          <div class="row m-auto text-center my-3">
+            <a class="nav-link text-white" href="../../account.php"><h5><i class="bi bi-person-circle"></i> Account</h5></a>
           </div>
-          <div class="col text-center my-3">
-            <a class="nav-link text-white" href="../../scheduler.php">Scheduler</a>
+          <div class="row m-auto text-center my-3">
+            <a class="nav-link text-white" href="../../scheduler.php"><h5><i class="bi bi-calendar"></i> Scheduler</h5></a>
           </div>
-          <div class="col text-center my-3">
-            <a class="nav-link text-white" href="../../consultation.php">Consultation</a>
+          <div class="row m-auto text-center my-3">
+            <a class="nav-link text-white" href="../../consultation.php"><h5><i class="bi bi-chat"></i> Consultation</h5></a>
           </div>
-      </div>
+          <div class="row m-auto text-center my-3 float-bottom">
+            <a class="nav-link text-white" href="#"><h5>Admin<h5></a>
+            <a class="nav-link text-white" href="#"><h5>Log Out<h5></a>
+          </div>
+    </div>
                     <div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                       <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -90,8 +94,9 @@
                         </div>
                       </div>
                     </div>
-<div class="col-10 vh-100">
+<div class="col-10 vh-100 overflow-auto overflow-y">
           <div class="row m-auto mb-2">
+            <h2 class="text-success p-3"><b>Dashboard</b> | Prescription Note</h2>
             <div class="col text-center p-1" style="background-color: #81C784;">
               <a type="button" class="text-white nav-link" href="../../dashboard.php">Main</a>
             </div>
@@ -115,10 +120,9 @@
             </div>
           </div>
           
-  <div class="row m-auto bg bg-light rounded m-2 p-2"><!-- Prescription Note -->
+  <div class="row m-auto border border-3 border-success rounded m-2 p-2"><!-- Prescription Note -->
       <div class="row m-auto">
         <div class="col">
-          <h3>Prescriptio Note</h3>
           <label>Number of Notes: <?php echo $rowdata['count'];?></label>
         </div>
         <div class="col">
@@ -133,6 +137,7 @@
             <th>Pet</th>
             <th>Owner</th>
             <th>Description</th>
+            <th>Veterinarian</th>
             <th>Date Issued</th>
           </tr>
         </thead>
@@ -153,6 +158,7 @@
               <td>".$rownote['petname']."</td>
               <td>".$rownote['userfname']." ".$rownote['userlname']."</td>
               <td>".$rownote['ndescription']."</td>
+              <td>".$rownote['nvet']."</td>
               <td>".$rownote['ndate']."</td>
             </tr>";
             $i++;

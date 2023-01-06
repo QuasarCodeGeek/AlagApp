@@ -10,8 +10,9 @@
                           $i=1;
                           while($row = $res->fetch(PDO::FETCH_ASSOC)){
                               echo"
-                              <div class='row rounded m-auto mb-2' style='background-color: #81C784;'>  
-                                <div class='row m-auto mt-2 p-2 bg bg-success rounded'>
+                              <div class='row rounded m-auto mb-2' style='background-color: #81C784;'>
+                                <h3 class='text-white mt-3'><b>Pet Profile</b></h3>  
+                                <div class='row m-auto mt-2 p-2 pt-3 pb-3 bg bg-success rounded'>
                                   <div class='col-3'>
                                     <img id='petProfile' class='m-auto rounded' src='../../assets/img/".$row['pettype']."/".$row['petbreed'].".jpg' alt='petProfile'>
                                   </div>
@@ -40,10 +41,10 @@
                                         </div>
                                       </div>
                                       <div class='col-4'>
-                                        <div class='row-2 m-auto mb-2 w-auto h-auto p-2 rounded bg bg-light'>
+                                        <div class='row-2 m-auto mb-2 w-auto h-auto p-2 pb-2 rounded bg bg-light'>
                                           <label>Weight(Kg): ".$row['petweight']."</label>
                                         </div>
-                                        <div class='row-2 m-auto mb-2 w-auto h-auto p-2 rounded bg bg-light'>
+                                        <div class='row-2 m-auto mb-2 w-auto h-auto p-2 pb-2 rounded bg bg-light'>
                                           <label>Height(Ft): ".$row['petheight']."</label>
                                         </div>
                                         <div>
@@ -56,12 +57,14 @@
                                 </div>  
                   
                               <div class='row mx-auto my-2'>
-                                <div class='col-6 bg bg-success rounded-start'>";
+                                <div class='col-6 pb-2 bg bg-success rounded-start'>
+                                  <h4 class='text-white p-2'><b>Vaccine Card</b></h4>";
                                   include("./petCard.php");
                                   echo "
                                 </div>
-                                <div class='col-6 bg bg-success rounded-end'>";
-                                  include("./petNote.php");
+                                <div class='col-6 pb-2 bg bg-success rounded-end'>                
+                                  <h4 class='text-white p-2'><b>Prescription Note</b></h4>";
+                                  include("./petNote.php ");
                                 echo "
                                 </div>
                             </div>
