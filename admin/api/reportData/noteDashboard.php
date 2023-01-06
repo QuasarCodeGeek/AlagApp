@@ -132,10 +132,18 @@
           <label>Number of Notes: <?php echo $rowdata['count'];?></label>
         </div>
         <div class="col">
+          <form action="#" class="input-group" classd="d-flex gap-2">
+            <input class="form-control" id="note" type="text">
+            <button onclick="searchNote()" class="btn btn-success">Search</button>
+          </form>
+        </div>
+        <div class="col">
           <button class="btn btn-success float-end">Print Data</button>
         </div>
       </div>
-      <div class="row m-auto">
+      <div class="row m-auto" id="alter">
+      </div>
+      <div class="row m-auto" id="table">
       <table class="table table-striped m-2">
         <thead class="bg bg-success text-white">
           <tr>
@@ -144,7 +152,7 @@
             <th>Owner</th>
             <th>Description</th>
             <th>Veterinarian</th>
-            <th>Date Issued</th>
+            <th>Date</th>
           </tr>
         </thead>
         <tbody>

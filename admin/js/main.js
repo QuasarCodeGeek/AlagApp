@@ -1,3 +1,5 @@
+const { isEmptyObject } = require("jquery");
+
 // Add Data Function
 function userNew() {
     const xhttp = new XMLHttpRequest();
@@ -199,6 +201,119 @@ function searchCard() {
       document.getElementById("table").style.display = "block";
     }
 }
+
+function searchNote() {
+  var search = document.getElementById("note").value;
+    if(search != "") {
+      document.getElementById("table").style.display = "none";
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function() {
+        document.getElementById("alter").innerHTML = this.responseText;
+      }
+      xhttp.open("GET", "../searchData/getNote.php?search="+search);
+      xhttp.send();
+    } else {
+      document.getElementById("altertable").style.display = "none";
+      document.getElementById("table").style.display = "block";
+    }
+}
+
+function searchUser() {
+  var search = document.getElementById("card").value;
+    if(search != "") {
+      document.getElementById("table").style.display = "none";
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function() {
+        document.getElementById("alter").innerHTML = this.responseText;
+      }
+      xhttp.open("GET", "../searchData/getUser.php?search="+search);
+      xhttp.send();
+    } else {
+      document.getElementById("altertable").style.display = "none";
+      document.getElementById("table").style.display = "block";
+    }
+}
+
+function searchPet() {
+  var search = document.getElementById("card").value;
+    if(search != "") {
+      document.getElementById("table").style.display = "none";
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function() {
+        document.getElementById("alter").innerHTML = this.responseText;
+      }
+      xhttp.open("GET", "../searchData/getPet.php?search="+search);
+      xhttp.send();
+    } else {
+      document.getElementById("altertable").style.display = "none";
+      document.getElementById("table").style.display = "block";
+    }
+}
+
+function searchSched() {
+  var search = document.getElementById("card").value;
+    if(search != "") {
+      document.getElementById("table").style.display = "none";
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function() {
+        document.getElementById("alter").innerHTML = this.responseText;
+      }
+      xhttp.open("GET", "../searchData/getSched.php?search="+search);
+      xhttp.send();
+    } else {
+      document.getElementById("altertable").style.display = "none";
+      document.getElementById("table").style.display = "block";
+    }
+}
+
+function searchSympt() {
+  var search = document.getElementById("card").value;
+    if(search != "") {
+      document.getElementById("table").style.display = "none";
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function() {
+        document.getElementById("alter").innerHTML = this.responseText;
+      }
+      xhttp.open("GET", "../searchData/getSympt.php?search="+search);
+      xhttp.send();
+    } else {
+      document.getElementById("altertable").style.display = "none";
+      document.getElementById("table").style.display = "block";
+    }
+}
+
+function searchVaxx() {
+  var search = document.getElementById("card").value;
+    if(search != "") {
+      document.getElementById("table").style.display = "none";
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function() {
+        document.getElementById("alter").innerHTML = this.responseText;
+      }
+      xhttp.open("GET", "../searchData/getVaxx.php?search="+search);
+      xhttp.send();
+    } else {
+      document.getElementById("altertable").style.display = "none";
+      document.getElementById("table").style.display = "block";
+    }
+}
+
+function searchConsult() {
+  var search = document.getElementById("card").value;
+    if(search != "") {
+      document.getElementById("table").style.display = "none";
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function() {
+        document.getElementById("alter").innerHTML = this.responseText;
+      }
+      xhttp.open("GET", "../searchData/getConsult.php?search="+search);
+      xhttp.send();
+    } else {
+      document.getElementById("altertable").style.display = "none";
+      document.getElementById("table").style.display = "block";
+    }
+}
+
 
 // Additional Functions
 function checkField() {

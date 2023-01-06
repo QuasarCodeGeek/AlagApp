@@ -125,17 +125,24 @@
             </div>
   </div>
 
-  <div class="row m-auto bg bg-light rounded m-2 p-2"><!-- Pet List -->
+  <div class="row m-auto border border-3 border-success rounded m-2 p-2"><!-- Pet List -->
     <div class="row m-auto">
         <div class="col">
-          <h3>User List</h3>
           <label>Number of Users: <?php echo $rowdata['count'];?></label>
+        </div>
+        <div class="col">
+          <form action="#" class="input-group" classd="d-flex gap-2">
+            <input class="form-control" id="card" type="text">
+            <button onclick="searchUser()" class="btn btn-success">Search</button>
+          </form>
         </div>
         <div class="col">
           <button class="btn btn-success float-end">Print Data</button>
         </div>
     </div>
-    <div class="row m-auto">
+    <div class="row m-auto" id="alter">
+      </div>
+      <div class="row m-auto" id="table">
       <table class="table table-striped m-2">
         <thead class="bg bg-success text-white">
           <tr>

@@ -22,6 +22,7 @@
           INNER JOIN alagapp_db.tbl_vaxxinfo ON alagapp_db.tbl_carddetail.vaxid = alagapp_db.tbl_vaxxinfo.vaxid)
           WHERE
             userfname LIKE '%".$search."%' OR 
+            userlname LIKE '%".$search."%' OR
             petname LIKE '%".$search."%' OR
             vaxname LIKE '%".$search."%' OR
             cdate LIKE '%".$search."%' OR
