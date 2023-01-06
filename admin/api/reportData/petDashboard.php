@@ -111,6 +111,12 @@
             <div class="col text-center p-1" style="background-color: #81C784;">
               <a type="button" class="text-white nav-link" href="noteDashboard.php">Prescription Note</a>
             </div>
+            <div class="col text-center p-1" style="background-color: #81C784;">
+              <a type="button" class="text-white nav-link" href="schedDashboard.php">Scheduler</a>
+            </div>
+            <div class="col text-center p-1" style="background-color: #81C784;">
+              <a type="button" class="text-white nav-link" href="consultDashboard.php">Consultation</a>
+            </div>
             <div class="col text-center p-1"  style="background-color: #81C784;">
               <a type="button" class="text-white nav-link" href="vaccineDashboard.php">Vaccine List</a>
             </div>

@@ -111,6 +111,12 @@
             <div class="col text-center p-1" style="background-color: #81C784;">
               <a type="button" class="text-white nav-link" href="noteDashboard.php">Prescription Note</a>
             </div>
+            <div class="col text-center p-1" style="background-color: #81C784;">
+              <a type="button" class="text-white nav-link" href="schedDashboard.php">Scheduler</a>
+            </div>
+            <div class="col text-center p-1" style="background-color: #81C784;">
+              <a type="button" class="text-white nav-link" href="consultDashboard.php">Consultation</a>
+            </div>
             <div class="col text-center p-1"  style="background-color: #81C784;">
               <a type="button" class="text-white nav-link" href="vaccineDashboard.php">Vaccine List</a>
             </div>
@@ -125,10 +131,18 @@
           <label>Number of Cards: <?php echo $rowdata['count'];?></label>
         </div>
         <div class="col">
+          <form action="#" class="input-group" classd="d-flex gap-2">
+            <input class="form-control" id="card" type="text">
+            <button onclick="searchCard()" class="btn btn-success">Search</button>
+          </form>
+        </div>
+        <div class="col">
           <button class="btn btn-success float-end">Print Data</button>
         </div>
       </div>
-      <div class="row m-auto">
+      <div class="row m-auto" id="alter">
+      </div>
+      <div class="row m-auto" id="table">
       <table class="table table-striped m-2">
         <thead class="bg bg-success text-white">
           <tr>

@@ -83,6 +83,12 @@
               <a type="button" class="text-white nav-link" href="api/reportData/noteDashboard.php">Prescription Note</a>
             </div>
             <div class="col text-center p-1" style="background-color: #81C784;">
+              <a type="button" class="text-white nav-link" href="api/reportData/schedDashboard.php">Scheduler</a>
+            </div>
+            <div class="col text-center p-1" style="background-color: #81C784;">
+              <a type="button" class="text-white nav-link" href="api/reportData/consultDashboard.php">Consultation</a>
+            </div>
+            <div class="col text-center p-1" style="background-color: #81C784;">
               <a type="button" class="text-white nav-link" href="api/reportData/vaccineDashboard.php">Vaccine List</a>
             </div>
             <div class="col text-center p-1s" style="background-color: #81C784;">

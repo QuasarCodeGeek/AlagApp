@@ -1,10 +1,11 @@
 <?php
     include ("../dataAnalytics.php");
 
-    $vdata = "SELECT COUNT(vaxid) AS count FROM alagapp_db.tbl_vaxxinfo";
-    $resdata = $connect->query($vdata);
-    $resdata->execute();
-    $rowdata = $resdata->fetch(PDO::FETCH_ASSOC);
+    $schedcount = "SELECT COUNT(qid) AS queue FROM alagapp_db.tbl_scheduler";
+    $resq = $connect->query($schedcount);
+    $resq->execute();
+    $rowq = $resq->fetch(PDO::FETCH_ASSOC);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +24,7 @@
     <link rel="stylesheet" href="../../css/styles.css">
 </head>
 <body class="bg bg-light">
-   <!-- <nav class="navbar navbar-expand-lg bg-light">
+    <!--<nav class="navbar navbar-expand-lg bg-light">
         <div class="container container-fluid">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -94,8 +95,8 @@
                       </div>
                     </div>
 <div class="col-10 vh-100 overflow-auto overflow-y">
-        <div class="row m-auto mb-2">
-            <h2 class="text-success p-3"><b>Dashboard</b> | Vaccine List </h2>
+          <div class="row m-auto mb-2">
+            <h2 class="text-success p-3"><b>Dashboard</b> | Scheduler</h2>
             <div class="col text-center p-1" style="background-color: #81C784;">
               <a type="button" class="text-white nav-link" href="../../dashboard.php">Main</a>
             </div>
@@ -105,70 +106,74 @@
             <div class="col text-center p-1" style="background-color: #81C784;">
               <a type="button" class="text-white nav-link" href="petDashboard.php">Pet List</a>
             </div>
-            <div class="col text-center p-1" style="background-color: #81C784;">
+            <div class="col text-center p-1"  style="background-color: #81C784;">
               <a type="button" class="text-white nav-link" href="cardDashboard.php">Vaccine Card</a>
             </div>
             <div class="col text-center p-1" style="background-color: #81C784;">
               <a type="button" class="text-white nav-link" href="noteDashboard.php">Prescription Note</a>
             </div>
-            <div class="col text-center p-1" style="background-color: #81C784;">
-              <a type="button" class="text-white nav-link" href="schedDashboard.php">Scheduler</a>
+            <div class="col text-center p-1 bg bg-success">
+              <a type="button" class="text-white nav-link" href="schedDashboard.php"><strong>Scheduler</strong></a>
             </div>
             <div class="col text-center p-1" style="background-color: #81C784;">
               <a type="button" class="text-white nav-link" href="consultDashboard.php">Consultation</a>
             </div>
-            <div class="col text-center p-1 bg bg-success">
-              <a type="button" class="text-white nav-link" href="vaccineDashboard.php"><strong>Vaccine List</strong></a>
-            </div>
             <div class="col text-center p-1"  style="background-color: #81C784;">
+              <a type="button" class="text-white nav-link" href="vaccineDashboard.php">Vaccine List</a>
+            </div>
+            <div class="col text-center p-1" style="background-color: #81C784;">
               <a type="button" class="text-white nav-link" href="symptomDashboard.php">Symptoms Diagnosis</a>
             </div>
-  </div>
+          </div>
           
-    <div class="row m-auto border border-3 border-success rounded m-2 p-2"><!-- Vaccine Information -->
+    <div class="row m-auto border border-3 border-success rounded m-2 p-2"><!-- Vaccine Card -->
       <div class="row m-auto">
         <div class="col">
-          <label>Number of Vaccines: <?php echo $rowdata['count'];?></label>
+          <label>Number of Rows: <?php echo $rowq['queue'];?></label>
         </div>
         <div class="col">
-          <button class="btn btn-success float-end me-2" onclick="vaccineNew()" data-bs-toggle='modal' data-bs-target='#newModal'>Add Vaccine</button>
+          <form action="#" class="input-group" classd="d-flex gap-2">
+            <input class="form-control" id="card" type="text">
+            <button onclick="searchCard()" class="btn btn-success">Search</button>
+          </form>
+        </div>
+        <div class="col">
+          <button class="btn btn-success float-end">Print Data</button>
         </div>
       </div>
-      <div class="row m-auto">
+      <div class="row m-auto" id="alter">
+      </div>
+      <div class="row m-auto" id="table">
       <table class="table table-striped m-2">
         <thead class="bg bg-success text-white">
           <tr>
             <th>#</th>
-            <th>Name</th>
-            <th>Type</th>
-            <th>Brand</th>
+            <th>Pet</th>
+            <th>Owner</th>
             <th>Description</th>
-            <th># Administered</th>
-            <th>Edit</th>
+            <th>Date</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody>
         <?php
-          $vaxx = "SELECT * FROM alagapp_db.tbl_vaxxinfo";
-          $resvaxx = $connect->query($vaxx);
-          $resvaxx->execute();
-          if($resvax->rowCount()>0){
+            $scheddata = "SELECT alagapp_db.tbl_scheduler.*, alagapp_db.tbl_userlist.*, alagapp_db.tbl_petprofile.petname
+            FROM ((alagapp_db.tbl_scheduler
+            INNER JOIN alagapp_db.tbl_userlist ON alagapp_db.tbl_scheduler.userid = alagapp_db.tbl_userlist.userid)
+            INNER JOIN alagapp_db.tbl_petprofile ON alagapp_db.tbl_scheduler.petid = alagapp_db.tbl_petprofile.petid)";
+            $res = $connect->query($scheddata);
+            $res->execute();
+
+          if($res->rowCount()>0){
             $i=1;
-            while($rowvaxx = $resvaxx->fetch(PDO::FETCH_ASSOC)){
-
-              $vaxdata = "SELECT COUNT(vaxid) AS vaxx FROM alagapp_db.tbl_vaxxcard WHERE vaxid LIKE ".$rowvaxx['vaxid']."";
-              $resdata = $connect->query($vaxdata);
-              $resdata->execute();
-              $rowdata = $resdata->fetch(PDO::FETCH_ASSOC);
-
+            while($rowdata = $res->fetch(PDO::FETCH_ASSOC)){
               echo "<tr>
               <td>".$i."</td>
-              <td>".$rowvaxx['vaxname']."</td>
-              <td>".$rowvaxx['vaxtype']."</td>
-              <td>".$rowvaxx['vaxbrand']."</td>
-              <td>".$rowvaxx['vaxdes']."</td>
-              <td>".$rowdata["vaxx"]."</td>
-              <td><button class='btn' onclick='vaccineEdit(".$rowvaxx['vaxid'].")' data-bs-toggle='modal' data-bs-target='#boxModal'><i class='bi bi-pencil-square'></i></button></td>
+              <td>".$rowdata['petname']."</td>
+              <td>".$rowdata['userfname']." ".$rowdata['userlname']."</td>
+              <td>".$rowdata['qdescription']."</td>
+              <td>".$rowdata['qdate']."</td>
+              <td>".$rowdata['qstatus']."</td>
             </tr>";
             $i++;
             }
@@ -178,7 +183,7 @@
       </table>
       </div>
     </div><br>
-</div></div></main>
+    </div></div></main>
 
 <!-- Main Functions -->
 <script src="../../js/main.js"></script>

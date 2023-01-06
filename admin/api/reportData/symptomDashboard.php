@@ -93,7 +93,7 @@
                         </div>
                       </div>
                     </div>
-<div class="col-10 vh-100">
+<div class="col-10 vh-100 overflow-auto overflow-y">
 <div class="row m-auto mb-2">
             <h2 class="text-success p-3"><b>Dashboard</b> | Symptom Diagnosis </h2>
             <div class="col text-center p-1" style="background-color: #81C784;">
@@ -111,11 +111,17 @@
             <div class="col text-center p-1" style="background-color: #81C784;">
               <a type="button" class="text-white nav-link" href="noteDashboard.php">Prescription Note</a>
             </div>
+            <div class="col text-center p-1" style="background-color: #81C784;">
+              <a type="button" class="text-white nav-link" href="schedDashboard.php">Scheduler</a>
+            </div>
+            <div class="col text-center p-1" style="background-color: #81C784;">
+              <a type="button" class="text-white nav-link" href="consultDashboard.php">Consultation</a>
+            </div>
             <div class="col text-center p-1"  style="background-color: #81C784;">
               <a type="button" class="text-white nav-link" href="vaccineDashboard.php">Vaccine List</a>
             </div>
             <div class="col text-center p-1 bg bg-success">
-              <a type="button" class="text-white nav-link" href="symptomDashboard.php"><strong>Symptoms Diagnosis</strong></a>
+              <a type="button" class="text-white nav-link" href="symptomDashboard.php">Symptoms Diagnosis</a>
             </div>
           </div>
           

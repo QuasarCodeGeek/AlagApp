@@ -184,6 +184,22 @@ function _searchAccount() {
     }
 }
 
+function searchCard() {
+  var search = document.getElementById("card").value;
+    if(search != "") {
+      document.getElementById("table").style.display = "none";
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function() {
+        document.getElementById("alter").innerHTML = this.responseText;
+      }
+      xhttp.open("GET", "../searchData/getCard.php?search="+search);
+      xhttp.send();
+    } else {
+      document.getElementById("altertable").style.display = "none";
+      document.getElementById("table").style.display = "block";
+    }
+}
+
 // Additional Functions
 function checkField() {
   var email = document.getElementById("email").value;
