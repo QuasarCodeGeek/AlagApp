@@ -2,6 +2,16 @@
     require("api/_connector.php");
     $user = $_REQUEST["userid"];
 
+    $checkUser = "SELECT * FROM alagapp_db.tbl_session WHERE userid = ".$user." AND status = 1";
+        $checkSession = $connect->prepare($checkUser);
+        $checkSession->execute();
+        if($checkSession->rowCount()>0){
+          $wel = $checkSession->fetch(PDO::FETCH_ASSOC);
+          
+        } else {
+          echo "<script>window.location='index.php'</script>";
+        }
+
     $picture = "SELECT * FROM alagapp_db.tbl_userlist WHERE userid = ".$user." ";
         $checkpict = $connect->prepare($picture);
         $checkpict->execute();
@@ -136,7 +146,7 @@
                                       <button class='btn btn-success w-100' onclick="window.location='api/editProfile.php?userid=<?php echo $user; ?>'">Edit</button>
                                   </div>
                                   <div class='col-6'>
-                                      <button class='btn btn-warning w-100' onclick="window.location='index.php'">Log Out</button>
+                                      <button class='btn btn-warning w-100' type="submit name="logout" onclick="window.location='api/logout.php?userid=<?php echo $user;?>'">Log Out</button>
                                   </div>
                                 </div>
                           <?php echo "
