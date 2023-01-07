@@ -136,7 +136,12 @@
             <button onclick="searchSympt()" class="btn btn-success">Search</button>
           </form>
         </div>
+        <div class="col btn-group" role="group">
+          <button type="button" class="btn btn-success"><i class="bi bi-sort-down"></i> ASC</button>
+          <button type="button" class="btn btn-success"><i class="bi bi-sort-up"></i> DES</button>
+        </div>
         <div class="col">
+          <button class="btn btn-success float-end" onclick="window.location='dlSymptom.php'" target="_blank"><i class="bi bi-download"></i> Download</button>
           <button class="btn btn-success float-end me-2" onClick="symptomNew()" data-bs-toggle='modal' data-bs-target='#newModal'>Add Diagnosis</button>
         </div>
     </div>
