@@ -14,11 +14,9 @@
           $user = $checkresult->fetch(PDO::FETCH_ASSOC);
 
           $client = $user['userid'];
-          $type = "Client";
-          $timein = date("Y-m-d h:i:sa");
           $session = 1;
-          $set_session = "INSERT INTO alagapp_db.tbl_session(type, session_in, userid, status) VALUES(:type, :session_in, :userid, :status)";
-          $data = array(":type"=>$type, ":session_in"=>$timein, ":userid"=>$client, ":status"=>$session);
+          $set_session = "UPDATE alagapp_db.tbl_userlist SET usersession = :session WHERE userid = :userid";
+          $data = array(":session"=>$session, ":userid"=>$client);
           $resSession = $connect->prepare($set_session);
           $resSession->execute($data);
           if($resSession->rowCount()>0){
