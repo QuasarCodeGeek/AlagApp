@@ -15,13 +15,22 @@
 
           $client = $user['userid'];
           $session = 1;
-          $set_session = "UPDATE alagapp_db.tbl_userlist SET usersession = :session WHERE userid = :userid";
-          $data = array(":session"=>$session, ":userid"=>$client);
-          $resSession = $connect->prepare($set_session);
-          $resSession->execute($data);
-          if($resSession->rowCount()>0){
-            echo "<script>alert('Log In Successful!');</script>";
-            echo "<script>window.location='homePage.php?userid=".$user['userid']."'</script>";
+
+          $checkuser = "SELECT * FROM alagapp_db.tbl_userlist WHERE userid = ".$client." AND usersession = '1'";
+          $checkSession = $connect->prepare($checkuser);
+          $checkSession->execute();
+          if($checkSession->rowCount()>0){
+            echo "<script>alert('Welcome Back!');
+                  window.location='./homePage.php?userid=".$user['userid']."'</script>";
+          } else {
+            $set_session = "UPDATE alagapp_db.tbl_userlist SET usersession = :session WHERE userid = :userid";
+            $data = array(":session"=>$session, ":userid"=>$client);
+            $resSession = $connect->prepare($set_session);
+            $resSession->execute($data);
+            if($resSession->rowCount()>0){
+              echo "<script>alert('Log In Successful!');</script>";
+              echo "<script>window.location='homePage.php?userid=".$user['userid']."'</script>";
+            }
           }
        } else {
            echo "<script>alert('Account not found!');</script>";

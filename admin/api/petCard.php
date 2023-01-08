@@ -13,6 +13,7 @@ $j=1;
 while($rowvax = $resvax->fetch(PDO::FETCH_ASSOC)){
   echo"
   <div class='row m-2 p-2 bg bg-light rounded'>
+    
     <div class='col-6'>
       <label>Vaccine: ".$rowvax['vaxname']."</label><br>
       <label>Veterinarian: ".$rowvax['cvet']."</label>

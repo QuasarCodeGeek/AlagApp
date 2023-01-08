@@ -1,6 +1,14 @@
 <?php
   require("api/connector.php");
 
+  $checkadmin = "SELECT * FROM alagapp_db.tbl_admin WHERE adminid = 1 AND session = 1";
+        $checkSession = $connect->prepare($checkadmin);
+        $checkSession->execute();
+        if($checkSession->rowCount()>0){
+          echo "<script>alert('Welcome Back!');
+                window.location='./dashboard.php'</script>";
+        } 
+
   if(isset($_POST["submit"])){
     $code = $_POST["admincode"];
     $pass = $_POST["adminpass"];
