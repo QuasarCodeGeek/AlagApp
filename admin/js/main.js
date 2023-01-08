@@ -171,6 +171,15 @@ function symptomEdit(sid) {
   xhttp.send();
 }
 
+function adminEdit(id) {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    document.getElementById("modalHere").innerHTML = this.responseText;
+  }
+  xhttp.open("GET", "../adminData/adminEdit.php?id="+id);
+  xhttp.send();
+}
+
 // Search Functions
 function _searchAccount() {
   var account = document.getElementById("searchAccount").value;

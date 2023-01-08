@@ -58,12 +58,12 @@
                   
                               <div class='row mx-auto my-2'>
                                 <div class='col-6 pb-2 bg bg-success rounded-start'>
-                                  <h4 class='text-white p-2'><b>Vaccine Card</b></h4>";
+                                  <h4 class='text-white p-2'><b>E-Vaccine Card</b></h4>";
                                   include("./petCard.php");
                                   echo "
                                 </div>
                                 <div class='col-6 pb-2 bg bg-success rounded-end'>                
-                                  <h4 class='text-white p-2'><b>Prescription Note</b></h4>";
+                                  <h4 class='text-white p-2'><b>E-Prescription Note</b></h4>";
                                   include("./petNote.php ");
                                 echo "
                                 </div>

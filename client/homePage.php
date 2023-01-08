@@ -165,7 +165,7 @@
                     echo "<div class='row'>
                         <div class='col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12'><!-- Vaccine Card -->
                             <button class='btn btn-success w-100 mb-2' type='button' data-bs-toggle='collapse' data-bs-target='#collapseCard".$petrow['petid']."' aria-expanded='false' aria-controls='collapseCard".$petrow['petid']."'>
-                                    Vaccine Card
+                                    E-Vaccine Card
                             </button>
                             <div class='collapse' id='collapseCard".$petrow['petid']."'>";
                         
@@ -201,7 +201,7 @@
 
                         echo "<div class='col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12'><!-- Prescription Note -->
                             <button class='btn btn-success w-100 mb-2' type='button' data-bs-toggle='collapse' data-bs-target='#collapseNote".$petrow['petid']."' aria-expanded='false' aria-controls='collapseNote".$petrow['petid']."'>
-                                    Prescription Note
+                                    E-Prescription Note
                             </button>
                             <div class='collapse' id='collapseNote".$petrow['petid']."'>";
                         

@@ -62,11 +62,11 @@
             <a class="nav-link text-white" href="../../scheduler.php"><h5><i class="bi bi-calendar"></i> Scheduler</h5></a>
           </div>
           <div class="row m-auto text-center my-3">
-            <a class="nav-link text-white" href="../../consultation.php"><h5><i class="bi bi-chat"></i> Consultation</h5></a>
-          </div>
+            <a class="nav-link text-white" href="../../consultation.php"><h5><i class="bi bi-chat"></i> O-Consultation</h5></a>
+          </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
           <div class="row m-auto text-center my-3 float-bottom">
-            <a class="nav-link text-white" href="#"><h5>Admin<h5></a>
-            <a class="nav-link text-white" href="#"><h5>Log Out<h5></a>
+          <a class="nav-link text-white" href="./../adminData/adminProfile.php"><h5>Admin<h5></a>
+            <a class="nav-link text-white" href="./../../logout.php"><h5>Log Out<h5></a>
           </div>
     </div>
                     <div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">

@@ -12,10 +12,26 @@
 
         if($checkresult->rowCount()>0) {
           $user = $checkresult->fetch(PDO::FETCH_ASSOC);
+          $id = $user['adminid'];
+          $session = 1;
+          $sql = "UPDATE alagapp_db.tbl_admin SET
+                session = :session
 
-          echo "<script>window.location='account.php'</script>";
+                WHERE adminid = :admin";
+
+            $result = $connect->prepare($sql);
+            $val = array(":admin"=>$id , ":session"=>$session);
+            $result->execute($val);
+
+            if($result->rowCount()>0) {
+                echo "<script>alert('Successfully Logged In!');
+                window.location='./dashboard.php'</script>";
+             } else {
+                 echo "<script>alert('Error!')
+                 window.location='./index.php'</script>";
+             }
        } else {
-           echo "<script>alert('Invalid Account!')</script>";
+           echo "<script>alert('Invalid Account!')window.location='./index.php'</script>";
        }
     } else {
       echo "<div onload='checkField()'></div>";

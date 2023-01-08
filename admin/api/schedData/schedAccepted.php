@@ -83,7 +83,7 @@
             <a class="nav-link text-success" href="../../scheduler.php"><h4><i class="bi bi-calendar"></i> Scheduler</h4></a>
           </div>
           <div class="row m-auto text-center my-3">
-            <a class="nav-link text-white" href="../../consultation.php"><h5><i class="bi bi-chat"></i> Consultation</h5></a>
+            <a class="nav-link text-white" href="../../consultation.php"><h5><i class="bi bi-chat"></i> O-Consultation</h5></a>
           </div>
           <div class="row m-auto text-center my-5">
                     <button class="btn w-100 bg bg-success text-white mb-1 border border-2 border-light rounded" onclick="location.href='../sched_chrono.php'">All</button>
@@ -92,14 +92,14 @@
                     <button class="btn w-100 bg-light border border-3 border-light text-success rounded fw-bold mb-1" onclick="location.href='schedAccepted.php'">Accepted</button>
                     <button class="btn w-100 bg bg-success text-white mb-1 border border-2 border-light rounded" onclick="location.href='schedCancelled.php'">Cancelled</button>
                     <button class="btn w-100 bg bg-success text-white mb-1 border border-2 border-light rounded" onclick="location.href='schedFinished.php'">Finished</button>
-          </div>
+          </div><br><br><br>
           <div class="row m-auto text-center my-3 float-bottom">
-            <a class="nav-link text-white" href="#"><h5>Admin<h5></a>
-            <a class="nav-link text-white" href="#"><h5>Log Out<h5></a>
+          <a class="nav-link text-white" href="./../adminData/adminProfile.php"><h5>Admin<h5></a>
+            <a class="nav-link text-white" href="./../../logout.php"><h5>Log Out<h5></a>
           </div><!--aa-->
 
         </div><!--SideBar-->
-  <div class="col-10 vh-100">
+  <div class="col-10 vh-100 overflow-auto overflow-y">
     <div class="row m-auto">
       <div class="row m-auto">
                   <h2 class="text-success p-3"><b>Scheduler</b> | Status > Accepted</h2>
