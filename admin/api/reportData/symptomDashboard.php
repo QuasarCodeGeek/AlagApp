@@ -151,7 +151,7 @@ if($checkSession->rowCount()>0){
           <button type="button" class="btn btn-success" onclick="descSymptom()"><i class="bi bi-sort-up"></i> DES</button>
         </div>
         <div class="col">
-          <button class="btn btn-success float-end" onclick="window.location='dlSymptom.php'" target="_blank"><i class="bi bi-download"></i> Download</button>
+          <button class="btn btn-success float-end" onclick="window.location='../downloadData/dlSymptom.php'" target="_blank"><i class="bi bi-download"></i> Download</button>
           <button class="btn btn-success float-end me-2" onClick="symptomNew()" data-bs-toggle='modal' data-bs-target='#newModal'>Add Diagnosis</button>
         </div>
     </div>

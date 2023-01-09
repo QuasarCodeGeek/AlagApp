@@ -153,7 +153,7 @@ if($checkSession->rowCount()>0){
           <button type="button" class="btn btn-success" onclick="descConsult()"><i class="bi bi-sort-up"></i> DES</button>
         </div>
         <div class="col">
-          <button class="btn btn-success float-end" onclick="window.location='dlConsult.php'" target="_blank"><i class="bi bi-download"></i> Download</button>
+        <button class="btn btn-success float-end" onclick="window.location='../downloadData/dlConsult.php'" target="_blank"><i class="bi bi-download"></i> Download</button>
         </div>
       </div>
       <div class="row m-auto" id="alter">

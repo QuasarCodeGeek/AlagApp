@@ -148,6 +148,9 @@
 <div class="container">
     <div class="row">
         <div class="m-auto p-2 rounded">
+        <a href="https://meet.google.com/ioy-hihq-ieu">
+          <button class="btn btn-primary-outline float-start"><iconify-icon icon="bi:camera-video-fill" style="color: green;" width="30" height="30"></iconify-icon></button>
+          </a>
           <?php
             $id = $user;
             $channel = $id;
@@ -241,5 +244,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
   </script>
+
+<script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
 </body>
 </html>

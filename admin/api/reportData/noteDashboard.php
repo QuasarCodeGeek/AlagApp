@@ -152,7 +152,7 @@ if($checkSession->rowCount()>0){
           <button type="button" class="btn btn-success" onclick="descNote()"><i class="bi bi-sort-up"></i> DES</button>
         </div>
         <div class="col">
-          <button class="btn btn-success float-end" onclick="window.location='dlNote.php'" target="_blank"><i class="bi bi-download"></i> Download</button>
+        <button class="btn btn-success float-end" onclick="window.location='../downloadData/dlNote.php'" target="_blank"><i class="bi bi-download"></i> Download</button>
         </div>
       </div>
       <div class="row m-auto" id="alter">

@@ -151,7 +151,7 @@ if($checkSession->rowCount()>0){
           <button type="button" class="btn btn-success" onclick="descVaxx()"><i class="bi bi-sort-up"></i> DES</button>
         </div>
         <div class="col">
-          <button class="btn btn-success float-end" onclick="window.location='dlCard.php'" target="_blank"><i class="bi bi-download"></i> Download</button>
+        <button class="btn btn-success float-end" onclick="window.location='../downloadData/dlVaxx.php'" target="_blank"><i class="bi bi-download"></i> Download</button>
           <button class="btn btn-success float-end me-2" onclick="vaccineNew()" data-bs-toggle='modal' data-bs-target='#newModal'>Add Vaccine</button>
         </div>
       </div>

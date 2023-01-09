@@ -143,6 +143,9 @@ if($checkSession->rowCount()>0){
         <div class="p-2 border border-3 border-success text-success rounded-pill">
           <img class="ms-2  me-2 rounded-circle" src="../../assets/uploads/<?php echo $_rowe['userpict']; ?>" alt="" style="width: 3rem; height: 3rem;"> 
           <label><strong><?php echo $_rowe['userfname']." ".$_rowe['userlname']; ?></strong></label>
+          <a href="https://meet.google.com/ioy-hihq-ieu">
+          <button class="btn btn-primary-outline float-end"><iconify-icon icon="bi:camera-video-fill" style="color: green;" width="30" height="30"></iconify-icon></button>
+          </a>
         </div>
       </div><!-- Chat Header -->
         
@@ -246,5 +249,7 @@ if($checkSession->rowCount()>0){
 <script
   src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
 </script>
+
+<script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
 </body>
 </html>
