@@ -7,6 +7,7 @@
             <th>Type</th>
             <th>Brand</th>
             <th>Description</th>
+            <th># Administered</th>
           </tr>
         </thead>
         <tbody>
@@ -28,12 +29,18 @@
             $i=$count;
             while($rownote = $resnote->fetch(PDO::FETCH_ASSOC)){
 
+                $vaxdata = "SELECT COUNT(vaxid) AS vaxx FROM alagapp_db.tbl_vaxxcard WHERE vaxid LIKE ".$rownote['vaxid']."";
+              $resdata = $connect->query($vaxdata);
+              $resdata->execute();
+              $rowdata = $resdata->fetch(PDO::FETCH_ASSOC);
+
               echo "<tr>
               <td>".$i."</td>
               <td>".$rownote['vaxname']."</td>
               <td>".$rownote['vaxtype']."</td>
               <td>".$rownote['vaxbrand']."</td>
               <td>".$rownote['vaxdes']."</td>
+              <td>".$rowdata['vaxx']."</td>
             </tr>";
             $i++;
             }
