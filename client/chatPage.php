@@ -138,19 +138,19 @@
 </nav>
 <main class="container-fluid">
     <div class="row">
-        <div class="col-6 p-2 text-center" style="background-color: #81C784;">
+        <div class="col-4 p-2 text-center" style="background-color: #81C784;">
             <a class="nav-link active text-white" href="chatPage.php?userid=<?php echo $user;?>"><strong>Chat</strong></a>
         </div>
-        <div class="col-6 p-2 text-center" style="background-color: #A5D6A7;">
+        <div class="col-4 p-2 text-center" id="videoCall" style="background-color: #A5D6A7;">
+          <a class="nav-link" href="callPage.php?userid=<?php echo $user;?>">Call</a>
+        </div>
+        <div class="col-4 p-2 text-center" style="background-color: #A5D6A7;">
             <a class="nav-link" href="schedPage.php?userid=<?php echo $user;?>">Scheduler</a>
         </div>
     </div>
 <div class="container">
     <div class="row">
         <div class="m-auto p-2 rounded">
-        <a href="https://meet.google.com/ioy-hihq-ieu">
-          <button class="btn btn-primary-outline float-start"><iconify-icon icon="bi:camera-video-fill" style="color: green;" width="30" height="30"></iconify-icon></button>
-          </a>
           <?php
             $id = $user;
             $channel = $id;
