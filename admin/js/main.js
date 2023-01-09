@@ -219,7 +219,7 @@ function searchNote() {
       xhttp.onload = function() {
         document.getElementById("alter").innerHTML = this.responseText;
       }
-      xhttp.open("GET", "../searchData/getConsult.php?search="+search);
+      xhttp.open("GET", "../searchData/getNote.php?search="+search);
       xhttp.send();
     } else {
       document.getElementById("altertable").style.display = "none";
@@ -322,7 +322,17 @@ function searchConsult() {
       document.getElementById("table").style.display = "block";
     }
 }
-
+//Sort Functions
+function descUser() {
+  document.getElementById("table").style.display = "none";
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    document.getElementById("alter").innerHTML = this.responseText;
+  }
+  xhttp.open("GET", "../sortData/userDES.php");
+  xhttp.send();
+   
+}
 
 // Additional Functions
 function checkField() {
