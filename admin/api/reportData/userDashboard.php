@@ -163,7 +163,7 @@ if($checkSession->rowCount()>0){
             <th>#</th>
             <th>Name</th>
             <th>Street</th>
-            <th>Baranggay</th>
+            <th>Barangay</th>
             <th>Municipality</th>
             <th>Province</th>
             <th>Birth Date</th>

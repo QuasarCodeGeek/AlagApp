@@ -5,9 +5,13 @@
             <th>#</th>
             <th>Pet</th>
             <th>Owner</th>
-            <th>Description</th>
-            <th>Date</th>
-            <th>Status</th>
+            <th>Pet Type</th>
+            <th>Breed</th>
+            <th>Wt(Kg)</th>
+            <th>Ht(Ft)</th>
+            <th>DOB</th>
+            <th>Age</th>
+            <th>Gender</th>
           </tr>
         </thead>
         <tbody>
@@ -38,8 +42,8 @@
               <td>".$i."</td>
               <td>".$rownote['petname']."</td>
               <td>".$rownote['userfname']." ".$rownote['userlname']."</td>
-              <td>".$rownote['petbreed']."</td>
               <td>".$rownote['pettype']."</td>
+              <td>".$rownote['petbreed']."</td>
               <td>".$rownote['petweight']."</td>
               <td>".$rownote['petheight']."</td>
               <td>".$rownote['petbdate']."</td>

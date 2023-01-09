@@ -8,7 +8,7 @@
             <th>Barangay</th>
             <th>Municipality</th>
             <th>Province</th>
-            <th>Bdate</th>
+            <th>Birth Date</th>
             <th>Gender</th>
           </tr>
         </thead>

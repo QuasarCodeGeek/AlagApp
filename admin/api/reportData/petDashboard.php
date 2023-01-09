@@ -164,7 +164,7 @@ if($checkSession->rowCount()>0){
             <th>#</th>
             <th>Name</th>
             <th>Owner</th>
-            <th>Specie</th>
+            <th>Pet Type</th>
             <th>Breed</th>
             <th>Wt(Kg)</th>
             <th>Ht(M)</th>
