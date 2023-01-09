@@ -149,8 +149,8 @@ if($checkSession->rowCount()>0){
           </form>
         </div>
         <div class="col btn-group" role="group">
-          <button type="button" class="btn btn-success"><i class="bi bi-sort-down"></i> ASC</button>
-          <button type="button" class="btn btn-success"><i class="bi bi-sort-up"></i> DES</button>
+          <button type="button" class="btn btn-success" onclick="window.location='consultDashboard.php'"><i class="bi bi-sort-down"></i> ASC</button>
+          <button type="button" class="btn btn-success" onclick="descConsult()"><i class="bi bi-sort-up"></i> DES</button>
         </div>
         <div class="col">
           <button class="btn btn-success float-end" onclick="window.location='dlConsult.php'" target="_blank"><i class="bi bi-download"></i> Download</button>

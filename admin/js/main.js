@@ -331,9 +331,75 @@ function descUser() {
   }
   xhttp.open("GET", "../sortData/userDES.php");
   xhttp.send();
-   
 }
 
+function descSched() {
+  document.getElementById("table").style.display = "none";
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    document.getElementById("alter").innerHTML = this.responseText;
+  }
+  xhttp.open("GET", "../sortData/schedDES.php");
+  xhttp.send();
+}
+function descPet() {
+  document.getElementById("table").style.display = "none";
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    document.getElementById("alter").innerHTML = this.responseText;
+  }
+  xhttp.open("GET", "../sortData/petDES.php");
+  xhttp.send();
+}
+function descCard() {
+  document.getElementById("table").style.display = "none";
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    document.getElementById("alter").innerHTML = this.responseText;
+  }
+  xhttp.open("GET", "../sortData/cardDES.php");
+  xhttp.send();
+}
+
+function descNote() {
+  document.getElementById("table").style.display = "none";
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    document.getElementById("alter").innerHTML = this.responseText;
+  }
+  xhttp.open("GET", "../sortData/noteDES.php");
+  xhttp.send();
+}
+
+function descConsult() {
+  document.getElementById("table").style.display = "none";
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    document.getElementById("alter").innerHTML = this.responseText;
+  }
+  xhttp.open("GET", "../sortData/consultDES.php");
+  xhttp.send();
+}
+
+function descVaxx() {
+  document.getElementById("table").style.display = "none";
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    document.getElementById("alter").innerHTML = this.responseText;
+  }
+  xhttp.open("GET", "../sortData/vaxxDES.php");
+  xhttp.send();
+}
+
+function descSymptom() {
+  document.getElementById("table").style.display = "none";
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    document.getElementById("alter").innerHTML = this.responseText;
+  }
+  xhttp.open("GET", "../sortData/symptomDES.php");
+  xhttp.send();
+}
 // Additional Functions
 function checkField() {
   var email = document.getElementById("email").value;
