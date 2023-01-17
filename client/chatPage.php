@@ -88,18 +88,18 @@
 <nav class="navbar navbar-expand-lg bg-success">
   <div class="container-fluid">
     <button class="navbar-toggler" style="border: none; color: white;" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-        <i class="bi bi-list"></i>
+        <h1><i class="bi bi-list"></i></h1>
     </button>
-    <a class="navbar-brand text-white" href="#"><b>AlagApp</b></a>    
+    <a class="navbar-brand text-white" href="#"><h1><b>AlagApp</b></h1></a>    
     <div class="offcanvas offcanvas-start w-75" style="background-color: #81C784;" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header bg bg-success">
-        <h5 class="offcanvas-title text-white" id="offcanvasNavbarLabel">Menu</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <h2 class="offcanvas-title text-white" id="offcanvasNavbarLabel">Menu</h2>
+        <h3><button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button></h3>
       </div>
       <div class="offcanvas-body">
         <ul class="navbar-nav flex-grow-1 pe-3">
           <li class="nav-item">
-            <a class="nav-link" href="userPage.php?userid=<?php echo $user; ?>">
+            <h3><a class="nav-link" href="userPage.php?userid=<?php echo $user; ?>">
                     <?php 
                         if($pict!=''){
                             echo "<img class='rounded me-2' style='width: 25px;' src='../assets/uploads/".$pict."'>";
@@ -109,27 +109,27 @@
                             echo "<img class='rounded me-2' style='width: 25px;' src='../assets/default/male.png'>";
                         }
                     echo "<label class='float-end text-white'>".$name."</label>"; ?>
-            </a>
+            </a></h3>
           </li>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="homePage.php?userid=<?php echo $user; ?>">
+            <h3><a class="nav-link" aria-current="page" href="homePage.php?userid=<?php echo $user; ?>">
             <i class="bi bi-house-fill me-2" style="color: white;"></i>
-            <label class="float-end text-white">Home</label></a>
+            <label class="float-end text-white">Home</label></a></h3>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="chatPage.php?userid=<?php echo $user; ?>">
+            <h3><a class="nav-link active" href="chatPage.php?userid=<?php echo $user; ?>">
             <i class="bi bi-chat-fill me-2" style="color: white;"></i>
-            <label class="float-end text-white"><strong>O-Consultation</strong></label></a>
+            <label class="float-end text-white"><strong>O-Consultation</strong></label></a></h3>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="trackerPage.php?userid=<?php echo $user; ?>">
-            <i class="bi bi-chat-fill me-2" style="color: white;"></i>
-            <label class="float-end text-white">Health Tracker</label></a>
+            <h3><a class="nav-link" href="trackerPage.php?userid=<?php echo $user; ?>">
+            <i class="bi bi-archive-fill me-2" style="color: white;"></i>
+            <label class="float-end text-white">Health Tracker</label></a></h3>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="aboutUs.php?userid=<?php echo $user; ?>">
+            <h3><a class="nav-link" href="aboutUs.php?userid=<?php echo $user; ?>">
             <i class="bi bi-info-circle-fill me-2" style="color: white;"></i>
-            <label class="float-end text-white">About Us</label></a>
+            <label class="float-end text-white">About Us</label></a></h3>
           </li>
         </ul>
       </div>
@@ -139,13 +139,13 @@
 <main class="container-fluid">
     <div class="row">
         <div class="col-4 p-2 text-center" style="background-color: #81C784;">
-            <a class="nav-link active text-white" href="chatPage.php?userid=<?php echo $user;?>"><strong>Chat</strong></a>
+            <a class="nav-link active text-white" href="chatPage.php?userid=<?php echo $user;?>"><strong><h5>Chat</h5></strong></a>
         </div>
         <div class="col-4 p-2 text-center" id="videoCall" style="background-color: #A5D6A7;">
-          <a class="nav-link" href="callPage.php?userid=<?php echo $user;?>">Call</a>
+          <a class="nav-link" href="callPage.php?userid=<?php echo $user;?>"><h5>Call</h5></a>
         </div>
         <div class="col-4 p-2 text-center" style="background-color: #A5D6A7;">
-            <a class="nav-link" href="schedPage.php?userid=<?php echo $user;?>">Scheduler</a>
+            <a class="nav-link" href="schedPage.php?userid=<?php echo $user;?>"><h5>Scheduler</h5></a>
         </div>
     </div>
 <div class="container">
@@ -223,13 +223,13 @@
         <div class="row m-auto">
             <div class="mb-2 p-2 bg bg-success rounded">
                 <form method="POST" action="chatPage.php" class="d-flex gap-2">
-                <button class='btn btn-light' type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#profileModal'><i class="bi bi-image"></i></button>
+                <button class='btn btn-light' type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#profileModal'><i class="bi bi-image" style="color: green;"></i></button>
                       
                     <input type="number" class="form-control" value="<?php echo $id ?>" placeholder="Userid" name="userid" hidden>
                     <input type="number" class="form-control" value="<?php echo $channel ?>" placeholder="Channel" name="channel" hidden>
                     <input type="number" class="form-control" value="<?php echo $user ?>" placeholder="Sender" name="sender" hidden>
                     <input type="text" class="form-control me-2" name="message" placeholder="Enter Message">
-                    <button class="btn btn-light" type="submit" name="submit"><i class="bi bi-send-fill" style="color: #388E3C;">Send</i></button>
+                    <button class="btn btn-light text-success fw-bold" type="submit" name="submit">Send</button>
                 </form>
             </div>
         </div>

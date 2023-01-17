@@ -43,18 +43,18 @@
 <nav class="navbar navbar-expand-lg bg-success">
   <div class="container-fluid">
     <button class="navbar-toggler" style="border: none; color: white;" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-        <i class="bi bi-list"></i>
+        <h1><i class="bi bi-list"></i></h1>
     </button>
-    <a class="navbar-brand text-white" href="#"><b>AlagApp</b></a>    
+    <a class="navbar-brand text-white" href="#"><h1><b>AlagApp</b></h1></a>    
     <div class="offcanvas offcanvas-start w-75" style="background-color: #81C784;" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header bg bg-success">
-        <h5 class="offcanvas-title text-white" id="offcanvasNavbarLabel">Menu</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <h2 class="offcanvas-title text-white" id="offcanvasNavbarLabel">Menu</h2>
+        <h3><button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button></h3>
       </div>
       <div class="offcanvas-body">
         <ul class="navbar-nav flex-grow-1 pe-3">
-          <li class="nav-item">
-            <a class="nav-link" href="userPage.php?userid=<?php echo $user; ?>">
+        <li class="nav-item">
+        <h3><a class="nav-link" href="userPage.php?userid=<?php echo $user; ?>">
                     <?php 
                         if($pict!=''){
                             echo "<img class='rounded me-2' style='width: 25px;' src='../assets/uploads/".$pict."'>";
@@ -65,27 +65,27 @@
                         }
                     
                     echo "<label class='float-end text-white'>".$name."</label>"; ?>
-            </a>
+            </a></h3>
           </li>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="homePage.php?userid=<?php echo $user; ?>">
+          <h3><a class="nav-link" aria-current="page" href="homePage.php?userid=<?php echo $user; ?>">
             <i class="bi bi-house-fill me-2" style="color: white;"></i>
-            <label class="float-end text-white">Home</label></a>
+            <label class="float-end text-white">Home</label></a></h3>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="chatPage.php?userid=<?php echo $user; ?>">
+          <h3><a class="nav-link active" href="chatPage.php?userid=<?php echo $user; ?>">
             <i class="bi bi-chat-fill me-2" style="color: white;"></i>
-            <label class="float-end text-white"><strong>O-Consultation</strong></label></a>
+            <label class="float-end text-white"><strong>O-Consultation</strong></label></a></h3>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="trackerPage.php?userid=<?php echo $user; ?>">
-            <i class="bi bi-chat-fill me-2" style="color: white;"></i>
-            <label class="float-end text-white">Health Tracker</label></a>
+          <h3><a class="nav-link" href="trackerPage.php?userid=<?php echo $user; ?>">
+            <i class="bi bi-archive-fill me-2" style="color: white;"></i>
+            <label class="float-end text-white">Health Tracker</label></a></h3>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="aboutUs.php?userid=<?php echo $user; ?>">
+          <h3><a class="nav-link" href="aboutUs.php?userid=<?php echo $user; ?>">
             <i class="bi bi-info-circle-fill me-2" style="color: white;"></i>
-            <label class="float-end text-white">About Us</label></a>
+            <label class="float-end text-white">About Us</label></a></h3>
           </li>
         </ul>
       </div>
@@ -95,10 +95,10 @@
 <main class="container-fluid">
 <div class="row">
         <div class="col-6 p-2 text-center" style="background-color: #A5D6A7;">
-            <a class="nav-link" href="chatPage.php?userid=<?php echo $user;?>">Chat</a>
+            <a class="nav-link" href="chatPage.php?userid=<?php echo $user;?>"><h5>Chat</h5></a>
         </div>
         <div class="col-6 p-2 text-center" style="background-color: #81C784;">
-            <a class="nav-link active text-white" href="schedPage.php?userid=<?php echo $user;?>"><strong>Scheduler</strong></a>
+            <a class="nav-link active text-white" href="schedPage.php?userid=<?php echo $user;?>"><strong><h5>Scheduler</h5></strong></a>
         </div>
     </div>
 <div class="row">
@@ -180,7 +180,7 @@
     </div><!-- Resubmit Edit -->
     <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 d-block"><!-- Scedules -->
     <div class="m-auto mt-2">
-        <button class='m-1 btn btn-success w-100' data-bs-toggle='modal' data-bs-target='#NewModal' onClick="newSched(<?php echo $user; ?>)">Request Schedule</button>
+        <button class='m-1 btn btn-success w-100' data-bs-toggle='modal' data-bs-target='#NewModal' onClick="newSched(<?php echo $user; ?>)"><h5>Request Schedule</h5></button>
     </div>
         <?php
                 
@@ -210,26 +210,26 @@
                                     <div>";
                                     if(date("Y-m-d")>$row['qdate']){
                                         echo "<label>This schedule already passed.</label><br>";
-                                        echo "<button class='m-1 btn btn-info' data-bs-toggle='modal' data-bs-target='#ResubmitModal' onClick='resubmitSched(".$row['qid'].")'>Resubmit</button>";
+                                        echo "<button class='m-1 btn btn-info w-100' data-bs-toggle='modal' data-bs-target='#ResubmitModal' onClick='resubmitSched(".$row['qid'].")'>Resubmit</button>";
                                     } else {
                                         if($row['qstatus'] == "Denied"){
-                                            echo "<button class='m-1 btn btn-info' data-bs-toggle='modal' data-bs-target='#ResubmitModal' onClick='resubmitSched(".$row['qid'].")'>Resubmit</button>";
+                                            echo "<button class='m-1 btn btn-info w-100' data-bs-toggle='modal' data-bs-target='#ResubmitModal' onClick='resubmitSched(".$row['qid'].")'>Resubmit</button>";
                                         } else if($row['qstatus'] == "Accepted") {
                                             $d1=strtotime($row['qdate']);
                                             $d2=ceil(($d1-time())/60/60/24);
                                             echo "Days left: " . $d2 ."<br>";
-                                            echo "<button class='m-1 btn btn-danger' data-bs-toggle='modal' data-bs-target='#CancelModal' onClick='cancelSched(".$row['qid'].")'>Cancel</button>";
+                                            echo "<button class='m-1 btn btn-danger w-100' data-bs-toggle='modal' data-bs-target='#CancelModal' onClick='cancelSched(".$row['qid'].")'>Cancel</button>";
                                         } else if($row['qstatus'] == "Pending") {
                                             $d1=strtotime($row['qdate']);
                                             $d2=ceil(($d1-time())/60/60/24);
                                             echo "Days left: " . $d2."<br>";
-                                            echo "<button class='m-1 btn btn-warning' data-bs-toggle='modal' data-bs-target='#EditModal' onClick='editSched(".$row['qid'].")'>Edit</button>";
-                                            echo "<button class='m-1 btn btn-danger' data-bs-toggle='modal' data-bs-target='#CancelModal' onClick='cancelSched(".$row['qid'].")'>Cancel</button>";
+                                            echo "<button class='m-1 btn btn-warning w-100' data-bs-toggle='modal' data-bs-target='#EditModal' onClick='editSched(".$row['qid'].")'>Edit</button>";
+                                            echo "<button class='m-1 btn btn-danger w-100' data-bs-toggle='modal' data-bs-target='#CancelModal' onClick='cancelSched(".$row['qid'].")'>Cancel</button>";
                                         } else if($row['qstatus'] == "Cancelled") {
                                             echo "<label>This schedule is cancelled.</label>";
                                         } else if ($row['qstatus'] == "Finished") {
                                             echo "<label>This schedule is already finished.</label>";
-                                            echo "<button class='m-1 btn btn-info' data-bs-toggle='modal' data-bs-target='#ResubmitModal' onClick='resubmitSched(".$row['qid'].")'>Resubmit</button>";
+                                            echo "<button class='m-1 btn btn-info w-100' data-bs-toggle='modal' data-bs-target='#ResubmitModal' onClick='resubmitSched(".$row['qid'].")'>Resubmit</button>";
                                         }
                                     }
                                     echo "</div>

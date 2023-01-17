@@ -113,7 +113,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="trackerPage.php?userid=<?php echo $user; ?>">
-            <i class="bi bi-chat-fill me-2" style="color: white;"></i>
+            <i class="bi bi-archive-fill me-2" style="color: white;"></i>
             <label class="float-end text-white">Health Tracker</label></a>
           </li>
           <li class="nav-item">

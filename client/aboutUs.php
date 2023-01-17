@@ -43,18 +43,18 @@
 <nav class="navbar navbar-expand-lg bg-success">
   <div class="container-fluid">
     <button class="navbar-toggler" style="border: none; color: white;" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-        <i class="bi bi-list"></i>
+        <h1><i class="bi bi-list"></i></h1>
     </button>
-    <a class="navbar-brand text-white" href="#"><b>AlagApp</b></a>    
+    <a class="navbar-brand text-white" href="#"><h1><b>AlagApp</b></h1></a>    
     <div class="offcanvas offcanvas-start w-75" style="background-color: #81C784;" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header bg bg-success">
-        <h5 class="offcanvas-title text-white" id="offcanvasNavbarLabel">Menu</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <h2 class="offcanvas-title text-white" id="offcanvasNavbarLabel">Menu</h2>
+        <h3><button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button></h3>
       </div>
       <div class="offcanvas-body">
         <ul class="navbar-nav flex-grow-1 pe-3">
         <li class="nav-item">
-            <a class="nav-link" href="userPage.php?userid=<?php echo $user; ?>">
+        <h3><a class="nav-link" href="userPage.php?userid=<?php echo $user; ?>">
                     <?php 
                         if($pict!=''){
                             echo "<img class='rounded me-2' style='width: 25px;' src='../assets/uploads/".$pict."'>";
@@ -64,27 +64,27 @@
                             echo "<img class='rounded me-2' style='width: 25px;' src='../assets/default/male.png'>";
                         }
                     echo "<label class='float-end text-white'>".$name."</label>"; ?>
-            </a>
+            </a></h3>
           </li>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="homePage.php?userid=<?php echo $user; ?>">
+          <h3><a class="nav-link" aria-current="page" href="homePage.php?userid=<?php echo $user; ?>">
             <i class="bi bi-house-fill me-2" style="color: white;"></i>
-            <label class="float-end text-white">Home</label></a>
+            <label class="float-end text-white">Home</label></a></h3>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="chatPage.php?userid=<?php echo $user; ?>">
+          <h3><a class="nav-link" href="chatPage.php?userid=<?php echo $user; ?>">
             <i class="bi bi-chat-fill me-2" style="color: white;"></i>
-            <label class="float-end text-white">O-Consultation</label></a>
+            <label class="float-end text-white">O-Consultation</label></a></h3>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="trackerPage.php?userid=<?php echo $user; ?>">
-            <i class="bi bi-chat-fill me-2" style="color: white;"></i>
-            <label class="float-end text-white">Health Tracker</label></a>
+          <h3><a class="nav-link" href="trackerPage.php?userid=<?php echo $user; ?>">
+            <i class="bi bi-archive-fill me-2" style="color: white;"></i>
+            <label class="float-end text-white">Health Tracker</label></a></h3>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="aboutUs.php?userid=<?php echo $user; ?>">
+          <h3><a class="nav-link active" href="aboutUs.php?userid=<?php echo $user; ?>">
             <i class="bi bi-info-circle-fill me-2" style="color: white;"></i>
-            <label class="float-end text-white"><strong>About Us</strong></label></a>
+            <label class="float-end text-white"><strong>About Us</strong></label></a></h3>
           </li>
         </ul>
       </div>
