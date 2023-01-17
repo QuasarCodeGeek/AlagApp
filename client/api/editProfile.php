@@ -137,11 +137,11 @@
                             <button class='btn btn-light' type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#profileModal'><i class='bi bi-pencil-square'></i></button>
                           </div>";
                             if($pict!=''){
-                                echo "<img class='m-auto mb-2 rounded' style='width: 16rem; max-height: 18rem; margin-left: auto; margin-right: auto;' src='../../assets/uploads/".$pict."' alt='userProfile'>";
+                                echo "<img class='m-1 mb-2 rounded' style='width: 23rem; max-height: 23rem; margin-left: auto; margin-right: auto;' src='../../assets/uploads/".$pict."' alt='userProfile'>";
                             } else if ($sex=='F') {
-                                echo "<img class='m-auto mb-2 rounded' style='width: 16rem; max-height: 18rem; margin-left: auto; margin-right: auto;' src='../../assets/default/female.png' alt='userProfile'>";
+                                echo "<img class='m-1 mb-2 rounded' style='width: 23rem; max-height: 23rem; margin-left: auto; margin-right: auto;' src='../../assets/default/female.png' alt='userProfile'>";
                             } else {
-                                echo "<img class='m-auto mb-2 rounded' style='width: 16rem; max-height: 18rem; margin-left: auto; margin-right: auto;' src='../../assets/default/male.png' alt='userProfile'>";
+                                echo "<img class='m-1 mb-2 rounded' style='width: 23rem; max-height: 23rem; margin-left: auto; margin-right: auto;' src='../../assets/default/male.png' alt='userProfile'>";
                             }
                             echo "</div>
                         <div class='p-2 col col-sm col-md col-lg col-xl rounded bg bg-light'>

@@ -115,11 +115,11 @@
                       <div class='row p-2'>
                         <div class='col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3'>";
                             if($pict!=''){
-                                echo "<img class='m-auto mb-2 rounded' style='width: 16rem; max-height: 18rem;' src='../assets/uploads/".$pict."' alt='userProfile'>";
+                                echo "<img class='mb-2 rounded' style='width: 24rem; max-height: 24rem;' src='../assets/uploads/".$pict."' alt='userProfile'>";
                             } else if ($sex=='F') {
-                                echo "<img class='m-auto mb-2 rounded' style='width: 16rem; max-height: 18rem;' src='../assets/default/female.png' alt='userProfile'>";
+                                echo "<img class='mb-2 rounded' style='width: 24rem; max-height: 24rem;' src='../assets/default/female.png' alt='userProfile'>";
                             } else {
-                                echo "<img class='m-auto mb-2 rounded' style='width: 16rem; max-height: 18rem;' src='../assets/default/male.png' alt='userProfile'>";
+                                echo "<img class='mb-2 rounded' style='width: 24rem; max-height: 24rem;' src='../assets/default/male.png' alt='userProfile'>";
                             }
                             echo "
                         </div>

@@ -84,7 +84,7 @@
             <input id="adminpass" name="adminpass" type="password" class="form-control" placeholder="Enter Admin Password" required>
           </div><br>
           <div class="mb-2">
-            <a href="../php/client/_forgotpassword.php">Forgot Password</a>
+            <!--<a href="../php/client/_forgotpassword.php">Forgot Password</a>-->
           </div><br>
           <button onclick="checkField()" id="liveAlertBtn" type="submit" name="submit" class="btn btn-success w-100">Log In</button>
         </form>

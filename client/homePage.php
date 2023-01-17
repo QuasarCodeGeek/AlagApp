@@ -130,7 +130,7 @@
                     <div class='card m-2 p-3' style='background-color:#E8F5E9;'>
                       <div class='row p-2'>
                         <div class='col-12 col-sm-12 col-md col-lg col-xl-4'>
-                            <img class='m-auto mb-2 rounded' style='width: 16rem; margin-left: auto; margin-right: auto;' src='../assets/img/".$petrow['pettype']."/".$petrow['petbreed'].".jpg' alt='petProfile'>
+                            <img class='mb-2 rounded' style='width: 24rem;' src='../assets/img/".$petrow['pettype']."/".$petrow['petbreed'].".jpg' alt='petProfile'>
                         </div>
                         <div class='p-2 col-12 col-sm-12 col-md col-lg col-xl-8 rounded bg bg-light'>
                           <div class='p-2'>
