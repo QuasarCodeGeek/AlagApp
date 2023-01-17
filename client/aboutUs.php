@@ -94,7 +94,14 @@
 <main class="container container-fluid">
   <div class="m-2">
     <div class="card card-body bg bg-light">
-      <label>To be Added</label>
+      <div class="row m-auto">
+        <label class="fw-bold col-12 text-center">Client User Manual</label>
+        <a class="col-6 text-center" href="./../assets/default/AlagApp Client User Manual.pdf" height="auto" width="auto">Open Manual</a>
+        <a class="col-6 text-center" href="./../assets/default/AlagApp Client User Manual.pdf" download>Download Manual</a>
+      </div>
+      <div class="row m-auto mt-5">
+        <label>Additional Contents to be Added</label>
+      </div>
     </div>
   </div>
 </main>
