@@ -1,4 +1,7 @@
-
+<?php
+require("../connector.php");
+$search = $_REQUEST['search'];
+?>
       <table class="table table-striped m-2">
         <thead class="bg bg-success text-white">
           <tr>
@@ -12,8 +15,6 @@
         </thead>
         <tbody>
         <?php
-        require("../connector.php");
-        $search = $_REQUEST['search'];
           $note = "SELECT * FROM alagapp_db.tbl_symptom
           WHERE
             pettype LIKE '%".$search."%' OR 

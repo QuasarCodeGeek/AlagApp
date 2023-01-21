@@ -8,7 +8,7 @@
             <th>Pet Type</th>
             <th>Breed</th>
             <th>Wt(Kg)</th>
-            <th>Ht(Ft)</th>
+            <th>Color/Marking</th>
             <th>DOB</th>
             <th>Age</th>
             <th>Gender</th>
@@ -27,11 +27,11 @@
           $note = "SELECT alagapp_db.tbl_petprofile.*, alagapp_db.tbl_userlist.userfname, alagapp_db.tbl_userlist.userlname
           FROM alagapp_db.tbl_petprofile
           INNER JOIN alagapp_db.tbl_userlist ON alagapp_db.tbl_petprofile.userid = alagapp_db.tbl_userlist.userid
-          ORDER BY petid DESC";
+          ORDER BY petid ASC";
           $resnote = $connect->query($note);
           $resnote->execute();
           if($resnote->rowCount()>0){
-            $i=$count;
+            $i=1;
             while($rownote = $resnote->fetch(PDO::FETCH_ASSOC)){
 
               echo "<tr>
@@ -41,7 +41,7 @@
               <td>".$rownote['pettype']."</td>
               <td>".$rownote['petbreed']."</td>
               <td>".$rownote['petweight']."</td>
-              <td>".$rownote['petheight']."</td>
+              <td>".$rownote['petmark']."</td>
               <td>".$rownote['petbdate']."</td>
               <td>".$rownote['petage']."</td>
               <td>".$rownote['petgender']."</td>

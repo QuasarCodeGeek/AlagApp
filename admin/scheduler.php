@@ -1,7 +1,7 @@
 <?php
   require("api/connector.php");
 
-  $check = "SELECT * FROM alagapp_db.tbl_admin WHERE adminid = 1 AND session = 1";
+  /*$check = "SELECT * FROM alagapp_db.tbl_admin WHERE adminid = 1 AND session = 1";
         $checkSession = $connect->prepare($check);
         $checkSession->execute();
         if($checkSession->rowCount()>0){
@@ -9,7 +9,7 @@
           
         } else {
           echo "<script>window.location='./index.php'</script>";
-        }
+        }*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -108,12 +108,12 @@
                 <div class="row m-auto">
                   <h2 class="text-success p-3"><b>Scheduler</b> | Account</h2>
                 </div>
-                <div class="col-6 text-center bg bg-success">
-                  <a class="nav-link text-white p-3" type="button" href="scheduler.php"><strong>Account</strong></a>
-                </div>
-                <div class="col-6 text-center bg bg-light">
-                  <a class="nav-link p-3" type="button" href="api/sched_chrono.php"><strong>Status</strong></a>
-                </div>
+                  <div class="col-6 text-center bg bg-success border-start rounded-pill border-light">
+                    <a class="nav-link text-white p-3" type="button" href="scheduler.php"><strong>Account</strong></a>
+                  </div>
+                  <div class="col-6 text-center bg bg-light">
+                    <a class="nav-link p-3 text-success" type="button" href="api/sched_chrono.php"><strong>Status</strong></a>
+                  </div>
               </div>
               <div class="row m-auto">
                 <div class="col vh-100 bg bg-light pb-2 pt-2 overflow-x overflow-auto bg bg-light">

@@ -11,8 +11,7 @@ require("../connector.php");
         $date = $_POST["cdate"];
 
         if($owner=="" || $pet=="" || $vet=="" || $vax=="" || $date==""){
-            echo "<script>alert('Complete Required Fields!');
-            window.location='profile.php?userid=".$owner."'</script>";
+            echo "<script>window.location='profile.php?userid=".$owner."'</script>";
         } else {
             $sql = "UPDATE alagapp_db.tbl_carddetail SET
                 userid = :userid,
@@ -38,11 +37,9 @@ require("../connector.php");
             $result->execute($values);
 
             if($result->rowCount()>0) {
-                echo "<script>alert('Record has been updated!');
-                window.location='../profile.php?userid=".$owner."'</script>";
+                echo "<script>window.location='../profile.php?userid=".$owner."'</script>";
              } else {
-                 echo "<script>alert('Unable to update record!')
-                window.location='../profile.php?userid=".$owner."'</script>";
+                 echo "<script>window.location='../profile.php?userid=".$owner."'</script>";
              }
         }
     }

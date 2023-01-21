@@ -1,7 +1,7 @@
 <?php
   include ("api/dataAnalytics.php");
 
-  $check = "SELECT * FROM alagapp_db.tbl_admin WHERE adminid = 1 AND session = 1";
+  /*$check = "SELECT * FROM alagapp_db.tbl_admin WHERE adminid = 1 AND session = 1";
         $checkSession = $connect->prepare($check);
         $checkSession->execute();
         if($checkSession->rowCount()>0){
@@ -9,7 +9,7 @@
           
         } else {
           echo "<script>window.location='./index.php'</script>";
-        }
+        }*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,8 +74,8 @@
                         </div>
                       </div>
     </div><!---->
-  <div class="col-10 vh-100"><div class="row m-auto"><!--mm-->
-          <div class="row m-auto mb-2">
+  <div class="col-10 vh-100 overflow-auto overflow-y">
+    <div class="row m-auto mb-2"><!--mm-->
           <h2 class="text-success p-3"><b>Dashboard</b> | Main</h2>
             <div class="col text-center bg bg-success p-1">
               <a type="button" class="text-white nav-link" href="dashboard.php"><strong>Main</strong></a>
@@ -95,9 +95,9 @@
             <div class="col text-center p-1" style="background-color: #81C784;">
               <a type="button" class="text-white nav-link" href="api/reportData/schedDashboard.php">Scheduler</a>
             </div>
-            <div class="col text-center p-1" style="background-color: #81C784;">
+            <!--<div class="col text-center p-1" style="background-color: #81C784;">
               <a type="button" class="text-white nav-link" href="api/reportData/consultDashboard.php">Consultation</a>
-            </div>
+            </div>-->
             <div class="col text-center p-1" style="background-color: #81C784;">
               <a type="button" class="text-white nav-link" href="api/reportData/vaccineDashboard.php">Vaccine List</a>
             </div>
@@ -106,15 +106,13 @@
             </div>
           </div><!--mm-->
   
-    <div class="row m-auto"><!-- First Graph -->
+      <div class="row m-auto"><!-- First Graph -->
             <div class="col-4"><!--Ratio-->
-              <div class="row m-auto mb-2"><!--yy-->
+              <div class="row mb-2 pe-2"><!--yy-->
                   <div class="border border-3 border-success rounded p-2">
-                    <div class="row m-auto"><!--xx-->
+                    <div class="row "><!--xx-->
                       <div class="col-6 my-auto">  
                         <h3 class="text-center">User Gender Ratio</h3>
-                        <h4><b><i class="bi bi-gender-male"></i> Male:</b> <?php echo $maleuser; ?></h4><br>
-                        <h4><b><i class="bi bi-gender-female"></i> Female:</b> <?php echo $femaleuser; ?></h4>
                       </div>
                       <div class="col-6">
                           <canvas id="donutuser" width="50" height="50"></canvas>
@@ -122,15 +120,11 @@
                     </div><!--xx-->
                   </div>
               </div><!--yy-->
-              <div class="row m-auto">
+              <div class="row pe-2">
                   <div class="border border-3 border-success rounded p-2"><!--yy-->
-                    <div class="row m-auto"><!--xx-->
+                    <div class="row"><!--xx-->
                       <div class="col-5 my-auto">  
                         <h3 class="text-center">Pet Type Ratio</h3>
-                        <h4><b><i class="bi bi-gender-male"></i> Male:</b> <?php echo $totaldog; ?></h4><br>
-                        <h4><b><i class="bi bi-gender-female"></i> Female:</b> <?php echo $totalcat; ?></h4><br>
-                        <h4><b><i class="bi bi-gender-female"></i> Female:</b> <?php echo $totalmouse; ?></h4><br>
-                        <h4><b><i class="bi bi-gender-female"></i> Female:</b> <?php echo $totalbird; ?></h4>
                       </div>
                       <div class="col-7">
                           <canvas id="donutpet" width="50" height="50"></canvas>
@@ -143,21 +137,29 @@
             <div class="col-8 border border-3 border-success rounded p-2"><!---->
               <div class="row m-auto">
                 <div class="col">
-                  <h3 class="text-center">Overall Data Counter</h3>
                   <canvas id="barbar" width="50" height="50"></canvas>
                 </div>
                 <div class="col">
-                  <h3 class="text-center">Scheduler Data Counter</h3>
                   <canvas id="schedulebar" width="50" height="50"></canvas>
                 </div>
               </div>
             </div><!---->
 
-        </div><!-- First Graph End Tag -->
-   </div></div></main>
+      </div><!-- First Graph End Tag -->
+   
+        <div class="row m-auto"><!--Consultation Table-->
+          <?php include("./api/consultData.php");?>
+        </div><!--Consultation Table-->
+   
+   
+  
+  
+  
+  </div></main>
 
 <!-- Main Functions -->
 <script src="js/main.js"></script>
+<script src="js/searchInfo.js"></script>
 <!-- Ajax Function -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!-- Bootstrap Popper -->
@@ -191,7 +193,7 @@
           <?php echo $totalnote; ?>, 
           <?php echo $totalsched; ?>, 
           <?php echo $totalchat; ?>, 
-          62],
+          <?php echo $totalcall; ?> ],
         backgroundColor: [
           '#F44336',
           '#FF9800',
@@ -231,7 +233,7 @@
         'Female'
       ],
       datasets: [{
-        label: 'User Account Gender Ratio',
+        label: 'Gender Ratio',
         data: [
           <?php echo $maleuser; ?>,
           <?php echo $femaleuser; ?>
@@ -260,7 +262,7 @@
         'Bird'
       ],
       datasets: [{
-        label: 'Pet Type Ratio',
+        label: 'Pet Ratio',
         data: [
           <?php echo $totaldog; ?>, 
           <?php echo $totalcat ?>,
@@ -287,7 +289,7 @@
     data: {
       labels: ['Pending', 'Accepted', 'Denied', 'Cancelled', 'Finished'],
       datasets: [{
-        label: 'Total Data Count',
+        label: 'Scheduler Data Count',
         data: [ 
           <?php echo $totalpending; ?>, 
           <?php echo $totalaccepted; ?>, 

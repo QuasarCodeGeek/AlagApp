@@ -45,7 +45,7 @@
                                           <label>Weight(Kg): ".$row['petweight']."</label>
                                         </div>
                                         <div class='row-2 m-auto mb-2 w-auto h-auto p-2 pb-2 rounded bg bg-light'>
-                                          <label>Height(Ft): ".$row['petheight']."</label>
+                                          <label>Color/Marking: ".$row['petmark']."</label>
                                         </div>
                                         <div>
                                           <button type='button' class='btn btn-warning w-100' onClick='petEdit(".$row['petid'].")' data-bs-toggle='modal' data-bs-target='#boxModal'>
@@ -56,13 +56,13 @@
                                   </div>
                                 </div>  
                   
-                              <div class='row mx-auto my-2'>
-                                <div class='col-6 pb-2 bg bg-success rounded-start'>
+                              <div class='row mx-auto my-2 bg bg-success rounded'>
+                                <div class='col-6 pb-2'>
                                   <h4 class='text-white p-2'><b>E-Vaccine Card</b></h4>";
                                   include("./petCard.php");
                                   echo "
                                 </div>
-                                <div class='col-6 pb-2 bg bg-success rounded-end'>                
+                                <div class='col-6 pb-2'>                
                                   <h4 class='text-white p-2'><b>E-Prescription Note</b></h4>";
                                   include("./petNote.php ");
                                 echo "

@@ -45,7 +45,7 @@
     <button class="navbar-toggler" style="border: none; color: white;" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
         <h1><i class="bi bi-list"></i></h1>
     </button>
-    <a class="navbar-brand text-white" href="#"><h1><b>AlagApp</b></h1></a>    
+    <h1 class="text-white me-3"><b>AlagApp</b></h1>    
     <div class="offcanvas offcanvas-start w-75" style="background-color: #81C784;" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header bg bg-success">
         <h2 class="offcanvas-title text-white" id="offcanvasNavbarLabel">Menu</h2>
@@ -75,7 +75,7 @@
           <li class="nav-item">
           <h3><a class="nav-link active" href="chatPage.php?userid=<?php echo $user; ?>">
             <i class="bi bi-chat-fill me-2" style="color: white;"></i>
-            <label class="float-end text-white"><strong>O-Consultation</strong></label></a></h3>
+            <label class="float-end text-white"><strong><u>O-Consultation</u></strong></label></a></h3>
           </li>
           <li class="nav-item">
           <h3><a class="nav-link" href="trackerPage.php?userid=<?php echo $user; ?>">
@@ -93,43 +93,18 @@
   </div>
 </nav>
 <main class="container-fluid">
-<div class="row">
-        <div class="col-6 p-2 text-center" style="background-color: #A5D6A7;">
-            <a class="nav-link" href="chatPage.php?userid=<?php echo $user;?>"><h5>Chat</h5></a>
+    <div class="row">
+        <div class="col-4 p-2 text-center" style="background-color: #A5D6A7;">
+            <a class="nav-link" href="chatPage.php?userid=<?php echo $user;?>">Chat</a>
         </div>
-        <div class="col-6 p-2 text-center" style="background-color: #81C784;">
-            <a class="nav-link active text-white" href="schedPage.php?userid=<?php echo $user;?>"><strong><h5>Scheduler</h5></strong></a>
+        <div class="col-4 p-2 text-center" id="videoCall" style="background-color: #A5D6A7;">
+          <a class="nav-link" href="callPage.php?userid=<?php echo $user;?>">Call</a>
+        </div>
+        <div class="col-4 p-2 text-center" style="background-color: #81C784;">
+            <a class="nav-link active text-white" href="schedPage.php?userid=<?php echo $user;?>"><strong>Scheduler</strong></a>
         </div>
     </div>
-<div class="row">
-    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 vh-100 d-none d-sm-block">
-            <div class="text-center text-white rounded m-2 p-2" style="background-color: #81C784;">
-                <label><b>Tabs</b></label>
-            </div>
-            <ul class="list-group list-group-flush rounded">
-                <li class='list-group-item'>
-                    <a type="button" class="btn nav-link"><strong>All</strong></a>
-                </li>
-                <li class='list-group-item'>
-                    <a type="button" class="btn nav-link">Pending</a>
-                </li>
-                <li class='list-group-item'>
-                    <a type="button" class="btn nav-link">Denied</a>
-                </li>
-                <li class='list-group-item'>
-                    <a type="button" class="btn nav-link">Accepted</a>
-                </li>
-                <li class='list-group-item'>
-                    <a type="button" class="btn nav-link">Cancelled</a>
-                </li>
-                <li class='list-group-item'>
-                    <a type="button" class="btn nav-link">Finished</a>
-                </li>
-                <li class='list-group-item'>
-                    <a type="button" class="btn nav-link">Draft</a>
-                </li>
-            </ul>
-    </div>
+
     <div class="modal fade mt-5" id="NewModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true"><!-- New Modal -->
         <div class="modal-dialog">
             <div class="modal-content">
@@ -178,9 +153,9 @@
             </div>
         </div>
     </div><!-- Resubmit Edit -->
-    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 d-block"><!-- Scedules -->
-    <div class="m-auto mt-2">
-        <button class='m-1 btn btn-success w-100' data-bs-toggle='modal' data-bs-target='#NewModal' onClick="newSched(<?php echo $user; ?>)"><h5>Request Schedule</h5></button>
+<div class="row m-auto">
+    <div class="mt-2 p-3">
+        <button class='btn btn-success w-100' data-bs-toggle='modal' data-bs-target='#NewModal' onClick="newSched(<?php echo $user; ?>)"><h5>Request Schedule</h5></button>
     </div>
         <?php
                 
@@ -191,14 +166,14 @@
                     $checksched = $connect->prepare($schedlist);
                     $checksched->execute();
 
-        echo "<div class='row'><!-- Schedules -->";
+        echo "<div class='row m-auto'><!-- Schedules -->";
                             if($checksched->rowCount()>0) {
                                 $j=1;
                                 while($row = $checksched->fetch(PDO::FETCH_ASSOC)){
     
-                                echo "<div class='col-12 colsm-12 col-md-6 col-lg-6 col-xl-6'>
-                                <div class='card card-body m-2'>
-                                  <div class='row'>
+                        echo "<div class='col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4'>
+                            <div class='card card-body m-2'>
+                                <div class='row'>
                                     <div class='col-12 col-sm col-md col-lg col-xl'>
                                         <label>Pet: ".$row['petname']."</label><br>
                                         <label>Description: ".$row['qdescription']."</label>
@@ -233,9 +208,9 @@
                                         }
                                     }
                                     echo "</div>
-                                  </div>
                                 </div>
-                                </div>";
+                            </div>
+                        </div>";
                                 $j++;
                                 }
                             } else {
@@ -245,8 +220,6 @@
                             }
         echo "</div>";
         ?>
-    </div>
-</div>
   </main>
   <script src="js/client.js"></script>
   <!-- Bootstrap JavaScript Libraries -->

@@ -1,7 +1,7 @@
 <?php
     include ("../dataAnalytics.php");
 
-    $check = "SELECT * FROM alagapp_db.tbl_admin WHERE adminid = 1 AND session = 1";
+    /*$check = "SELECT * FROM alagapp_db.tbl_admin WHERE adminid = 1 AND session = 1";
 $checkSession = $connect->prepare($check);
 $checkSession->execute();
 if($checkSession->rowCount()>0){
@@ -9,7 +9,7 @@ if($checkSession->rowCount()>0){
   
 } else {
   echo "<script>window.location='./../../index.php'</script>";
-}
+}*/
 
 
     $carddata = "SELECT COUNT(cid) AS count FROM alagapp_db.tbl_carddetail";
@@ -125,9 +125,6 @@ if($checkSession->rowCount()>0){
             <div class="col text-center p-1" style="background-color: #81C784;">
               <a type="button" class="text-white nav-link" href="schedDashboard.php">Scheduler</a>
             </div>
-            <div class="col text-center p-1" style="background-color: #81C784;">
-              <a type="button" class="text-white nav-link" href="consultDashboard.php">Consultation</a>
-            </div>
             <div class="col text-center p-1"  style="background-color: #81C784;">
               <a type="button" class="text-white nav-link" href="vaccineDashboard.php">Vaccine List</a>
             </div>
@@ -138,20 +135,24 @@ if($checkSession->rowCount()>0){
           
     <div class="row m-auto border border-3 border-success rounded m-2 p-2"><!-- Vaccine Card -->
       <div class="row m-auto">
-        <div class="col">
-          <label>Number of Cards: <?php echo $rowdata['count'];?></label>
+        <div class="col-2 m-auto">
+          <label class="fw-bold text-success">Total Vaccination: <?php echo $rowdata['count'];?></label>
         </div>
-        <div class="col">
-          <form action="#" class="input-group" classd="d-flex gap-2">
-            <input class="form-control" id="card" type="text">
-            <button onclick="searchCard()" class="btn btn-success">Search</button>
-          </form>
+        <div class="col-6">
+          <div class="row">
+            <div class="col">
+              <input class="form-control w-100" id="card" type="text">
+            </div>
+            <div class="col">
+              <button onclick="searchCard()" class="btn btn-success">Search</button>
+            </div>
+          </div>
         </div>
-        <div class="col btn-group" role="group">
+        <div class="col-2 btn-group" role="group">
           <button type="button" class="btn btn-success" onclick="window.location='cardDashboard.php'"><i class="bi bi-sort-down"></i> ASC</button>
           <button type="button" class="btn btn-success" onclick="descCard()"><i class="bi bi-sort-up"></i> DES</button>
         </div>
-        <div class="col">
+        <div class="col-2">
         <button class="btn btn-success float-end" onclick="window.location='../downloadData/dlCard.php'" target="_blank"><i class="bi bi-download"></i> Download</button>
         </div>
       </div>
@@ -169,6 +170,7 @@ if($checkSession->rowCount()>0){
             <th>Weight(Kg)</th>
             <th>Date</th>
           </tr>
+          <?php include("./cardFilter.php"); ?>
         </thead>
         <tbody>
         <?php
@@ -176,7 +178,8 @@ if($checkSession->rowCount()>0){
           FROM (((alagapp_db.tbl_carddetail
           INNER JOIN alagapp_db.tbl_userlist ON alagapp_db.tbl_carddetail.userid = alagapp_db.tbl_userlist.userid)
           INNER JOIN alagapp_db.tbl_petprofile ON alagapp_db.tbl_carddetail.petid = alagapp_db.tbl_petprofile.petid)
-          INNER JOIN alagapp_db.tbl_vaxxinfo ON alagapp_db.tbl_carddetail.vaxid = alagapp_db.tbl_vaxxinfo.vaxid)";
+          INNER JOIN alagapp_db.tbl_vaxxinfo ON alagapp_db.tbl_carddetail.vaxid = alagapp_db.tbl_vaxxinfo.vaxid)
+          ORDER BY cid DESC";
           $rescard = $connect->query($card);
           $rescard->execute();
           if($rescard->rowCount()>0){
@@ -204,6 +207,8 @@ if($checkSession->rowCount()>0){
 
 <!-- Main Functions -->
 <script src="../../js/main.js"></script>
+<script src="../../js/dashboardFilter.js"></script>
+<script src="../../js/searchInfo.js"></script>
 <!-- Ajax Function -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!-- Bootstrap Popper -->

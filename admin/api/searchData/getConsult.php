@@ -1,4 +1,8 @@
-<table class="table table-striped m-2">
+<?php
+require("../connector.php");
+$search = $_REQUEST['search'];
+?>
+<table class="table table-striped">
         <thead class="bg bg-success text-white">
           <tr>
             <th>#</th>
@@ -11,8 +15,6 @@
         </thead>
         <tbody>
         <?php
-            require("../connector.php");
-            $search = $_REQUEST['search'];
           $user = "SELECT * FROM alagapp_db.tbl_userlist
           WHERE
             userfname LIKE '%".$search."%' OR 

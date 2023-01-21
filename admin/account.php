@@ -1,7 +1,7 @@
 <?php
 require("./api/connector.php");
 
-$check = "SELECT * FROM alagapp_db.tbl_admin WHERE adminid = 1 AND session = 1";
+/*$check = "SELECT * FROM alagapp_db.tbl_admin WHERE adminid = 1 AND session = 1";
 $checkSession = $connect->prepare($check);
 $checkSession->execute();
 if($checkSession->rowCount()>0){
@@ -9,7 +9,7 @@ if($checkSession->rowCount()>0){
   
 } else {
   echo "<script>window.location='./index.php'</script>";
-}
+}*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,39 +27,7 @@ if($checkSession->rowCount()>0){
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="bg bg-light">
-<!--<nav class="navbar navbar-expand-lg bg-light">
-        <div class="container container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="row collapse navbar-collapse mx-auto" id="navbarSupportedContent">
-            <div class="col text-center border-bottom border-success border-5">
-              <a class="nav-link" href="account.php" active><strong>Account</strong></a>
-            </div>
-            <div class="col text-center">
-            <a class="nav-link" href="scheduler.php">Scheduler</a>
-            </div>
-            <div class="col text-center">
-              <a class="navbar-brand" href="#"><strong>AlagApp</strong></a>
-            </div>
-            <div class="col text-center">
-              <a class="nav-link" href="consultation.php">Consultation</a>
-            </div>
-            <div class="col text-center">
-              <a class="nav-link text-success" href="dashboard.php">Dashboard</a> 
-            </div>
-          </div>
-        </div>
-      </nav>-->
 
-  <!-- Profile Panel -->
-            <!-- <div class="col-3 p-2 bg bg-light">
-                <div class="row m-2">
-                <input type="text" onkeyup="_searchAccount()" class="form-control rounded-start" id="searchAccount" placeholder="Search">
-                </div>
-                <div class="m-1" id="accountHere">
-                  
-                </div>-->
       <!-- Modal New Data-->
                     <div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                       <div class="modal-dialog modal-lg">
@@ -120,10 +88,10 @@ if($checkSession->rowCount()>0){
           <h2 class="text-success p-3"><b>Account</b></h2>
         </div>
         <div class="col-4 m-auto">
-          <button type='button' class='p-3 btn btn-success w-100' onClick='userNew()' data-bs-toggle='modal' data-bs-target='#newModal')>Add User</button>
+          <button type='button' class='p-3 btn btn-primary w-100 rounded-pill fw-bold' onClick='userNew()' data-bs-toggle='modal' data-bs-target='#newModal')>Add User</button>
         </div>
         <div class="col-4 m-auto">
-          <button type='button' class='p-3 btn btn-success w-100' onClick='petNew()' data-bs-toggle='modal' data-bs-target='#newModal')>Add Pet</button>
+          <button type='button' class='p-3 btn btn-info w-100 rounded-pill fw-bold' onClick='petNew()' data-bs-toggle='modal' data-bs-target='#newModal')>Add Pet</button>
         </div>
       </div>
     <!-- Buttons Section -->

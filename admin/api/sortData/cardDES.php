@@ -26,11 +26,11 @@
           INNER JOIN alagapp_db.tbl_userlist ON alagapp_db.tbl_carddetail.userid = alagapp_db.tbl_userlist.userid)
           INNER JOIN alagapp_db.tbl_petprofile ON alagapp_db.tbl_carddetail.petid = alagapp_db.tbl_petprofile.petid)
           INNER JOIN alagapp_db.tbl_vaxxinfo ON alagapp_db.tbl_carddetail.vaxid = alagapp_db.tbl_vaxxinfo.vaxid)
-            ORDER BY cid DESC";
+            ORDER BY cid ASC";
           $rescard = $connect->query($card);
           $rescard->execute();
           if($rescard->rowCount()>0){
-            $i=$count;
+            $i=1;
             while($rowcard = $rescard->fetch(PDO::FETCH_ASSOC)){
 
               echo "<tr>

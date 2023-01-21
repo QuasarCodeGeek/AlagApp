@@ -2,18 +2,9 @@
   include 'export.php';
   include ("../dataAnalytics.php");
 
-  $check = "SELECT * FROM alagapp_db.tbl_admin WHERE adminid = 1 AND session = 1";
-  $checkSession = $connect->prepare($check);
-  $checkSession->execute();
-  if($checkSession->rowCount()>0){
-    $wel = $checkSession->fetch(PDO::FETCH_ASSOC);
-    
-  } else {
-    echo "<script>window.location='./../../index.php'</script>";
-  }
+
   
-  
-      $carddata = "SELECT COUNT(cid) AS count FROM alagapp_db.tbl_carddetail";
+      $carddata = "SELECT COUNT(cid) AS count FROM alagapp_db.tbl_carddetail ORDER BY cid DESC";
       $resdata = $connect->query($carddata);
       $resdata->execute();
       $rowdata = $resdata->fetch(PDO::FETCH_ASSOC);

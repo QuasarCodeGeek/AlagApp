@@ -22,11 +22,11 @@
                 $count = $counter['count'];
             }
 
-          $note = "SELECT * FROM alagapp_db.tbl_symptom ORDER BY sid DESC";
+          $note = "SELECT * FROM alagapp_db.tbl_symptom ORDER BY sid ASC";
           $resnote = $connect->query($note);
           $resnote->execute();
           if($resnote->rowCount()>0){
-            $i=$count;
+            $i=1;
             while($rownote = $resnote->fetch(PDO::FETCH_ASSOC)){
 
               echo "<tr>

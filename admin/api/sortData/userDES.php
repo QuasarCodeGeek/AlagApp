@@ -24,11 +24,11 @@
                 $count = $counter['count'];
             }
 
-          $user= "SELECT * FROM alagapp_db.tbl_userlist ORDER BY userid DESC;";
+          $user= "SELECT * FROM alagapp_db.tbl_userlist ORDER BY userid ASC;";
           $res = $connect->query($user);
           $res->execute();
           if($res->rowCount()>0){
-            $i=$count;
+            $i=1;
             while($row = $res->fetch(PDO::FETCH_ASSOC)){
 
               echo "<tr>
@@ -41,7 +41,7 @@
               <td>".$row['userbdate']."</td>
               <td>".$row['usergender']."</td>
             </tr>";
-            $i--;
+            $i++;
             }
           } else {
             echo "<tr><td colspan-\"7\">No Record!</td></tr>";

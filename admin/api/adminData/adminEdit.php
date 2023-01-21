@@ -15,10 +15,12 @@
         $code = $_POST["username"];
         $pass = $_POST["password"];
         $email = $_POST["email"];
+        $mobile = $_POST["mobile"];
+        $telephone = $_POST["telephone"];
+        $meet = $_POST["meet"];
 
         if($fname=="" || $lname=="" || $bdate=="" || $gender=="" || $district=="" || $municipality=="" || $province ==""){
-            echo "<script>alert('Complete Required Fields!');
-            window.location='adminProfile.php'</script>";
+            echo "<script>window.location='adminProfile.php'</script>";
         } else {
             $sql = "UPDATE alagapp_db.tbl_admin SET
                 admincode = :username,
@@ -36,7 +38,10 @@
                 bdate = :bdate,
                 gender = :gender,
 
-                email = :email
+                email = :email,
+                mobile = :mobile,
+                telephone = :telephone,
+                gmeet = :meet
 
                 WHERE adminid = :id";
 
@@ -58,18 +63,19 @@
                 ":bdate" => $bdate,
                 ":gender" => $gender,
 
-                ":email" => $email
+                ":email" => $email,
+                ":mobile" => $mobile,
+                ":telephone" => $telephone,
+                ":meet" => $meet
             );
 
             $result = $connect->prepare($sql);
             $result->execute($values);
 
             if($result->rowCount()>0) {
-                echo "<script>alert('Record has been updated!');
-                window.location='adminProfile.php'</script>";
+                echo "<script>window.location='adminProfile.php'</script>";
              } else {
-                 echo "<script>alert('Unable to update record!')
-                 window.location='adminProfile.php'</script>";
+                 echo "<script>window.location='adminProfile.php'</script>";
              }
         }
     }
@@ -96,6 +102,10 @@
     $pass = "";
     $email = "";
 
+    $mobile = "";
+    $telephone = "";
+    $meet = "";
+
     $street = "";
     $district = "";
     $municipality = "";
@@ -115,6 +125,9 @@
             $province = $user_row["province"];
             $code = $user_row["admincode"];
             $email = $user_row["email"];
+            $mobile = $user_row["mobile"];
+            $telephone = $user_row["telephone"];
+            $meet = $user_row["gmeet"];
             $pass = $user_row["adminpass"];
         }
     } catch(PDOException $e){
@@ -165,6 +178,18 @@
         <input class='form-control' type='text' name='email' value='".$email."' placeholder=\"Enter Email\">
         <span class='input-group-text'>Password</span>
         <input class='form-control' type='password' name='password' value='".$pass."' placeholder=\"Enter Password\">
+        </div><br>
+
+        <div class='input-group'>
+        <span class='input-group-text'>Mobile</span>
+        <input class='form-control' type='text' name='mobile' value='".$mobile."' placeholder=\"Enter Moobile Number\">
+        <span class='input-group-text'>Telephone</span>
+        <input class='form-control' type='text' name='telephone' value='".$telephone."' placeholder=\"Enter Telephone Number\">
+        </div><br>
+
+        <div class='input-group'>
+        <span class='input-group-text'>GMeet Link</span>
+        <input class='form-control' type='text' name='meet' value='".$meet."' placeholder=\"Enter Google Meet Link\">
         </div><br>
 
         <div class='d-grid gap-2 d-md-flex justify-content-md-end'>

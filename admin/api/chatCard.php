@@ -22,8 +22,11 @@
                                             }
                                 echo "</div>
                                 <div class='card-body col-8 m-auto'>
-                                    <label class='text-wrap'><b>".$row['userfname']."</b> ".$row['userlname']."</label>
-                                </div>
+                                    <label class='text-wrap'><b>".$row['userfname']."</b> ".$row['userlname']."</label>";
+                                    if($row['userstatus'] == 1){
+                                        echo "<label class='text-wrap text-danger'>New Message</label>";
+                                    }
+                                echo "</div>
                             </div>
                         </a>
                     </div>

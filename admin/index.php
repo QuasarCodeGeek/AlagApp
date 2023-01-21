@@ -1,13 +1,13 @@
 <?php
   require("api/connector.php");
 
-  $checkadmin = "SELECT * FROM alagapp_db.tbl_admin WHERE adminid = 1 AND session = 1";
+  /*$checkadmin = "SELECT * FROM alagapp_db.tbl_admin WHERE adminid = 1 AND session = 1";
         $checkSession = $connect->prepare($checkadmin);
         $checkSession->execute();
         if($checkSession->rowCount()>0){
           echo "<script>alert('Welcome Back!');
                 window.location='./dashboard.php'</script>";
-        } 
+        }*/
 
   if(isset($_POST["submit"])){
     $code = $_POST["admincode"];
@@ -19,27 +19,9 @@
         $checkresult->execute();
 
         if($checkresult->rowCount()>0) {
-          $user = $checkresult->fetch(PDO::FETCH_ASSOC);
-          $id = $user['adminid'];
-          $session = 1;
-          $sql = "UPDATE alagapp_db.tbl_admin SET
-                session = :session
-
-                WHERE adminid = :admin";
-
-            $result = $connect->prepare($sql);
-            $val = array(":admin"=>$id , ":session"=>$session);
-            $result->execute($val);
-
-            if($result->rowCount()>0) {
-                echo "<script>alert('Successfully Logged In!');
-                window.location='./dashboard.php'</script>";
-             } else {
-                 echo "<script>alert('Error!')
-                 window.location='./index.php'</script>";
-             }
+          echo "<script>window.location='./dashboard.php'</script>";//Successfully Log In
        } else {
-           echo "<script>alert('Invalid Account!')window.location='./index.php'</script>";
+           echo "<script>window.location='./index.php'</script>";//Unable to Find Account
        }
     } else {
       echo "<div onload='checkField()'></div>";

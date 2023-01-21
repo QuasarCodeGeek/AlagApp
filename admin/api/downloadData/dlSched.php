@@ -1,18 +1,8 @@
 <?php
   include 'export.php';
   include ("../dataAnalytics.php");
-
-  $check = "SELECT * FROM alagapp_db.tbl_admin WHERE adminid = 1 AND session = 1";
-  $checkSession = $connect->prepare($check);
-  $checkSession->execute();
-  if($checkSession->rowCount()>0){
-    $wel = $checkSession->fetch(PDO::FETCH_ASSOC);
-    
-  } else {
-    echo "<script>window.location='./../../index.php'</script>";
-  }
   
-      $schedcount = "SELECT COUNT(qid) AS queue FROM alagapp_db.tbl_scheduler";
+      $schedcount = "SELECT COUNT(qid) AS queue FROM alagapp_db.tbl_scheduler ORDER BY qid DESC";
       $resq = $connect->query($schedcount);
       $resq->execute();
       $rowq = $resq->fetch(PDO::FETCH_ASSOC);

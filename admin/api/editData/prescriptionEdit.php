@@ -11,8 +11,7 @@
         $vet = $_POST["vet"];
 
         if($user=="" || $pet=="" || $description=="" || $date=="" || $vet==""){
-            echo "<script>alert('Please complete the fields required!');
-            window.location='profile.php?userid=".$user."'</script>";
+            echo "<script>window.location='profile.php?userid=".$user."'</script>";
         } else {
             $sql = "UPDATE alagapp_db.tbl_notedetail SET
                 userid = :userid,
@@ -38,11 +37,9 @@
             $result->execute($values);
 
             if($result->rowCount()>0) {
-                echo "<script>alert('Record has been updated!');
-                window.location='../profile.php?userid=".$user."'</script>";
+                echo "<script>window.location='../profile.php?userid=".$user."'</script>";
              } else {
-                 echo "<script>alert('Unable to update record!');
-                 window.location='../profile.php?userid=".$user."'</script>";
+                 echo "<script>window.location='../profile.php?userid=".$user."'</script>";
              }
         }
     }

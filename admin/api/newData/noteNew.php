@@ -8,8 +8,7 @@
         $vet = $_POST["vet"];
 
         if($user=="" || $pet=="" || $description=="" || $date=="" || $vet==""){
-            echo "<script>alert('Please complete the fields required!');
-            window.location='../profile.php?userid=".$user."'</script>";
+            echo "<script>window.location='../profile.php?userid=".$user."'</script>";//Fields Required
         } else {
             $sql = "INSERT INTO alagapp_db.tbl_notedetail(
                 userid,
@@ -36,11 +35,9 @@
             $result->execute($values);
 
             if($result->rowCount()>0) {
-                echo "<script>alert('Record has been save!');
-                window.location='../profile.php?userid=".$user."'</script>";
+                echo "<script>window.location='../profile.php?userid=".$user."'</script>";//Saved
              } else {
-                 echo "<script>alert('Unable to add record!');
-                 window.location='../profile.php?userid=".$user."'</script>";
+                 echo "<script>window.location='../profile.php?userid=".$user."'</script>";//Not Saved
              }
         }
     };

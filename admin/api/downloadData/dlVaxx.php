@@ -1,18 +1,8 @@
 <?php
   include 'export.php';
   include ("../dataAnalytics.php");
-
-  $check = "SELECT * FROM alagapp_db.tbl_admin WHERE adminid = 1 AND session = 1";
-  $checkSession = $connect->prepare($check);
-  $checkSession->execute();
-  if($checkSession->rowCount()>0){
-    $wel = $checkSession->fetch(PDO::FETCH_ASSOC);
-    
-  } else {
-    echo "<script>window.location='./../../index.php'</script>";
-  }
   
-      $vdata = "SELECT COUNT(vaxid) AS count FROM alagapp_db.tbl_vaxxinfo";
+      $vdata = "SELECT COUNT(vaxid) AS count FROM alagapp_db.tbl_vaxxinfo ORDER BY vaxid DESC";
       $resdata = $connect->query($vdata);
       $resdata->execute();
       $rowdata = $resdata->fetch(PDO::FETCH_ASSOC);

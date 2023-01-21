@@ -24,11 +24,11 @@
           FROM ((alagapp_db.tbl_notedetail
           INNER JOIN alagapp_db.tbl_userlist ON alagapp_db.tbl_notedetail.userid = alagapp_db.tbl_userlist.userid)
           INNER JOIN alagapp_db.tbl_petprofile ON alagapp_db.tbl_notedetail.petid = alagapp_db.tbl_petprofile.petid)
-            ORDER BY nid DESC";
+            ORDER BY nid ASC";
           $resnote = $connect->query($note);
           $resnote->execute();
           if($resnote->rowCount()>0){
-            $i=$count;
+            $i=1;
             while($rownote = $resnote->fetch(PDO::FETCH_ASSOC)){
 
               echo "<tr>

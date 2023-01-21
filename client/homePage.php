@@ -45,7 +45,7 @@
     <button class="navbar-toggler" style="border: none; color: white;" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
         <h1><i class="bi bi-list"></i></h1>
     </button>
-    <a class="navbar-brand text-white" href="#"><h1><b>AlagApp</b></h1></a>    
+    <h1 class="text-white me-3"><b>AlagApp</b></h1>    
     <div class="offcanvas offcanvas-start w-75" style="background-color: #81C784;" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header bg bg-success">
         <h2 class="offcanvas-title text-white" id="offcanvasNavbarLabel">Menu</h2>
@@ -70,7 +70,7 @@
           <li class="nav-item">
             <h3><a class="nav-link active" aria-current="page" href="homePage.php?userid=<?php echo $user; ?>">
             <i class="bi bi-house-fill me-2" style="color: white;"></i>
-            <label class="float-end text-white"><strong>Home</strong></label></a></h3>
+            <label class="float-end text-white"><strong><u>Home</u></strong></label></a></h3>
           </li>
           <li class="nav-item">
             <h3><a class="nav-link" href="chatPage.php?userid=<?php echo $user; ?>">
@@ -130,7 +130,7 @@
                     <div class='card m-2 p-3' style='background-color:#E8F5E9;'>
                       <div class='row p-2'>
                         <div class='col-12 col-sm-12 col-md col-lg col-xl-4'>
-                            <img class='mb-2 mx-auto d-block rounded' style='width: 24rem;' src='../assets/img/".$petrow['pettype']."/".$petrow['petbreed'].".jpg' alt='petProfile'>
+                            <img class='mb-2 mx-auto d-block rounded' style='width: 18rem;' src='../assets/img/".$petrow['pettype']."/".$petrow['petbreed'].".jpg' alt='petProfile'>
                         </div>
                         <div class='p-2 col-12 col-sm-12 col-md col-lg col-xl-8 rounded bg bg-light'>
                           <div class='p-2'>
@@ -138,7 +138,7 @@
                                     <label>Name: ".$petrow['petname']."</label>
                                     <label class='float-end'>Gender: ".$petrow['petgender']."</label>
                                 </div> 
-                                <div class='col mb-2'>
+                                <div class='col-12 mb-2'>
                                     <label>Species: ".$petrow['pettype']."</label>
                                     <label class='float-end'>Breed: ".$petrow['petbreed']."</label>
                                 </div>
@@ -148,7 +148,7 @@
                                 </div>
                                 <div class='col'>
                                     <label>Wt(Kg): ".$petrow['petweight']."</label>
-                                    <label class='float-end'>Ht(Ft): ".$petrow['petheight']."</label>
+                                    <label class='float-end'>Color/Marking: ".$petrow['petmark']."</label>
                                 </div>
                           </div>      
                         </div>
@@ -167,26 +167,34 @@
                             <button class='btn btn-success w-100 mb-2' type='button' data-bs-toggle='collapse' data-bs-target='#collapseCard".$petrow['petid']."' aria-expanded='false' aria-controls='collapseCard".$petrow['petid']."'>
                                     E-Vaccine Card
                             </button>
-                            <div class='collapse' id='collapseCard".$petrow['petid']."'>";
+                            <div class='collapse' id='collapseCard".$petrow['petid']."'>";?>
+                            
+                            <table class="table table-striped bg bg-light rounded">
+                              <thead>
+                                <tr>
+                                  <th>Date</th>
+                                  <th>Wt(Kg)</th>
+                                  <th>Vaccine</th>
+                                  <th>Veterinarian</th>
+                                  <tbody>
+                            <?php
                         
                             if($checkcard->rowCount()>0) {
                                 $j=1;
                                 while($cardrow = $checkcard->fetch(PDO::FETCH_ASSOC)){
     
-                                echo "<div class='card card-body m-2'>
-                                  <div class='row'>
-                                    <div class='col-12 col-sm col-md col-lg col-xl'>
-                                        <label>Vaccine: ".$cardrow['vaxname']."</label><br>
-                                        <label>Veterinarian: ".$cardrow['cvet']."</label>
-                                    </div>
-                                    <div class='col-12 col-sm col-md col-lg col-xl'>
-                                        <label>Weight(Kg): ".$cardrow['cweight']."</label><br>
-                                        <label>Date: ".$cardrow['cdate']."</label>
-                                    </div>
-                                  </div>
-                                </div>";
+                                echo "<tr>
+                                  <td>".$cardrow['cdate']."</td>
+                                  <td>".$cardrow['cweight']."</td>
+                                  <td>".$cardrow['vaxname']."</td>
+                                  <td>".$cardrow['cvet']."</td>
+                                </tr>";
                                 $j++;
                                 }
+                                echo "</tbody>
+                                </tr>
+                              </thead>
+                              </table>";
                             } else {
                                 echo "<div class='row card card-body m-2'>
                                     <label>No Record</label>
@@ -204,21 +212,21 @@
                                     E-Prescription Note
                             </button>
                             <div class='collapse' id='collapseNote".$petrow['petid']."'>";
-                        
+
                             if($checknote->rowCount()>0) {
                                 $k=1;
                                 while($noterow = $checknote->fetch(PDO::FETCH_ASSOC)){
     
-                            echo "<div class='card card-body m-2'>
-                                    <div class='row'>
-                                        <div class='col-12 col-sm col-md col-lg col-xl'>
-                                          <label>Veterinarian: N/A</label>
-                                        </div><br>
-                                        <div class='col-12 col-sm col-md col-lg col-xl mb-2'>
-                                          <label>Date Issued: ".$noterow['ndate']."</label>
-                                        </div>
-                                    </div>
-                                    <label>Description: ".$noterow['ndescription']."</label>
+                            echo "<div class='row m-auto bg bg-light rounded p-2 mb-2'>
+                                  <div class='col-6'>
+                                    <label>Date: ".$noterow['ndate']."</label>
+                                  </div>
+                                  <div class='col-6'>
+                                    <label>Veterinarian: ".$noterow['nvet']."</label>
+                                  </div>
+                                  <div class='col-12 p-2 border border-1 border-success rounded'>
+                                    <p>Description: ".$noterow['ndescription']."</p>
+                                  </div>
                                 </div>";
                                 }
                             } else {
@@ -230,6 +238,10 @@
                         </div>
                     </div>";
                 }
+            } else {
+              echo "<div class='row card card-body'>
+                <label class='text-center'>Empty Pet! Please contact or visit the clinic to have your pet registered to your account!</label>
+              </div>";
             }
             ?>
         </div>

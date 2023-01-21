@@ -11,11 +11,9 @@
         $province = $_POST["province"];
 
         if($fname=="" || $lname=="" || $municipality=="" || $province ==""){
-            echo "<script>alert('Complete Required Fields!');
-            window.location='../../account.php'</script>";
+            echo "<script>window.location='../../account.php'</script>";//Field Required
         } else if ($email=="" || $password =="") 
-            echo "<script>alert('Email and Password Required!');
-            window.location='../../account.php'</script>";
+            echo "<script>window.location='../../account.php'</script>";//Username and Password Required
         else {
             $sql = "INSERT INTO alagapp_db.tbl_userlist(
                 useremail,
@@ -51,11 +49,9 @@
             $result->execute($values);
 
             if($result->rowCount()>0) {
-                echo "<script>alert('Record has been save!');
-                window.location='../../account.php'</script>";
+                echo "<script>window.location='../../account.php'</script>";//Saved
              } else {
-                 echo "<script>alert('Unable to add record!');
-                 window.location='../../account.php'</script>";
+                 echo "<script>window.location='../../account.php'</script>";//Not Saved
              }
         }
     }

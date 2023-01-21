@@ -72,14 +72,14 @@ function noteNew(petid) {
     xhttp.send();
   }
 
-/*function scheduleNew() {
+function scheduleNew(qid) {
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
-      document.getElementById("modalNew").innerHTML = this.responseText;
+      document.getElementById("schedNew").innerHTML = this.responseText;
     }
-    xhttp.open("GET", "newData/scheduleNew.php");
+    xhttp.open("GET", "newData/scheduleNew.php?userid="+qid);
     xhttp.send();
-  }*/
+  }
 
 // Edit Functions
 function userEdit(userid) {
@@ -141,7 +141,7 @@ function scheduleEdit(qid) {
   xhttp.onload = function() {
     document.getElementById("schedHere").innerHTML = this.responseText;
   }
-  xhttp.open("GET", "api/editData/scheduleEdit.php?qid="+qid);
+  xhttp.open("GET", "editData/scheduleEdit.php?qid="+qid);
   xhttp.send();
 }
 function schedEdit(qid) {
@@ -158,7 +158,7 @@ function SchedEdit(qid) {
   xhttp.onload = function() {
     document.getElementById("schedHere").innerHTML = this.responseText;
   }
-  xhttp.open("GET", "../editData/scheduleEdit.php?qid="+qid);
+  xhttp.open("GET", "editData/schedEdit.php?qid="+qid);
   xhttp.send();
 }
 
@@ -180,148 +180,6 @@ function adminEdit(id) {
   xhttp.send();
 }
 
-// Search Functions
-function _searchAccount() {
-  var account = document.getElementById("searchAccount").value;
-    if(account != "") {
-      const xhttp = new XMLHttpRequest();
-      xhttp.onload = function() {
-        document.getElementById("accountHere").innerHTML = this.responseText;
-      }
-      xhttp.open("GET", "../searchData/searchAccount.php?account="+account);
-      xhttp.send();
-    } else {
-      document.getElementById("accountHere").innerHTML = "";
-    }
-}
-
-function searchCard() {
-  var search = document.getElementById("card").value;
-    if(search != "") {
-      document.getElementById("table").style.display = "none";
-      const xhttp = new XMLHttpRequest();
-      xhttp.onload = function() {
-        document.getElementById("alter").innerHTML = this.responseText;
-      }
-      xhttp.open("GET", "../searchData/getCard.php?search="+search);
-      xhttp.send();
-    } else {
-      document.getElementById("altertable").style.display = "none";
-      document.getElementById("table").style.display = "block";
-    }
-}
-
-function searchNote() {
-  var search = document.getElementById("note").value;
-    if(search != "") {
-      document.getElementById("table").style.display = "none";
-      const xhttp = new XMLHttpRequest();
-      xhttp.onload = function() {
-        document.getElementById("alter").innerHTML = this.responseText;
-      }
-      xhttp.open("GET", "../searchData/getNote.php?search="+search);
-      xhttp.send();
-    } else {
-      document.getElementById("altertable").style.display = "none";
-      document.getElementById("table").style.display = "block";
-    }
-}
-
-function searchUser() {
-  var search = document.getElementById("user").value;
-    if(search != "") {
-      document.getElementById("table").style.display = "none";
-      const xhttp = new XMLHttpRequest();
-      xhttp.onload = function() {
-        document.getElementById("alter").innerHTML = this.responseText;
-      }
-      xhttp.open("GET", "../searchData/getUser.php?search="+search);
-      xhttp.send();
-    } else {
-      document.getElementById("altertable").style.display = "none";
-      document.getElementById("table").style.display = "block";
-    }
-}
-
-function searchPet() {
-  var search = document.getElementById("pet").value;
-    if(search != "") {
-      document.getElementById("table").style.display = "none";
-      const xhttp = new XMLHttpRequest();
-      xhttp.onload = function() {
-        document.getElementById("alter").innerHTML = this.responseText;
-      }
-      xhttp.open("GET", "../searchData/getPet.php?search="+search);
-      xhttp.send();
-    } else {
-      document.getElementById("altertable").style.display = "none";
-      document.getElementById("table").style.display = "block";
-    }
-}
-
-function searchSched() {
-  var search = document.getElementById("sched").value;
-    if(search != "") {
-      document.getElementById("table").style.display = "none";
-      const xhttp = new XMLHttpRequest();
-      xhttp.onload = function() {
-        document.getElementById("alter").innerHTML = this.responseText;
-      }
-      xhttp.open("GET", "../searchData/getSched.php?search="+search);
-      xhttp.send();
-    } else {
-      document.getElementById("altertable").style.display = "none";
-      document.getElementById("table").style.display = "block";
-    }
-}
-
-function searchSympt() {
-  var search = document.getElementById("symptom").value;
-    if(search != "") {
-      document.getElementById("table").style.display = "none";
-      const xhttp = new XMLHttpRequest();
-      xhttp.onload = function() {
-        document.getElementById("alter").innerHTML = this.responseText;
-      }
-      xhttp.open("GET", "../searchData/getSympt.php?search="+search);
-      xhttp.send();
-    } else {
-      document.getElementById("altertable").style.display = "none";
-      document.getElementById("table").style.display = "block";
-    }
-}
-
-function searchVaxx() {
-  var search = document.getElementById("vaxx").value;
-    if(search != "") {
-      document.getElementById("table").style.display = "none";
-      const xhttp = new XMLHttpRequest();
-      xhttp.onload = function() {
-        document.getElementById("alter").innerHTML = this.responseText;
-      }
-      xhttp.open("GET", "../searchData/getVaxx.php?search="+search);
-      xhttp.send();
-    } else {
-      document.getElementById("altertable").style.display = "none";
-      document.getElementById("table").style.display = "block";
-    }
-}
-
-function searchConsult() {
-  var search = document.getElementById("consult").value;
-    if(search != "") {
-      document.getElementById("table").style.display = "none";
-      const xhttp = new XMLHttpRequest();
-      xhttp.onload = function() {
-        document.getElementById("alter").innerHTML = this.responseText;
-      }
-      xhttp.open("GET", "../searchData/getConsult.php?search="+search);
-      xhttp.send();
-    } else {
-      document.getElementById("altertable").style.display = "none";
-      document.getElementById("table").style.display = "block";
-    }
-}
 //Sort Functions
 function descUser() {
   document.getElementById("table").style.display = "none";
@@ -377,7 +235,7 @@ function descConsult() {
   xhttp.onload = function() {
     document.getElementById("alter").innerHTML = this.responseText;
   }
-  xhttp.open("GET", "../sortData/consultDES.php");
+  xhttp.open("GET", "api/sortData/consultDES.php");
   xhttp.send();
 }
 

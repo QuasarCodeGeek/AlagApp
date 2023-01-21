@@ -27,15 +27,12 @@
         $resadd = $connect->prepare($add);
         $resadd->execute($valadd);
         if($resadd->rowCount()>0) {
-            echo "<script>alert('Symptom Added!');
-            window.location='../reportData/symptomDashboard.php'</script>";
+            echo "<script>window.location='../reportData/symptomDashboard.php'</script>";//Added
         } else {
-            echo "<script>alert('Unable to add Symptom!');
-            window.location='../reportData/symptomDashboard.php'</script>";
+            echo "<script>window.location='../reportData/symptomDashboard.php'</script>";//Unable
         }
       } else {
-        echo "<script>alert('Unable to add Symptom!');
-        window.location='../reportData/symptomDashboard.php'</script>";
+        echo "<script>window.location='../reportData/symptomDashboard.php'</script>";//Unable
       }
 ?>
 

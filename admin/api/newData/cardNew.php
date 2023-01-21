@@ -10,8 +10,7 @@
         $date = $_POST["cdate"];
 
         if($user=="" || $pet=="" || $vax=="" || $vet=="" || $date==""){
-            echo "<script>alert('Please complete the fields required!');
-            window.location='../profile.php?userid=".$user."'</script>";
+            echo "<script>window.location='../profile.php?userid=".$user."'</script>";//Fields Required
         } else {
             $sql = "INSERT INTO alagapp_db.tbl_carddetail(
                 userid,

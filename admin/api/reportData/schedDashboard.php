@@ -1,7 +1,7 @@
 <?php
     include ("../dataAnalytics.php");
 
-    $check = "SELECT * FROM alagapp_db.tbl_admin WHERE adminid = 1 AND session = 1";
+    /*$check = "SELECT * FROM alagapp_db.tbl_admin WHERE adminid = 1 AND session = 1";
 $checkSession = $connect->prepare($check);
 $checkSession->execute();
 if($checkSession->rowCount()>0){
@@ -9,7 +9,7 @@ if($checkSession->rowCount()>0){
   
 } else {
   echo "<script>window.location='./../../index.php'</script>";
-}
+}*/
 
     $schedcount = "SELECT COUNT(qid) AS queue FROM alagapp_db.tbl_scheduler";
     $resq = $connect->query($schedcount);
@@ -34,30 +34,6 @@ if($checkSession->rowCount()>0){
     <link rel="stylesheet" href="../../css/styles.css">
 </head>
 <body class="bg bg-light">
-    <!--<nav class="navbar navbar-expand-lg bg-light">
-        <div class="container container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="row collapse navbar-collapse mx-auto" id="navbarSupportedContent">
-            <div class="col text-center">
-              <a class="nav-link" href="../../account.php">Account</a>
-            </div>
-            <div class="col text-center">
-            <a class="nav-link" href="../../scheduler.php">Scheduler</a>
-            </div>
-            <div class="col text-center">
-              <a class="navbar-brand" href="#"><strong>AlagApp</strong></a>
-            </div>
-            <div class="col text-center">
-              <a class="nav-link" href="../../consultation.php">Consultation</a>
-            </div>
-            <div class="col text-center border-bottom border-success border-5">
-              <a class="nav-link text-success" href="../../dashboard.php" active><strong>Dashboard</strong></a> 
-            </div>
-          </div>
-        </div>
-      </nav>-->
       <main class="container-fluid"><div class="row m-auto">
       <div class="col-2 vh-100 bg bg-success">
           <div class="row m-auto text-center my-3">
@@ -125,9 +101,6 @@ if($checkSession->rowCount()>0){
             <div class="col text-center p-1 bg bg-success">
               <a type="button" class="text-white nav-link" href="schedDashboard.php"><strong>Scheduler</strong></a>
             </div>
-            <div class="col text-center p-1" style="background-color: #81C784;">
-              <a type="button" class="text-white nav-link" href="consultDashboard.php">Consultation</a>
-            </div>
             <div class="col text-center p-1"  style="background-color: #81C784;">
               <a type="button" class="text-white nav-link" href="vaccineDashboard.php">Vaccine List</a>
             </div>
@@ -138,20 +111,24 @@ if($checkSession->rowCount()>0){
           
     <div class="row m-auto border border-3 border-success rounded m-2 p-2"><!-- Vaccine Card -->
       <div class="row m-auto">
-        <div class="col">
-          <label>Number of Rows: <?php echo $rowq['queue'];?></label>
+        <div class="col-2 m-auto">
+          <label class="fw-bold text-sucess">Total Schedules: <?php echo $rowq['queue'];?></label>
         </div>
-        <div class="col">
-          <form action="#" class="input-group" classd="d-flex gap-2">
-            <input class="form-control" id="sched" type="text">
-            <button onclick="searchSched()" class="btn btn-success">Search</button>
-          </form>
+        <div class="col-6">
+          <div class="row">
+            <div class="col">
+              <input class="form-control w-100" id="sched" type="text">
+            </div>
+            <div class="col">
+              <button onclick="searchSched()" class="btn btn-success">Search</button>
+            </div>
+          </div>
         </div>
-        <div class="col btn-group" role="group">
+        <div class="col-2 btn-group" role="group">
           <button type="button" class="btn btn-success" onclick="window.location='schedDashboard.php'"><i class="bi bi-sort-down"></i> ASC</button>
           <button type="button" class="btn btn-success" onclick="descSched()"><i class="bi bi-sort-up"></i> DES</button>
         </div>
-        <div class="col">
+        <div class="col-2">
         <button class="btn btn-success float-end" onclick="window.location='../downloadData/dlSched.php'" target="_blank"><i class="bi bi-download"></i> Download</button>
         </div>
       </div>
@@ -165,16 +142,18 @@ if($checkSession->rowCount()>0){
             <th>Pet</th>
             <th>Owner</th>
             <th>Description</th>
-            <th>Date</th>
+            <th>Date(Fr - To)</th>
             <th>Status</th>
           </tr>
+          <?php include("./schedFilter.php");?>
         </thead>
         <tbody>
         <?php
             $scheddata = "SELECT alagapp_db.tbl_scheduler.*, alagapp_db.tbl_userlist.*, alagapp_db.tbl_petprofile.petname
             FROM ((alagapp_db.tbl_scheduler
             INNER JOIN alagapp_db.tbl_userlist ON alagapp_db.tbl_scheduler.userid = alagapp_db.tbl_userlist.userid)
-            INNER JOIN alagapp_db.tbl_petprofile ON alagapp_db.tbl_scheduler.petid = alagapp_db.tbl_petprofile.petid)";
+            INNER JOIN alagapp_db.tbl_petprofile ON alagapp_db.tbl_scheduler.petid = alagapp_db.tbl_petprofile.petid)
+            ORDER BY qid DESC";
             $res = $connect->query($scheddata);
             $res->execute();
 
@@ -201,6 +180,8 @@ if($checkSession->rowCount()>0){
 
 <!-- Main Functions -->
 <script src="../../js/main.js"></script>
+<script src="../../js/dashboardFilter.js"></script>
+<script src="../../js/searchInfo.js"></script>
 <!-- Ajax Function -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!-- Bootstrap Popper -->

@@ -26,11 +26,11 @@
           FROM ((alagapp_db.tbl_scheduler
           INNER JOIN alagapp_db.tbl_userlist ON alagapp_db.tbl_scheduler.userid = alagapp_db.tbl_userlist.userid)
           INNER JOIN alagapp_db.tbl_petprofile ON alagapp_db.tbl_scheduler.petid = alagapp_db.tbl_petprofile.petid)
-          ORDER BY qid DESC";
+          ORDER BY qid ASC";
           $resnote = $connect->query($note);
           $resnote->execute();
           if($resnote->rowCount()>0){
-            $i=$count;
+            $i=1;
             while($rownote = $resnote->fetch(PDO::FETCH_ASSOC)){
 
               echo "<tr>

@@ -1,4 +1,7 @@
-
+<?php
+require("../connector.php");
+$search = $_REQUEST['search'];
+?>
       <table class="table table-striped m-2">
         <thead class="bg bg-success text-white">
           <tr>
@@ -8,16 +11,15 @@
             <th>Pet Type</th>
             <th>Breed</th>
             <th>Wt(Kg)</th>
-            <th>Ht(Ft)</th>
+            <th>Color/Marking</th>
             <th>DOB</th>
             <th>Age</th>
             <th>Gender</th>
           </tr>
+          <?php include("./../reportData/petFilter.php");?>
         </thead>
         <tbody>
         <?php
-        require("../connector.php");
-        $search = $_REQUEST['search'];
           $note = "SELECT alagapp_db.tbl_petprofile.*, alagapp_db.tbl_userlist.userfname, alagapp_db.tbl_userlist.userlname
           FROM alagapp_db.tbl_petprofile
           INNER JOIN alagapp_db.tbl_userlist ON alagapp_db.tbl_petprofile.userid = alagapp_db.tbl_userlist.userid
@@ -28,7 +30,7 @@
             pettype LIKE '%".$search."%' OR
             petbreed LIKE '%".$search."%' OR
             petweight LIKE '%".$search."%' OR
-            petheight LIKE '%".$search."%' OR
+            petmark LIKE '%".$search."%' OR
             petbdate LIKE '%".$search."%' OR
             petage LIKE '%".$search."%' OR
             petgender LIKE '%".$search."%'";
@@ -45,7 +47,7 @@
               <td>".$rownote['pettype']."</td>
               <td>".$rownote['petbreed']."</td>
               <td>".$rownote['petweight']."</td>
-              <td>".$rownote['petheight']."</td>
+              <td>".$rownote['petmark']."</td>
               <td>".$rownote['petbdate']."</td>
               <td>".$rownote['petage']."</td>
               <td>".$rownote['petgender']."</td>

@@ -21,30 +21,21 @@
     // Allow certain file formats
     if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
     && $imageFileType != "gif" ) {
-    echo "<script>alert('Sorry, only JPG, JPEG, PNG & GIF files are allowed')</script>;";
-    
     echo "<script>window.location='adminProfile.php'</script>;";
     $uploadOk = 0;
     }
 
     // Check if $uploadOk is set to 0 by an error
     if ($uploadOk == 0) {
-    echo "Sorry, your file was not uploaded.";
     // if everything is ok, try to upload file
     } else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-            echo "<script>alert('Upload successful!!')</script>;";
             echo "<script>window.location='adminProfile.php'</script>;";
     } else {
-        echo "<script>Sorry, there was an error uploading your file.</script>";
         echo "<script>window.location='adminProfile.php'</script>;";
     }
     }
 
-} else {
-    echo "<script>alert('Error');</script>";
-}
-} else {
-    echo "<script>alert('Error');</script>";
-}
+} 
+} 
 ?>

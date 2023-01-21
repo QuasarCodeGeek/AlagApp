@@ -6,17 +6,18 @@
         $user = $_POST["userid"];
         $pet = $_POST["petid"];
         $description = $_POST["description"];
+        $time = $_POST["time"];
         $date = $_POST["date"];
         $status = $_POST["status"];
 
-        if($user=="" || $pet=="" || $description=="" || $date=="" || $status==""){
-            echo "<script>alert('Please complete the fields required!');
-            window.location='../sched_profile.php?userid=".$user."'</script>";
+        if($user=="" || $pet=="" || $description=="" || $time=="" || $date=="" || $status==""){
+            echo "<script>window.location='../sched_chrono.php?userid=".$user."'</script>";
         } else {
             $sql = "UPDATE alagapp_db.tbl_scheduler SET
                 userid = :userid,
                 petid = :petid,
                 qdescription = :qdescription,
+                qtime = :qtime,
                 qdate = :qdate,
                 qstatus = :qstatus
 
@@ -27,6 +28,7 @@
                 ":userid"=>$user,
                 ":petid"=>$pet,
                 ":qdescription"=>$description,
+                ":qtime"=>$time,
                 ":qdate"=>$date,
                 ":qstatus"=>$status
             );
@@ -35,11 +37,9 @@
             $result->execute($values);
 
             if($result->rowCount()>0) {
-                echo "<script>alert('Record has been updated!');
-                window.location='../sched_profile.php?userid=".$user."'</script>";
+                echo "<script>window.location='../sched_chrono.php?userid=".$user."'</script>";
              } else {
-                 echo "<script>alert('Unable to update record!')
-                 window.location='..sched_profile.php?userid=".$user."'</script>";
+                 echo "<script>window.location='../sched_chrono.php?userid=".$user."'</script>";
              }
         }
     }
@@ -57,6 +57,7 @@
         $userid = "";
         $petid = "";
         $description = "";
+        $time = "";
         $date = "";
         $status = "";
         
@@ -78,6 +79,7 @@
             $petid = $sched_row["petid"];
             $pet = $pet_row["petname"];
             $description = $sched_row["qdescription"];
+            $time = $sched_row["qtime"];
             $date = $sched_row["qdate"];
             $status = $sched_row["qstatus"];
         }
@@ -101,6 +103,8 @@
                 </div><br>
 
                 <div class='input-group'>
+                    <label class='input-group-text'>Time</label>
+                    <input type='time' class='form-control' name='time' value='".$time."'>
                     <label class='input-group-text'>Date</label>
                     <input type='date' class='form-control' name='date' value='".$date."'>
                     <label class='input-group-text'>Status</label>

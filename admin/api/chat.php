@@ -1,7 +1,8 @@
 <?php
   require("connector.php");
 
-  $check = "SELECT * FROM alagapp_db.tbl_admin WHERE adminid = 1 AND session = 1";
+
+  /*$check = "SELECT * FROM alagapp_db.tbl_admin WHERE adminid = 1 AND session = 1";
 $checkSession = $connect->prepare($check);
 $checkSession->execute();
 if($checkSession->rowCount()>0){
@@ -9,9 +10,25 @@ if($checkSession->rowCount()>0){
   
 } else {
   echo "<script>window.location='./../index.php'</script>";
-}
+}*/
 
   $id = $_REQUEST['userid'];
+
+  $c = "SELECT * FROM alagapp_db.tbl_userlist WHERE userid = '".$id."'";
+  $cres = $connect->prepare($c);
+  $cres->execute();
+
+  if($cres->rowCount()>0){
+    $row = $cres->fetch(PDO::FETCH_ASSOC);
+    if($row['userstatus']!=0){
+      $status = 0;
+      $see = "UPDATE alagapp_db.tbl_userlist SET userstatus = :status WHERE userid = ".$id."";
+      $sres = $connect->prepare($see);
+      $array = array(":status"=>$status);
+      $sres->execute($array);
+    }
+  }
+
 
   if(isset($_POST["submit"])){
     $userid = $_POST["userid"];
@@ -21,8 +38,7 @@ if($checkSession->rowCount()>0){
     $date = date("Y-m-d h:i:sa");
 
     if($userid=="" || $sender=="" || $channel=="" || $message==""){
-        echo "<script>alert('Invalid!');
-        window.location='chat.php?userid=".$userid."'</script>";
+        echo "<script>window.location='chat.php?userid=".$userid."'</script>";//Invalid
     } else {
         $sql = "INSERT INTO alagapp_db.tbl_chat(
             userid,
@@ -49,11 +65,9 @@ if($checkSession->rowCount()>0){
         $result->execute($values);
 
         if($result->rowCount()>0) {
-            echo "<script>alert('Message Sent!');
-            window.location='chat.php?userid=".$userid."'</script>";
+            echo "<script>window.location='chat.php?userid=".$userid."'</script>";//Message Sent
          } else {
-             echo "<script>alert('Unable to send message!');
-             window.location='chat.php?userid=".$userid."'</script>";
+             echo "<script>window.location='chat.php?userid=".$userid."'</script>";//Unable to send message
          }
     }
 };
@@ -74,30 +88,7 @@ if($checkSession->rowCount()>0){
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body class="bg bg-light">
-<!--<nav class="navbar navbar-expand-lg bg-light">
-        <div class="container container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="row collapse navbar-collapse mx-auto" id="navbarSupportedContent">
-            <div class="col text-center">
-              <a class="nav-link" href="../account.php">Account</a>
-            </div>
-            <div class="col text-center">
-            <a class="nav-link" href="../scheduler.php">Scheduler</a>
-            </div>
-            <div class="col text-center">
-              <a class="navbar-brand" href="#"><strong>AlagApp</strong></a>
-            </div>
-            <div class="col text-center border-bottom border-success border-5">
-              <a class="nav-link" href="../consultation.php" active><strong>Consultation</strong></a>
-            </div>
-            <div class="col text-center">
-              <a class="nav-link text-success" href="../dashboard.php">Dashboard</a> 
-            </div>
-          </div>
-        </div>
-      </nav>-->
+
       <main class="container-fluid">
   <div class="row m-auto">
   <div class="col-2 vh-100 bg bg-success"><!--SideBar-->
@@ -140,16 +131,24 @@ if($checkSession->rowCount()>0){
         };
       ?>
       <div class="row p-2"><!-- Chat Header -->
-        <div class="p-2 border border-3 border-success text-success rounded-pill">
+        <div class="border border-3 border-success text-success rounded-pill pt-2">
           <img class="ms-2  me-2 rounded-circle" src="../../assets/uploads/<?php echo $_rowe['userpict']; ?>" alt="" style="width: 3rem; height: 3rem;"> 
-          <label><strong><?php echo $_rowe['userfname']." ".$_rowe['userlname']; ?></strong></label>
-          <a href="https://meet.google.com/ioy-hihq-ieu">
+          <label><h4><?php echo $_rowe['userfname']." ".$_rowe['userlname']; ?></h4></label>
+          <?php
+            $meet = "SELECT gmeet FROM alagapp_db.tbl_admin WHERE adminid = 1";
+            $checklink = $connect->prepare($meet);
+            $checklink->execute();
+            if($checklink->rowCount()>0){
+              $link = $checklink->fetch(PDO::FETCH_ASSOC);
+              echo "<a href=".$link['gmeet'].">";
+            }
+          ?>
           <button class="btn btn-primary-outline float-end"><iconify-icon icon="bi:camera-video-fill" style="color: green;" width="30" height="30"></iconify-icon></button>
           </a>
         </div>
       </div><!-- Chat Header -->
         
-      <div class="rowp-2 "><!-- Chat Conversation -->
+      <div class="row p-2 "><!-- Chat Conversation -->
         <div class="m-auto p-2 border border-3 border-success rounded mb-2 ">
             <?php
               $chat = "SELECT * FROM alagapp_db.tbl_chat WHERE mchannel = ".$channel."";

@@ -30,8 +30,11 @@
                                         if($row['userid'] == $id){
                                           echo "text-white";
                                         }
-                                        echo " '><b>".$row['userfname']."</b> ".$row['userlname']."</label>
-                                    </div>
+                                        echo " '><b>".$row['userfname']."</b> ".$row['userlname']."</label>";
+                                        if($row['userstatus'] == 1){
+                                            echo "<label class='text-wrap text-danger'>New Message</label>";
+                                          }
+                                        echo "</div>
                                   </div>
                                   </a>
                                   </li>

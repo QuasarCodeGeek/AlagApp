@@ -1,4 +1,7 @@
-
+<?php
+require("../connector.php");
+$search = $_REQUEST['search'];
+?>
       <table class="table table-striped m-2">
         <thead class="bg bg-success text-white">
           <tr>
@@ -9,11 +12,10 @@
             <th>Veterinarian</th>
             <th>Date</th>
           </tr>
+          <?php include("./../reportData/noteFilter.php");?>
         </thead>
         <tbody>
         <?php
-        require("../connector.php");
-        $search = $_REQUEST['search'];
           $note = "SELECT alagapp_db.tbl_notedetail.*, alagapp_db.tbl_userlist.userfname, alagapp_db.tbl_userlist.userlname, alagapp_db.tbl_petprofile.petname
           FROM ((alagapp_db.tbl_notedetail
           INNER JOIN alagapp_db.tbl_userlist ON alagapp_db.tbl_notedetail.userid = alagapp_db.tbl_userlist.userid)

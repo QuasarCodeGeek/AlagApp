@@ -16,15 +16,12 @@
           
       if (move_uploaded_file($pict, $folder))  {
         if($res->rowCount()>0) {
-            echo "<script>alert('Post have been uploaded!');
-            window.location = 'profile.php?userid=".$user."'</script>";
+            echo "<script>window.location = 'profile.php?userid=".$user."'</script>";//Picture Uploaded
          } else {
-           echo "<script>alert('Unable to Upload!');
-           window.location = 'profile.php?userid=".$user."'</script>";
+           echo "<script>window.location = 'profile.php?userid=".$user."'</script>";//Unable to Upload
          }
       }else{
-        echo "<script>alert('Upload Error!');
-        window.location = 'profile.php?userid=".$user."'</script>";
+        echo "<script>window.location = 'profile.php?userid=".$user."'</script>";//Upload Error
       }
 
 ?>

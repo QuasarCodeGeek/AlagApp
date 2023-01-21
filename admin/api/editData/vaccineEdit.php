@@ -9,8 +9,7 @@
         $description = $_POST["description"];
         
         if($name=="" || $type=="" || $brand=="" || $description==""){
-            echo "<script>alert('Please complete the fields required!');
-            window.location='../../dashboard.php'</script>";
+            echo "<script>window.location='../../dashboard.php'</script>";
         } else {
             $sql = "UPDATE alagapp_db.tbl_vaxxinfo SET
                 vaxname = :vaxname,
@@ -32,11 +31,9 @@
             $result->execute($values);
 
             if($result->rowCount()>0) {
-               echo "<script>alert('Record has been updated!');
-               window.location='../../dashboard.php'</script>";
+               echo "<script>window.location='../../dashboard.php'</script>";
             } else {
-                echo "<script>alert('Unable to update record!')
-                window.location='../../dashboard.php'</script>";
+                echo "<script>window.location='../../dashboard.php'</script>";
             }
         }
     }

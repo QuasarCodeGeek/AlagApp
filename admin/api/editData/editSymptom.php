@@ -27,15 +27,12 @@
         $resadd = $connect->prepare($update);
         $resadd->execute($valupdate);
         if($resadd->rowCount()>0) {
-            echo "<script>alert('Symptom Updated!');
-            window.location='../reportData/symptomDashboard.php'</script>";
+            echo "<script>window.location='../reportData/symptomDashboard.php'</script>";
         } else {
-            echo "<script>alert('Unable to update Symptom!');
-            window.location='../reportData/symptomDashboard.php'</script>";
+            echo "<script>window.location='../reportData/symptomDashboard.php'</script>";
         }
       } else {
-        echo "<script>alert('Unable to update Symptom!');
-        window.location='../reportData/symptomDashboard.php'</script>";
+        echo "<script>window.location='../reportData/symptomDashboard.php'</script>";
       }
 ?>
 <form action="../editData/editSymptom.php" method="POST">

@@ -8,8 +8,7 @@
         $description = $_POST["description"];
 
         if($name=="" || $type=="" || $brand==""){
-            echo "<script>alert('Please complete the fields required!');
-            window.location='../../dashboard.php'</script>";
+            echo "<script>window.location='../reportData/vaccineDashboard.php'</script>";//Field Required
         } else {
             $sql = "INSERT INTO alagapp_db.tbl_vaxxinfo(
                 vaxname,
@@ -33,16 +32,14 @@
             $result->execute($values);
 
             if($result->rowCount()>0) {
-                echo "<script>alert('Record has been save!');
-                window.location='../../dashboard.php'</script>";
+                echo "<script>window.location='../reportData/vaccineDashboard.php'</script>";//Saved
              } else {
-                 echo "<script>alert('Unable to add record!');
-                 window.location='../../dashboard.php'</script>";
+                 echo "<script>window.location='../reportData/vaccineDashboard.php'</script>";//Not Save
              }
         }
     }
 echo "
-    <form action='api/newData/vaccineNew.php' method='POST'>
+    <form action='../newData/vaccineNew.php' method='POST'>
         <h1>New Vaccine Information</h1><br>
             <div class='input-group'>
                 <label class='input-group-text'>Name</label>

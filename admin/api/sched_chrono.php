@@ -1,6 +1,7 @@
 <?php
 require("./connector.php");
-$check = "SELECT * FROM alagapp_db.tbl_admin WHERE adminid = 1 AND session = 1";
+
+/*$check = "SELECT * FROM alagapp_db.tbl_admin WHERE adminid = 1 AND session = 1";
 $checkSession = $connect->prepare($check);
 $checkSession->execute();
 if($checkSession->rowCount()>0){
@@ -8,7 +9,7 @@ if($checkSession->rowCount()>0){
   
 } else {
   echo "<script>window.location='./../index.php'</script>";
-}
+}*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,31 +27,6 @@ if($checkSession->rowCount()>0){
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body class="bg bg-light">
-      <!--<nav class="navbar navbar-expand-lg bg-light">
-        <div class="container container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="row collapse navbar-collapse mx-auto" id="navbarSupportedContent">
-            <div class="col text-center">
-              <a class="nav-link" href="../account.php">Account</a>
-            </div>
-            <div class="col text-center border-bottom border-success border-5">
-            <a class="nav-link" href="../scheduler.php" active><strong>Scheduler</strong></a>
-            </div>
-            <div class="col text-center">
-              <a class="navbar-brand" href="../index.html"><strong>AlagApp</strong></a>
-            </div>
-            <div class="col text-center">
-              <a class="nav-link" href="../consultation.php">Consultation</a>
-            </div>
-            <div class="col text-center">
-              <a class="nav-link text-success" href="../dashboard.php">Dashboard</a> 
-            </div>
-          </div>
-        </div>
-      </nav>-->
-
       <main class="container-fluid">
       <div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
@@ -96,15 +72,7 @@ if($checkSession->rowCount()>0){
           </div>
           <div class="row m-auto text-center my-3">
             <a class="nav-link text-white" href="../consultation.php"><h5><i class="bi bi-chat"></i> O-Consultation</h5></a>
-          </div>
-          <div class="row m-auto text-center my-5">
-                    <button class="btn w-100 bg bg-light border border-3 border-light text-success rounded fw-bold mb-1" onclick="location.href='sched_chrono.php'">All</button>
-                    <button class="btn w-100 bg bg-success text-white mb-1 border border-2 border-light rounded" onclick="location.href='schedData/schedPending.php'">Pending</button>
-                    <button class="btn w-100 bg bg-success text-white mb-1 border border-2 border-light rounded" onclick="location.href='schedData/schedDenied.php'">Denied</button>
-                    <button class="btn w-100 bg bg-success text-white mb-1 border border-2 border-light rounded" onclick="location.href='schedData/schedAccepted.php'">Accepted</button>
-                    <button class="btn w-100 bg bg-success text-white mb-1 border border-2 border-light rounded" onclick="location.href='schedData/schedCancelled.php'">Cancelled</button>
-                    <button class="btn w-100 bg bg-success text-white mb-1 border border-2 border-light rounded" onclick="location.href='schedData/schedFinished.php'">Finished</button>
-          </div><br><br><br>
+          </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
           <div class="row m-auto text-center my-3 float-bottom">
           <a class="nav-link text-white" href="./adminData/adminProfile.php"><h5>Admin<h5></a>
             <a class="nav-link text-white" href="./../logout.php"><h5>Log Out<h5></a>
@@ -118,50 +86,99 @@ if($checkSession->rowCount()>0){
                   <h2 class="text-success p-3"><b>Scheduler</b> | Status</h2>
                 </div>
       <div class="col-6 text-center bg bg-light">
-        <a class="nav-link p-3" type="button" href="../scheduler.php"><strong>Account</strong></a>
+        <a class="nav-link p-3 text-success" type="button" href="../scheduler.php"><strong>Account</strong></a>
       </div>
-      <div class="col-6 text-center bg bg-success">
+      <div class="col-6 text-center bg bg-success border-start rounded-pill border-light">
         <a class="nav-link p-3 text-white" type="button" href="sched_chrono.php" disable><strong>Status</strong></a>
       </div>
     </div>
-    <div class="row m-auto">
-      <div class="col bg bg-light pt-2 pb-3 overflow-auto overflow-y">
-        <?php
-                  require("connector.php");
-
-                  $sql = "SELECT alagapp_db.tbl_scheduler.*, alagapp_db.tbl_userlist.userfname, alagapp_db.tbl_petprofile.petname
-                  FROM ((alagapp_db.tbl_scheduler
-                  INNER JOIN alagapp_db.tbl_userlist ON alagapp_db.tbl_scheduler.userid = alagapp_db.tbl_userlist.userid)
-                  INNER JOIN alagapp_db.tbl_petprofile ON alagapp_db.tbl_scheduler.petid = alagapp_db.tbl_petprofile.petid)";
-              
-                  $res = $connect->prepare($sql);
-                  $res->execute();
-              ?>
-              <div class="row m-auto">
-              <?php 
-          
-              if($res->rowCount()>0){
+    
+    <div class="row m-auto p-1 mt-2"><div class="border border-3 border-success rounded-pill p-2">
+      <form action="schedFind.php" method="POST"><div class="row">
+        <div class="col text-center m-auto">
+          <h4 class="fw-bold text-success">Search by:</h4>
+        </div>
+        <div class="col">
+          <div class="input-group">
+            <label class="input-group-text">User</label>
+            <select class="form-select" aria-label="UserSelect" name="user">
+              <option selected value="">Select User</option>
+              <?php
+                $user = "SELECT userid, userfname, userlname FROM alagapp_db.tbl_userlist";
+                $res = $connect->query($user);
+                $res->execute();
+                if($res->rowCount()>0){
                   $i=1;
                   while($row = $res->fetch(PDO::FETCH_ASSOC)){
-                  echo
-                  "<div class='col-3 card m-1 p-1 col-flex' style='width: 15rem;'>
-                      <div class='card-body'>
-                          <button type='button' class='btn btn-success w-100' onClick='schedEdit(".$row['qid'].")' data-bs-toggle='modal' data-bs-target='#boxModal')><h6 class='card-title'>".$row['petname']."</h6></button><br>
-                          <label class='card-text' style='font-size: 12px;'>Owner: ".$row['userfname']."</label><br>
-                          <label class='card-text' style='font-size: 12px;'>Description: ".$row['qdescription']."</label><br>
-                          <label class='card-text' style='font-size: 12px;'>Date: ".$row['qdate']."</label><br>
-                          <label class='card-text' style='font-size: 12px;'>Status: ".$row['qstatus']."</label>
-                      </div>
-                  </div>";
-                  $i++;
+                    echo "<option value='".$row['userid']."'>".$row['userfname']." ".$row['userlname']."</option>";
                   }
-              }  
+                }
               ?>
-              </div>
-    </div>
-  </div>
-</div></main>
+            </select>
+          </div>
+        </div>
 
+        <div class="col">
+          <div class="input-group">
+            <label class="input-group-text">Status</label>
+            <select class="form-select" aria-label="StatusSelect" name="status">
+              <option selected value="">Select Status</option>
+              <option value="Pending">Pending</option>
+              <option value="Denied">Denied</option>
+              <option value="Accepted">Accepted</option>
+              <option value="Cancelled">Cancelled</option>
+              <option value="Finished">Finished</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col">
+            <label class="form-label"> </label>
+            <button type="submit" name="submit" class="btn btn-success">Search</button>
+        </div>
+      </form>
+    </div></div>
+    
+    <div class="row m-auto" id="defaultContent">
+      <div class="col bg bg-light px-1 pt-2 pb-3 overflow-auto overflow-y">
+        <div class="row m-auto border border-3 border-success p-2 rounded mb-2">
+          <?php include("./schedData/schedToday.php"); ?>
+        </div>
+        <div class="row m-auto border border-3 border-success p-2 rounded mb-2">
+          <?php include("./schedData/schedTomorrow.php"); ?>
+        </div>
+        <div class="row m-auto border border-3 border-success p-2 rounded mb-2">
+          <?php include("./schedData/schedNextWeek.php"); ?>  
+        </div>
+        <div class="row m-auto border border-3 border-success p-2 rounded mb-2">
+          <?php include("./schedData/schedNextMonth.php"); ?>
+        </div>
+      </div>
+  </div>
+
+  <div class="row m-auto" id="searchContent">
+
+  </div>
+
+</div></main>
+<script>
+  function findInfo(){
+    var user = document.getElementById("user").value;
+    var fdate = document.getElementById("fdate").value;
+    var ldate = document.getElementById("ldate").value;
+    var month = document.getElementById("month").value;
+    var syear = document.getElementById("startyear").value;
+    var eyear = document.getElementById("endyear").value;
+    var status = document.getElementById("status").value;
+
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function() {
+      document.getElementById("searchContent").innerHTML = this.responseText;
+    }
+    xhttp.open("GET", "schedFind.php");
+    xhttp.send();
+  }
+</script>
 <!-- Main Functions -->
 <script src="../js/main.js"></script>
 <!-- Ajax Function -->

@@ -1,7 +1,7 @@
 <?php
   require("connector.php");
 
-  $check = "SELECT * FROM alagapp_db.tbl_admin WHERE adminid = 1 AND session = 1";
+  /*$check = "SELECT * FROM alagapp_db.tbl_admin WHERE adminid = 1 AND session = 1";
 $checkSession = $connect->prepare($check);
 $checkSession->execute();
 if($checkSession->rowCount()>0){
@@ -9,7 +9,7 @@ if($checkSession->rowCount()>0){
   
 } else {
   echo "<script>window.location='./../index.php'</script>";
-}
+}*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,30 +27,6 @@ if($checkSession->rowCount()>0){
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body class="bg bg-light">
-      <!--<nav class="navbar navbar-expand-lg bg-light">
-        <div class="container container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="row collapse navbar-collapse mx-auto" id="navbarSupportedContent">
-            <div class="col text-center">
-              <a class="nav-link" href="../account.php">Account</a>
-            </div>
-            <div class="col text-center border-bottom border-success border-5">
-            <a class="nav-link" href="../scheduler.php" active><strong>Scheduler</strong></a>
-            </div>
-            <div class="col text-center">
-              <a class="navbar-brand" href="../index.html"><strong>AlagApp</strong></a>
-            </div>
-            <div class="col text-center">
-              <a class="nav-link" href="../consultation.php">Consultation</a>
-            </div>
-            <div class="col text-center">
-              <a class="nav-link text-success" href="../dashboard.php">Dashboard</a> 
-            </div>
-          </div>
-        </div>
-      </nav>-->
 
 <main class="container-fluid"><!-- -->
       <div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
@@ -61,7 +37,7 @@ if($checkSession->rowCount()>0){
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body d-grid gap-2 container-fluid" id="schedNew">
-                              Content Here
+                              This Account has no pet yet, please Register a pet before adding a new schedule!
                             </div>
                           </div>
                         </div>
@@ -106,14 +82,18 @@ if($checkSession->rowCount()>0){
         </div><!--SideBar-->  
 
 <div class="col-10 vh-100 overflow-auto overflow-y">
-  <div class="row m-auto">
-    <div class="col-6 text-center bg bg-success">
-                  <a class="nav-link text-white p-3" type="button" href="../scheduler.php"><strong>Account</strong></a>
+    <div class="row m-auto">
+      <div class="row m-auto">
+                    <h2 class="text-success p-3"><b>Scheduler</b> | Account</h2>
+                  </div>
+                  <div class="row m-auto">
+      <div class="col-6 text-center bg bg-success border-start rounded-pill border-light">
+                    <a class="nav-link text-white p-3" type="button" href="../scheduler.php"><strong>Account</strong></a>
+      </div>
+      <div class="col-6 text-center bg bg-light">
+                    <a class="nav-link p-3 text-success" type="button" href="sched_chrono.php"><strong>Status</strong></a>
+      </div>            
     </div>
-    <div class="col-6 text-center bg bg-light">
-                  <a class="nav-link p-3" type="button" href="sched_chrono.php"><strong>Status</strong></a>
-    </div>
-  </div>
             <!-- --><?php
                   require("connector.php");
 
@@ -127,10 +107,12 @@ if($checkSession->rowCount()>0){
               
                   $res = $connect->prepare($sql);
                   $res->execute();
+
+                  $owner = $res->fetch(PDO::FETCH_ASSOC);
               ?><!-- -->
   <!-- -->
-  <div class="row m-auto"><!-- -->
-    <div class="col-3 pt-2 pb-2 vh-100  bg bg-lightoverflow-x overflow-auto bg bg-light">
+  <div class="row m-auto mt-2"><!-- -->
+    <div class="col-3 pt-2 pb-2 vh-100  bg bg-light overflow-x overflow-auto bg bg-light">
       <?php include("./userListSched.php") ; ?>
     </div>
     <div class="col-9 vh-100 bg bg-light pb-2 pt-2 overflow-x overflow-auto bg bg-light">

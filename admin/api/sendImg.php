@@ -35,40 +35,33 @@
         
         if($res->rowCount()>0){
            
-    $target_dir = "../../assets/chat/";
-    $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-    $uploadOk = 1;
-    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+            $target_dir = "../../assets/chat/";
+            $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+            $uploadOk = 1;
+            $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
-    // Allow certain file formats
-    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-    && $imageFileType != "gif" ) {
-    echo "<script>alert('Sorry, only JPG, JPEG, PNG & GIF files are allowed')</script>;";
-    $user = $_REQUEST['userid'];
-    echo "<script>window.location='chat.php?userid=".$user."'</script>;";
-    $uploadOk = 0;
-    }
-
-    // Check if $uploadOk is set to 0 by an error
-    if ($uploadOk == 0) {
-    echo "Sorry, your file was not uploaded.";
-    // if everything is ok, try to upload file
-    } else {
-    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+            // Allow certain file formats
+            if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+            && $imageFileType != "gif" ) {
+            //File is not an Image
             $user = $_REQUEST['userid'];
-            echo "<script>alert('Upload successful!!')</script>;";
             echo "<script>window.location='chat.php?userid=".$user."'</script>;";
-    } else {
-        $user = $_REQUEST['userid'];
-        echo "<script>alert('Sorry an error occured!!')</script>";
-        echo "<script>window.location='chat.php?userid=".$user."'</script>;";
-    }
-    }
+            $uploadOk = 0;
+            }
 
-} else {
-    echo "<script>alert('Error');</script>";
-}
-} else {
-    echo "<script>alert('Error');</script>";
-}
+            // Check if $uploadOk is set to 0 by an error
+            if ($uploadOk == 0) {
+            //File not uploaded
+            // if everything is ok, try to upload file
+            } else {
+                if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+                        $user = $_REQUEST['userid'];
+                        echo "<script>window.location='chat.php?userid=".$user."'</script>;";//Upload successful
+                } else {
+                    $user = $_REQUEST['userid'];
+                    echo "<script>window.location='chat.php?userid=".$user."'</script>;";//Error Occured
+                }
+            }
+        }
+    } 
 ?>

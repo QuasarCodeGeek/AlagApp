@@ -1,7 +1,7 @@
 <?php 
     require("../connector.php");
 
-    $check = "SELECT * FROM alagapp_db.tbl_admin WHERE adminid = 1 AND session = 1";
+    /*$check = "SELECT * FROM alagapp_db.tbl_admin WHERE adminid = 1 AND session = 1";
 $checkSession = $connect->prepare($check);
 $checkSession->execute();
 if($checkSession->rowCount()>0){
@@ -9,7 +9,7 @@ if($checkSession->rowCount()>0){
   
 } else {
   echo "<script>window.location='./../../index.php'</script>";
-}
+}*/
 ?>
   <!DOCTYPE html>
   <html lang="en">

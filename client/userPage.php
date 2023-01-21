@@ -57,7 +57,7 @@
     <button class="navbar-toggler" style="border: none; color: white;" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
         <h1><i class="bi bi-list"></i></h1>
     </button>
-    <a class="navbar-brand text-white" href="#"><h1><b>AlagApp</b></h1></a>    
+    <h1 class="text-white me-3"><b>AlagApp</b></h1> 
     <div class="offcanvas offcanvas-start w-75" style="background-color: #81C784;" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header bg bg-success">
         <h2 class="offcanvas-title text-white" id="offcanvasNavbarLabel">Menu</h2>
@@ -76,7 +76,7 @@
                             echo "<img class='rounded me-2' style='width: 25px;' src='../assets/default/male.png'>";
                         }
                     
-                    echo "<label class='float-end text-white'><strong>".$fname."</strong></label>"; ?>
+                    echo "<label class='float-end text-white'><strong><u>".$fname."</u></strong></label>"; ?>
             </a></h3>
           </li>
           <li class="nav-item">
@@ -143,10 +143,10 @@
                                 ?>
                                 <div class="col row mt-5">
                                   <div class='col-6 mb-2'>
-                                      <button class='btn btn-success w-100' onclick="window.location='api/editProfile.php?userid=<?php echo $user; ?>'">Edit</button>
+                                      <button class='btn btn-warning w-100' onclick="window.location='api/editProfile.php?userid=<?php echo $user; ?>'">Edit</button>
                                   </div>
                                   <div class='col-6'>
-                                      <button class='btn btn-warning w-100' type="submit name="logout" onclick="window.location='api/logout.php?userid=<?php echo $user;?>'">Log Out</button>
+                                      <button class='btn btn-danger w-100' type="submit name="logout" onclick="window.location='api/logout.php?userid=<?php echo $user;?>'">Log Out</button>
                                   </div>
                                 </div>
                           <?php echo "

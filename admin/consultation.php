@@ -1,7 +1,7 @@
 <?php
     include("./api/connector.php");
 
-    $check = "SELECT * FROM alagapp_db.tbl_admin WHERE adminid = 1 AND session = 1";
+    /*$check = "SELECT * FROM alagapp_db.tbl_admin WHERE adminid = 1 AND session = 1";
         $checkSession = $connect->prepare($check);
         $checkSession->execute();
         if($checkSession->rowCount()>0){
@@ -9,7 +9,7 @@
           
         } else {
           echo "<script>window.location='./index.php'</script>";
-        }
+        }*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,30 +27,6 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="bg bg-light">
-<!--<nav class="navbar navbar-expand-lg bg-light">
-        <div class="container container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="row collapse navbar-collapse mx-auto" id="navbarSupportedContent">
-            <div class="col text-center">
-              <a class="nav-link" href="account.php">Account</a>
-            </div>
-            <div class="col text-center">
-            <a class="nav-link" href="scheduler.php">Scheduler</a>
-            </div>
-            <div class="col text-center">
-              <a class="navbar-brand" href="#"><strong>AlagApp</strong></a>
-            </div>
-            <div class="col text-center border-bottom border-success border-5">
-              <a class="nav-link" href="consultation.php" active><strong>Consultation</strong></a>
-            </div>
-            <div class="col text-center">
-              <a class="nav-link text-success" href="dashboard.php">Dashboard</a> 
-            </div>
-          </div>
-        </div>
-      </nav>-->
 <main class="container-fluid">
   <div class="row m-auto">
                       <div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">

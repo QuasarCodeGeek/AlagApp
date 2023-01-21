@@ -21,12 +21,12 @@
                 $count = $counter['count'];
             }
 
-          $user = "SELECT * FROM alagapp_db.tbl_userlist ORDER BY userid DESC";
+          $user = "SELECT * FROM alagapp_db.tbl_userlist ORDER BY userid ASC";
           $ruser = $connect->query($user);
           $ruser->execute();
 
           if($ruser->rowCount()>0){
-            $i=$count;
+            $i=1;
             while($rowdata = $ruser->fetch(PDO::FETCH_ASSOC)){
 
                 $petdata = "SELECT COUNT(petid) AS cpet FROM alagapp_db.tbl_petprofile WHERE userid = ".$rowdata['userid']."";

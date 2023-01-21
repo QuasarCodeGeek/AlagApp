@@ -21,7 +21,10 @@
                                     <label>Username: ".$row['admincode']."</label><br>
                                     <label>Birth Date: ".$row['bdate']."</label><br>
                                     <label>Gender: ".$row['gender']."</label><br>
-                                    <label>Address: ".$row['street']." ".$row['district']." ".$row['municipality']." ".$row['province']."</label>
+                                    <label>Address: ".$row['street']." ".$row['district']." ".$row['municipality']." ".$row['province']."</label><br>
+                                    <label>Mobile: ".$row['mobile']."</label><br>
+                                    <label>Telephone: ".$row['telephone']."</label><br>
+                                    <label>GMeet Link: <a href='".$row['gmeet']."'>".$row['gmeet']."</a></label><br>
                                   </div>
                                   <div class='row m-auto'>
                                     <div class='col'>

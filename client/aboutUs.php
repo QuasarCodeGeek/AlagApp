@@ -45,7 +45,7 @@
     <button class="navbar-toggler" style="border: none; color: white;" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
         <h1><i class="bi bi-list"></i></h1>
     </button>
-    <a class="navbar-brand text-white" href="#"><h1><b>AlagApp</b></h1></a>    
+    <h1 class="text-white me-3"><b>AlagApp</b></h1>   
     <div class="offcanvas offcanvas-start w-75" style="background-color: #81C784;" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header bg bg-success">
         <h2 class="offcanvas-title text-white" id="offcanvasNavbarLabel">Menu</h2>
@@ -84,7 +84,7 @@
           <li class="nav-item">
           <h3><a class="nav-link active" href="aboutUs.php?userid=<?php echo $user; ?>">
             <i class="bi bi-info-circle-fill me-2" style="color: white;"></i>
-            <label class="float-end text-white"><strong>About Us</strong></label></a></h3>
+            <label class="float-end text-white"><strong><u>About Us</u></strong></label></a></h3>
           </li>
         </ul>
       </div>

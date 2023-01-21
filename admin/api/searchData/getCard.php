@@ -1,4 +1,7 @@
-
+<?php
+require("../connector.php");
+$search = $_REQUEST['search'];
+?>
       <table class="table table-striped m-2">
         <thead class="bg bg-success text-white">
           <tr>
@@ -10,11 +13,10 @@
             <th>Weight(Kg)</th>
             <th>Date</th>
           </tr>
+          <?php include("../reportData/cardFilter.php");?>
         </thead>
         <tbody>
         <?php
-        require("../connector.php");
-        $search = $_REQUEST['search'];
           $card = "SELECT alagapp_db.tbl_carddetail.*, alagapp_db.tbl_userlist.userfname, alagapp_db.tbl_userlist.userlname, alagapp_db.tbl_petprofile.petname, alagapp_db.tbl_vaxxinfo.vaxname
           FROM (((alagapp_db.tbl_carddetail
           INNER JOIN alagapp_db.tbl_userlist ON alagapp_db.tbl_carddetail.userid = alagapp_db.tbl_userlist.userid)

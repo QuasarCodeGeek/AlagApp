@@ -59,7 +59,7 @@
     <button class="navbar-toggler" style="border: none; color: white;" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
         <h1><i class="bi bi-list"></i></h1>
     </button>
-    <a class="navbar-brand text-white" href="#"><h1><b>AlagApp</b></h1></a>   
+    <h1 class="text-white me-3"><b>AlagApp</b></h1>  
     <div class="offcanvas offcanvas-start w-75" style="background-color: #81C784;" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header bg bg-success">
         <h2 class="offcanvas-title text-white" id="offcanvasNavbarLabel">Menu</h2>
@@ -78,7 +78,7 @@
                             echo "<img class='rounded me-2' style='width: 25px;' src='../../assets/default/male.png'>";
                         }
                     
-                    echo "<label class='float-end text-white'><strong>".$fname."</strong></label>"; ?>
+                    echo "<label class='float-end text-white'><strong><u>".$fname."</u></strong></label>"; ?>
             </a></h3>
           </li>
           <li class="nav-item">
@@ -147,7 +147,7 @@
                             }
                             echo "
                             <div class='row m-2 mx-auto d-block'>
-                              <button class='btn rounded bg bg-success text-white' type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#profileModal'><i class='bi bi-pencil-square'></i> Change Profile</button>
+                              <button class='btn rounded bg bg-primary text-white' type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#profileModal'><i class='bi bi-pencil-square'></i> Change Profile</button>
                             </div>
                         </div>
                         <div class='p-2 col-12 col-sm-12 col-md-7 col-lg-8 col-xl-9 rounded bg bg-light'>
@@ -184,7 +184,7 @@
                                     <input type='password' class='form-control' name='password' placeholder=\"Enter Password\"  value='".$pass."'>
                                 </div><br>
                                 <div>
-                                  <button type='submit' value='Update' name='submit' class='col btn btn-success w-100'>Update</button>
+                                  <button type='submit' value='Update' name='submit' class='col btn btn-info w-100'>Update</button>
                                 </div>
                               </form>
                           </div> 

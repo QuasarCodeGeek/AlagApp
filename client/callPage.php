@@ -28,8 +28,7 @@
             $date = date("Y-m-d h:i:sa");
         
             if($user=="" || $channel=="" || $date==""){
-                echo "<script>alert('Invalid!');
-                window.location='chatPage.php?userid=".$user."'</script>";
+                echo "<script>window.location='chatPage.php?userid=".$user."'</script>";//INvalid
             } else {
                 $sql = "INSERT INTO alagapp_db.tbl_call(
                     userid,
@@ -49,11 +48,16 @@
         
                 $result->execute($values);
                 if($result->rowCount()>0) {
-                    echo "<script>alert('Please wait for your meeting with the Veterinarian!');
-                    window.location='https://meet.google.com/ioy-hihq-ieu'</script>";
+                
+                  $meet = "SELECT gmeet FROM alagapp_db.tbl_admin WHERE adminid = 1";
+                  $checklink = $connect->prepare($meet);
+                  $checklink->execute();
+                    if($checklink->rowCount()>0){
+                      $link = $checklink->fetch(PDO::FETCH_ASSOC);
+                      echo "<script>window.location='".$link['gmeet']."'</script>";
+                    }
                  } else {
-                     echo "<script>alert('Unable to initiate call!');
-                     window.location='callPage?userid=".$user."'</script>";
+                     echo "<script>window.location='callPage?userid=".$user."'</script>";//Unable to Initiate Call
                  }
             }
         }
@@ -78,18 +82,18 @@
 <nav class="navbar navbar-expand-lg bg-success">
   <div class="container-fluid">
     <button class="navbar-toggler" style="border: none; color: white;" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-        <i class="bi bi-list"></i>
+        <h1><i class="bi bi-list"></i></h1>
     </button>
-    <a class="navbar-brand text-white" href="#"><b>AlagApp</b></a>    
+    <h1 class="text-white"><b>AlagApp</b></h1>
     <div class="offcanvas offcanvas-start w-75" style="background-color: #81C784;" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header bg bg-success">
-        <h5 class="offcanvas-title text-white" id="offcanvasNavbarLabel">Menu</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <h2 class="offcanvas-title text-white" id="offcanvasNavbarLabel">Menu</h2>
+        <h3><button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button></h3>
       </div>
       <div class="offcanvas-body">
         <ul class="navbar-nav flex-grow-1 pe-3">
           <li class="nav-item">
-            <a class="nav-link" href="userPage.php?userid=<?php echo $user; ?>">
+          <h3><a class="nav-link" href="userPage.php?userid=<?php echo $user; ?>">
                     <?php 
                         if($pict!=''){
                             echo "<img class='rounded me-2' style='width: 25px;' src='../assets/uploads/".$pict."'>";
@@ -99,27 +103,27 @@
                             echo "<img class='rounded me-2' style='width: 25px;' src='../assets/default/male.png'>";
                         }
                     echo "<label class='float-end text-white'>".$name."</label>"; ?>
-            </a>
+            </a></h3>
           </li>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="homePage.php?userid=<?php echo $user; ?>">
+          <h3><a class="nav-link" aria-current="page" href="homePage.php?userid=<?php echo $user; ?>">
             <i class="bi bi-house-fill me-2" style="color: white;"></i>
-            <label class="float-end text-white">Home</label></a>
+            <label class="float-end text-white">Home</label></a></h3>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="chatPage.php?userid=<?php echo $user; ?>">
+          <h3><a class="nav-link active" href="chatPage.php?userid=<?php echo $user; ?>">
             <i class="bi bi-chat-fill me-2" style="color: white;"></i>
-            <label class="float-end text-white"><strong>O-Consultation</strong></label></a>
+            <label class="float-end text-white"><strong><u>O-Consultation</u></strong></label></a></h3>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="trackerPage.php?userid=<?php echo $user; ?>">
+          <h3><a class="nav-link" href="trackerPage.php?userid=<?php echo $user; ?>">
             <i class="bi bi-archive-fill me-2" style="color: white;"></i>
-            <label class="float-end text-white">Health Tracker</label></a>
+            <label class="float-end text-white">Health Tracker</label></a></h3>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="aboutUs.php?userid=<?php echo $user; ?>">
+          <h3><a class="nav-link" href="aboutUs.php?userid=<?php echo $user; ?>">
             <i class="bi bi-info-circle-fill me-2" style="color: white;"></i>
-            <label class="float-end text-white">About Us</label></a>
+            <label class="float-end text-white">About Us</label></a></h3>
           </li>
         </ul>
       </div>
@@ -129,10 +133,10 @@
 <main class="container-fluid">
     <div class="row">
         <div class="col-4 p-2 text-center" style="background-color: #A5D6A7;">
-            <a class="nav-link active text-white" href="chatPage.php?userid=<?php echo $user;?>">Chat</a>
+            <a class="nav-link active" href="chatPage.php?userid=<?php echo $user;?>">Chat</a>
         </div>
-        <div class="col-4 p-2 text-center" id="videoCall" style="background-color: #81C784;">
-          <a class="nav-link" href="#"><strong>Call</strong></a>
+        <div class="col-4 p-2 text-center " id="videoCall" style="background-color: #81C784;">
+          <a class="nav-link text-white" href="#"><strong>Call</strong></a>
         </div>
         <div class="col-4 p-2 text-center" style="background-color: #A5D6A7;">
             <a class="nav-link" href="schedPage.php?userid=<?php echo $user;?>">Scheduler</a>
@@ -142,7 +146,7 @@
     <div class="row m-auto p-2">
         <form action="callPage.php" method="POST">
             <input type="text" value="<?php echo $user; ?>" name="userid" hidden>
-            <button class="btn btn-success w-100" type="submit" name="submit">Initiate Meeting</button>
+            <button class="btn btn-success w-100" type="submit" name="submit">Join Meeting</button>
         </form>
     </div>
     <div class="row m-auto p-2 text-center">
@@ -153,12 +157,12 @@
             <thead>
                 <tr>
                 <th scope="col">#</th>
-                <th scope="col">Date Time</th>
+                <th scope="col">Date and Time</th>
                 </tr>
             </thead>
             <tbody>
         <?php
-            $call = "SELECT * FROM alagapp_db.tbl_call WHERE userid = ".$user." ";
+            $call = "SELECT * FROM alagapp_db.tbl_call WHERE userid = ".$user." ORDER BY vid DESC";
             $checkcall = $connect->prepare($call);
             $checkcall->execute();
     
@@ -166,7 +170,7 @@
                 $x=1;
                 while($crow = $checkcall->fetch(PDO::FETCH_ASSOC)){
                    echo "<tr><td>".$x."</td>
-                   <td>".$crow['vdatetime']."</td></tr>"; 
+                   <td>".date("M d, Y - h:i a",strtotime($crow['vdatetime']))."</td></tr>"; 
                   $x++;
                 }
             }

@@ -90,7 +90,7 @@
     <button class="navbar-toggler" style="border: none; color: white;" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
         <h1><i class="bi bi-list"></i></h1>
     </button>
-    <a class="navbar-brand text-white" href="#"><h1><b>AlagApp</b></h1></a>    
+    <h1 class="text-white me-3"><b>AlagApp</b></h1>  
     <div class="offcanvas offcanvas-start w-75" style="background-color: #81C784;" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header bg bg-success">
         <h2 class="offcanvas-title text-white" id="offcanvasNavbarLabel">Menu</h2>
@@ -112,22 +112,22 @@
             </a></h3>
           </li>
           <li class="nav-item">
-            <h3><a class="nav-link" aria-current="page" href="homePage.php?userid=<?php echo $user; ?>">
+          <h3><a class="nav-link" aria-current="page" href="homePage.php?userid=<?php echo $user; ?>">
             <i class="bi bi-house-fill me-2" style="color: white;"></i>
             <label class="float-end text-white">Home</label></a></h3>
           </li>
           <li class="nav-item">
-            <h3><a class="nav-link active" href="chatPage.php?userid=<?php echo $user; ?>">
+          <h3><a class="nav-link active" href="chatPage.php?userid=<?php echo $user; ?>">
             <i class="bi bi-chat-fill me-2" style="color: white;"></i>
-            <label class="float-end text-white"><strong>O-Consultation</strong></label></a></h3>
+            <label class="float-end text-white"><strong><u>O-Consultation</u></strong></label></a></h3>
           </li>
           <li class="nav-item">
-            <h3><a class="nav-link" href="trackerPage.php?userid=<?php echo $user; ?>">
+          <h3><a class="nav-link" href="trackerPage.php?userid=<?php echo $user; ?>">
             <i class="bi bi-archive-fill me-2" style="color: white;"></i>
             <label class="float-end text-white">Health Tracker</label></a></h3>
           </li>
           <li class="nav-item">
-            <h3><a class="nav-link" href="aboutUs.php?userid=<?php echo $user; ?>">
+          <h3><a class="nav-link" href="aboutUs.php?userid=<?php echo $user; ?>">
             <i class="bi bi-info-circle-fill me-2" style="color: white;"></i>
             <label class="float-end text-white">About Us</label></a></h3>
           </li>
@@ -139,13 +139,13 @@
 <main class="container-fluid">
     <div class="row">
         <div class="col-4 p-2 text-center" style="background-color: #81C784;">
-            <a class="nav-link active text-white" href="chatPage.php?userid=<?php echo $user;?>"><strong><h5>Chat</h5></strong></a>
+            <a class="nav-link active text-white" href="chatPage.php?userid=<?php echo $user;?>"><strong>Chat</strong></a>
         </div>
         <div class="col-4 p-2 text-center" id="videoCall" style="background-color: #A5D6A7;">
-          <a class="nav-link" href="callPage.php?userid=<?php echo $user;?>"><h5>Call</h5></a>
+          <a class="nav-link" href="callPage.php?userid=<?php echo $user;?>">Call</a>
         </div>
         <div class="col-4 p-2 text-center" style="background-color: #A5D6A7;">
-            <a class="nav-link" href="schedPage.php?userid=<?php echo $user;?>"><h5>Scheduler</h5></a>
+            <a class="nav-link" href="schedPage.php?userid=<?php echo $user;?>">Scheduler</a>
         </div>
     </div>
 <div class="container">

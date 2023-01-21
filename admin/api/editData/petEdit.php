@@ -8,14 +8,13 @@
         $pettype = $_POST["pettype"];
         $petbreed = $_POST["petbreed"];
         $petweight = $_POST["petweight"];
-        $petheight = $_POST["petheight"];
+        $petmark = $_POST["petmark"];
         $petbdate = $_POST["petbdate"];
         $petage = $_POST["petage"];
         $petgender = $_POST["petgender"];
 
-        if($owner=="" || $petname=="" || $pettype=="" || $petbreed=="" || $petbdate=="" || $petage =="" || $petgender=="" || $petweight =="" || $petheight==""){
-            echo "<script>alert('Comeplete all fields required!');
-            window.location='../profile.php?userid=".$owner."'</script>";
+        if($owner=="" || $petname=="" || $pettype=="" || $petbreed=="" || $petbdate=="" || $petage =="" || $petgender==""){
+            echo "<script>window.location='../profile.php?userid=".$owner."'</script>";
         } else {
             $update = "UPDATE alagapp_db.tbl_petprofile SET 
                 userid = :userid,
@@ -23,7 +22,7 @@
                 pettype = :pettype,
                 petbreed = :petbreed,
                 petweight = :petweight,
-                petheight = :petheight,
+                petmark = :petmark,
                 petbdate = :petbdate,
                 petage = :petage,
                 petgender = :petgender
@@ -37,7 +36,7 @@
                 ":pettype"=>$pettype,
                 ":petbreed"=>$petbreed,
                 ":petweight"=>$petweight,
-                ":petheight"=>$petheight,
+                ":petmark"=>$petmark,
                 ":petbdate"=>$petbdate,
                 ":petage"=>$petage,
                 ":petgender"=>$petgender
@@ -48,11 +47,9 @@
             $result->execute($val);
 
             if($result->rowCount()>0) {
-                echo "<script>alert('Record has been updated!');
-                window.location='../profile.php?userid=".$owner."'</script>";
+                echo "<script>window.location='../profile.php?userid=".$owner."'</script>";
              } else {
-                 echo "<script>alert('Unable to update record!')
-                 window.location='../profile.php?userid=".$owner."'</script>";
+                 echo "<script>window.location='../profile.php?userid=".$owner."'</script>";
              }
         }
     }
@@ -81,7 +78,7 @@
         $pettype = "";
         $petbreed = "";
         $petweight = "";
-        $petheight = "";
+        $petmark = "";
         $petbdate = "";
         $petage = "";
         $petgender = "";
@@ -94,7 +91,7 @@
             $pettype = $pet_row["pettype"];
             $petbreed = $pet_row["petbreed"];
             $petweight = $pet_row["petweight"];
-            $petheight = $pet_row["petheight"];
+            $petmark = $pet_row["petmark"];
             $petbdate = $pet_row["petbdate"];
             $petage = $pet_row["petage"];
             $petgender = $pet_row["petgender"];
@@ -150,8 +147,8 @@
             echo "</select>
             <span class='input-group-text'>Weight</span>
             <input class='form-control' type='float' placeholder=\"Weight\" name='petweight' value='".$petweight."'>
-            <span class='input-group-text'>Height</span>
-            <input class='form-control' type='float' placeholder=\"Height\" name='petheight' value='".$petheight."'>
+            <span class='input-group-text'>Color/Marking</span>
+            <input class='form-control' type='text' placeholder=\"Color/Marking\" name='petmark' value='".$petmark."'>
             </div><br>
             
             <div class='d-grid gap-2 d-md-flex justify-content-md-end'>

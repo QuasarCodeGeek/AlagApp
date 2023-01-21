@@ -1,4 +1,7 @@
-
+<?php
+require("../connector.php");
+$search = $_REQUEST['search'];
+?>
       <table class="table table-striped m-2">
         <thead class="bg bg-success text-white">
           <tr>
@@ -11,11 +14,10 @@
             <th>Birth Date</th>
             <th>Gender</th>
           </tr>
+          <?php include("./../reportData/userFilter.php");?>
         </thead>
         <tbody>
         <?php
-        require("../connector.php");
-        $search = $_REQUEST['search'];
           $note = "SELECT * FROM alagapp_db.tbl_userlist
           WHERE
             userfname LIKE '%".$search."%' OR 

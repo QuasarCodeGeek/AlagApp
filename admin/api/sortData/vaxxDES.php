@@ -22,11 +22,11 @@
                 $count = $counter['count'];
             }
 
-          $note = "SELECT * FROM alagapp_db.tbl_vaxxinfo ORDER BY vaxid DESC";
+          $note = "SELECT * FROM alagapp_db.tbl_vaxxinfo ORDER BY vaxid ASC";
           $resnote = $connect->query($note);
           $resnote->execute();
           if($resnote->rowCount()>0){
-            $i=$count;
+            $i=1;
             while($rownote = $resnote->fetch(PDO::FETCH_ASSOC)){
 
                 $vaxdata = "SELECT COUNT(vaxid) AS vaxx FROM alagapp_db.tbl_vaxxcard WHERE vaxid LIKE ".$rownote['vaxid']."";

@@ -2,17 +2,8 @@
   include 'export.php';
   include ("../dataAnalytics.php");
 
-  $check = "SELECT * FROM alagapp_db.tbl_admin WHERE adminid = 1 AND session = 1";
-$checkSession = $connect->prepare($check);
-$checkSession->execute();
-if($checkSession->rowCount()>0){
-  $wel = $checkSession->fetch(PDO::FETCH_ASSOC);
-  
-} else {
-  echo "<script>window.location='./../../index.php'</script>";
-}
 
-    $notedata = "SELECT COUNT(nid) AS count FROM alagapp_db.tbl_notedetail";
+    $notedata = "SELECT COUNT(nid) AS count FROM alagapp_db.tbl_notedetail ORDER BY nid DESC";
     $resdata = $connect->query($notedata);
     $resdata->execute();
     $rowdata = $resdata->fetch(PDO::FETCH_ASSOC);

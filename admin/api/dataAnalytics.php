@@ -100,7 +100,7 @@
     $rowvaxinfo = $resvaxinfo->fetch(PDO::FETCH_ASSOC);
     $totalvaxinfo = $rowvaxinfo["totalvax"];
     // Total Card Issued
-    $tcard = "SELECT COUNT(cid) AS totalcard FROM alagapp_db.tbl_vaxxcard";
+    $tcard = "SELECT COUNT(cid) AS totalcard FROM alagapp_db.tbl_carddetail";
     $rescard = $connect->query($tcard);
     $rescard->execute();
     $rowcard = $rescard->fetch(PDO::FETCH_ASSOC);
@@ -166,6 +166,12 @@
     $reschat->execute();
     $rowchat = $reschat->fetch(PDO::FETCH_ASSOC);
     $totalchat = $rowchat["totalchat"];
+    // Total Call Count
+    $tcall = "SELECT COUNT(vid) AS totalcall FROM alagapp_db.tbl_call";
+    $rescall = $connect->query($tcall);
+    $rescall->execute();
+    $rowcall = $rescall->fetch(PDO::FETCH_ASSOC);
+    $totalcall = $rowcall["totalcall"];
     // Total Call Count
     // Total Voice Call
     // Total Video Call
