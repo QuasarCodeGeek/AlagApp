@@ -14,6 +14,7 @@ $j=1;?>
       <thead>
       <tr>
       <th>Date</th>
+      <th>Due Date</th>
       <th>Wt(Kg)</th>
       <th>Vaccine</th>
       <th>Veterinarian</th>
@@ -26,6 +27,7 @@ $j=1;?>
             echo "
             <tr>
               <td>".$rowvax['cdate']."</td>
+              <td>".$rowvax['cnext']."</td>
               <td>".$rowvax['cweight']."</td>
               <td>".$rowvax['vaxname']."</td>
               <td>".$rowvax['cvet']."</td>

@@ -26,30 +26,6 @@ if($checkSession->rowCount()>0){
     <link rel="stylesheet" href="../../css/styles.css">
 </head>
 <body class="bg bg-light">
-<!--<nav class="navbar navbar-expand-lg bg-light">
-        <div class="container container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="row collapse navbar-collapse mx-auto" id="navbarSupportedContent">
-            <div class="col text-center">
-              <a class="nav-link" href="../../account.php">Account</a>
-            </div>
-            <div class="col text-center border-bottom border-success border-5">
-            <a class="nav-link" href="../../scheduler.php" active><strong>Scheduler</strong></a>
-            </div>
-            <div class="col text-center">
-              <a class="navbar-brand" href="#"><strong>AlagApp</strong></a>
-            </div>
-            <div class="col text-center">
-              <a class="nav-link" href="../../consultation.php">Consultation</a>
-            </div>
-            <div class="col text-center">
-              <a class="nav-link text-success" href="../../dashboard.php">Dashboard</a> 
-            </div>
-          </div>
-        </div>
-      </nav> -->
 
 <main class="container-fluid">
                       <div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">

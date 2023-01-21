@@ -9,6 +9,7 @@ require("../connector.php");
         $vet = $_POST["cvet"];
         $weight = $_POST["cweight"];
         $date = $_POST["cdate"];
+        $next = $_POST["cnext"];
 
         if($owner=="" || $pet=="" || $vet=="" || $vax=="" || $date==""){
             echo "<script>window.location='profile.php?userid=".$owner."'</script>";
@@ -19,7 +20,8 @@ require("../connector.php");
                 vaxid = :vaxid,
                 cvet = :cvet,
                 cweight = :cweight,
-                cdate = :cdate
+                cdate = :cdate,
+                cnext = :cnext
 
                 WHERE cid = :cid";
 
@@ -30,7 +32,8 @@ require("../connector.php");
                 ":vaxid" => $vax,
                 ":cvet" => $vet,
                 ":cweight" => $weight,
-                ":cdate" => $date
+                ":cdate" => $date,
+                ":cnext" => $next
             );
 
             $result = $connect->prepare($sql);
@@ -60,6 +63,7 @@ require("../connector.php");
         $vet = "";
         $weight = "";
         $date = "";
+        $next = "";
         
         if($card_res->rowCount()==1){
             $card_row = $card_res->fetch(PDO::FETCH_ASSOC);
@@ -70,6 +74,7 @@ require("../connector.php");
             $vet = $card_row["cvet"];
             $weight = $card_row["cweight"];
             $date = $card_row["cdate"];
+            $next = $card_row["cnext"];
         }
     } catch(PDOException $e){
         die("An error has occured!");
@@ -100,7 +105,7 @@ require("../connector.php");
     }
 
     echo    "<input type='hidden' name='cid' value=".$card.">
-            <h1>Card Information</h1><br>
+            <h1>Vaccination Information</h1><br>
             <div class='input-group'>
             <span class='input-group-text'>Owner</span>
             <input class='form-control' type='text' placeholder=\"Owner Name\" name='userfname' value='".$ownername."' readonly>
@@ -132,6 +137,8 @@ require("../connector.php");
             <input class='form-control' type='text' placeholder=\"Weight in Kilos\" name='cweight' value='".$weight."'>
             <span class='input-group-text'>Date</span>
             <input class='form-control' type='date' placeholder=\"Date\" name='cdate' value='".$date."'>
+            <span class='input-group-text'>Due Date</span>
+            <input class='form-control' type='date' placeholder=\"Due Date\" name='cnext' value='".$next."'>
             </div><br>
             
             <div class='d-grid gap-2 d-md-flex justify-content-md-end'>

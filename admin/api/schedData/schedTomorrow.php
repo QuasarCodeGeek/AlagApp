@@ -22,15 +22,42 @@
               echo
               "<li class='list-group-item p-3'>
                 <div class='m-2' style='width: 25rem;'>
-                  <h5>".$row['petname']."</h5>
-                      <label class='card-text' style='font-size: 12px;'>Owner: ".$row['userfname']."</label><br>
-                      <label class='card-text' style='font-size: 12px;'>Description: ".$row['qdescription']."</label><br>
-                      <label class='card-text' style='font-size: 12px;'>Time: ".date("h:i a",strtotime($row['qtime']))."</label><br>
-                      <label class='card-text' style='font-size: 12px;'>Date: ".date("M-d-Y",strtotime($row['qdate']))."</label><br>
-                      <label class='card-text' style='font-size: 12px;'>Status: ".$row['qstatus']."</label>
+                <div class='row m-auto mb-2 p-2 border border-2 border-success rounded'><div class='col-6 m-auto mx-auto'>
+                <div class='row m-auto text-center'>
+                  <h4 class='m-auto fw-bold text-success'>".$row['petname']."</h4>
+                </div>
+              </div>
+              <div class='col-6'>
+                <div class='row m-auto'>
+                  <label class='flex-end' style='font-size: 12px;'>Date: ".date("M-d-Y",strtotime($row['qdate']))."</label>
+                </div>
+                <div class='row m-auto'>
+                  <label class='flex-end' style='font-size: 12px;'>Time: ".date("h:i a",strtotime($row['qtime']))."</label>
+                </div>
+              </div></div>
+              <div class='row m-auto'>
+                <p class='fst-italic' style='font-size: 12px;'>Owner: ".$row['userfname']."</p>
+                <p style='font-size: 12px;'>Description: ".$row['qdescription']."</p>
+              </div>";
+                
+                if($row['qstatus'] == "Pending"){
+                  echo "<div class='bg bg-info rounded-pill p-2 text-center'>";
+                } else if ($row['qstatus'] == "Accepted"){
+                  echo "<div class='bg bg-success rounded-pill p-2 text-center'>";
+                } else if ($row['qstatus'] == "Finished"){
+                  echo "<div class='bg bg-primary rounded-pill p-2 text-center'>";
+                } else if ($row['qstatus'] == "Cancelled"){
+                  echo "<div class='bg bg-danger rounded-pill p-2 text-center'>";
+                } else if ($row['qstatus'] == "Denied"){
+                  echo "<div class='bg bg-secondary rounded-pill p-2 text-center'>";
+                }
+                echo "
+                  <label class='card-text fw-bold text-white' style='font-size: 12px;'>".$row['qstatus']."</label>
+                </div>
                 </div>
 
-                      <button type='button' class='btn btn-primary w-100' onClick='schedEdit(".$row['qid'].")' data-bs-toggle='modal' data-bs-target='#boxModal')>Edit</button>
+                      <button type='button' class='btn btn-warning w-100' onClick='schedEdit(".$row['qid'].")' data-bs-toggle='modal' data-bs-target='#boxModal')>
+                      <i class='bi bi-pencil-square'></i> Edit</button>
               </li>";
               $i++;
               }

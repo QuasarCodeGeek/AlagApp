@@ -7,7 +7,17 @@
     <th>  
     </th>
     <th>
-        <input type="date" class="col form-control me-2" id="date" onchange="filterSched()">
+        <div class="row">
+            <div class="col">
+                <input type="date" class="col form-control me-2" id="firstdate">
+            </div>
+            <div class="col">
+                <input type="date" class="col form-control me-2" id="lastdate" onchange="filterSched()">
+            </div>
+            <div class="col">
+                <input type="month" class="col form-control me-2" id="month" onchange="filterSched()">
+            </div>
+        </div>
     </th>
     <th>
         <select class="form-select" aria-label="Default select example" id="status" onchange="filterSched()">

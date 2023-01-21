@@ -41,6 +41,7 @@
   <!-- Bootstrap CSS v5.2.1 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
   
   <link href="css/styles.css" rel="stylesheet">
 </head>
@@ -55,14 +56,16 @@
       <div class="card p-3 ms-auto me-auto mb-5" style="max-width: 18rem;">
         <form action="index.php" method="POST">
           <div class="mb-3 text-center">
-            <span class="text-secondary">Log In to continue</span>
+            <h3 class="text-success">Admin Log In</h3>
           </div>
           <div id="liveAlertPlaceholder"></div>
           <div id="ErrorAlert"></div>
-          <div class="mb-3">
+          <div class="mb-3 input-group">
+            <label class="input-group-text bg bg-success"><i class="bi bi-person" style="color: white;"></i></label>
             <input id="admincode" name="admincode" type="text" class="form-control" placeholder="Enter Admin Code" required>
           </div>
-          <div>
+          <div class="input-group">
+            <label class="input-group-text bg bg-success"><i class="bi bi-key" style="color: white;"></i></label>
             <input id="adminpass" name="adminpass" type="password" class="form-control" placeholder="Enter Admin Password" required>
           </div><br>
           <div class="mb-2">

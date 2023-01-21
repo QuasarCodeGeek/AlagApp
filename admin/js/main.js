@@ -81,6 +81,19 @@ function scheduleNew(qid) {
     xhttp.send();
   }
 
+  function schedNew(userid, petid, duedate) {
+    var user = userid;
+    var pet = petid;
+    var ddate = duedate;
+    comsole
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function() {
+        document.getElementById("autoNew").innerHTML = this.responseText;
+      }
+      xhttp.open("GET", "schedNew.php?userid="+user+"&petid="+pet+"&cnext="+ddate);
+      xhttp.send();
+  }
+
 // Edit Functions
 function userEdit(userid) {
     const xhttp = new XMLHttpRequest();

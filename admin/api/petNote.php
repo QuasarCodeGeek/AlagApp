@@ -10,13 +10,13 @@ $p=1;
 while($rownote = $resnote->fetch(PDO::FETCH_ASSOC)){
   echo"
       <div class='row m-2 p-2 bg bg-light rounded'>
-          <div class='col-4 m-auto my-auto'>
+          <div class='col-5 m-auto my-auto'>
             <label>Date: ".$rownote['ndate']."</label>
           </div>
           <div class='col-6 m-auto my-auto'>
             <label>Vet: ".$rownote['nvet']."</label>
           </div>
-          <div class='col-2'>
+          <div class='col-1'>
             <button type='button' class='btn btn-warning rounded  float-end' onClick='prescriptionEdit(".$rownote['nid'].")' data-bs-toggle='modal' data-bs-target='#boxModal'>
             <i class='bi bi-pencil-square'></i></button>
           </div>

@@ -110,13 +110,8 @@ if($checkSession->rowCount()>0){
           <div class="input-group">
             <label class="input-group-text">User</label>
             <select class="form-select" aria-label="UserSelect" name="user">
+              <option selected value="">Select User</option>
               <?php
-              $set = "SELECT userfname, userlname FROM alagapp_db.tbl_userlist WHERE userid = ".$user."";
-              $resset = $connect->query($set);
-              $resset->execute();
-              $useSet = $resset->fetch(PDO::FETCH_ASSOC);
-              echo "<option selected value='".$user."'>".$userSet['userfname']." ".$userSet['userlname']."</option>";
-
                 $use = "SELECT userid, userfname, userlname FROM alagapp_db.tbl_userlist";
                 $res = $connect->query($use);
                 $res->execute();
@@ -135,7 +130,7 @@ if($checkSession->rowCount()>0){
           <div class="input-group">
             <label class="input-group-text">Status</label>
             <select class="form-select" aria-label="StatusSelect" name="status">
-              <option selected value="<?php echo $status;?>"><?php echo $status;?></option>
+              <option selected value="">Select User</option>
               <option value="All">All</option>
               <option value="Pending">Pending</option>
               <option value="Denied">Denied</option>

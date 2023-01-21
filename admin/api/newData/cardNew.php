@@ -8,6 +8,8 @@
         $vet = $_POST["cvet"];
         $weight = $_POST["cweight"];
         $date = $_POST["cdate"];
+        $next = $_POST["cnext"];
+        $check = $_POST["check"];
 
         if($user=="" || $pet=="" || $vax=="" || $vet=="" || $date==""){
             echo "<script>window.location='../profile.php?userid=".$user."'</script>";//Fields Required
@@ -18,13 +20,15 @@
                 vaxid,
                 cvet,
                 cweight,
-                cdate) VALUES(
+                cdate,
+                cnext) VALUES(
                     :userid,
                     :petid,
                     :vaxid,
                     :cvet,
                     :cweight,
-                    :cdate)";
+                    :cdate,
+                    :cnext)";
 
             $result = $connect->prepare($sql);
 
@@ -34,17 +38,20 @@
                 ":vaxid"=>$vax,
                 ":cvet"=>$vet,
                 ":cweight"=>$weight,
-                ":cdate"=>$date
+                ":cdate"=>$date,
+                ":cnext"=>$next
             );
 
             $result->execute($values);
 
             if($result->rowCount()>0) {
-                echo "<script>alert('Record has been save!');
-                window.location='../profile.php?userid=".$user."'</script>";
+
+                if($check == "checked"){
+                    include("./autoSched.php");
+                }
+                echo "<script>window.location='../profile.php?userid=".$user."'</script>";//Record Save
              } else {
-                 echo "<script>alert('Unable to add record!');
-                 window.location='../profile.php?userid=".$user."'</script>";
+                 echo "<script>window.location='../profile.php?userid=".$user."'</script>";//Record Not Saved
              }
         }
     }
@@ -96,9 +103,13 @@
             <input type='text' placeholder=\"Enter Weight\" class='form-control' name='cweight'>
             <label class='input-group-text'>Date</label>
             <input type='date' class='form-control' name='cdate'>
+            <label class='input-group-text'>Due Date</label>
+            <input type='date' class='form-control' name='cnext'>
             </div><br>
+            <p>Do you want to generate a new scheduler for this vaccination's due date? 
+            <input class='form-check-input' type='checkbox' value='checked' name='check' id='flexCheckChecked' checked></p>
         <div class='d-grid gap-2 d-md-flex justify-content-md-end'>
             <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
-            <button type='submit' name='submit' class='btn btn-primary'>Add Card</button>
+            <button type='submit' name='submit' class='btn btn-primary')'>Add Card</button>
         </div>
     </form>";

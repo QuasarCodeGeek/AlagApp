@@ -105,21 +105,20 @@ function filterUser() {
   }
   
   function filterSched() {
-    var date = document.getElementById("date").value;
+    var fdate = document.getElementById("firstdate").value;
+    var ldate = document.getElementById("lastdate").value;
+    var month = document.getElementById("month").value;
     var status = document.getElementById("status").value;
 
-    if (date){
-        filter = date;
-    } else if (status != ""){
-        filter = status;
-    }
+
+    filter = "fdate="+fdate+"&ldate="+ldate+"&month="+month+"&status="+status;
   
         document.getElementById("table").style.display = "none";
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function() {
           document.getElementById("alter").innerHTML = this.responseText;
         }
-        xhttp.open("GET", "../searchData/filter/filterSched.php?filter="+filter);
+        xhttp.open("GET", "../searchData/filter/filterSched.php?"+filter);
         xhttp.send();
   }
   

@@ -57,12 +57,12 @@
                                 </div>  
                   
                               <div class='row mx-auto my-2 bg bg-success rounded'>
-                                <div class='col-6 pb-2'>
+                                <div class='col-7 pb-2'>
                                   <h4 class='text-white p-2'><b>E-Vaccine Card</b></h4>";
                                   include("./petCard.php");
                                   echo "
                                 </div>
-                                <div class='col-6 pb-2'>                
+                                <div class='col-5 pb-2'>                
                                   <h4 class='text-white p-2'><b>E-Prescription Note</b></h4>";
                                   include("./petNote.php ");
                                 echo "

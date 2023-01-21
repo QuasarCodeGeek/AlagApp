@@ -139,11 +139,11 @@
                       <div class='row p-2'>
                         <div class='col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3'>";
                             if($pict!=''){
-                                echo "<img class='mx-auto d-block mb-2 rounded' style='width: 23rem; max-height: 23rem; margin-left: auto; margin-right: auto;' src='../../assets/uploads/".$pict."' alt='userProfile'>";
+                                echo "<img class='mx-auto d-block mb-2 rounded' style='width: 18rem; max-height: 20rem; margin-left: auto; margin-right: auto;' src='../../assets/uploads/".$pict."' alt='userProfile'>";
                             } else if ($sex=='F') {
-                                echo "<img class='mx-auto d-block mb-2 rounded' style='width: 23rem; max-height: 23rem; margin-left: auto; margin-right: auto;' src='../../assets/default/female.png' alt='userProfile'>";
+                                echo "<img class='mx-auto d-block mb-2 rounded' style='width: 18rem; max-height: 20rem; margin-left: auto; margin-right: auto;' src='../../assets/default/female.png' alt='userProfile'>";
                             } else {
-                                echo "<img class='mx-auto d-block mb-2 rounded' style='width: 23rem; max-height: 23rem; margin-left: auto; margin-right: auto;' src='../../assets/default/male.png' alt='userProfile'>";
+                                echo "<img class='mx-auto d-block mb-2 rounded' style='width: 18rem; max-height: 20rem; margin-left: auto; margin-right: auto;' src='../../assets/default/male.png' alt='userProfile'>";
                             }
                             echo "
                             <div class='row m-2 mx-auto d-block'>
