@@ -35,6 +35,7 @@
 
           $email = $acc['useremail'];
           $pass = $acc['userpassword'];
+          $mobile = $acc['usermobile'];
         }
 ?>
 <!doctype html>
@@ -174,6 +175,10 @@
                                     <input type='text' class='form-control col-12 col-sm-12 col-md col-lg col-xl-4' name='district' placeholder=\"Baranggay\" value='".$district."'><br>
                                     <input type='text' class='form-control col-12 col-sm-12 col-md col-lg col-xl-4' name='municipality' placeholder=\"Municipality\" value='".$municipality."'><br>
                                     <input type='text' class='form-control col-12 col-sm-12 col-md col-lg col-xl-4' name='province' placeholder=\"Province\" value='".$province."'>
+                                </div><br>
+                                <div class='col mb-2'>
+                                    <label class='form-label'>Mobile No.</label>
+                                    <input type='text' class='form-control' name='mobile' placeholder=\"Enter 11 digits number\"  value='".$mobile."'>
                                 </div><br>
                                 <div class='col mb-2'>
                                     <label class='form-label'>Email</label>

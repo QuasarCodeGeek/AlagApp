@@ -66,9 +66,9 @@
         <div class='input-group'>
                     <label class='input-group-text'>Owner</label>
                     <input placeholder=\"Enter Owner ID\" type='text' class='form-control' name='userid' value='".$user."' hidden>
-                    <input placeholder=\"Enter Owner\" type='text' class='form-control' name='user' value='".$row['userfname']." ".$row['userlname']."'>
+                    <input placeholder=\"Enter Owner\" type='text' class='form-control' name='user' value='".$row['userfname']." ".$row['userlname']."' readonly>
                     <label class='input-group-text'>Pet</label>
-                    <select class='form-select' aria-label='Default select example' name='petid'>
+                    <select class='form-select' aria-label='Default select example' name='petid' required>
                         <option selected>Select Pet</option>";
                         if($respet->rowCount()>0){
                             $i=1;
@@ -81,16 +81,16 @@
 
                 <div class='input-group'>
                     <label class='input-group-text'>Description</label>
-                    <textarea placeholder=\"Description\" name='description' class='form-control' aria-label='With textarea'></textarea>
+                    <textarea placeholder=\"Description\" name='description' class='form-control' aria-label='With textarea' required></textarea>
                 </div><br>
 
                 <div class='input-group'>
                     <label class='input-group-text'>Time</label>
-                    <input type='time' class='form-control' name='time'>
+                    <input type='time' class='form-control' name='time' required>
                     <label class='input-group-text'>Date</label>
-                    <input type='date' class='form-control' name='date' value='".$ddate."'>
+                    <input type='date' class='form-control' name='date' value='".$ddate."' required>
                     <label class='input-group-text'>Status</label>
-                    <select class='form-select' aria-label='Default select example' name='status'>
+                    <select class='form-select' aria-label='Default select example' name='status' required>
                         <option value='Pending'>Pending</option>
                         <option selected>Select Status</option>
                         <option value='Pending'>Pend</option>

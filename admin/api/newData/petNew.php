@@ -68,19 +68,19 @@ require("../connector.php");
             <h1>New Pet Profile</h1><br>
             <div class='input-group'>
             <span class='input-group-text'>Pet Name</span>
-            <input class='form-control' type='text' placeholder=\"Name\" name='petname'>
+            <input class='form-control' type='text' placeholder=\"Name\" name='petname' required>
             <span class='input-group-text'>Species</span>
-            <input class='form-control' type='text' placeholder=\"Species\" name='pettype'>
+            <input class='form-control' type='text' placeholder=\"Species\" name='pettype' required>
             <span class='input-group-text'>Breed</span>
-            <input class='form-control' type='text' placeholder=\"Breed\" name='petbreed'>
+            <input class='form-control' type='text' placeholder=\"Breed\" name='petbreed' required>
             </div><br>
             <div class='input-group'>
             <span class='input-group-text'>Birth Date</span>
-            <input class='form-control' type='date' name='petbdate'>
+            <input class='form-control' type='date' name='petbdate' required>
             <span placeholder=\"Age\" class='input-group-text'>Age</span>
             <input class='form-control' type='number' placeholder='Age' name='petage'>
             <label class='input-group-text' for='inputGenderSelect'>Gender</label>
-                <select class='form-select' name='petgender' id='inputGenderSelect'>
+                <select class='form-select' name='petgender' id='inputGenderSelect' required>
                     <option selected''>-- Select Gender --</option>
                     <option value='M'>M</option>
                     <option value='F'>F</option>
@@ -89,11 +89,11 @@ require("../connector.php");
             <div class='input-group'>
             <label class='input-group-text' for='inputGroupSelect'>Owner</label>
             <input class='form-control' type='text' value='".$OwnerRow['userid']."' name='userid' hidden>
-            <input class='form-control' type='text' value='".$OwnerRow['userfname']."' name='userfname'>
+            <input class='form-control' type='text' value='".$OwnerRow['userfname']."' name='userfname' readonly>
             <span class='input-group-text'>Weight(kg)</span>
             <input class='form-control' type='float' placeholder=\"Weight\" name='petweight'>
             <span class='input-group-text'>Color/Marking</span>
-            <input class='form-control' type='text' placeholder=\"Color/Marking\" name='petmark'>
+            <input class='form-control' type='text' placeholder=\"Color/Marking\" name='petmark' required>
             </div><br>
             <div class='d-grid gap-2 d-md-flex justify-content-md-end'>
                 <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>

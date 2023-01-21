@@ -14,6 +14,7 @@ if(isset($_POST["submit"])){
     $district = $_POST["district"];
     $municipality = $_POST["municipality"];
     $province = $_POST["province"];
+    $mobile = $_POST["mobile"];
 
     if($fname=="" || $lname=="" || $bdate=="" || $gender=="" || $district=="" || $municipality=="" || $province ==""){
         echo "<script>alert('Complete Required Fields!');
@@ -32,7 +33,9 @@ if(isset($_POST["submit"])){
             userstreet = :userstreet,
             userdistrict = :userdistrict,
             usermunicipality = :usermunicipality,
-            userprovince = :userprovince
+            userprovince = :userprovince,
+
+            usermobile = :usermobile
 
             WHERE userid = :userid";
 
@@ -48,18 +51,17 @@ if(isset($_POST["submit"])){
             ":userstreet" => $street,
             ":userdistrict" => $district,
             ":usermunicipality" => $municipality,
-            ":userprovince" => $province
+            ":userprovince" => $province,
+            ":usermobile" => $mobile
         );
 
         $result = $connect->prepare($sql);
         $result->execute($values);
 
         if($result->rowCount()>0) {
-            echo "<script>alert('Profile has been updated!');
-            window.location='../userPage.php?userid=".$id."'</script>";
+            echo "<script>window.location='../userPage.php?userid=".$id."'</script>";//Updated
          } else {
-             echo "<script>alert('Unable to update profile!')
-             window.location='editProfile.php?userid=".$id."'</script>";
+             echo "<script>window.location='editProfile.php?userid=".$id."'</script>";//Unsuccessful
          }
     }
 }

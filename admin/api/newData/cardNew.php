@@ -80,12 +80,12 @@
         <div class='input-group'>
             <label class='input-group-text'>Owner</label>
                 <input placeholder=\"Owner ID\" type='hidden' class='form-control' value='".$userrow['userid']."' name='userid'>
-                <input placeholder=\"Owner Name\" type='text' class='form-control' value='".$userrow['userfname']."' name='userfname'>
+                <input placeholder=\"Owner Name\" type='text' class='form-control' value='".$userrow['userfname']."' name='userfname' readonly>
             <label class='input-group-text'>Pet Name</label>
                 <input placeholder=\"Pet ID\" type='hidden' class='form-control' value='".$row['petid']."' name='petid'>
-                <input placeholder=\"Pet Name\" type='text' class='form-control' value='".$row['petname']."' name='petname'>
+                <input placeholder=\"Pet Name\" type='text' class='form-control' value='".$row['petname']."' name='petname' readonly>
             <label class='input-group-text'>Vaccine</label>
-                <select class='form-select' name='vaxid' id='inputGroupSelect'>
+                <select class='form-select' name='vaxid' id='inputGroupSelect' required>
                 <option selected=''>-- Select Vaccine--</option>";
                 if($resvax->rowCount()>0){
                     $counter=1;
@@ -98,13 +98,13 @@
         </div><br>
         <div class='input-group'>
             <label class='input-group-text'>Veterinarian</label>
-            <input type='text' placeholder=\"Enter Veterinarian\" class='form-control' name='cvet'>
+            <input type='text' placeholder=\"Enter Veterinarian\" class='form-control' name='cvet' required>
             <label class='input-group-text'>Weight(Kg)</label>
             <input type='text' placeholder=\"Enter Weight\" class='form-control' name='cweight'>
             <label class='input-group-text'>Date</label>
-            <input type='date' class='form-control' name='cdate'>
+            <input type='date' class='form-control' name='cdate' required>
             <label class='input-group-text'>Due Date</label>
-            <input type='date' class='form-control' name='cnext'>
+            <input type='date' class='form-control' name='cnext' required>
             </div><br>
             <p>Do you want to generate a new scheduler for this vaccination's due date? 
             <input class='form-check-input' type='checkbox' value='checked' name='check' id='flexCheckChecked' checked></p>

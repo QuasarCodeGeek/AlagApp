@@ -61,27 +61,22 @@
         <div class='input-group'>
             <label class='input-group-text'>Owner</label>
             <input type='hidden' placeholder=\"Owner ID\" class='form-control' value='".$userrow['userid']."' name='userid'>
-            <input type='text' placeholder=\"Owner Name\" class='form-control' value='".$userrow['userfname']."' name='userfname'>
+            <input type='text' placeholder=\"Owner Name\" class='form-control' value='".$userrow['userfname']."' name='userfname' readonly>
             <label class='input-group-text'>Pet Name</label>
             <input type='hidden' placeholder=\"Pet ID\" class='form-control' value='".$row['petid']."' name='petid'>
-            <input type='text' placeholder=\"Pet Name\" class='form-control' value='".$row['petname']."' name='petname'>
+            <input type='text' placeholder=\"Pet Name\" class='form-control' value='".$row['petname']."' name='petname' readonly>
         </div><br>
 
         <div class='input-group'>
             <label class='input-group-text'>Description</label>
-            <textarea placeholder=\"Description\" name='description' class='form-control row-5' aria-label='With textarea'></textarea>
+            <textarea placeholder=\"Description\" name='description' class='form-control row-5' aria-label='With textarea' required></textarea>
         </div><br>
 
         <div class='input-group'>
             <label class='input-group-text'>Date Issued</label>
-            <input type='date' class='form-control' name='date'>
+            <input type='date' class='form-control' name='date' required>
             <label class='input-group-text'>Veterinarian</label>
-            <input type='text' class='form-control' name='vet'>
-            <!--<select class='form-select' name='status' id='inputGroupSelect'>
-                    <option selected''>-- Set Status --</option>
-                    <option name='status' value='Active'>Active</option>
-                    <option name='status' value='Inactive'>Inactive</option>
-                </select>-->
+            <input type='text' class='form-control' name='vet' required>
         </div><br>
         <div class='d-grid gap-2 d-md-flex justify-content-md-end'> 
             <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>

@@ -43,15 +43,15 @@ echo "
         <h1>New Vaccine Information</h1><br>
             <div class='input-group'>
                 <label class='input-group-text'>Name</label>
-                <input placeholder=\"Name\" type='text' class='form-control' name='name'>
+                <input placeholder=\"Name\" type='text' class='form-control' name='name' required>
                 <label class='input-group-text'>Type</label>
-                <input placeholder=\"Type\" type='text' class='form-control' name='type'>
+                <input placeholder=\"Type\" type='text' class='form-control' name='type' required>
                 <label class='input-group-text'>Brand</label>
-                <input placeholder=\"Brand\" type='text' class='form-control' name='brand'>
+                <input placeholder=\"Brand\" type='text' class='form-control' name='brand' required>
             </div><br>
             <div class='input-group'>
                 <label class='input-group-text'>Description</label>
-                <input placeholder=\"Enter Description\" type='text' class='form-control' name='description'>
+                <input placeholder=\"Enter Description\" type='text' class='form-control' name='description'required>
             </div><br>
         <div class='d-grid gap-2 d-md-flex justify-content-md-end'>
             <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>

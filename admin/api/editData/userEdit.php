@@ -12,6 +12,7 @@
         $district = $_POST["district"];
         $municipality = $_POST["municipality"];
         $province = $_POST["province"];
+        $mobile = $_POST["mobile"];
 
         if($fname=="" || $lname=="" || $bdate=="" || $gender=="" || $district=="" || $municipality=="" || $province ==""){
             echo "<script>window.location='../profile.php?userid=".$id."'</script>";
@@ -27,7 +28,8 @@
                 userstreet = :userstreet,
                 userdistrict = :userdistrict,
                 usermunicipality = :usermunicipality,
-                userprovince = :userprovince
+                userprovince = :userprovince,
+                usermobile = :usermobile
 
                 WHERE userid = :userid";
 
@@ -41,7 +43,8 @@
                 ":userstreet" => $street,
                 ":userdistrict" => $district,
                 ":usermunicipality" => $municipality,
-                ":userprovince" => $province
+                ":userprovince" => $province,
+                ":usermobile" => $mobile
             );
 
             $result = $connect->prepare($sql);
@@ -76,6 +79,8 @@
     $district = "";
     $municipality = "";
     $province = "";
+
+    $mobile = "";
       
         if($user_res->rowCount()==1){
             $user_row = $user_res->fetch(PDO::FETCH_ASSOC);
@@ -89,6 +94,7 @@
             $district = $user_row["userdistrict"];
             $municipality = $user_row["usermunicipality"];
             $province = $user_row["userprovince"];
+            $mobile = $user_row["usermobile"];
         }
     } catch(PDOException $e){
         die("An error has occured!");
@@ -116,7 +122,10 @@
             <option name='gender' value='M'>Male</option>
             <option name='gender' value='F'>Female</option>
         <select>
-        </div><br>
+        <span class='input-group-text'>Contact No.</span>
+        <input class='form-control' type='text' name='mobile' placeholder=\"Enter User Mobile Number\" value='".$mobile."'>
+        </div>
+        <br>
 
         <div class='input-group'>
         <span class='input-group-text'>Street</span>

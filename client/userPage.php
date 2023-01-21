@@ -33,6 +33,8 @@
 
           $email = $acc['useremail'];
           $pass = $acc['userpassword'];
+
+          $mobile = $acc['usermobile'];
         }
 ?>
 <!doctype html>
@@ -136,6 +138,9 @@
                                 </div>
                                 <div class='col mb-1'>
                                     <label>Address: ".$address1." ".$address2."</label>
+                                </div>
+                                <div class='col mb-2'>
+                                    <label>Mobile No.: ".$mobile."</label>
                                 </div>
                                 <div class='col mb-2'>
                                     <label>Email: ".$email."</label>

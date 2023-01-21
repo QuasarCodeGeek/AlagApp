@@ -6,7 +6,7 @@ require("../connector.php");
         $type = $_POST["pettype"];
         $breed = $_POST["petbreed"];
         $weight = $_POST["petweight"];
-        $height = $_POST["petheight"];
+        $mark = $_POST["petmark"];
         $bdate = $_POST["petbdate"];
         $age = $_POST["petage"];
         $gender = $_POST["petgender"];
@@ -20,7 +20,7 @@ require("../connector.php");
                 pettype,
                 petbreed,
                 petweight,
-                petheight,
+                petmark,
                 petbdate,
                 petage,
                 petgender) VALUES(
@@ -29,7 +29,7 @@ require("../connector.php");
                     :pettype,
                     :petbreed,
                     :petweight,
-                    :petheight,
+                    :petmark,
                     :petbdate,
                     :petage,
                     :petgender)";
@@ -42,7 +42,7 @@ require("../connector.php");
                 ":pettype" => $type,
                 ":petbreed" => $breed,
                 ":petweight" => $weight,
-                ":petheight" => $height,
+                ":petmark" => $mark,
                 ":petbdate" => $bdate,
                 ":petage" => $age,
                 ":petgender" => $gender
@@ -66,26 +66,26 @@ require("../connector.php");
             <h1>New Pet Profile</h1><br>
             <div class='input-group'>
             <span class='input-group-text'>Pet Name</span>
-            <input class='form-control' type='text' placeholder=\"Name\" name='petname'>
+            <input class='form-control' type='text' placeholder=\"Name\" name='petname' required>
             <span class='input-group-text'>Species</span>
-            <input class='form-control' type='text' placeholder=\"Species\" name='pettype'>
+            <input class='form-control' type='text' placeholder=\"Species\" name='pettype' required>
             <span class='input-group-text'>Breed</span>
-            <input class='form-control' type='text' placeholder=\"Breed\" name='petbreed'>
+            <input class='form-control' type='text' placeholder=\"Breed\" name='petbreed' required>
             </div><br>
             <div class='input-group'>
             <span class='input-group-text'>Birth Date</span>
-            <input class='form-control' type='date' name='petbdate'>
+            <input class='form-control' type='date' name='petbdate' required>
             <span placeholder=\"Age\" class='input-group-text'>Age</span>
             <input class='form-control' type='number' placeholder='Age' name='petage'>
             <label class='input-group-text' for='inputGenderSelect'>Gender</label>
-                <select class='form-select' name='petgender' id='inputGenderSelect'>
+                <select class='form-select' name='petgender' id='inputGenderSelect' required>
                     <option selected''>-- Select Gender --</option>
                     <option value='M'>M</option>
                     <option value='F'>F</option>
                 </select>
             </div><br>
             <div class='input-group'>
-            <label class='input-group-text' for='inputGroupSelect'>Owner</label>
+            <label class='input-group-text' for='inputGroupSelect'>Owner</label required>
             <select class='form-select' name='userid' id='inputOwnerSelect'>
                     <option selected''>-- Select Owner --</option>";
                     $i=1;
@@ -99,8 +99,8 @@ require("../connector.php");
                 echo "</select>
             <span class='input-group-text'>Weight(kg)</span>
             <input class='form-control' type='float' placeholder=\"Weight\" name='petweight'>
-            <span class='input-group-text'>Height(ft)</span>
-            <input class='form-control' type='float' placeholder=\"Height\" name='petheight'>
+            <span class='input-group-text'>Color/Marking</span>
+            <input class='form-control' type='text' placeholder=\"Color/Marking\" name='petmark' required>
             </div><br>
             <div class='d-grid gap-2 d-md-flex justify-content-md-end'>
                 <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>

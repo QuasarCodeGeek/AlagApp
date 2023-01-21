@@ -173,6 +173,7 @@
                               <thead>
                                 <tr>
                                   <th>Date</th>
+                                  <th>Due Date</th>
                                   <th>Wt(Kg)</th>
                                   <th>Vaccine</th>
                                   <th>Veterinarian</th>
@@ -185,6 +186,7 @@
     
                                 echo "<tr>
                                   <td>".$cardrow['cdate']."</td>
+                                  <td>".$cardrow['cnext']."</td>
                                   <td>".$cardrow['cweight']."</td>
                                   <td>".$cardrow['vaxname']."</td>
                                   <td>".$cardrow['cvet']."</td>
