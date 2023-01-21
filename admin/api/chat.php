@@ -202,7 +202,7 @@ if($checkSession->rowCount()>0){
                   <div class="modal-body">
                     <form action="sendImg.php" method="POST" enctype="multipart/form-data">
                       <div class="input-group mb-3">
-                        <input type="file" class="form-control col-12 col-sm-12 col-md col-lg col-xl-4" name="fileToUpload" id="fileToUpload">
+                        <input type="file" max-size="250000" class="form-control col-12 col-sm-12 col-md col-lg col-xl-4" name="fileToUpload" id="fileToUpload">
                         <input type="number" class="form-control" value="<?php echo $id ?>" name="userid" hidden>
                         <input type="number" class="form-control" value="<?php echo $channel ?>" name="mchannel" hidden>
                         <input type="number" class="form-control" value="0" name="msender" hidden>

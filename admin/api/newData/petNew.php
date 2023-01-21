@@ -95,6 +95,7 @@ require("../connector.php");
             <span class='input-group-text'>Color/Marking</span>
             <input class='form-control' type='text' placeholder=\"Color/Marking\" name='petmark' required>
             </div><br>
+
             <div class='d-grid gap-2 d-md-flex justify-content-md-end'>
                 <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
                 <button id='submitPetEdit' type='submit' name='submit' class='btn btn-primary'>Add Pet Profile</button>

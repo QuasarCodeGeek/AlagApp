@@ -4,6 +4,12 @@
     if(isset($_POST['submit'])){
         $id = 1;
         $file = basename($_FILES["fileToUpload"]["name"]);
+
+        // Check file size
+        if ($_FILES["fileToUpload"]["size"] > 250000) {        
+            echo "<script>window.location='adminProfile.php'</script>;";//File too large
+            $uploadOk = 0;
+        }
     
         $sql = "UPDATE alagapp_db.tbl_admin SET pict = :file WHERE adminid = :id";
         $value = array(":id"=>$id,":file"=>$file);

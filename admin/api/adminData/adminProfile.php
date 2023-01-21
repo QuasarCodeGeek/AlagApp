@@ -69,8 +69,8 @@ if($checkSession->rowCount()>0){
                   <div class="modal-body">
                     <form action="adminUpload.php" method="POST" enctype="multipart/form-data">
                       <div class="input-group mb-3">
-                        <input type="file" class="form-control col-12 col-sm-12 col-md col-lg col-xl-4" name="fileToUpload" id="fileToUpload">
-                        <input type="number" class="form-controlclass="form-control" name="userid" value="<?php echo $user; ?>" hidden>
+                        <input type="file" max-size="250000" class="form-control col-12 col-sm-12 col-md col-lg col-xl-4" name="fileToUpload" id="fileToUpload">
+                        <input type="number" class="form-control" name="userid" value="<?php echo $user; ?>" hidden>
                       </div>
                       <div class="row">
                         <button type="button" class="col m-1 btn btn-secondary" data-bs-dismiss="modal">Close</button>

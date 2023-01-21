@@ -2,6 +2,7 @@
     require("../connector.php");
 
     if(isset($_POST["submit"])){
+        
         $pet = $_POST["petid"];
         $owner = $_POST["userid"];
         $petname = $_POST["petname"];
@@ -16,6 +17,7 @@
         if($owner=="" || $petname=="" || $pettype=="" || $petbreed=="" || $petbdate=="" || $petage =="" || $petgender==""){
             echo "<script>window.location='../profile.php?userid=".$owner."'</script>";
         } else {
+
             $update = "UPDATE alagapp_db.tbl_petprofile SET 
                 userid = :userid,
                 petname = :petname,
@@ -49,7 +51,7 @@
             if($result->rowCount()>0) {
                 echo "<script>window.location='../profile.php?userid=".$owner."'</script>";
              } else {
-                 echo "<script>window.location='../profile.php?userid=".$owner."'</script>";
+                echo "<script>window.location='../profile.php?userid=".$owner."'</script>";
              }
         }
     }
@@ -150,10 +152,10 @@
             <span class='input-group-text'>Color/Marking</span>
             <input class='form-control' type='text' placeholder=\"Color/Marking\" name='petmark' value='".$petmark."'>
             </div><br>
-            
+
             <div class='d-grid gap-2 d-md-flex justify-content-md-end'>
                 <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
-                <button id='update' value='".$owner."' type='submit' name='submit' class='btn btn-primary'>Save changes</button>
+                <button type='submit' name='submit' class='btn btn-primary'>Save changes</button>
             </div>
         </form>";
 ?>

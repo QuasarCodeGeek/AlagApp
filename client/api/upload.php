@@ -4,6 +4,12 @@
     if(isset($_POST['submit'])){
         $user = $_POST['userid'];
         $file = basename($_FILES["fileToUpload"]["name"]);
+
+        // Check file size
+        if ($_FILES["fileToUpload"]["size"] > 250000) {        
+            echo "<script>window.location='editProfile.php?userid=".$user."'</script>;";//File too large
+            $uploadOk = 0;
+        }
     
         $sql = "UPDATE alagapp_db.tbl_userlist SET userpict = :file WHERE userid = :userid";
         $value = array(":userid"=>$user,":file"=>$file);
@@ -21,7 +27,6 @@
     // Allow certain file formats
     if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
     && $imageFileType != "gif" ) {
-    echo "<script>alert('Sorry, only JPG, JPEG, PNG & GIF files are allowed')</script>;";
     
     echo "<script>window.location='editProfile.php?userid=".$user."'</script>;";
     $uploadOk = 0;
@@ -33,10 +38,8 @@
     // if everything is ok, try to upload file
     } else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-            echo "<script>alert('Upload successful!!')</script>;";
             echo "<script>window.location='editProfile.php?userid=".$user."'</script>;";
     } else {
-        echo "Sorry, there was an error uploading your file.";
         echo "<script>window.location='editProfile.php?userid=".$user."'</script>;";
     }
     }

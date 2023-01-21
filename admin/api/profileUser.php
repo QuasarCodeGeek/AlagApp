@@ -10,11 +10,11 @@
                           $row = $res->fetch(PDO::FETCH_ASSOC);
                           echo"<div class='col-3'>";
                               if($row['userpict'] == "" && $row['usergender']=='M'){
-                                echo "<img id='userProfile' class='row m-auto mx-auto rounded' src='../../assets/default/male.png' alt='profile_picture'>";
+                                echo "<img style='width: 15rem;' class='m-2 mx-auto rounded' src='../../assets/default/male.png' alt='profile_picture'>";
                               } else if ($row['userpict'] == "" && $row['usergender']=='F') {
-                                echo "<img id='userProfile' class='row m-auto mx-auto rounded' src='../../assets/default/female.png' alt='profile_picture'>";
+                                echo "<img style='width: 15rem;' class='m-2 mx-auto rounded' src='../../assets/default/female.png' alt='profile_picture'>";
                               } else {
-                                echo "<img id='userProfile' class='row m-auto mx-auto rounded' src='../../assets/uploads/".$row['userpict']."' alt='profile_picture'>";
+                                echo "<img style='width: 15rem;' class='m-2 mx-auto rounded' src='../../assets/uploads/".$row['userpict']."' alt='profile_picture'>";
                               }
                               echo "</div>
                               <div class='col-5'>

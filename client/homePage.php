@@ -129,9 +129,14 @@
                     echo "
                     <div class='card m-2 p-3' style='background-color:#E8F5E9;'>
                       <div class='row p-2'>
-                        <div class='col-12 col-sm-12 col-md col-lg col-xl-4'>
-                            <img class='mb-2 mx-auto d-block rounded' style='width: 18rem;' src='../assets/img/".$petrow['pettype']."/".$petrow['petbreed'].".jpg' alt='petProfile'>
-                        </div>
+                        <div class='col-12 col-sm-12 col-md col-lg col-xl-4'>";
+                          if($petrow['petpict'] == ""){
+                            echo "<img style='width: 15rem;' class='mb-2 mx-auto d-block rounded' src='../assets/default/paw.png' alt='profile_picture'>";
+                          } else {
+                            echo "<img style='width: 15rem;' class='mb-2 mx-auto d-block rounded' src='../assets/pet/".$petrow['petpict']."' alt='profile_picture'>";
+                          }
+                            //<img class='mb-2 mx-auto d-block rounded' style='width: 18rem;' src='../assets/img/".$petrow['pettype']."/".$petrow['petbreed'].".jpg' alt='petProfile'>
+                        echo "</div>
                         <div class='p-2 col-12 col-sm-12 col-md col-lg col-xl-8 rounded bg bg-light'>
                           <div class='p-2'>
                                 <div class='col mb-2'>

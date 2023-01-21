@@ -88,14 +88,10 @@ if($checkSession->rowCount()>0){
                         <div class="modal-dialog modal-lg">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <h1 class="modal-title fs-5" id="ModalLabel">Choose Profile Picture</h1>
+                              <h1 class="modal-title fs-5" id="ModalLabel">Choose Pet Picture</h1>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body d-grid gap-2 container-fluid" id="modalPict">
-                              <div class="input-group mb-3">
-                                <input type="file" class="form-control" id="inputGroupFile02">
-                                <label class="input-group-text" for="inputGroupFile02">Upload</label>
-                              </div>
                             </div>
                           </div>
                         </div>

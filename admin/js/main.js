@@ -113,6 +113,15 @@ function petEdit(petid) {
     xhttp.send();
 }
 
+function petImg(petid) {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    document.getElementById("modalPict").innerHTML = this.responseText;
+  }
+  xhttp.open("GET", "editData/petImage.php?id="+petid);
+  xhttp.send();
+}
+
 function vaccineEdit(vaxid) {
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {

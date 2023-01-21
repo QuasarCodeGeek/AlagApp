@@ -17,8 +17,7 @@ if(isset($_POST["submit"])){
     $mobile = $_POST["mobile"];
 
     if($fname=="" || $lname=="" || $bdate=="" || $gender=="" || $district=="" || $municipality=="" || $province ==""){
-        echo "<script>alert('Complete Required Fields!');
-        window.location='editProfile.php?userid=".$id."'</script>";
+        echo "<script>window.location='editProfile.php?userid=".$id."'</script>";
     } else {
         $sql = "UPDATE alagapp_db.tbl_userlist SET
             useremail = :useremail,

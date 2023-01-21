@@ -8,6 +8,12 @@
         $mcontent = basename($_FILES["fileToUpload"]["name"]);
         $mdatetime = date("Y-m-d h:i:sa");
         $mtype = "Img";
+
+        // Check file size
+        if ($_FILES["fileToUpload"]["size"] > 250000) {        
+        echo "<script>window.location='../chatPage.php?userid=".$user."'</script>;";//File too large
+        $uploadOk = 0;
+        }
     
         $sql = "INSERT INTO alagapp_db.tbl_chat(
             userid,
