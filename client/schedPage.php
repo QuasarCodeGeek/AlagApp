@@ -2,7 +2,7 @@
     require("api/_connector.php");
     $user = $_REQUEST["userid"];
 
-    $checkUser = "SELECT * FROM alagapp_db.tbl_userlist WHERE userid = ".$user." AND usersession = '1'";
+    /*$checkUser = "SELECT * FROM alagapp_db.tbl_userlist WHERE userid = ".$user." AND usersession = '1'";
         $checkSession = $connect->prepare($checkUser);
         $checkSession->execute();
         if($checkSession->rowCount()>0){
@@ -10,7 +10,7 @@
           
         } else {
           echo "<script>window.location='index.php'</script>";
-        }
+        }*/
 
     $picture = "SELECT * FROM alagapp_db.tbl_userlist WHERE userid = ".$user." ";
         $checkpict = $connect->prepare($picture);
@@ -203,9 +203,8 @@
                                         } else if($row['qstatus'] == "Cancelled") {
                                             echo "<label>This schedule is cancelled.</label>";
                                         } else if ($row['qstatus'] == "Finished") {
-                                            echo "<label>This schedule is already finished.</label>";
-                                            echo "<button class='m-1 btn btn-info w-100' data-bs-toggle='modal' data-bs-target='#ResubmitModal' onClick='resubmitSched(".$row['qid'].")'>Resubmit</button>";
-                                        }
+                                            echo "<label>This schedule is finished.</label>";
+                                            }
                                     }
                                     echo "</div>
                                 </div>

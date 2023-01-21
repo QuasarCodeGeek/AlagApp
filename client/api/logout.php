@@ -1,7 +1,9 @@
 <?php
     require("./_connector.php");
 
-        $id = $_REQUEST['userid'];
+        echo "<script>window.location='../index.php'</script>";
+
+        /*$id = $_REQUEST['userid'];
         $session = 0;
         $set_Session = "UPDATE alagapp_db.tbl_userlist SET
             usersession = :session
@@ -19,5 +21,5 @@
             echo "<script>window.location='../index.php'</script>";
         } else {
             echo "<script>window.location='../homePage.php?userid=".$id."'</script>";
-        }
+        }*/
 ?>

@@ -13,8 +13,7 @@
                   } else {
                       echo "<li class='list-group-item border border-3 border-success bg bg-light rounded-pill mb-2'>";
                   }
-                  echo "
-                                  <a type='button' class='btn w-100 text-start' href='chat.php?userid=".$row['userid']."'>
+                    echo "<a type='button' class='btn w-100 text-start' href='chat.php?userid=".$row['userid']."'>
                                     <div class='row'>
                                         <div class='col-4'>";
                                             if($row['userpict'] == "" && $row['usergender']=='M'){
@@ -32,7 +31,7 @@
                                         }
                                         echo " '><b>".$row['userfname']."</b> ".$row['userlname']."</label>";
                                         if($row['userstatus'] == 1){
-                                            echo "<label class='text-wrap text-danger'>New Message</label>";
+                                            echo "<label class='text-wrap fw-bold text-success'>New Message</label>";
                                           }
                                         echo "</div>
                                   </div>

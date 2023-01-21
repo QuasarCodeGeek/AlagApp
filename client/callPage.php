@@ -2,7 +2,7 @@
     require("api/_connector.php");
     $user = $_REQUEST["userid"];
 
-    $checkUser = "SELECT * FROM alagapp_db.tbl_userlist WHERE userid = ".$user." AND usersession = '1'";
+    /*$checkUser = "SELECT * FROM alagapp_db.tbl_userlist WHERE userid = ".$user." AND usersession = '1'";
         $checkSession = $connect->prepare($checkUser);
         $checkSession->execute();
         if($checkSession->rowCount()>0){
@@ -10,7 +10,7 @@
           
         } else {
           echo "<script>window.location='index.php'</script>";
-        }
+        }*/
 
     $picture = "SELECT * FROM alagapp_db.tbl_userlist WHERE userid = ".$user." ";
         $checkpict = $connect->prepare($picture);
@@ -28,7 +28,7 @@
             $date = date("Y-m-d h:i:sa");
         
             if($user=="" || $channel=="" || $date==""){
-                echo "<script>window.location='chatPage.php?userid=".$user."'</script>";//INvalid
+                echo "<script>window.location='chatPage.php?userid=".$user."'</script>";//Invalid
             } else {
                 $sql = "INSERT INTO alagapp_db.tbl_call(
                     userid,

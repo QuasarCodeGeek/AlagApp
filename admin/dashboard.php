@@ -77,34 +77,35 @@
   <div class="col-10 vh-100 overflow-auto overflow-y">
     <div class="row m-auto mb-2"><!--mm-->
           <h2 class="text-success p-3"><b>Dashboard</b> | Main</h2>
-            <div class="col text-center bg bg-success p-1">
+          <div class="row m-auto border border-3 border-success rounded-pill p-2">
+            <div class="col text-center bg bg-success p-1 rounded-pill">
               <a type="button" class="text-white nav-link" href="dashboard.php"><strong>Main</strong></a>
             </div>
-            <div class="col text-center p-1" style="background-color: #81C784;">
-              <a type="button" class="text-white nav-link" href="api/reportData/userDashboard.php">User List</a>
+            <div class="col text-center p-1">
+              <a type="button" class="text-success fw-bold nav-link" href="api/reportData/userDashboard.php">User List</a>
             </div>
-            <div class="col text-center p-1" style="background-color: #81C784;">
-              <a type="button" class="text-white nav-link" href="api/reportData/petDashboard.php">Pet List</a>
+            <div class="col text-center p-1">
+              <a type="button" class="text-success fw-bold nav-link" href="api/reportData/petDashboard.php">Pet List</a>
             </div>
-            <div class="col text-center p-1" style="background-color: #81C784;">
-              <a type="button" class="text-white nav-link" href="api/reportData/cardDashboard.php">Vaccine Card</a>
+            <div class="col text-center p-1">
+              <a type="button" class="text-success fw-bold nav-link" href="api/reportData/cardDashboard.php">Vaccine Card</a>
             </div>
-            <div class="col text-center p-1" style="background-color: #81C784;">
-              <a type="button" class="text-white nav-link" href="api/reportData/noteDashboard.php">Prescription Note</a>
+            <div class="col text-center p-1">
+              <a type="button" class="text-success fw-bold nav-link" href="api/reportData/noteDashboard.php">Prescription Note</a>
             </div>
-            <div class="col text-center p-1" style="background-color: #81C784;">
-              <a type="button" class="text-white nav-link" href="api/reportData/schedDashboard.php">Scheduler</a>
+            <div class="col text-center p-1">
+              <a type="button" class="text-success fw-bold nav-link" href="api/reportData/schedDashboard.php">Scheduler</a>
             </div>
             <!--<div class="col text-center p-1" style="background-color: #81C784;">
               <a type="button" class="text-white nav-link" href="api/reportData/consultDashboard.php">Consultation</a>
             </div>-->
-            <div class="col text-center p-1" style="background-color: #81C784;">
-              <a type="button" class="text-white nav-link" href="api/reportData/vaccineDashboard.php">Vaccine List</a>
+            <div class="col text-center p-1">
+              <a type="button" class="text-success fw-bold nav-link" href="api/reportData/vaccineDashboard.php">Vaccine List</a>
             </div>
-            <div class="col text-center p-1s" style="background-color: #81C784;">
-              <a type="button" class="text-white nav-link" href="api/reportData/symptomDashboard.php">Symptoms Diagnosis</a>
+            <div class="col text-center p-1">
+              <a type="button" class="text-success fw-bold nav-link" href="api/reportData/symptomDashboard.php">Symptoms Diagnosis</a>
             </div>
-          </div><!--mm-->
+          </div></div><!--mm-->
   
       <div class="row m-auto"><!-- First Graph -->
             <div class="col-4"><!--Ratio-->

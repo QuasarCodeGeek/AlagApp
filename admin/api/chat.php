@@ -166,7 +166,7 @@ if($checkSession->rowCount()>0){
                         if($rowchat['mtype'] == "Img"){
                           echo "<img src='../../assets/chat/".$rowchat['mcontent']."' style='width: 15rem; height: auto;'></img><br>";
                         } else {
-                          echo "<label>".$rowchat['mcontent']."</label><br>";
+                          echo "<label style='font-size: 16px;'>".$rowchat['mcontent']."</label><br>";
                         }
                         echo "<span style='font-size: 12px;'>".$rowchat['mdatetime']."</span>
                         </div>
@@ -174,11 +174,11 @@ if($checkSession->rowCount()>0){
                   } else {
                     echo "<li class='list-group-item border-0'>
                         <div class='float-end p-3' style='background-color: #81C784; border-radius: 10px;'>
-                        <label>You</label><br>";
+                        <label>Admin</label><br>";
                         if($rowchat['mtype'] == "Img"){
                           echo "<img src='../../assets/chat/".$rowchat['mcontent']."' style='width: 15rem; height: auto;'></img><br>";
                         } else {
-                          echo "<label>".$rowchat['mcontent']."</label><br>";
+                          echo "<label style='font-size: 16px;'>".$rowchat['mcontent']."</label><br>";
                         }
                         echo "<span style='font-size: 12px;'>".$rowchat['mdatetime']."</span>
                         </div>    

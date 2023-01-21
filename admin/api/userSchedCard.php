@@ -9,8 +9,7 @@
                 $i=1;
                 while($row = $res->fetch(PDO::FETCH_ASSOC)){
                     echo "<div class='col-3'>
-                    <div class='card border border-success border-3 rounded-pill m-2 bg bg-light' style='width: 20rem;'>
-                        <a type='button' class='btn w-100 text-start' href='./api/sched_profile.php?userid=".$row['userid']."'>
+                        <a type='button' class='btn w-100 text-start border border-success border-3 rounded-pill m-2 bg bg-light' style='width: 20rem;' href='./api/sched_profile.php?userid=".$row['userid']."'>
                             <div class='row m-auto'>
                                 <div class='col-4 m-auto'>";
                                             if($row['userpict'] == "" && $row['usergender']=='M'){
@@ -21,12 +20,11 @@
                                                 echo "<img style='width: 4rem; height: 4rem;' class='rounded-circle' src='../assets/uploads/".$row['userpict']."' alt='profile_picture'>";
                                             }
                                 echo "</div>
-                                <div class='card-body col-8 m-auto'>
+                                <div class='col-8 m-auto'>
                                     <label class='text-wrap'><b>".$row['userfname']."</b> ".$row['userlname']."</label>
                                 </div>
                             </div>
                         </a>
-                    </div>
                     </div>";
                     $i++;
                 }

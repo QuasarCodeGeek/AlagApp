@@ -2,16 +2,6 @@
     require("api/_connector.php");
     $user = $_REQUEST["userid"];
 
-    $checkUser = "SELECT * FROM alagapp_db.tbl_userlist WHERE userid = ".$user." AND usersession = '1'";
-        $checkSession = $connect->prepare($checkUser);
-        $checkSession->execute();
-        if($checkSession->rowCount()>0){
-          $wel = $checkSession->fetch(PDO::FETCH_ASSOC);
-          
-        } else {
-          echo "<script>window.location='index.php'</script>";
-        }
-
     $picture = "SELECT * FROM alagapp_db.tbl_userlist WHERE userid = ".$user." ";
         $checkpict = $connect->prepare($picture);
         $checkpict->execute();
@@ -21,6 +11,7 @@
           $sex = $acc['usergender'];
           $pict = $acc['userpict'];
           $name = $acc['userfname'];
+          $status = $acc['userstatus'];
         }
 
         if(isset($_POST["submit"])){
@@ -31,8 +22,7 @@
             $date = date("Y-m-d h:i:sa");
         
             if($userid=="" || $sender=="" || $channel=="" || $message==""){
-                echo "<script>alert('Invalid!');
-                window.location='chatPage.php?userid=".$user."'</script>";
+                echo "<script>window.location='chatPage.php?userid=".$user."'</script>";//Invalid
             } else {
                 $sql = "INSERT INTO alagapp_db.tbl_chat(
                     userid,
@@ -59,11 +49,19 @@
                 $result->execute($values);
         
                 if($result->rowCount()>0) {
-                    echo "<script>alert('Message Sent!');
-                    window.location='chatPage.php?userid=".$user."'</script>";
+
+                    if($status!=1){
+                      $status = 1;
+                      $see = "UPDATE alagapp_db.tbl_userlist SET userstatus = :status WHERE userid = ".$user."";
+                      $sres = $connect->prepare($see);
+                      $array = array(":status"=>$status);
+                      $sres->execute($array);
+                      if($sres->rowCount()>0){
+                        echo "<script>window.location='chatPage.php?userid=".$user."'</script>";//Message Sent
+                      }
+                    }
                  } else {
-                     echo "<script>alert('Unable to send message!');
-                     window.location='chatPage.php?userid=".$user."'</script>";
+                     echo "<script>window.location='chatPage.php?userid=".$user."'</script>";//Message not sent
                  }
             }
         }
@@ -165,11 +163,11 @@
                   if($rowchat['msender']==0){
                     echo "<li class='list-group-item border-0'>
                       <div class='float-start p-3' style='background-color: #E8F5E9; border-radius: 10px;'>
-                      <label style='font-size: 14px;'>Vet</label><br>";
+                      <label style='font-size: 12px;'>Vet</label><br>";
                       if($rowchat['mtype'] == "Img"){
                         echo "<img src='../assets/chat/".$rowchat['mcontent']."' style='width: 15rem; height: auto;'></img><br>";
                       } else {
-                        echo "<label>".$rowchat['mcontent']."</label><br>";
+                        echo "<label style='font-size: 16px;'>".$rowchat['mcontent']."</label><br>";
                       }
                       echo "<span style='font-size: 12px;'>".$rowchat['mdatetime']."</span>
                       </div>
@@ -177,11 +175,11 @@
                     } else {
                     echo "<li class='list-group-item border-0'>
                         <div class='float-end p-3' style='background-color: #81C784; border-radius: 10px;'>
-                        <label style='font-size: 14px;'>You</label><br>";
+                        <label style='font-size: 12px;'>You</label><br>";
                         if($rowchat['mtype'] == "Img"){
                           echo "<img src='../assets/chat/".$rowchat['mcontent']."' style='width: 15rem; height: auto;'></img><br>";
                         } else {
-                          echo "<label>".$rowchat['mcontent']."</label><br>";
+                          echo "<label style='font-size: 16px;'>".$rowchat['mcontent']."</label><br>";
                         }
                         echo "<span style='font-size: 12px;'>".$rowchat['mdatetime']."</span>
                         </div>    

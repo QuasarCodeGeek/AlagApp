@@ -82,30 +82,32 @@ if($checkSession->rowCount()>0){
 <div class="col-10 vh-100 overflow-auto overflow-y">
         <div class="row m-auto mb-2">
             <h2 class="text-success p-3"><b>Dashboard</b> | Vaccine List </h2>
-            <div class="col text-center p-1" style="background-color: #81C784;">
-              <a type="button" class="text-white nav-link" href="../../dashboard.php">Main</a>
+            <div class="row m-auto border border-3 border-success rounded-pill p-2">
+            <div class="col text-center p-1">
+              <a type="button" class="text-success nav-link" href="../../dashboard.php"><strong>Main</strong></a>
             </div>
-            <div class="col text-center p-1" style="background-color: #81C784;">
-              <a type="button" class="text-white nav-link" href="userDashboard.php">User List</a>
+            <div class="col text-center p-1">
+              <a type="button" class="text-success fw-bold nav-link" href="userDashboard.php">User List</a>
             </div>
-            <div class="col text-center p-1" style="background-color: #81C784;">
-              <a type="button" class="text-white nav-link" href="petDashboard.php">Pet List</a>
+            <div class="col text-center p-1">
+              <a type="button" class="text-success fw-bold nav-link" href="petDashboard.php">Pet List</a>
             </div>
-            <div class="col text-center p-1" style="background-color: #81C784;">
-              <a type="button" class="text-white nav-link" href="cardDashboard.php">Vaccine Card</a>
+            <div class="col text-center p-1">
+              <a type="button" class="text-success fw-bold nav-link" href="cardDashboard.php">Vaccine Card</a>
             </div>
-            <div class="col text-center p-1" style="background-color: #81C784;">
-              <a type="button" class="text-white nav-link" href="noteDashboard.php">Prescription Note</a>
+            <div class="col text-center p-1">
+              <a type="button" class="text-success fw-bold nav-link" href="noteDashboard.php">Prescription Note</a>
             </div>
-            <div class="col text-center p-1" style="background-color: #81C784;">
-              <a type="button" class="text-white nav-link" href="schedDashboard.php">Scheduler</a>
+            <div class="col text-center p-1">
+              <a type="button" class="text-success fw-bold nav-link" href="schedDashboard.php">Scheduler</a>
             </div>
-            <div class="col text-center p-1 bg bg-success">
-              <a type="button" class="text-white nav-link" href="vaccineDashboard.php"><strong>Vaccine List</strong></a>
+            <div class="col text-center p-1  bg bg-success rounded-pill">
+              <a type="button" class="text-white fw-bold nav-link" href="vaccineDashboard.php">Vaccine List</a>
             </div>
-            <div class="col text-center p-1"  style="background-color: #81C784;">
-              <a type="button" class="text-white nav-link" href="symptomDashboard.php">Symptoms Diagnosis</a>
+            <div class="col text-center p-1">
+              <a type="button" class="text-success fw-bold nav-link" href="symptomDashboard.php">Symptoms Diagnosis</a>
             </div>
+          </div>
   </div>
           
     <div class="row m-auto border border-3 border-success rounded m-2 p-2"><!-- Vaccine Information -->

@@ -12,8 +12,9 @@
 
         if($checkresult->rowCount()>0) {
           $user = $checkresult->fetch(PDO::FETCH_ASSOC);
+          echo "<script>window.location='homePage.php?userid=".$user['userid']."'</script>";
 
-          $client = $user['userid'];
+          /*$client = $user['userid'];
           $session = 1;
 
           $checkuser = "SELECT * FROM alagapp_db.tbl_userlist WHERE userid = ".$client." AND usersession = '1'";
@@ -33,10 +34,12 @@
             }
           }
        } else {
-           echo "<script>alert('Account not found!');</script>";
+           echo "<script>alert('Account not found!');</script>";*/
        }
-    } else {
-      echo "<div onload='checkField()'></div>";
+    } 
+    else {
+      //echo "<div onload='checkField()'></div>";
+      echo "<script>window.location='index.php'</script>";
     }
   }
 ?>
