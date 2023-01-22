@@ -21,9 +21,10 @@ header("Content-Disposition:attachment;filename=\"$filename\"");
             <th>Pet</th>
             <th>Owner</th>
             <th>Vaccine</th>
-            <th>First Dose</th>
-            <th>Second Dose</th>
-            <th>Booster</th>
+            <th>Veterinarian</th>
+            <th>Wt(Kg)</th>
+            <th>Date</th>
+            <th>Due Date</th>
           </tr>
         </thead>
         <tbody>

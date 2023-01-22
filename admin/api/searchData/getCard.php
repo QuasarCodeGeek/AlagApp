@@ -12,6 +12,7 @@ $search = $_REQUEST['search'];
             <th>Veterinarian</th>
             <th>Weight(Kg)</th>
             <th>Date</th>
+            <th>Due Date</th>
           </tr>
           <?php include("../reportData/cardFilter.php");?>
         </thead>
@@ -28,6 +29,7 @@ $search = $_REQUEST['search'];
             petname LIKE '%".$search."%' OR
             vaxname LIKE '%".$search."%' OR
             cdate LIKE '%".$search."%' OR
+            cnext LIKE '%".$search."%' OR
             cvet LIKE '%".$search."%' OR
             cweight LIKE '%".$search."%'";
           $rescard = $connect->query($card);
@@ -44,6 +46,7 @@ $search = $_REQUEST['search'];
               <td>".$rowcard['cvet']."</td>
               <td>".$rowcard['cweight']."</td>
               <td>".$rowcard['cdate']."</td>
+              <td>".$rowcard['cnext']."</td>
             </tr>";
             $i++;
             }

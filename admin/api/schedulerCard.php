@@ -36,25 +36,58 @@ echo "<div class='row m-auto mt-2'>";
                   $i=1;
                   while($row = $res->fetch(PDO::FETCH_ASSOC)){
                   echo
-                  "<div class='col-3'><div class='card m-1 p-1 col-flex' style='width: 15rem;'>
-                      <div class='card-body'>
-                        <button type='button' class='btn btn-success w-100' onClick='SchedEdit(".$row['qid'].")' data-bs-toggle='modal' data-bs-target='#boxModal')>
-                            <h6 class='card-title m-auto my-auto'>".$row['petname']."
-                            <i class='bi bi-pencil-square'></i></h6>
-                        </button><br>
-                          <label class='card-text' style='font-size: 12px;'>Owner: ".$row['userfname']."</label><br>
-                          <label class='card-text' style='font-size: 12px;'>Description: ".$row['qdescription']."</label><br>
-                          <label class='card-text' style='font-size: 12px;'>Time: ".date("h:i a",strtotime($row['qtime']))."</label><br>
-                          <label class='card-text' style='font-size: 12px;'>Date: ".date("M-d-Y",strtotime($row['qdate']))."</label><br>
-                          <label class='card-text' style='font-size: 12px;'>Status: ".$row['qstatus']."</label>
+                  "<div class='col-6'>
+                    <div class='m-auto mb-2 p-2 border border-2 border-success rounded'>
+                      <div class='row m-auto mx-auto text-center'>
+                        <div class='col-6'>
+                          <div class='row m-auto'>
+                            <h4 class='m-auto fw-bold text-success'>".$row['petname']."</h4>
+                          </div>
+                          <div class='row m-auto'>
+                            <label class='flext start' style='font-size: 12px;'>Owner: ".$row['userfname']."</label>
+                          </div>
+                        </div>
+                        <div class='col-6'>
+                            <div class='row m-auto'>
+                              <label class='flex-center' style='font-size: 12px;'>Date: ".date("M-d-Y",strtotime($row['qdate']))."</label>
+                            </div>
+                            <div class='row m-auto'>
+                              <label class='flex-end' style='font-size: 12px;'>Time: ".date("h:i a",strtotime($row['qtime']))."</label>
+                            </div>
+                        </div>
                       </div>
-                  </div>
+
+                      <div class='row m-auto my-2 border border-2 border-success p-2 rounded'>
+                        <p style='font-size: 12px;'>Description: ".$row['qdescription']."</p>
+                      </div>
+                      <div class='row m-auto'>";
+
+                        if($row['qstatus'] == "Pending"){
+                          echo "<div class='col-6 bg bg-info rounded-pill p-2 text-center'>";
+                        } else if ($row['qstatus'] == "Accepted"){
+                          echo "<div class='col-6 bg bg-success rounded-pill p-2 text-center'>";
+                        } else if ($row['qstatus'] == "Finished"){
+                          echo "<div class='col-6 bg bg-primary rounded-pill p-2 text-center'>";
+                        } else if ($row['qstatus'] == "Cancelled"){
+                          echo "<div class='col-6 bg bg-danger rounded-pill p-2 text-center'>";
+                        } else if ($row['qstatus'] == "Denied"){
+                          echo "<div class='col-6 bg bg-secondary rounded-pill p-2 text-center'>";
+                        }
+
+                          echo "<label class='card-text fw-bold text-white' style='font-size: 12px;'>".$row['qstatus']."</label>
+                        </div>
+                        <div class='col-6'>
+                          <button type='button' class='btn btn-warning w-100' onClick='schedEdit(".$row['qid'].")' data-bs-toggle='modal' data-bs-target='#boxModal')>
+                          <i class='bi bi-pencil-square'></i> Edit</button>
+                        </div>
+                      </div>
+                    </div>
                   </div>";
                   $i++;
                   }
               }  else {
-                  echo "
+                  echo "<div class='card card-body'>
+                  <p>No record<p>
                   </div>";
               }
-              echo "</div>";
                 ?>

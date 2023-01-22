@@ -34,30 +34,6 @@ if($checkSession->rowCount()>0){
     <link rel="stylesheet" href="../../css/styles.css">
 </head>
 <body class="bg bg-light">
-    <!--<nav class="navbar navbar-expand-lg bg-light">
-        <div class="container container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="row collapse navbar-collapse mx-auto" id="navbarSupportedContent">
-            <div class="col text-center">
-              <a class="nav-link" href="../../account.php">Account</a>
-            </div>
-            <div class="col text-center">
-            <a class="nav-link" href="../../scheduler.php">Scheduler</a>
-            </div>
-            <div class="col text-center">
-              <a class="navbar-brand" href="#"><strong>AlagApp</strong></a>
-            </div>
-            <div class="col text-center">
-              <a class="nav-link" href="../../consultation.php">Consultation</a>
-            </div>
-            <div class="col text-center border-bottom border-success border-5">
-              <a class="nav-link text-success" href="../../dashboard.php" active><strong>Dashboard</strong></a> 
-            </div>
-          </div>
-        </div>
-      </nav>-->
       <main class="container-fluid"><div class="row m-auto">
       <div class="col-2 vh-100 bg bg-success">
           <div class="row m-auto text-center my-3">
@@ -171,6 +147,7 @@ if($checkSession->rowCount()>0){
             <th>Veterinarian</th>
             <th>Weight(Kg)</th>
             <th>Date</th>
+            <th>Due Date</th>
           </tr>
           <?php include("./cardFilter.php"); ?>
         </thead>
@@ -196,6 +173,7 @@ if($checkSession->rowCount()>0){
               <td>".$rowcard['cvet']."</td>
               <td>".$rowcard['cweight']."</td>
               <td>".$rowcard['cdate']."</td>
+              <td>".$rowcard['cnext']."</td>
             </tr>";
             $i++;
             }

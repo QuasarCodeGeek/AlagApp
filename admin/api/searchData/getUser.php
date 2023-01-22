@@ -13,6 +13,7 @@ $search = $_REQUEST['search'];
             <th>Province</th>
             <th>Birth Date</th>
             <th>Gender</th>
+            <th>Mobile No.</th>
           </tr>
           <?php include("./../reportData/userFilter.php");?>
         </thead>
@@ -28,7 +29,8 @@ $search = $_REQUEST['search'];
             userstreet LIKE '%".$search."%' OR
             userdistrict LIKE '%".$search."%' OR
             usermunicipality LIKE '%".$search."%' OR
-            userprovince LIKE '%".$search."%'";
+            userprovince LIKE '%".$search."%' OR
+            usermobile LIKE '%".$search."%'";
           $resnote = $connect->query($note);
           $resnote->execute();
           if($resnote->rowCount()>0){
@@ -44,6 +46,7 @@ $search = $_REQUEST['search'];
               <td>".$rownote['userprovince']."</td>
               <td>".$rownote['userbdate']."</td>
               <td>".$rownote['usergender']."</td>
+              <td>".$rownote['usermobile']."</td>
             </tr>";
             $i++;
             }

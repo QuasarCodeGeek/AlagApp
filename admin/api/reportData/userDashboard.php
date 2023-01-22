@@ -147,6 +147,7 @@ if($checkSession->rowCount()>0){
             <th>Province</th>
             <th>Birth Date</th>
             <th>Gender</th>
+            <th>Mobile No.</th>
           </tr>
           <?php include("./userFilter.php");?>
         </thead>
@@ -168,6 +169,7 @@ if($checkSession->rowCount()>0){
               <td>".$rowuser['userprovince']."</td>
               <td>".$rowuser['userbdate']."</td>
               <td>".$rowuser['usergender']."</td>
+              <td>".$rowuser['usermobile']."</td>
             </tr>";
             $i++;
             }

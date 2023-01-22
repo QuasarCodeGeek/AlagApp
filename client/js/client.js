@@ -23,6 +23,15 @@ function checkField() {
     }
 }
 
+function petImg(petid) {
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function() {
+      document.getElementById("modalPict").innerHTML = this.responseText;
+    }
+    xhttp.open("GET", "api/petImage.php?id="+petid);
+    xhttp.send();
+  }
+
 function editSched(qid) {
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {

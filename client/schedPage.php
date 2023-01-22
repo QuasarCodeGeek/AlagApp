@@ -2,15 +2,6 @@
     require("api/_connector.php");
     $user = $_REQUEST["userid"];
 
-    /*$checkUser = "SELECT * FROM alagapp_db.tbl_userlist WHERE userid = ".$user." AND usersession = '1'";
-        $checkSession = $connect->prepare($checkUser);
-        $checkSession->execute();
-        if($checkSession->rowCount()>0){
-          $wel = $checkSession->fetch(PDO::FETCH_ASSOC);
-          
-        } else {
-          echo "<script>window.location='index.php'</script>";
-        }*/
 
     $picture = "SELECT * FROM alagapp_db.tbl_userlist WHERE userid = ".$user." ";
         $checkpict = $connect->prepare($picture);
@@ -162,7 +153,7 @@
                 $schedlist = "SELECT alagapp_db.tbl_scheduler.*, alagapp_db.tbl_petprofile.petname
                     FROM alagapp_db.tbl_scheduler
                     INNER JOIN alagapp_db.tbl_petprofile ON alagapp_db.tbl_scheduler.petid = alagapp_db.tbl_petprofile.petid
-                    WHERE tbl_scheduler.userid = ".$user."";
+                    WHERE tbl_scheduler.userid = ".$user." ORDER BY qdate ASC, qtime ASC";
                     $checksched = $connect->prepare($schedlist);
                     $checksched->execute();
 

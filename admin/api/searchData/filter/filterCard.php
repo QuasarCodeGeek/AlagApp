@@ -12,6 +12,7 @@
             <th>Veterinarian</th>
             <th>Weight(Kg)</th>
             <th>Date</th>
+            <th>Due Date</th>
           </tr>
           <?php include("./../../reportData/cardFilter.php");?>
         </thead>
@@ -25,6 +26,7 @@
           WHERE
             vaxname ='".$search."' OR
             cdate = '".$search."' OR
+            cnext = '".$search."' OR
             cvet = '".$search."' OR
             cweight = '".$search."'";
           $rescard = $connect->query($card);
@@ -41,6 +43,7 @@
               <td>".$rowcard['cvet']."</td>
               <td>".$rowcard['cweight']."</td>
               <td>".$rowcard['cdate']."</td>
+              <td>".$rowcard['cnext']."</td>
             </tr>";
             $i++;
             }

@@ -93,6 +93,23 @@
   </div>
 </nav>
 <main class="container-fluid">
+
+<!-- Modal Profile -->
+<div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h1 class="modal-title fs-5" id="ModalLabel">Choose Pet Picture</h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body d-grid gap-2 container-fluid" id="modalPict">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+<!-- Modal Profile -->
+
+
 <div class="row">
         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 vh-100 d-none d-sm-block">
             <div class="text-center text-white rounded m-2 p-2" style="background-color: #81C784;">
@@ -136,24 +153,31 @@
                             echo "<img style='width: 15rem;' class='mb-2 mx-auto d-block rounded' src='../assets/pet/".$petrow['petpict']."' alt='profile_picture'>";
                           }
                             //<img class='mb-2 mx-auto d-block rounded' style='width: 18rem;' src='../assets/img/".$petrow['pettype']."/".$petrow['petbreed'].".jpg' alt='petProfile'>
-                        echo "</div>
+                        echo "
+                          <div class='card-img-overlay'>
+                            <button type='button' class='btn btn-light' onClick='petImg(".$petrow['petid'].")' data-bs-toggle='modal' data-bs-target='#profileModal'>
+                            <i class='bi bi-pencil-square'></i></button>
+                          </div>
+                        </div>
                         <div class='p-2 col-12 col-sm-12 col-md col-lg col-xl-8 rounded bg bg-light'>
                           <div class='p-2'>
                                 <div class='col mb-2'>
                                     <label>Name: ".$petrow['petname']."</label>
                                     <label class='float-end'>Gender: ".$petrow['petgender']."</label>
                                 </div> 
-                                <div class='col-12 mb-2'>
+                                <div class='col-12 col-sm-12 mb-2'>
                                     <label>Species: ".$petrow['pettype']."</label>
-                                    <label class='float-end'>Breed: ".$petrow['petbreed']."</label>
+                                    <label class='d-block d-sm-none my-2'>Breed: ".$petrow['petbreed']."</label>
+                                    <label class='d-none d-sm-block float-end'>Breed: ".$petrow['petbreed']."</label>
                                 </div>
                                 <div class='col mb-2'>
                                     <label>DOB: ".$petrow['petbdate']."</label>
                                     <label class='float-end'>Age: ".$petrow['petage']."</label>
                                 </div>
-                                <div class='col'>
+                                <div class='col-12 col-sm-12'>
                                     <label>Wt(Kg): ".$petrow['petweight']."</label>
-                                    <label class='float-end'>Color/Marking: ".$petrow['petmark']."</label>
+                                    <label class='d-block d-sm-none my-2'>Color/Marking: ".$petrow['petmark']."</label>
+                                    <label class='d-none d-sm-block float-end'>Color/Marking: ".$petrow['petmark']."</label>
                                 </div>
                           </div>      
                         </div>
@@ -255,6 +279,7 @@
     </div>
 </div>
   </main>
+  <script src="./js/client.js"></script>
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
     integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">

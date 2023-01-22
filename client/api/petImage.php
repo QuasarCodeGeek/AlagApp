@@ -1,5 +1,5 @@
 <?php
-    require("../connector.php");
+    require("./_connector.php");
 
     if(isset($_POST['submit'])){
         $pet = $_POST['petid'];
@@ -8,7 +8,7 @@
 
         // Check file size
         if ($_FILES["fileToUpload"]["size"] > 250000) {        
-            echo "<script>window.location='../profile.php?userid=".$user."'</script>;";//File too large
+            echo "<script>window.location='../homePage.php?userid=".$user."'</script>;";//File too large
             $uploadOk = 0;
         }
     
@@ -20,7 +20,7 @@
 
         if($res->rowCount()>0){
            
-    $target_dir = "../../../assets/pet/";
+    $target_dir = "../../assets/pet/";
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -28,7 +28,7 @@
     // Allow certain file formats
     if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
     && $imageFileType != "gif" ) {
-    echo "<script>window.location='../profile.php?userid=".$user."'</script>;";
+    echo "<script>window.location='../homePage.php?userid=".$user."'</script>;";
     $uploadOk = 0;
     }
 
@@ -37,9 +37,9 @@
     // if everything is ok, try to upload file
     } else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-            echo "<script>window.location='../profile.php?suerid=".$user."'</script>;";
+            echo "<script>window.location='../homeProfile.php?userid=".$user."'</script>;";
     } else {
-        echo "<script>window.location='../profile.php?userid=".$user."'</script>;";
+        echo "<script>window.location='../homePage.php?userid=".$user."'</script>;";
     }
     }
 
@@ -52,7 +52,8 @@
     $res->execute();
     if($res->rowCount()>0){
         $row = $res->fetch(PDO::FETCH_ASSOC);
-        echo "<form action='./editData/petImage.php' method='POST' enctype='multipart/form-data'>
+        echo "<form action='api/petImage.php' method='POST' enctype='multipart/form-data'>
+        <p class='fst-italic'>Please, upload image that is 2mb in file size, preferably a 2x2 picture.</p><br>
         <div class='input-group mb-3'>
           <input type='file' max-size='250000' class='form-control col-12 col-sm-12 col-md col-lg col-xl-4' name='fileToUpload' id='fileToUpload'>
           <input type='number'  class='form-control' name='userid' value='".$row['userid']."' hidden>

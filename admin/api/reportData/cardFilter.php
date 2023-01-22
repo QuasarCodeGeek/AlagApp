@@ -47,4 +47,6 @@
     <th>
         <input type="date" class="form-control" id="date" onchange="filterCard()">
     </th>
+    <th>
+    </th>
 </tr>

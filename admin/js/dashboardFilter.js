@@ -74,7 +74,7 @@ function filterUser() {
         filter = weight;
     } else if (date != ""){
         filter = date;
-    }
+    } 
   
         document.getElementById("table").style.display = "none";
         const xhttp = new XMLHttpRequest();

@@ -14,6 +14,7 @@
             <th>Province</th>
             <th>Birth Date</th>
             <th>Gender</th>
+            <th>Mobile No.</th>
           </tr>
           <?php include("./../../reportData/userFilter.php");?>
         </thead>
@@ -26,7 +27,8 @@
             usermunicipality = '".$search."' OR
             userprovince = '".$search."' OR
             userbdate = '".$search."' OR
-            usergender = '".$search."'";
+            usergender = '".$search."' OR
+            usermobile LIKE '".$search."%'";
           $resnote = $connect->query($note);
           $resnote->execute();
           if($resnote->rowCount()>0){
@@ -42,6 +44,7 @@
               <td>".$rownote['userprovince']."</td>
               <td>".$rownote['userbdate']."</td>
               <td>".$rownote['usergender']."</td>
+              <td>".$rownote['usermobile']."</td>
             </tr>";
             $i++;
             }

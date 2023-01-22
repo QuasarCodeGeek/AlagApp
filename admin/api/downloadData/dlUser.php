@@ -16,6 +16,7 @@ header("Content-Disposition:attachment;filename=\"$filename\"");
           <tr>USER LISTS <br />
           <label>Number of Users: <?php echo $rowdata['count'];?></label>
             <th>#</th>
+            <th>Email</th>
             <th>Name</th>
             <th>Street</th>
             <th>Baranggay</th>
@@ -23,6 +24,7 @@ header("Content-Disposition:attachment;filename=\"$filename\"");
             <th>Province</th>
             <th>Birth Date</th>
             <th>Gender</th>
+            <th>Mobile No.</th>
           </tr>
         </thead>
         <tbody>
@@ -36,6 +38,7 @@ header("Content-Disposition:attachment;filename=\"$filename\"");
  
                echo "<tr>
                <td>".$i."</td>
+               <td>".$rowuser['useremail']."</td>
                <td>".$rowuser['userfname']." ".$rowuser['usermname']." ".$rowuser['userlname']."</td>
                <td>".$rowuser['userstreet']."</td>
                <td>".$rowuser['userdistrict']."</td>
@@ -43,6 +46,7 @@ header("Content-Disposition:attachment;filename=\"$filename\"");
                <td>".$rowuser['userprovince']."</td>
                <td>".$rowuser['userbdate']."</td>
                <td>".$rowuser['usergender']."</td>
+               <td>".$rowuser['usermobile']."</td>
              </tr>";
              $i++;
              }

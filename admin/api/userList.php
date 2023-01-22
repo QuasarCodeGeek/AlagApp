@@ -1,6 +1,6 @@
 <ul class="list-group list-group-flush">
                       <?php 
-                          $sql = "SELECT * FROM alagapp_db.tbl_userlist";
+                          $sql = "SELECT * FROM alagapp_db.tbl_userlist ORDER BY userfname";
                       
                           $res = $connect->prepare($sql);
                           $res->execute();

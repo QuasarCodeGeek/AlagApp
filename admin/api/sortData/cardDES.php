@@ -9,6 +9,7 @@
             <th>Veterinarian</th>
             <th>Weight(Kg)</th>
             <th>Date</th>
+            <th>Due Date</th>
           </tr>
         </thead>
         <tbody>
@@ -41,6 +42,7 @@
               <td>".$rowcard['cvet']."</td>
               <td>".$rowcard['cweight']."</td>
               <td>".$rowcard['cdate']."</td>
+              <td>".$rowcard['cnext']."</td>
             </tr>";
             $i++;
             }

@@ -1,6 +1,6 @@
 <ul class="list-group list-group-flush">
         <?php
-            $sql = "SELECT * FROM alagapp_db.tbl_userlist";
+            $sql = "SELECT * FROM alagapp_db.tbl_userlist ORDER BY userstatus DESC, userfname";
         
             $res = $connect->prepare($sql);
             $res->execute();
@@ -10,7 +10,9 @@
                 while($row = $res->fetch(PDO::FETCH_ASSOC)){
                   if($row['userid'] == $id){
                     echo "<li class='list-group-item bg bg-success rounded-pill mb-2'>";
-                  } else {
+                  } else if ($row['userstatus'] == 1){
+                    echo "<li class='list-group-item  rounded-pill mb-2 text-white' style='background-color: #81C784;'>";
+                    } else {
                       echo "<li class='list-group-item border border-3 border-success bg bg-light rounded-pill mb-2'>";
                   }
                     echo "<a type='button' class='btn w-100 text-start' href='chat.php?userid=".$row['userid']."'>
@@ -31,7 +33,7 @@
                                         }
                                         echo " '><b>".$row['userfname']."</b> ".$row['userlname']."</label>";
                                         if($row['userstatus'] == 1){
-                                            echo "<label class='text-wrap fw-bold text-success'>New Message</label>";
+                                            echo "<label class='text-wrap fw-bold text-white'>New Message</label>";
                                           }
                                         echo "</div>
                                   </div>
