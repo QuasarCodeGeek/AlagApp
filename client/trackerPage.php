@@ -1,16 +1,12 @@
 <?php
     require("api/_connector.php");
+    
     $user = $_REQUEST["userid"];
 
-    /*$checkUser = "SELECT * FROM alagapp_db.tbl_userlist WHERE userid = ".$user." AND usersession = '1'";
-        $checkSession = $connect->prepare($checkUser);
-        $checkSession->execute();
-        if($checkSession->rowCount()>0){
-          $wel = $checkSession->fetch(PDO::FETCH_ASSOC);
-          
-        } else {
-          echo "<script>window.location='index.php'</script>";
-        }*/
+    session_start();
+    if($_SESSION["newsession"] !=  $user+date("Ymd")){
+      echo "<script>window.location='./index.php'</script>";
+    }
 
     $picture = "SELECT * FROM alagapp_db.tbl_userlist WHERE userid = ".$user." ";
         $checkpict = $connect->prepare($picture);

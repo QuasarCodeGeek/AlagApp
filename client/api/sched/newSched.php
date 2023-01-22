@@ -9,8 +9,7 @@
         $status = $_POST["status"];
 
         if($user=="" || $pet=="" || $description=="" || $date=="" || $status==""){
-            echo "<script>alert('Please complete the fields required!')
-            window.location='../../account.php'</script>";
+            echo "<script>window.location='../../account.php'</script>";
         } else {
             $sql = "INSERT INTO alagapp_db.tbl_scheduler(
                 userid,
@@ -37,11 +36,9 @@
             $result->execute($values);
 
             if($result->rowCount()>0) {
-                echo "<script>alert('Schedule has been save!');
-                window.location='../../schedPage.php?userid=".$user."'</script>";
+                echo "<script>window.location='../../schedPage.php?userid=".$user."'</script>";
              } else {
-                 echo "<script>alert('Unable to Add Schedule!');
-                 window.location='../../schedPage.php?userid=".$user."'</script>";
+                 echo "<script>window.location='../../schedPage.php?userid=".$user."'</script>";
              }
         }
     }
@@ -49,6 +46,11 @@
 <form method="POST" action="api/sched/newSched.php">
     <?php
     $user = $_REQUEST["userid"];
+
+        session_start();
+        if($_SESSION["newsession"] !=  $user+date("Ymd")){
+        echo "<script>window.location='../../index.php'</script>";
+        }
     ?>
     <div class="form-group">
         <input name="userid" type="text" value="<?php echo $user; ?>"  hidden></input>

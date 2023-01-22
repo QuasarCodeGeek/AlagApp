@@ -52,8 +52,14 @@
     $res->execute();
     if($res->rowCount()>0){
         $row = $res->fetch(PDO::FETCH_ASSOC);
+
+        session_start();
+        if($_SESSION["newsession"] !=  $row['userid']+date("Ymd")){
+        echo "<script>window.location='../index.php'</script>";
+        }
+
         echo "<form action='api/petImage.php' method='POST' enctype='multipart/form-data'>
-        <p class='fst-italic'>Please, upload image that is 2mb in file size, preferably a 2x2 picture.</p><br>
+        <p class='fst-italic text-center'>Please, upload image that is 2mb in file size, preferably a 2x2 picture.</p><br>
         <div class='input-group mb-3'>
           <input type='file' max-size='250000' class='form-control col-12 col-sm-12 col-md col-lg col-xl-4' name='fileToUpload' id='fileToUpload'>
           <input type='number'  class='form-control' name='userid' value='".$row['userid']."' hidden>

@@ -1,6 +1,12 @@
 <?php
     require("_connector.php");
+
     $user = $_REQUEST["userid"];
+
+    session_start();
+    if($_SESSION["newsession"] !=  $user+date("Ymd")){
+      echo "<script>window.location='../index.php'</script>";
+    }
 
     $picture = "SELECT * FROM alagapp_db.tbl_userlist WHERE userid = ".$user." ";
         $checkpict = $connect->prepare($picture);

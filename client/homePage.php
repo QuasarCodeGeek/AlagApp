@@ -1,6 +1,12 @@
 <?php
     require("api/_connector.php");
+    
     $user = $_REQUEST["userid"];
+
+    session_start();
+    if($_SESSION["newsession"] !=  $user+date("Ymd")){
+      echo "<script>window.location='./index.php'</script>";
+    }
 
     /*$checkUser = "SELECT * FROM alagapp_db.tbl_userlist WHERE userid = ".$user." AND usersession = '1'";
         $checkSession = $connect->prepare($checkUser);

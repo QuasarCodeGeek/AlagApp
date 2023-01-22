@@ -9,6 +9,11 @@
         $mdatetime = date("Y-m-d h:i:sa");
         $mtype = "Img";
 
+        session_start();
+        if($_SESSION["newsession"] !=  $user+date("Ymd")){
+        echo "<script>window.location='../index.php'</script>";
+        }
+
         // Check file size
         if ($_FILES["fileToUpload"]["size"] > 250000) {        
         echo "<script>window.location='../chatPage.php?userid=".$user."'</script>;";//File too large

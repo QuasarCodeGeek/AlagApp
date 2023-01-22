@@ -12,6 +12,10 @@
 
         if($checkresult->rowCount()>0) {
           $user = $checkresult->fetch(PDO::FETCH_ASSOC);
+
+          session_start();
+          $_SESSION["newsession"]= $user['userid']+date("Ymd");
+
           echo "<script>window.location='homePage.php?userid=".$user['userid']."'</script>";
 
           /*$client = $user['userid'];

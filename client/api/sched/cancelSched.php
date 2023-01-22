@@ -8,8 +8,7 @@
                             
                         
         if($qid=="" || $status==""){
-            echo "<script>alert('Invalid!');
-            window.location='../../schedPage.php?userid=".$user."'</script>";
+            echo "<script>window.location='../../schedPage.php?userid=".$user."'</script>";
         } else {
             $sql = "UPDATE alagapp_db.tbl_scheduler SET
                 qstatus = :qstatus
@@ -25,11 +24,9 @@
             $result->execute($values);
                             
             if($result->rowCount()>0) {
-                echo "<script>alert('Schedule Cancelled!');
-                window.location='../../schedPage.php?userid=".$user."'</script>";
+                echo "<script>window.location='../../schedPage.php?userid=".$user."'</script>";
             } else {
-                echo "<script>alert('Unable to Cancel Schedule!');
-                window.location='../../schedPage.php?userid=".$user."'</script>";
+                echo "<script>window.location='../../schedPage.php?userid=".$user."'</script>";
             }
         }
     }
@@ -52,6 +49,12 @@
             $status = $row["qstatus"];
             $user = $row['userid'];
         }
+
+        session_start();
+        if($_SESSION["newsession"] !=  $user+date("Ymd")){
+        echo "<script>window.location='../../index.php'</script>";
+        }
+
     } catch(PDOException $e){
         echo $e;
         die("An error has occured!");

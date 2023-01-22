@@ -11,8 +11,7 @@
                             
                         
         if($user=="" || $pet=="" || $description=="" || $date=="" || $status==""){
-            echo "<script>alert('Invalid!');
-            window.location='../../schedPage.php?userid=".$user."'</script>";
+            echo "<script>window.location='../../schedPage.php?userid=".$user."'</script>";
         } else {
             $sql = "UPDATE alagapp_db.tbl_scheduler SET
                 userid = :userid,
@@ -36,11 +35,9 @@
             $result->execute($values);
                             
             if($result->rowCount()>0) {
-                echo "<script>alert('Schedule Updated!');
-                window.location='../../schedPage.php?userid=".$user."'</script>";
+                echo "<script>window.location='../../schedPage.php?userid=".$user."'</script>";
             } else {
-                echo "<script>alert('Unable to Update Schedule!');
-                window.location='../../schedPage.php?userid=".$user."'</script>";
+                echo "<script>window.location='../../schedPage.php?userid=".$user."'</script>";
             }
         }
     }
@@ -74,6 +71,11 @@
             $description = $row["qdescription"];
             $date = $row["qdate"];
             $status = $row["qstatus"];
+        }
+
+        session_start();
+        if($_SESSION["newsession"] !=  $userid+date("Ymd")){
+        echo "<script>window.location='../../index.php'</script>";
         }
     } catch(PDOException $e){
         echo $e;

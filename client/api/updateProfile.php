@@ -16,6 +16,11 @@ if(isset($_POST["submit"])){
     $province = $_POST["province"];
     $mobile = $_POST["mobile"];
 
+        session_start();
+        if($_SESSION["newsession"] !=  $id+date("Ymd")){
+        echo "<script>window.location='../index.php'</script>";
+        }
+
     if($fname=="" || $lname=="" || $bdate=="" || $gender=="" || $district=="" || $municipality=="" || $province ==""){
         echo "<script>window.location='editProfile.php?userid=".$id."'</script>";
     } else {
