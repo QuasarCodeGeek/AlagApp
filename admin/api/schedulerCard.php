@@ -77,7 +77,7 @@ echo "<div class='row m-auto mt-2'>";
                           echo "<label class='card-text fw-bold text-white' style='font-size: 12px;'>".$row['qstatus']."</label>
                         </div>
                         <div class='col-6'>
-                          <button type='button' class='btn btn-warning w-100' onClick='schedEdit(".$row['qid'].")' data-bs-toggle='modal' data-bs-target='#boxModal')>
+                          <button type='button' class='btn btn-warning w-100' onClick='SchedEdit(".$row['qid'].")' data-bs-toggle='modal' data-bs-target='#boxModal')>
                           <i class='bi bi-pencil-square'></i> Edit</button>
                         </div>
                       </div>

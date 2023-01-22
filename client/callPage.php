@@ -3,7 +3,7 @@
     $user = $_REQUEST["userid"];
 
     session_start();
-    if($_SESSION["newsession"] !=  $user+date("Ymd")){
+    if($_SESSION["newsession"] == ""){
       echo "<script>window.location='./index.php'</script>";
     }
 

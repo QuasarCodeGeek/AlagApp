@@ -10,8 +10,8 @@
         $mtype = "Img";
 
         session_start();
-        if($_SESSION["newsession"] !=  $user+date("Ymd")){
-        echo "<script>window.location='../index.php'</script>";
+        if($_SESSION["newsession"] == ""){
+        echo "<script>window.location='./../index.php'</script>";
         }
 
         // Check file size

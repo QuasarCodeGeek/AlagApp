@@ -14,7 +14,7 @@
           $user = $checkresult->fetch(PDO::FETCH_ASSOC);
 
           session_start();
-          $_SESSION["newsession"]= $user['userid']+date("Ymd");
+          $_SESSION["newsession"] = rand();
 
           echo "<script>window.location='homePage.php?userid=".$user['userid']."'</script>";
 

@@ -1,17 +1,11 @@
 <?php
   require("connector.php");
 
-
-  /*$check = "SELECT * FROM alagapp_db.tbl_admin WHERE adminid = 1 AND session = 1";
-$checkSession = $connect->prepare($check);
-$checkSession->execute();
-if($checkSession->rowCount()>0){
-  $wel = $checkSession->fetch(PDO::FETCH_ASSOC);
+  session_start();
+  if($_SESSION["adminsession"] == ""){
+    echo "<script>window.location='./../index.php'</script>";
+  }
   
-} else {
-  echo "<script>window.location='./../index.php'</script>";
-}*/
-
   $id = $_REQUEST['userid'];
 
   $c = "SELECT * FROM alagapp_db.tbl_userlist WHERE userid = '".$id."'";
@@ -132,7 +126,14 @@ if($checkSession->rowCount()>0){
       ?>
       <div class="row p-2"><!-- Chat Header -->
         <div class="border border-3 border-success text-success rounded-pill pt-2">
-          <img class="ms-2  me-2 rounded-circle" src="../../assets/uploads/<?php echo $_rowe['userpict']; ?>" alt="" style="width: 3rem; height: 3rem;"> 
+          <?php if($_rowe['userpict']!=""){
+            echo "<img class='ms-2  me-2 rounded-circle' src='../../assets/uploads/".$_rowe['userpict']."' alt='' style='width: 3rem; height: 3rem;'>";
+          } else if ($_rowe['usergender'] == 'F'){
+            echo "<img class='ms-2  me-2 rounded-circle' src='../../assets/default/female.png' alt='' style='width: 3rem; height: 3rem;'>";
+          } else {
+            echo "<img class='ms-2  me-2 rounded-circle' src='../../assets/default/male.png' alt='' style='width: 3rem; height: 3rem;'>";
+          }
+          ?>
           <label><h4><?php echo $_rowe['userfname']." ".$_rowe['userlname']; ?></h4></label>
           <?php
             $meet = "SELECT gmeet FROM alagapp_db.tbl_admin WHERE adminid = 1";
@@ -140,7 +141,7 @@ if($checkSession->rowCount()>0){
             $checklink->execute();
             if($checklink->rowCount()>0){
               $link = $checklink->fetch(PDO::FETCH_ASSOC);
-              echo "<a href=".$link['gmeet'].">";
+              echo "<a href=".$link['gmeet']." target='_blank'>";
             }
           ?>
           <button class="btn btn-primary-outline float-end"><iconify-icon icon="bi:camera-video-fill" style="color: green;" width="30" height="30"></iconify-icon></button>
@@ -201,6 +202,7 @@ if($checkSession->rowCount()>0){
                   </div>
                   <div class="modal-body">
                     <form action="sendImg.php" method="POST" enctype="multipart/form-data">
+                      <p class="fst-italic text-center">Upload image at least 2mb and 2x2 in size.</p>
                       <div class="input-group mb-3">
                         <input type="file" max-size="250000" class="form-control col-12 col-sm-12 col-md col-lg col-xl-4" name="fileToUpload" id="fileToUpload">
                         <input type="number" class="form-control" value="<?php echo $id ?>" name="userid" hidden>

@@ -85,6 +85,11 @@
 
     $id = $_REQUEST['id'];
 
+    session_start();
+    if($_SESSION["adminsession"] !=  $id + date("Ymd")){
+      echo "<script>window.location='./index.php'</script>";
+    }
+
     $sql_user = "SELECT * FROM alagapp_db.tbl_admin WHERE adminid = :id";
 
     try{

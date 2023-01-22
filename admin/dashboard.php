@@ -1,15 +1,11 @@
 <?php
   include ("api/dataAnalytics.php");
 
-  /*$check = "SELECT * FROM alagapp_db.tbl_admin WHERE adminid = 1 AND session = 1";
-        $checkSession = $connect->prepare($check);
-        $checkSession->execute();
-        if($checkSession->rowCount()>0){
-          $wel = $checkSession->fetch(PDO::FETCH_ASSOC);
-          
-        } else {
-          echo "<script>window.location='./index.php'</script>";
-        }*/
+    session_start();
+    if($_SESSION["adminsession"] == ""){
+      echo "<script>window.location='./index.php'</script>";
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -96,9 +92,6 @@
             <div class="col text-center p-1">
               <a type="button" class="text-success fw-bold nav-link" href="api/reportData/schedDashboard.php">Scheduler</a>
             </div>
-            <!--<div class="col text-center p-1" style="background-color: #81C784;">
-              <a type="button" class="text-white nav-link" href="api/reportData/consultDashboard.php">Consultation</a>
-            </div>-->
             <div class="col text-center p-1">
               <a type="button" class="text-success fw-bold nav-link" href="api/reportData/vaccineDashboard.php">Vaccine List</a>
             </div>

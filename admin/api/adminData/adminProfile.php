@@ -1,15 +1,11 @@
 <?php 
     require("../connector.php");
 
-    /*$check = "SELECT * FROM alagapp_db.tbl_admin WHERE adminid = 1 AND session = 1";
-$checkSession = $connect->prepare($check);
-$checkSession->execute();
-if($checkSession->rowCount()>0){
-  $wel = $checkSession->fetch(PDO::FETCH_ASSOC);
-  
-} else {
-  echo "<script>window.location='./../../index.php'</script>";
-}*/
+    session_start();
+    if($_SESSION["adminsession"] == ""){
+      echo "<script>window.location='./index.php'</script>";
+    }
+
 ?>
   <!DOCTYPE html>
   <html lang="en">
@@ -70,7 +66,7 @@ if($checkSession->rowCount()>0){
                     <form action="adminUpload.php" method="POST" enctype="multipart/form-data">
                       <div class="input-group mb-3">
                         <input type="file" max-size="250000" class="form-control col-12 col-sm-12 col-md col-lg col-xl-4" name="fileToUpload" id="fileToUpload">
-                        <input type="number" class="form-control" name="userid" value="<?php echo $user; ?>" hidden>
+                        <input type="number" class="form-control" name="id" value="1" hidden>
                       </div>
                       <div class="row">
                         <button type="button" class="col m-1 btn btn-secondary" data-bs-dismiss="modal">Close</button>

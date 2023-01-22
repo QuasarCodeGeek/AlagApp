@@ -1,6 +1,8 @@
 <?php
     require("./api/connector.php");
     
+    session_start();
+
     // remove all session variables
     session_unset();
 

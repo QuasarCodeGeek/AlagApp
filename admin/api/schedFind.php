@@ -1,21 +1,13 @@
 <?php
 require("./connector.php");
-/*$check = "SELECT * FROM alagapp_db.tbl_admin WHERE adminid = 1 AND session = 1";
-$checkSession = $connect->prepare($check);
-$checkSession->execute();
-if($checkSession->rowCount()>0){
-  $wel = $checkSession->fetch(PDO::FETCH_ASSOC);
-  
-} else {
+
+session_start();
+if($_SESSION["adminsession"] == ""){
   echo "<script>window.location='./../index.php'</script>";
-}*/
+}
+
   if(isset($_POST["submit"])){
     $user = $_POST['user'];
-    //$sdate = $_POST['firstdate'];
-    //$edate = $_POST['lastdate'];
-    //$month = $_POST['month'];
-    //$syear = $_POST['startyear'];
-    //$eyear = $_POST['endyear'];
     $status = $_POST['status'];
   }
 ?>

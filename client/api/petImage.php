@@ -54,8 +54,8 @@
         $row = $res->fetch(PDO::FETCH_ASSOC);
 
         session_start();
-        if($_SESSION["newsession"] !=  $row['userid']+date("Ymd")){
-        echo "<script>window.location='../index.php'</script>";
+        if($_SESSION["newsession"] == ""){
+        echo "<script>window.location='./../index.php'</script>";
         }
 
         echo "<form action='api/petImage.php' method='POST' enctype='multipart/form-data'>

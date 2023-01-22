@@ -2,7 +2,7 @@
     require("../connector.php");
 
     if(isset($_POST['submit'])){
-        $id = 1;
+        $id = $_POST['id'];
         $file = basename($_FILES["fileToUpload"]["name"]);
 
         // Check file size

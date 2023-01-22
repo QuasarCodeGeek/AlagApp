@@ -5,10 +5,10 @@
         $user = $_POST['userid'];
         $file = basename($_FILES["fileToUpload"]["name"]);
 
-        session_start();
-        if($_SESSION["newsession"] !=  $user+date("Ymd")){
-        echo "<script>window.location='../index.php'</script>";
-        }
+    session_start();
+    if($_SESSION["newsession"] == ""){
+      echo "<script>window.location='./../index.php'</script>";
+    }
 
         // Check file size
         if ($_FILES["fileToUpload"]["size"] > 250000) {        
