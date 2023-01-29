@@ -40,7 +40,7 @@
                                           <label>Gender: ".$row['petgender']."</label>
                                         </div>
                                         <div class='row-2 m-auto mb-2 w-auto h-auto p-2 rounded bg bg-light'>
-                                          <label>DOB: ".$row['petbdate']."</label>
+                                          <label>DOB: ".date("M d,Y", strtotime($row['petbdate']))."</label>
                                         </div>
                                         <div class='row-2 m-auto mb-2 w-auto h-auto p-2 rounded bg bg-light'>
                                           <label>Age: ".$row['petage']."</label>
@@ -62,6 +62,9 @@
                                             <button type='button' class='btn btn-warning w-100' onClick='petEdit(".$row['petid'].")' data-bs-toggle='modal' data-bs-target='#boxModal'>
                                             <i class='bi bi-pencil-square'></i> Edit</button>
                                           </div>
+                                          <div class='col' hidden>
+                                          <button class='btn btn-primary' type='button' onClick='getRecord(".$row['petid'].")' data-bs-toggle='offcanvas' data-bs-target='#offcanvasRight' aria-controls='offcanvasRight'>Medical Record</button>
+                                          </div>
                                         </div>
                                       </div>
                                     </div> 
@@ -76,7 +79,7 @@
                                 </div>
                                 <div class='col-5 pb-2'>                
                                   <h4 class='text-white p-2'><b>E-Prescription Note</b></h4>";
-                                  include("./petNote.php ");
+                                  include("./petNote.php");
                                 echo "
                                 </div>
                             </div>
@@ -85,9 +88,10 @@
                           }
                       } else {
                           echo "<div class='col'>
-                          <div class='row bg bg-light rounded'>
-                            <label class='p-2 text-center '>No Record
-                            </label></div>
+                            <div class='card p-3'>
+                              <label class='fw-bold text-center text-success'>No Record
+                              </label>
+                            </div>
                           </div>
                           </div><br>";
                       }

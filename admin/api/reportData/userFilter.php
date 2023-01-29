@@ -4,6 +4,7 @@
     <th></th>
     <th>
         <select class="form-select" aria-label="Default select example" id="district" onchange="filterUser()">
+        <option selected value="">-Select Barangay-</option>
             <?php
                 $dt = "SELECT * FROM alagapp_db.tbl_userlist GROUP BY userdistrict HAVING COUNT(userdistrict) >= 1";
                 $res = $connect->query($dt);
@@ -21,7 +22,7 @@
     </th>
     <th>
         <select class="form-select" aria-label="Default select example" id="municipality" onchange="filterUser()">
-            <option selected></option>
+            <option selected value="">-Select Municipality-</option>
             <?php
                 $dt = "SELECT * FROM alagapp_db.tbl_userlist GROUP BY usermunicipality HAVING COUNT(usermunicipality) >= 1";
                 $res = $connect->query($dt);
@@ -39,7 +40,7 @@
     </th>
     <th>
         <select class="form-select" aria-label="Default select example" id="province" onchange="filterUser()">
-            <option selected></option>
+            <option selected value="">-Select Province-</option>
             <?php
                 $dt = "SELECT * FROM alagapp_db.tbl_userlist GROUP BY userprovince HAVING COUNT(userprovince) >= 1";
                 $res = $connect->query($dt);
@@ -60,11 +61,12 @@
     </th>
     <th>
     <select class="form-select" aria-label="Default select example" id="gender" onchange="filterUser()">
-            <option selected></option>
+            <option selected value="">-Select Gender-</option>
             <option value="M">M</option>
             <option value="F">F</option>
         </select>
     </th>
     <th>
+        <input type="text" class="form-control" id="mobile" onchange="filterUser()" placeholder="Enter Number 09-">
     </th>
 </tr>

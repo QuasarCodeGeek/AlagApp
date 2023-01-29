@@ -77,7 +77,7 @@
               </div></div>
               <div class='row m-auto'>
                 <p class='fst-italic' style='font-size: 12px;'>Owner: ".$row['userfname']."</p>
-                <p style='font-size: 12px;'>Description: ".$row['qdescription']."</p>
+                <p style='font-size: 12px;'>Service: ".$row['qdescription']."</p>
               </div>";
                 
                 if($row['qstatus'] == "Pending"){

@@ -1,6 +1,7 @@
 <?php
 require("../connector.php");
 
+    session_start();
     if(isset($_POST["submit"])){
         $card = $_POST["cid"];
         $owner = $_POST["userid"];
@@ -12,6 +13,7 @@ require("../connector.php");
         $next = $_POST["cnext"];
 
         if($owner=="" || $pet=="" || $vet=="" || $vax=="" || $date==""){
+            $_SESSION["trigger"] = "editECard";
             echo "<script>window.location='profile.php?userid=".$owner."'</script>";
         } else {
             $sql = "UPDATE alagapp_db.tbl_carddetail SET
@@ -40,9 +42,11 @@ require("../connector.php");
             $result->execute($values);
 
             if($result->rowCount()>0) {
+                    $_SESSION["trigger"] = "editCard";
                 echo "<script>window.location='../profile.php?userid=".$owner."'</script>";
              } else {
-                 echo "<script>window.location='../profile.php?userid=".$owner."'</script>";
+                    $_SESSION["trigger"] = "editECard";
+                echo "<script>window.location='../profile.php?userid=".$owner."'</script>";
              }
         }
     }

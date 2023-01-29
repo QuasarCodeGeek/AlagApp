@@ -105,12 +105,6 @@
     $rescard->execute();
     $rowcard = $rescard->fetch(PDO::FETCH_ASSOC);
     $totalcard = $rowcard["totalcard"];
-    // Total Vaccine Administered
-    $tvax = "SELECT COUNT(vaxid) AS totalvaccine FROM alagapp_db.tbl_vaxxcard";
-    $resvax = $connect->query($tvax);
-    $resvax->execute();
-    $rowvax = $resvax->fetch(PDO::FETCH_ASSOC);
-    $totalvax = $rowvax["totalvaccine"];
     // Pet to Card Ratio
     // Total Notes
     $tnote = "SELECT COUNT(nid) AS totalnote FROM alagapp_db.tbl_notedetail";

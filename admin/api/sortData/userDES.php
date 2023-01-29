@@ -1,4 +1,6 @@
-
+<?php
+  require("../connector.php");
+?>
       <table class="table table-striped m-2">
         <thead class="bg bg-success text-white">
           <tr>
@@ -10,11 +12,12 @@
             <th>Province</th>
             <th>Birth Date</th>
             <th>Gender</th>
+            <th>Mobile No.</th>
           </tr>
+          <?php include("./../reportData/userFilter.php");?>
         </thead>
         <tbody>
         <?php
-        require("../connector.php");
 
             $cnt = "SELECT COUNT(userid) as count FROM alagapp_db.tbl_userlist;";
             $res = $connect->query($cnt);
@@ -38,13 +41,14 @@
               <td>".$row['userdistrict']."</td>
               <td>".$row['usermunicipality']."</td>
               <td>".$row['userprovince']."</td>
-              <td>".$row['userbdate']."</td>
+              <td>".date("d/M/Y", strtotime($row['userbdate']))."</td>
               <td>".$row['usergender']."</td>
+              <td>".$row['usermobile']."</td>
             </tr>";
             $i++;
             }
           } else {
-            echo "<tr><td colspan-\"7\">No Record!</td></tr>";
+            echo "<tr><td colspan=\"9\" class='text-center'>No Record!</td></tr>";
           }
         ?>
         </tbody>

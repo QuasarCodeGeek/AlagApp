@@ -8,12 +8,11 @@ function checkField() {
     var password = document.getElementById("password").value;
 
     if(email == "" || password == ""){
-        console.log(email+"" +password);
         const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
 
         const wrapper = document.createElement('div')
         wrapper.innerHTML = [
-            `<div class="alert alert-success alert-dismissible" role="alert">`,
+            `<div class="alert alert-warning alert-dismissible" role="alert">`,
             `   <div>Complete fields required!</div>`,
             '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
             '</div>'
@@ -22,6 +21,7 @@ function checkField() {
         alertPlaceholder.append(wrapper)
     }
 }
+
 
 function petImg(petid) {
     const xhttp = new XMLHttpRequest();

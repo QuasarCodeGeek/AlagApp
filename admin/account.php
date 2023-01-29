@@ -19,6 +19,8 @@ if($_SESSION["adminsession"] == ""){
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <!-- Custom CSS -->
+    <link href="./../bootstrap-5.2.2-dist/css/bootstrap.css" rel="stylesheet">
+    <script src="./../bootstrap-5.2.2-dist/js/bootstrap.js"></script>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="bg bg-light">
@@ -52,6 +54,14 @@ if($_SESSION["adminsession"] == ""){
                 </div>
             </div>
       <!-- Modal Edit Data --> 
+<?php
+  include("./api/modalTrigger.php");
+  include("./api/modalError.php");
+
+  if($_SESSION["trigger"]!="none"){
+    echo "<input type='text' id='trigger' value='".$_SESSION["trigger"]."' hidden>";
+  } 
+?>
 <main class="container-fluid"><div class="row m-auto">
 <div class="col-2 vh-100 bg bg-success"><!--SideBar-->
           <div class="row m-auto text-center my-3"><!--aa-->
@@ -113,3 +123,6 @@ if($_SESSION["adminsession"] == ""){
 </script>
 </body>
 </html>
+<?php
+  $_SESSION["trigger"]="none";
+?>

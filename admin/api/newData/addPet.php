@@ -1,5 +1,7 @@
 <?php
 require("../connector.php");
+
+    session_start();
     if(isset($_POST["submit"])){
         $owner = $_POST["userid"];
         $name = $_POST["petname"];
@@ -11,7 +13,8 @@ require("../connector.php");
         $age = $_POST["petage"];
         $gender = $_POST["petgender"];
 
-        if($owner=="" || $name=="" || $type=="" || $breed=="" || $age ==""){
+        if($owner=="" || $name=="" || $type=="" || $breed==""){
+            $_SESSION["trigger"] = "newEPet";
             echo "<script>window.location='../profile.php?userid=".$owner."'</script>";//Fields Required
         } else {
             $sql = "INSERT INTO alagapp_db.tbl_petprofile(
@@ -51,8 +54,10 @@ require("../connector.php");
             $result->execute($values);
 
             if($result->rowCount()>0) {
-               echo "<script>window.location='../profile.php?userid=".$owner."'</script>";//Success
+                $_SESSION["trigger"] = "newPet";
+                echo "<script>window.location='../profile.php?userid=".$owner."'</script>";//Success
             } else {
+                $_SESSION["trigger"] = "newEPet";
                 echo "<script>window.location='../profile.php?userid=".$owner."'</script>";//Not Success
             }
         }
@@ -62,7 +67,7 @@ require("../connector.php");
     $res = $connect->query($sql);
     $res->execute();
     echo    "
-            <form action='newData/addPet.php' method='POST'>
+            <form action='api/newData/addPet.php' method='POST'>
             <h1>New Pet Profile</h1><br>
             <div class='input-group'>
             <span class='input-group-text'>Pet Name</span>
@@ -76,7 +81,7 @@ require("../connector.php");
             <span class='input-group-text'>Birth Date</span>
             <input class='form-control' type='date' name='petbdate' required>
             <span placeholder=\"Age\" class='input-group-text'>Age</span>
-            <input class='form-control' type='number' placeholder='Age' name='petage'>
+            <input class='form-control' type='text' placeholder='Age' name='petage'>
             <label class='input-group-text' for='inputGenderSelect'>Gender</label>
                 <select class='form-select' name='petgender' id='inputGenderSelect' required>
                     <option selected''>-- Select Gender --</option>

@@ -1,6 +1,10 @@
 <?php
   require("api/_connector.php");
 
+  session_start();
+
+  $error = NULL;
+
   if(isset($_POST["submit"])){
     $email = $_POST["email"];
     $password = $_POST["password"];
@@ -13,39 +17,25 @@
         if($checkresult->rowCount()>0) {
           $user = $checkresult->fetch(PDO::FETCH_ASSOC);
 
-          session_start();
-          $_SESSION["newsession"] = rand();
+          $set = md5($user['userid']);
+          $_SESSION["newsession"] = $user['userid'].$set;
+          $_SESSION["setsession"] = $user['userid'].$set;
 
           echo "<script>window.location='homePage.php?userid=".$user['userid']."'</script>";
 
-          /*$client = $user['userid'];
-          $session = 1;
-
-          $checkuser = "SELECT * FROM alagapp_db.tbl_userlist WHERE userid = ".$client." AND usersession = '1'";
-          $checkSession = $connect->prepare($checkuser);
-          $checkSession->execute();
-          if($checkSession->rowCount()>0){
-            echo "<script>alert('Welcome Back!');
-                  window.location='./homePage.php?userid=".$user['userid']."'</script>";
-          } else {
-            $set_session = "UPDATE alagapp_db.tbl_userlist SET usersession = :session WHERE userid = :userid";
-            $data = array(":session"=>$session, ":userid"=>$client);
-            $resSession = $connect->prepare($set_session);
-            $resSession->execute($data);
-            if($resSession->rowCount()>0){
-              echo "<script>alert('Log In Successful!');</script>";
-              echo "<script>window.location='homePage.php?userid=".$user['userid']."'</script>";
-            }
-          }
-       } else {
-           echo "<script>alert('Account not found!');</script>";*/
-       }
-    } 
-    else {
-      //echo "<div onload='checkField()'></div>";
-      echo "<script>window.location='index.php'</script>";
+        } 
+        else {
+          $error = "<div class='alert alert-danger alert-dismissible' role='alert'>
+            <div>Incorrect Username or Password!</div>
+            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+            </div>
+          ";
+          //echo "<input id='errorLogin' value='true' hidden>";
+          //echo "<div onload='checkAccount()'></div>";
+          //echo "<script>window.location='index.php'</script>";
+        }
     }
-  }
+}
 ?>
 
 <!doctype html>
@@ -62,6 +52,8 @@
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
   
+    <link href="./../bootstrap-5.2.2-dist/css/bootstrap.css" rel="stylesheet">
+    <script src="./../bootstrap-5.2.2-dist/js/bootstrap.js"></script>
   <link href="css/client.css" rel="stylesheet">
 </head>
 
@@ -72,22 +64,27 @@
         <h1 class="text-white">AlagApp</h1>
       </div>
       <div class="card p-3 ms-auto me-auto mb-5" style="max-width: 18rem;">
-        <form action="index.php" method="POST">
+        <form action="" method="POST">
           <div class="mb-3 text-center">
             <h3 class="text-success">Log In</h3>
           </div>
           <div id="liveAlertPlaceholder"></div>
-          <div id="ErrorAlert"></div>
+          <div id="errorLogin">
+            <?php
+              if($error != NULL){
+                echo $error;
+              }
+            ?>
+          </div>
           <div class="mb-3 input-group">
             <label class="input-group-text bg bg-success"><i class="bi bi-person" style="color: white;"></i></label>
-            <input id="email" name="email" type="text" class="form-control" placeholder="Email" required>
+            <input id="email" name="email" type="text" class="form-control" placeholder="Username" required>
           </div>
           <div class="input-group">
             <label class="input-group-text bg bg-success"><i class="bi bi-key" style="color: white;"></i></label>
             <input id="password" name="password" type="password" class="form-control" placeholder="Password" required>
           </div><br>
           <div class="mb-2">
-            <!--<a href="../php/client/_forgotpassword.php">Forgot Password</a>-->
           </div><br>
           <button onclick="checkField()" id="liveAlertBtn" type="submit" name="submit" class="btn btn-success w-100">Log In</button>
         </form>

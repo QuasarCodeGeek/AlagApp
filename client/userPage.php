@@ -4,7 +4,9 @@
     $user = $_REQUEST["userid"];
 
     session_start();
-    if($_SESSION["newsession"] == ""){
+    $set = md5(strval($user));
+    $_SESSION["newsession"] = $user.$set;
+    if($_SESSION["newsession"] != $_SESSION["setsession"] ){
       echo "<script>window.location='./index.php'</script>";
     }
 
@@ -46,6 +48,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
+    <link href="./../bootstrap-5.2.2-dist/css/bootstrap.css" rel="stylesheet">
+    <script src="./../bootstrap-5.2.2-dist/js/bootstrap.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 </head>
 
@@ -113,11 +117,11 @@
                       <div class='row p-2'>
                         <div class='col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3'>";
                             if($pict!=''){
-                                echo "<img class='mb-2  d-block mx-auto rounded' style='width: 18rem; max-height: 20rem;' src='../assets/uploads/".$pict."' alt='userProfile'>";
+                                echo "<img class='mb-2  d-block mx-auto rounded' style='height: auto; width:auto; max-width: 15rem;' src='../assets/uploads/".$pict."' alt='userProfile'>";
                             } else if ($sex=='F') {
-                                echo "<img class='mb-2  d-block mx-auto rounded' style='width: 18rem; max-height: 20rem;' src='../assets/default/female.png' alt='userProfile'>";
+                                echo "<img class='mb-2  d-block mx-auto rounded' style='height: auto; width:auto; max-width: 15rem;' src='../assets/default/female.png' alt='userProfile'>";
                             } else {
-                                echo "<img class='mb-2  d-block mx-auto rounded' style='width: 18rem; max-height: 20rem;' src='../assets/default/male.png' alt='userProfile'>";
+                                echo "<img class='mb-2  d-block mx-auto rounded' style='height: auto; width:auto; max-width: 15rem;' src='../assets/default/male.png' alt='userProfile'>";
                             }
                             echo "
                         </div>
@@ -139,7 +143,7 @@
                                     <label>Mobile No.: ".$mobile."</label>
                                 </div>
                                 <div class='col mb-2'>
-                                    <label>Email: ".$email."</label>
+                                    <label>Username: ".$email."</label>
                                 </div>";
                                 ?>
                                 <div class="col row mt-5">

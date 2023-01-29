@@ -1,6 +1,6 @@
 <?php
                   require("connector.php");
-                  $today = date('Y-m-d');
+                  $today = date("Y-m-d");
 
                   $sql = "SELECT alagapp_db.tbl_scheduler.*, alagapp_db.tbl_userlist.userfname, alagapp_db.tbl_petprofile.petname
                   FROM ((alagapp_db.tbl_scheduler
@@ -36,7 +36,7 @@
               </div></div>
               <div class='row m-auto'>
                 <p class='fst-italic' style='font-size: 12px;'>Owner: ".$row['userfname']."</p>
-                <p style='font-size: 12px;'>Description: ".$row['qdescription']."</p>
+                <p style='font-size: 12px;'>Service: ".$row['qdescription']."</p>
               </div>";
                 
                 if($row['qstatus'] == "Pending"){

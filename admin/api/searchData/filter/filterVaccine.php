@@ -1,4 +1,7 @@
-
+<?php
+  require("../../connector.php");
+  $search = $_REQUEST['filter'];
+?>
       <table class="table table-striped m-2">
         <thead class="bg bg-success text-white">
           <tr>
@@ -8,25 +11,23 @@
             <th>Brand</th>
             <th>Description</th>
             <th># Administered</th>
+            <th>Edit</th>
           </tr>
-          <?php include("./VaccineFilter.php"); ?>
+          <?php include("./../../reportData/vaccineFilter.php");?>
         </thead>
         <tbody>
         <?php
-        require("../../connector.php");
-        $search = $_REQUEST['filter'];
           $note = "SELECT * FROM alagapp_db.tbl_vaxxinfo
           WHERE
-            vaxname LIKE '".$search."' OR 
-            vaxtype LIKE '".$search."' OR
-            vaxbrand LIKE '".$search."'";
+            vaxtype = '".$search."' OR
+            vaxbrand = '".$search."'";
           $resnote = $connect->query($note);
           $resnote->execute();
           if($resnote->rowCount()>0){
             $i=1;
             while($rownote = $resnote->fetch(PDO::FETCH_ASSOC)){
 
-              $vaxdata = "SELECT COUNT(vaxid) AS vaxx FROM alagapp_db.tbl_vaxxcard WHERE vaxid LIKE ".$rownote['vaxid']."";
+              $vaxdata = "SELECT COUNT(vaxid) AS vaxx FROM alagapp_db.tbl_carddetail WHERE vaxid LIKE ".$rownote['vaxid']."";
               $resdata = $connect->query($vaxdata);
               $resdata->execute();
               $rowdata = $resdata->fetch(PDO::FETCH_ASSOC);
@@ -38,11 +39,12 @@
               <td>".$rownote['vaxbrand']."</td>
               <td>".$rownote['vaxdes']."</td>
               <td>".$rowdata['vaxx']."</td>
+              <td><button class='btn' onclick='vaccineEdit(".$rownote['vaxid'].")' data-bs-toggle='modal' data-bs-target='#boxModal'><i class='bi bi-pencil-square'></i></button></td>            
             </tr>";
             $i++;
             }
           } else {
-            echo "<tr><td colspan-\"7\">No Record!</td></tr>";
+            echo "<tr><td colspan=\"7\" class='text-center'>No Record!</td></tr>";
           }
         ?>
         </tbody>

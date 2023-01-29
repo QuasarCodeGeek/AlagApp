@@ -1,4 +1,6 @@
-
+<?php
+  require("../connector.php");
+?>
       <table class="table table-striped m-2">
         <thead class="bg bg-success text-white">
           <tr>
@@ -9,10 +11,10 @@
             <th>Veterinarian</th>
             <th>Date</th>
           </tr>
+          <?php include("./../reportData/noteFilter.php");?>
         </thead>
         <tbody>
         <?php
-        require("../connector.php");
         $cnt = "SELECT COUNT(nid) as count FROM alagapp_db.tbl_notedetail;";
             $res = $connect->query($cnt);
             $res->execute();
@@ -37,12 +39,12 @@
               <td>".$rownote['userfname']." ".$rownote['userlname']."</td>
               <td>".$rownote['ndescription']."</td>
               <td>".$rownote['nvet']."</td>
-              <td>".$rownote['ndate']."</td>
+              <td>".date("d/M/Y", strtotime($rownote['ndate']))."</td>
             </tr>";
             $i++;
             }
           } else {
-            echo "<tr><td colspan-\"7\">No Record!</td></tr>";
+            echo "<tr><td colspan=\"6\" class='text-center'>No Record!</td></tr>";
           }
         ?>
         </tbody>

@@ -26,10 +26,10 @@
           WHERE
             pettype = '".$search."' OR
             petbreed = '".$search."' OR
-            petweight = '".$search."' OR
-            petmark = '".$search."' OR
+            petweight LIKE '".$search."%' OR
+            petmark LIKE '".$search."%' OR
             petbdate = '".$search."' OR
-            petage = '".$search."' OR
+            petage LIKE '".$search."%' OR
             petgender = '".$search."'";
           $resnote = $connect->query($note);
           $resnote->execute();
@@ -45,14 +45,14 @@
               <td>".$rownote['petbreed']."</td>
               <td>".$rownote['petweight']."</td>
               <td>".$rownote['petmark']."</td>
-              <td>".$rownote['petbdate']."</td>
+              <td>".date("d/M/Y", strtotime($rownote['petbdate']))."</td>
               <td>".$rownote['petage']."</td>
               <td>".$rownote['petgender']."</td>
             </tr>";
             $i++;
             }
           } else {
-            echo "<tr><td colspan-\"7\">No Record!</td></tr>";
+            echo "<tr><td colspan=\"10\" class='text-center'>No Record!</td></tr>";
           }
         ?>
         </tbody>

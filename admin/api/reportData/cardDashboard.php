@@ -26,6 +26,8 @@ if($_SESSION["adminsession"] == ""){
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <!-- Custom CSS -->
+    <link href="./../../../bootstrap-5.2.2-dist/css/bootstrap.css" rel="stylesheet">
+    <script src="./../../../bootstrap-5.2.2-dist/js/bootstrap.js"></script>
     <link rel="stylesheet" href="../../css/styles.css">
 </head>
 <body class="bg bg-light">
@@ -167,8 +169,8 @@ if($_SESSION["adminsession"] == ""){
               <td>".$rowcard['vaxname']."</td>
               <td>".$rowcard['cvet']."</td>
               <td>".$rowcard['cweight']."</td>
-              <td>".$rowcard['cdate']."</td>
-              <td>".$rowcard['cnext']."</td>
+              <td>".date("d/M/Y", strtotime($rowcard['cdate']))."</td>
+              <td>".date("d/M/Y", strtotime($rowcard['cnext']))."</td>
             </tr>";
             $i++;
             }

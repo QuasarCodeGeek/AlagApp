@@ -1,6 +1,7 @@
 <?php
     require("../connector.php");
 
+    session_start();
     if(isset($_POST["submit"])){
         $vid = $_POST["vaxid"];
         $name = $_POST["name"];
@@ -9,7 +10,8 @@
         $description = $_POST["description"];
         
         if($name=="" || $type=="" || $brand=="" || $description==""){
-            echo "<script>window.location='../../dashboard.php'</script>";
+            $_SESSION["trigger"] = "editEVaccine";
+            echo "<script>window.location='../reportData/vaccineDashboard.php'</script>";
         } else {
             $sql = "UPDATE alagapp_db.tbl_vaxxinfo SET
                 vaxname = :vaxname,
@@ -31,9 +33,11 @@
             $result->execute($values);
 
             if($result->rowCount()>0) {
-               echo "<script>window.location='../../dashboard.php'</script>";
+                $_SESSION["trigger"] = "editVaccine";
+                echo "<script>window.location='../reportData/vaccineDashboard.php'</script>";
             } else {
-                echo "<script>window.location='../../dashboard.php'</script>";
+                $_SESSION["trigger"] = "editEVaccine";
+                echo "<script>window.location='../reportData/vaccineDashboard.php'</script>";
             }
         }
     }

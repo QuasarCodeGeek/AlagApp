@@ -5,7 +5,7 @@
     </th>
     <th>
         <select class="form-select" aria-label="Default select example" id="type" onchange="filterPet()">
-            <option selected value=""></option>
+            <option selected value="">-Pet Type-</option>
             <?php
                 $pt = "SELECT * FROM alagapp_db.tbl_petprofile GROUP BY pettype HAVING COUNT(pettype) >= 1";
                 $res = $connect->query($pt);
@@ -23,7 +23,7 @@
     </th>
     <th>
         <select class="form-select" aria-label="Default select example" id="breed" onchange="filterPet()">
-            <option selected></option>
+            <option selected value="">-Select Pet Breed-</option>
             <?php
                 $pt = "SELECT * FROM alagapp_db.tbl_petprofile GROUP BY petbreed HAVING COUNT(petbreed) >= 1";
                 $res = $connect->query($pt);
@@ -40,13 +40,14 @@
         </select>
     </th>
     <th>
-        <input type="number" class="form-control" id="weight" onkeyup="filterPet()">
+        <input type="text" class="form-control" id="weight" onchange="filterPet()" placeholder="Enter Weight">
     </th>
     <th>
-        <select class="form-select" aria-label="Default select example" id="mark" onchange="filterPet()">
+        <input type="text" class="form-control" id="mark" onchange="filterPet()" placeholder="Enter Color/Marking">
+        <!--<select class="form-select" aria-label="Default select example" id="mark" onchange="filterPet()">
             <option selected></option>
             <?php
-                $pt = "SELECT * FROM alagapp_db.tbl_petprofile GROUP BY petmark HAVING COUNT(petmark) >= 1";
+                /*$pt = "SELECT * FROM alagapp_db.tbl_petprofile GROUP BY petmark HAVING COUNT(petmark) >= 1";
                 $res = $connect->query($pt);
                 $res->execute();
 
@@ -56,19 +57,19 @@
                         echo "<option value='".$row['petmark']."'>".$row['petmark']."</option>";
                         $i++;
                     }
-                }
+                }*/
             ?>
-        </select>
+        </select>-->
     </th>
     <th>
-        <input type="date" class="form-control" id="date" onkeyup="filterPet()">
+        <input type="date" class="form-control" id="date" onchange="filterPet()">
     </th>
     <th>
-        <input type="number" class="form-control" id="age" onkeyup="filterPet()">
+        <input type="text" class="form-control" id="age" onchange="filterPet()" placeholder="Enter Age">
     </th>
     <th>
         <select class="form-select" aria-label="Default select example" id="gender" onchange="filterPet()">
-            <option selected></option>
+            <option selected value="">-Gender-</option>
             <option value="M">M</option>
             <option value="F">F</option>
         </select>

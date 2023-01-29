@@ -19,19 +19,23 @@
     $status = "Pending";
     $time = "09:30 am";
 
+    $set = 1;
+
     $sql = "INSERT INTO alagapp_db.tbl_scheduler(
         userid,
         petid,
         qdescription,
         qtime,
         qdate,
-        qstatus) VALUES(
+        qstatus,
+        qset) VALUES(
             :userid,
             :petid,
             :qdescription,
             :qtime,
             :qdate,
-            :qstatus)";
+            :qstatus,
+            :qset)";
 
     $result = $connect->prepare($sql);
 
@@ -41,7 +45,8 @@
         ":qdescription"=>$description,
         ":qtime"=>$time,
         ":qdate"=>$next,
-        ":qstatus"=>$status
+        ":qstatus"=>$status,
+        ":qset"=>$set
     );
 
     $result->execute($values);

@@ -143,17 +143,18 @@ if($_SESSION["adminsession"] == ""){
             <th># Administered</th>
             <th>Edit</th>
           </tr>
+          <?php include("./vaccineFilter.php");?>
         </thead>
         <tbody>
         <?php
           $vaxx = "SELECT * FROM alagapp_db.tbl_vaxxinfo ORDER BY vaxid DESC";
           $resvaxx = $connect->query($vaxx);
           $resvaxx->execute();
-          if($resvax->rowCount()>0){
+          if($resvaxx->rowCount()>0){
             $i=1;
             while($rowvaxx = $resvaxx->fetch(PDO::FETCH_ASSOC)){
 
-              $vaxdata = "SELECT COUNT(vaxid) AS vaxx FROM alagapp_db.tbl_vaxxcard WHERE vaxid LIKE ".$rowvaxx['vaxid']."";
+              $vaxdata = "SELECT COUNT(vaxid) AS vaxx FROM alagapp_db.tbl_carddetail WHERE vaxid LIKE ".$rowvaxx['vaxid']."";
               $resdata = $connect->query($vaxdata);
               $resdata->execute();
               $rowdata = $resdata->fetch(PDO::FETCH_ASSOC);
@@ -192,6 +193,8 @@ if($_SESSION["adminsession"] == ""){
   integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
 </script>
 <!-- Chart Javascript Library -->
+<link href="./../../../bootstrap-5.2.2-dist/css/bootstrap.css" rel="stylesheet">
+    <script src="./../../../bootstrap-5.2.2-dist/js/bootstrap.js"></script>
 <script
   src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
 </script>

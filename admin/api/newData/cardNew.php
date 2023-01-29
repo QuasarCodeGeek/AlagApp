@@ -1,6 +1,6 @@
 <?php
     require("../connector.php");
-
+    session_start();
     if(isset($_POST["submit"])){
         $user = $_POST["userid"];
         $pet = $_POST["petid"];
@@ -12,6 +12,7 @@
         $check = $_POST["check"];
 
         if($user=="" || $pet=="" || $vax=="" || $vet=="" || $date==""){
+            $_SESSION["trigger"] = "newECard";
             echo "<script>window.location='../profile.php?userid=".$user."'</script>";//Fields Required
         } else {
             $sql = "INSERT INTO alagapp_db.tbl_carddetail(
@@ -46,12 +47,17 @@
 
             if($result->rowCount()>0) {
 
-                if($check == "checked"){
+                if($check == "checked" AND date("d/M/Y", strtotime($next)) > date("d/M/Y")){
                     include("./autoSched.php");
+                } else {
+                    $_SESSION["trigger"] = "newECard";
+                    echo "<script>window.location='../profile.php?userid=".$user."'</script>";//Record Not Saved
                 }
+                $_SESSION["trigger"] = "newCard";
                 echo "<script>window.location='../profile.php?userid=".$user."'</script>";//Record Save
              } else {
-                 echo "<script>window.location='../profile.php?userid=".$user."'</script>";//Record Not Saved
+                $_SESSION["trigger"] = "newECard";
+                echo "<script>window.location='../profile.php?userid=".$user."'</script>";//Record Not Saved
              }
         }
     }

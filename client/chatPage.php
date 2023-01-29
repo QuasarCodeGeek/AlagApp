@@ -3,7 +3,9 @@
    
     $user = $_REQUEST["userid"];
     session_start();
-    if($_SESSION["newsession"] == ""){
+    $set = md5(strval($user));
+    $_SESSION["newsession"] = $user.$set;
+    if($_SESSION["newsession"] != $_SESSION["setsession"] ){
       echo "<script>window.location='./index.php'</script>";
     }
 
@@ -80,6 +82,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+  <link href="./../bootstrap-5.2.2-dist/css/bootstrap.css" rel="stylesheet">
+    <script src="./../bootstrap-5.2.2-dist/js/bootstrap.js"></script>
   <!-- Bootstrap CSS v5.2.1 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">

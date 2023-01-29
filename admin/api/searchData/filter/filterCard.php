@@ -28,7 +28,7 @@
             cdate = '".$search."' OR
             cnext = '".$search."' OR
             cvet = '".$search."' OR
-            cweight = '".$search."'";
+            cweight LIKE '".$search."%'";
           $rescard = $connect->query($card);
           $rescard->execute();
           if($rescard->rowCount()>0){
@@ -42,13 +42,13 @@
               <td>".$rowcard['vaxname']."</td>
               <td>".$rowcard['cvet']."</td>
               <td>".$rowcard['cweight']."</td>
-              <td>".$rowcard['cdate']."</td>
-              <td>".$rowcard['cnext']."</td>
+              <td>".date("dM/Y", strtotime($rowcard['cdate']))."</td>
+              <td>".date("d/M/Y", strtotime($rowcard['cnext']))."</td>
             </tr>";
             $i++;
             }
           } else {
-            echo "<tr><td colspan-\"7\">No Record!</td></tr>";
+            echo "<tr><td colspan=\"7\" class='text-center'>No Record!</td></tr>";
           }
         ?>
         </tbody>

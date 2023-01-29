@@ -4,6 +4,7 @@ function filterUser() {
     var province = document.getElementById("province").value;
     var date = document.getElementById("date").value;
     var gender = document.getElementById("gender").value;
+    var mobile = document.getElementById("mobile").value;
 
     if (district != ""){
         filter = district;
@@ -15,6 +16,8 @@ function filterUser() {
         filter = date;
     } else if (gender != ""){
         filter = gender;
+    } else if (mobile != ""){
+      filter = mobile;
     } 
 
         document.getElementById("table").style.display = "none";
@@ -123,19 +126,23 @@ function filterUser() {
   }
   
   function filterVaccine() {
-    var filter = document.getElementById("vaccine").value;
-      if(search != "") {
-        document.getElementById("table").style.display = "none";
-        const xhttp = new XMLHttpRequest();
-        xhttp.onload = function() {
-          document.getElementById("alter").innerHTML = this.responseText;
-        }
-        xhttp.open("GET", "../searchData/filter/filterVaccine.php?filter="+filter);
-        xhttp.send();
-      } else {
-        document.getElementById("altertable").style.display = "none";
-        document.getElementById("table").style.display = "block";
-      }
+    var type = document.getElementById("type").value;
+    var brand = document.getElementById("brand").value;
+
+    if (type != ""){
+      filter = type;
+    } else if (brand != ""){
+        filter = brand;
+    }
+    
+    document.getElementById("table").style.display = "none";
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function() {
+      document.getElementById("alter").innerHTML = this.responseText;
+    }
+    xhttp.open("GET", "../searchData/filter/filterVaccine.php?filter="+filter);
+    xhttp.send();
+      
   }
   
   function filterSymptom() {

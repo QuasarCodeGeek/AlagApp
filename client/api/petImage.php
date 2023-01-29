@@ -37,7 +37,7 @@
     // if everything is ok, try to upload file
     } else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-            echo "<script>window.location='../homeProfile.php?userid=".$user."'</script>;";
+            echo "<script>window.location='../homePage.php?userid=".$user."'</script>;";
     } else {
         echo "<script>window.location='../homePage.php?userid=".$user."'</script>;";
     }
@@ -54,8 +54,10 @@
         $row = $res->fetch(PDO::FETCH_ASSOC);
 
         session_start();
-        if($_SESSION["newsession"] == ""){
-        echo "<script>window.location='./../index.php'</script>";
+        $set = md5(strval($row['userid']));
+        $_SESSION["newsession"] = $row['userid'].$set;
+        if($_SESSION["newsession"] != $_SESSION["setsession"] ){
+          echo "<script>window.location='./../index.php'</script>";
         }
 
         echo "<form action='api/petImage.php' method='POST' enctype='multipart/form-data'>

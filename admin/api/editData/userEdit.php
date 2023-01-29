@@ -1,6 +1,7 @@
 <?php
     require("../connector.php");
 
+    session_start();
     if(isset($_POST["submit"])){
         $id = $_POST["id"];
         $fname = $_POST["fname"];
@@ -15,6 +16,7 @@
         $mobile = $_POST["mobile"];
 
         if($fname=="" || $lname=="" || $bdate=="" || $gender=="" || $district=="" || $municipality=="" || $province ==""){
+            $_SESSION["trigger"] = "editEUser";
             echo "<script>window.location='../profile.php?userid=".$id."'</script>";
         } else {
             $sql = "UPDATE alagapp_db.tbl_userlist SET
@@ -51,9 +53,11 @@
             $result->execute($values);
 
             if($result->rowCount()>0) {
+                $_SESSION["trigger"] = "editUser";
                 echo "<script>window.location='../profile.php?userid=".$id."'</script>";
              } else {
-                 echo "<script>window.location='../profile.php?userid=".$id."'</script>";
+                $_SESSION["trigger"] = "editEUser";
+                echo "<script>window.location='../profile.php?userid=".$id."'</script>";
              }
         }
     }

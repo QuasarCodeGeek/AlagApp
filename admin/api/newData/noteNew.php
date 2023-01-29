@@ -1,5 +1,6 @@
 <?php
     require("../connector.php");
+    session_start();
     if(isset($_POST["submit"])){
         $user = $_POST["userid"];
         $pet = $_POST["petid"];
@@ -8,6 +9,7 @@
         $vet = $_POST["vet"];
 
         if($user=="" || $pet=="" || $description=="" || $date=="" || $vet==""){
+            $_SESSION["trigger"] = "newENote";
             echo "<script>window.location='../profile.php?userid=".$user."'</script>";//Fields Required
         } else {
             $sql = "INSERT INTO alagapp_db.tbl_notedetail(
@@ -35,9 +37,11 @@
             $result->execute($values);
 
             if($result->rowCount()>0) {
+                $_SESSION["trigger"] = "newNote";
                 echo "<script>window.location='../profile.php?userid=".$user."'</script>";//Saved
              } else {
-                 echo "<script>window.location='../profile.php?userid=".$user."'</script>";//Not Saved
+                $_SESSION["trigger"] = "newENote";
+                echo "<script>window.location='../profile.php?userid=".$user."'</script>";//Not Saved
              }
         }
     };

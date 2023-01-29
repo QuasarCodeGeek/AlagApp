@@ -1,6 +1,7 @@
 <?php
     require("../connector.php");
 
+    session_start();
     if(isset($_POST["submit"])){
         
         $pet = $_POST["petid"];
@@ -15,6 +16,7 @@
         $petgender = $_POST["petgender"];
 
         if($owner=="" || $petname=="" || $pettype=="" || $petbreed=="" || $petbdate=="" || $petage =="" || $petgender==""){
+            $_SESSION["trigger"] = "editEPet";
             echo "<script>window.location='../profile.php?userid=".$owner."'</script>";
         } else {
 
@@ -47,10 +49,12 @@
             $result = $connect->prepare($update);
             
             $result->execute($val);
-
+                
             if($result->rowCount()>0) {
+                $_SESSION["trigger"] = "editPet";
                 echo "<script>window.location='../profile.php?userid=".$owner."'</script>";
              } else {
+                $_SESSION["trigger"] = "editEPet";
                 echo "<script>window.location='../profile.php?userid=".$owner."'</script>";
              }
         }
@@ -121,7 +125,7 @@
             <span class='input-group-text'>Birth Date</span>
             <input class='form-control' type='date' name='petbdate' value='".$petbdate."'>
             <span class='input-group-text'>Age</span>
-            <input class='form-control' type='number' placeholder=\"Age\" name='petage' value='".$petage."'>
+            <input class='form-control' type='text' placeholder=\"Age\" name='petage' value='".$petage."'>
             <label class='input-group-text' for='inputGenderSelect'>Gender</label>
                 <select class='form-select' name='petgender' id='inputGenderSelect'>
                     <option selected=".$petgender." value='".$petgender."'>".$petgender."</option>

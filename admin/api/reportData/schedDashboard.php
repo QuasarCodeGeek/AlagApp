@@ -26,6 +26,8 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <!-- Custom CSS -->
+    <link href="./../../../bootstrap-5.2.2-dist/css/bootstrap.css" rel="stylesheet">
+    <script src="./../../../bootstrap-5.2.2-dist/js/bootstrap.js"></script>
     <link rel="stylesheet" href="../../css/styles.css">
 </head>
 <body class="bg bg-light">
@@ -139,7 +141,7 @@
             <th>Pet</th>
             <th>Owner</th>
             <th>Description</th>
-            <th>Date(Fr - To)</th>
+            <th>Date</th>
             <th>Status</th>
           </tr>
           <?php include("./schedFilter.php");?>
@@ -162,7 +164,7 @@
               <td>".$rowdata['petname']."</td>
               <td>".$rowdata['userfname']." ".$rowdata['userlname']."</td>
               <td>".$rowdata['qdescription']."</td>
-              <td>".$rowdata['qdate']."</td>
+              <td>".date("d/M/Y", strtotime($rowdata['qdate']))."</td>
               <td>".$rowdata['qstatus']."</td>
             </tr>";
             $i++;

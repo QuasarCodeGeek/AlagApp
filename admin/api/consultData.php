@@ -29,20 +29,20 @@
         </div>
     </div>
 
-    <div class="row m-auto" id="alter">
+  <div class="row m-auto" id="alter">
     </div>
-    <div class="row m-auto" id="table">
+  <div class="row m-auto" id="table">
     <table class="table table-striped">
         <thead class="bg bg-success text-white">
           <tr>
             <th>#</th>
-            <th>User</th>
-            <th># Pets</th>
-            <th># Vaccination</th>
-            <th># Prescription</th>
-            <th># Schedules</th>
-            <th># Chats</th>
-            <th># Calls</th>
+            <th>User <span class="float-end">No. of set</span></th>
+            <th>/Pets</th>
+            <th>/Vaccination</th>
+            <th>/Prescription</th>
+            <th>/Schedules</th>
+            <th>/Chats</th>
+            <th>/Calls</th>
           </tr>
         </thead>
         <tbody>
@@ -101,5 +101,5 @@
         ?>
         </tbody>
     </table>
-</div>
+  </div>
 </div>

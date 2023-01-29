@@ -1,6 +1,7 @@
 <?php
     require("../connector.php");
 
+    session_start();
     if(isset($_POST["submit"])){
         $qid = $_POST["qid"];
         $user = $_POST["userid"];
@@ -11,6 +12,7 @@
         $status = $_POST["status"];
 
         if($user=="" || $pet=="" || $description=="" || $date=="" || $status==""){
+            $_SESSION["trigger"] = "editESched";
             echo "<script>window.location='../sched_profile.php?userid=".$user."'</script>";
         } else {
             $sql = "UPDATE alagapp_db.tbl_scheduler SET
@@ -37,9 +39,11 @@
             $result->execute($values);
 
             if($result->rowCount()>0) {
+                $_SESSION["trigger"] = "editSched";
                 echo "<script>window.location='../sched_profile.php?userid=".$user."'</script>";
              } else {
-                 echo "<script>window.location='../sched_profile.php?userid=".$user."'</script>";
+                $_SESSION["trigger"] = "editESched";
+                echo "<script>window.location='../sched_profile.php?userid=".$user."'</script>";
              }
         }
     }

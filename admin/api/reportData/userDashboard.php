@@ -25,6 +25,8 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <!-- Custom CSS -->
+    <link href="./../../../bootstrap-5.2.2-dist/css/bootstrap.css" rel="stylesheet">
+    <script src="./../../../bootstrap-5.2.2-dist/js/bootstrap.js"></script>
     <link rel="stylesheet" href="../../css/styles.css">
 </head>
 <body class="bg bg-light">
@@ -162,7 +164,7 @@
               <td>".$rowuser['userdistrict']."</td>
               <td>".$rowuser['usermunicipality']."</td>
               <td>".$rowuser['userprovince']."</td>
-              <td>".$rowuser['userbdate']."</td>
+              <td>".date("d/M/Y", strtotime($rowuser['userbdate']))."</td>
               <td>".$rowuser['usergender']."</td>
               <td>".$rowuser['usermobile']."</td>
             </tr>";

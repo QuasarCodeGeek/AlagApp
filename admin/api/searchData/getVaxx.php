@@ -11,6 +11,7 @@ $search = $_REQUEST['search'];
             <th>Brand</th>
             <th>Description</th>
             <th># Administered</th>
+            <th>Edit</th>
           </tr>
         </thead>
         <tbody>
@@ -27,7 +28,7 @@ $search = $_REQUEST['search'];
             $i=1;
             while($rownote = $resnote->fetch(PDO::FETCH_ASSOC)){
 
-              $vaxdata = "SELECT COUNT(vaxid) AS vaxx FROM alagapp_db.tbl_vaxxcard WHERE vaxid LIKE ".$rownote['vaxid']."";
+              $vaxdata = "SELECT COUNT(vaxid) AS vaxx FROM alagapp_db.tbl_carddetail WHERE vaxid LIKE ".$rownote['vaxid']."";
               $resdata = $connect->query($vaxdata);
               $resdata->execute();
               $rowdata = $resdata->fetch(PDO::FETCH_ASSOC);
@@ -39,11 +40,12 @@ $search = $_REQUEST['search'];
               <td>".$rownote['vaxbrand']."</td>
               <td>".$rownote['vaxdes']."</td>
               <td>".$rowdata['vaxx']."</td>
+              <td><button class='btn' onclick='vaccineEdit(".$rowdata['vaxid'].")' data-bs-toggle='modal' data-bs-target='#boxModal'><i class='bi bi-pencil-square'></i></button></td>
             </tr>";
             $i++;
             }
           } else {
-            echo "<tr><td colspan-\"7\">No Record!</td></tr>";
+            echo "<tr><td colspan=\"7\" class='text-center'>No Record!</td></tr>";
           }
         ?>
         </tbody>

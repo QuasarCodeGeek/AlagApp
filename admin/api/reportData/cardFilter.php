@@ -7,7 +7,7 @@
     </th>
     <th>
         <select class="form-select" aria-label="Default select example" id="vaxx" onchange="filterCard()">
-            <option selected></option>
+            <option selected value="">-Select Vaccine-</option>
             <?php
                 $vaxx = "SELECT * FROM alagapp_db.tbl_vaxxinfo";
                 $vres = $connect->query($vaxx);
@@ -25,7 +25,7 @@
     </th>
     <th>
         <select class="form-select" aria-label="Default select example" id="vet" onchange="filterCard()">
-            <option selected></option>
+            <option selected value="">-Select Vet-</option>
             <?php
                 $vet = "SELECT * FROM alagapp_db.tbl_carddetail GROUP BY cvet HAVING COUNT(cvet) >= 1";
                 $vres = $connect->query($vet);
@@ -42,7 +42,7 @@
         </select>
     </th>
     <th>
-        <input type="number" class="form-control" id="weight" onchange="filterCard()">
+        <input type="text" class="form-control" id="weight" onchange="filterCard()" placeholder="Enter Weight">
     </th>
     <th>
         <input type="date" class="form-control" id="date" onchange="filterCard()">

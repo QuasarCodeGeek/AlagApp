@@ -26,6 +26,8 @@ if($_SESSION["adminsession"] == ""){
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <!-- Custom CSS -->
+    <link href="./../../../bootstrap-5.2.2-dist/css/bootstrap.css" rel="stylesheet">
+    <script src="./../../../bootstrap-5.2.2-dist/js/bootstrap.js"></script>
     <link rel="stylesheet" href="../../css/styles.css">
 </head>
 <body class="bg bg-light">
@@ -164,7 +166,7 @@ if($_SESSION["adminsession"] == ""){
               <td>".$rownote['userfname']." ".$rownote['userlname']."</td>
               <td>".$rownote['ndescription']."</td>
               <td>".$rownote['nvet']."</td>
-              <td>".$rownote['ndate']."</td>
+              <td>".date("d/M/Y", strtotime($rownote['ndate']))."</td>
             </tr>";
             $i++;
             }

@@ -48,14 +48,14 @@ $search = $_REQUEST['search'];
               <td>".$rownote['petbreed']."</td>
               <td>".$rownote['petweight']."</td>
               <td>".$rownote['petmark']."</td>
-              <td>".$rownote['petbdate']."</td>
+              <td>".date("d/M/Y", strtotime($rownote['petbdate']))."</td>
               <td>".$rownote['petage']."</td>
               <td>".$rownote['petgender']."</td>
             </tr>";
             $i++;
             }
           } else {
-            echo "<tr><td colspan-\"7\">No Record!</td></tr>";
+            echo "<tr><td colspan=\"10\" class='text-center'>No Record!</td></tr>";
           }
         ?>
         </tbody>

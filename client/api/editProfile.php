@@ -4,9 +4,11 @@
     $user = $_REQUEST["userid"];
 
     session_start();
-    if($_SESSION["newsession"] == ""){
-      echo "<script>window.location='./../index.php'</script>";
-    }
+        $set = md5(strval($user));
+        $_SESSION["newsession"] = $user.$set;
+        if($_SESSION["newsession"] != $_SESSION["setsession"] ){
+          echo "<script>window.location='./../index.php'</script>";
+        }
 
     $picture = "SELECT * FROM alagapp_db.tbl_userlist WHERE userid = ".$user." ";
         $checkpict = $connect->prepare($picture);
@@ -47,6 +49,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
+    <link href="./../bootstrap-5.2.2-dist/css/bootstrap.css" rel="stylesheet">
+    <script src="./../bootstrap-5.2.2-dist/js/bootstrap.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 </head>
 
@@ -136,11 +140,11 @@
                       <div class='row p-2'>
                         <div class='col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3'>";
                             if($pict!=''){
-                                echo "<img class='mx-auto d-block mb-2 rounded' style='width: 18rem; max-height: 20rem; margin-left: auto; margin-right: auto;' src='../../assets/uploads/".$pict."' alt='userProfile'>";
+                                echo "<img class='mx-auto d-block mb-2 rounded' style='width: 15rem; max-height: 20rem; margin-left: auto; margin-right: auto;' src='../../assets/uploads/".$pict."' alt='userProfile'>";
                             } else if ($sex=='F') {
-                                echo "<img class='mx-auto d-block mb-2 rounded' style='width: 18rem; max-height: 20rem; margin-left: auto; margin-right: auto;' src='../../assets/default/female.png' alt='userProfile'>";
+                                echo "<img class='mx-auto d-block mb-2 rounded' style='width: 15rem; max-height: 20rem; margin-left: auto; margin-right: auto;' src='../../assets/default/female.png' alt='userProfile'>";
                             } else {
-                                echo "<img class='mx-auto d-block mb-2 rounded' style='width: 18rem; max-height: 20rem; margin-left: auto; margin-right: auto;' src='../../assets/default/male.png' alt='userProfile'>";
+                                echo "<img class='mx-auto d-block mb-2 rounded' style='width: 15rem; max-height: 20rem; margin-left: auto; margin-right: auto;' src='../../assets/default/male.png' alt='userProfile'>";
                             }
                             echo "
                             <div class='row m-2 mx-auto d-block'>
@@ -177,8 +181,8 @@
                                     <input type='text' class='form-control' name='mobile' placeholder=\"Enter 11 digits number\"  value='".$mobile."'>
                                 </div><br>
                                 <div class='col mb-2'>
-                                    <label class='form-label'>Email</label>
-                                    <input type='text' class='form-control' name='email' placeholder=\"name@example.com\"  value='".$email."'>
+                                    <label class='form-label'>Username</label>
+                                    <input type='text' class='form-control' name='email' placeholder=\"Enter Username\"  value='".$email."'>
                                 </div><br>
                                 <div class='col mb-2'>
                                     <label class='form-label'>Password</label>

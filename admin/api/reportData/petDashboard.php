@@ -25,6 +25,8 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <!-- Custom CSS -->
+    <link href="./../../../bootstrap-5.2.2-dist/css/bootstrap.css" rel="stylesheet">
+    <script src="./../../../bootstrap-5.2.2-dist/js/bootstrap.js"></script>
     <link rel="stylesheet" href="../../css/styles.css">
 </head>
 <body class="bg bg-light">
@@ -111,7 +113,7 @@
         <div class="col-2 m-auto">
           <label class="fw-bold text-sucess">Total Pets: <?php echo $rowdata['count'];?></label>
         </div>
-        <div class="col">
+        <div class="col-6">
           <div class="row">
             <div class="col">
               <input class="form-control w-100" id="pet" type="text">
@@ -168,7 +170,7 @@
               <td>".$rowpet['petbreed']."</td>
               <td>".$rowpet['petweight']."</td>
               <td>".$rowpet['petmark']."</td>
-              <td>".$rowpet['petbdate']."</td>
+              <td>".date("d/M/Y", strtotime($rowpet['petbdate']))."</td>
               <td>".$rowpet['petage']."</td>
               <td>".$rowpet['petgender']."</td>
             </tr>";

@@ -1,4 +1,6 @@
-
+<?php
+  require("../connector.php");
+?>
       <table class="table table-striped m-2">
         <thead class="bg bg-success text-white">
           <tr>
@@ -11,10 +13,10 @@
             <th>Date</th>
             <th>Due Date</th>
           </tr>
+          <?php include("./../reportData/cardFilter.php");?>
         </thead>
         <tbody>
         <?php
-        require("../connector.php");
         $cnt = "SELECT COUNT(cid) as count FROM alagapp_db.tbl_carddetail;";
             $res = $connect->query($cnt);
             $res->execute();
@@ -41,13 +43,13 @@
               <td>".$rowcard['vaxname']."</td>
               <td>".$rowcard['cvet']."</td>
               <td>".$rowcard['cweight']."</td>
-              <td>".$rowcard['cdate']."</td>
-              <td>".$rowcard['cnext']."</td>
+              <td>".date("d/M/Y", strtotime($rowcard['cdate']))."</td>
+              <td>".date("d/M/Y", strtotime($rowcard['cnext']))."</td>
             </tr>";
             $i++;
             }
           } else {
-            echo "<tr><td colspan-\"7\">No Record!</td></tr>";
+            echo "<tr><td colspan=\"7\" class='text-center'>No Record!</td></tr>";
           }
         ?>
         </tbody>

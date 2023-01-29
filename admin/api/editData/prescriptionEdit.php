@@ -1,6 +1,7 @@
 <?php
     require("../connector.php");
 
+    session_start();
     if(isset($_POST["submit"])){
         $nid = $_POST["nid"];
         $user = $_POST["userid"];
@@ -11,6 +12,7 @@
         $vet = $_POST["vet"];
 
         if($user=="" || $pet=="" || $description=="" || $date=="" || $vet==""){
+            $_SESSION["trigger"] = "editENote";
             echo "<script>window.location='profile.php?userid=".$user."'</script>";
         } else {
             $sql = "UPDATE alagapp_db.tbl_notedetail SET
@@ -37,9 +39,11 @@
             $result->execute($values);
 
             if($result->rowCount()>0) {
+                $_SESSION["trigger"] = "editNote";
                 echo "<script>window.location='../profile.php?userid=".$user."'</script>";
              } else {
-                 echo "<script>window.location='../profile.php?userid=".$user."'</script>";
+                $_SESSION["trigger"] = "editENote";
+                echo "<script>window.location='../profile.php?userid=".$user."'</script>";
              }
         }
     }

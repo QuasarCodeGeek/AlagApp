@@ -1,4 +1,6 @@
-
+<?php
+  require("../connector.php");
+?>
       <table class="table table-striped m-2">
         <thead class="bg bg-success text-white">
           <tr>
@@ -9,10 +11,10 @@
             <th>Date</th>
             <th>Status</th>
           </tr>
+          <?php include("./../reportData/schedFilter.php");?>
         </thead>
         <tbody>
         <?php
-        require("../connector.php");
         
         $cnt = "SELECT COUNT(qid) as count FROM alagapp_db.tbl_scheduler;";
             $res = $connect->query($cnt);
@@ -38,13 +40,13 @@
               <td>".$rownote['petname']."</td>
               <td>".$rownote['userfname']." ".$rownote['userlname']."</td>
               <td>".$rownote['qdescription']."</td>
-              <td>".$rownote['qdate']."</td>
+              <td>".date("d/M/Y", strtotime($rownote['qdate']))."</td>
               <td>".$rownote['qstatus']."</td>
             </tr>";
             $i++;
             }
           } else {
-            echo "<tr><td colspan-\"7\">No Record!</td></tr>";
+            echo "<tr><td colspan=\"6\" class='text-center'>No Record!</td></tr>";
           }
         ?>
         </tbody>

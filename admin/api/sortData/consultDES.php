@@ -1,18 +1,21 @@
+<?php
+  require("../connector.php");
+?>
 <table class="table table-striped m-2">
         <thead class="bg bg-success text-white">
           <tr>
             <th>#</th>
-            <th>User</th>
-            <th>Pets</th>
-            <th>Schedules</th>
-            <th>Chats</th>
-            <th>Calls</th>
+            <th>User <span class="float-end">No. of set</span></th>
+            <th>/Pets</th>
+            <th>/Vaccination</th>
+            <th>/Prescription</th>
+            <th>/Schedules</th>
+            <th>/Chats</th>
+            <th>/Calls</th>
           </tr>
         </thead>
         <tbody>
         <?php
-            require("../connector.php");
-
             $cnt = "SELECT COUNT(userid) as count FROM alagapp_db.tbl_userlist;";
             $res = $connect->query($cnt);
             $res->execute();
@@ -34,6 +37,16 @@
                 $respet->execute();
                 $rowpet = $respet->fetch(PDO::FETCH_ASSOC);
 
+                $carddata = "SELECT COUNT(cid) AS ccard FROM alagapp_db.tbl_carddetail WHERE userid = ".$rowdata['userid']."";
+                $resnote = $connect->query($carddata);
+                $resnote->execute();
+                $rowcard = $resnote->fetch(PDO::FETCH_ASSOC);
+
+                $notedata = "SELECT COUNT(nid) AS cnote FROM alagapp_db.tbl_notedetail WHERE userid = ".$rowdata['userid']."";
+                $resnote = $connect->query($notedata);
+                $resnote->execute();
+                $rownote = $resnote->fetch(PDO::FETCH_ASSOC);
+
                 $scheddata = "SELECT COUNT(qid) AS csched FROM alagapp_db.tbl_scheduler WHERE userid = ".$rowdata['userid']."";
                 $ressched = $connect->query($scheddata);
                 $ressched->execute();
@@ -53,6 +66,8 @@
               <td>".$i."</td>
               <td>".$rowdata['userfname']." ".$rowdata['userlname']."</td>
               <td>".$rowpet['cpet']."</td>
+              <td>".$rowcard['ccard']."</td>
+              <td>".$rownote['cnote']."</td>
               <td>".$rowsched['csched']."</td>
               <td>".$rowchat['cchat']."</td>
               <td>".$rowcall['ccall']."</td>

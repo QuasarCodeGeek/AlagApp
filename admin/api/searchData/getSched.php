@@ -38,13 +38,13 @@ $search = $_REQUEST['search'];
               <td>".$rownote['petname']."</td>
               <td>".$rownote['userfname']." ".$rownote['userlname']."</td>
               <td>".$rownote['qdescription']."</td>
-              <td>".$rownote['qdate']."</td>
+              <td>".date("d/M/Y", strtotime($rownote['qdate']))."</td>
               <td>".$rownote['qstatus']."</td>
             </tr>";
             $i++;
             }
           } else {
-            echo "<tr><td colspan-\"7\">No Record!</td></tr>";
+            echo "<tr><td colspan=\"6\" class='text-center'>No Record!</td></tr>";
           }
         ?>
         </tbody>

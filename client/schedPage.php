@@ -4,7 +4,9 @@
     $user = $_REQUEST["userid"];
 
     session_start();
-    if($_SESSION["newsession"] == ""){
+    $set = md5(strval($user));
+    $_SESSION["newsession"] = $user.$set;
+    if($_SESSION["newsession"] != $_SESSION["setsession"] ){
       echo "<script>window.location='./index.php'</script>";
     }
 
@@ -31,7 +33,8 @@
   <!-- Bootstrap CSS v5.2.1 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-
+    <link href="./../bootstrap-5.2.2-dist/css/bootstrap.css" rel="stylesheet">
+    <script src="./../bootstrap-5.2.2-dist/js/bootstrap.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 </head>
 
@@ -168,43 +171,49 @@
                                 while($row = $checksched->fetch(PDO::FETCH_ASSOC)){
     
                         echo "<div class='col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4'>
-                            <div class='card card-body m-2'>
-                                <div class='row'>
-                                    <div class='col-12 col-sm col-md col-lg col-xl'>
-                                        <label>Pet: ".$row['petname']."</label><br>
-                                        <label>Description: ".$row['qdescription']."</label>
+                        <div class='card m-2 p-2'>
+                            <div class='border border-2 border-success rounded'>
+                                <div class='row m-auto'>
+                                    <div class='col'>
+                                        <div class='row m-auto'>
+                                            <label class='flex-start fw-bold text-success'>Pet: ".$row['petname']."</label>
+                                        </div>
+                                        <div class='row m-auto'>
+                                            <label class='flex-start fw-bold'>Status: ".$row['qstatus']."</label>
+                                        </div>
                                     </div>
-                                    <div class='col-12 col-sm col-md col-lg col-xl'>
-                                        <label>Date: ".$row['qdate']."</label><br>
-                                        <label>Status: ".$row['qstatus']."</label>
+                                    <div class='col'>
+                                        <div class='row m-auto'>
+                                            <label class='flex-end'>".date("H:s a",strtotime($row['qtime']))."</label>
+                                        </div>
+                                        <div class='row m-auto'>
+                                            <label class='flex-end'>".date("M d, Y",strtotime($row['qdate']))." </label>
+                                        </div>
                                     </div>
-                                    <div>";
-                                    if(date("Y-m-d")>$row['qdate']){
-                                        echo "<label>This schedule already passed.</label><br>";
-                                        echo "<button class='m-1 btn btn-info w-100' data-bs-toggle='modal' data-bs-target='#ResubmitModal' onClick='resubmitSched(".$row['qid'].")'>Resubmit</button>";
-                                    } else {
-                                        if($row['qstatus'] == "Denied"){
-                                            echo "<button class='m-1 btn btn-info w-100' data-bs-toggle='modal' data-bs-target='#ResubmitModal' onClick='resubmitSched(".$row['qid'].")'>Resubmit</button>";
-                                        } else if($row['qstatus'] == "Accepted") {
-                                            $d1=strtotime($row['qdate']);
-                                            $d2=ceil(($d1-time())/60/60/24);
-                                            echo "Days left: " . $d2 ."<br>";
-                                            echo "<button class='m-1 btn btn-danger w-100' data-bs-toggle='modal' data-bs-target='#CancelModal' onClick='cancelSched(".$row['qid'].")'>Cancel</button>";
-                                        } else if($row['qstatus'] == "Pending") {
-                                            $d1=strtotime($row['qdate']);
-                                            $d2=ceil(($d1-time())/60/60/24);
-                                            echo "Days left: " . $d2."<br>";
-                                            echo "<button class='m-1 btn btn-warning w-100' data-bs-toggle='modal' data-bs-target='#EditModal' onClick='editSched(".$row['qid'].")'>Edit</button>";
-                                            echo "<button class='m-1 btn btn-danger w-100' data-bs-toggle='modal' data-bs-target='#CancelModal' onClick='cancelSched(".$row['qid'].")'>Cancel</button>";
-                                        } else if($row['qstatus'] == "Cancelled") {
-                                            echo "<label>This schedule is cancelled.</label>";
-                                        } else if ($row['qstatus'] == "Finished") {
-                                            echo "<label>This schedule is finished.</label>";
-                                            }
-                                    }
-                                    echo "</div>
                                 </div>
+                                <div class='row m-auto'>
+                                    <span class='m-2'>Service: ".$row['qdescription']."</span>
+                                </div>
+
+                                <div class='row m-auto p-2'>";
+                                    if(date("Y-m-d")>$row['qdate'] && $row['qstatus'] != "Finished"){
+                                        echo "<label class='col-12 m-1 btn border border-2 border-secondary w-100'>This schedule already passed.</label><br>";
+                                    } 
+                                        if($row['qstatus'] == "Denied"){
+                                            echo "<button class='col m-1 btn btn-info w-100' data-bs-toggle='modal' data-bs-target='#ResubmitModal' onClick='resubmitSched(".$row['qid'].")'>Resubmit</button>";
+                                        } else if($row['qstatus'] == "Accepted") {
+                                            echo "<button class='col m-1 btn btn-danger w-100' data-bs-toggle='modal' data-bs-target='#CancelModal' onClick='cancelSched(".$row['qid'].")'>Cancel</button>";
+                                        } else if($row['qstatus'] == "Pending") {
+                                            echo "<button class='col m-1 btn btn-warning w-100' data-bs-toggle='modal' data-bs-target='#EditModal' onClick='editSched(".$row['qid'].")'>Edit</button>";
+                                            echo "<button class='col m-1 btn btn-danger w-100' data-bs-toggle='modal' data-bs-target='#CancelModal' onClick='cancelSched(".$row['qid'].")'>Cancel</button>";
+                                        } else if($row['qstatus'] == "Cancelled") {
+                                            echo "<label class='col-12 m-1 btn border border-2 border-secondary w-100'>This schedule is cancelled.</label>";
+                                        } else if ($row['qstatus'] == "Finished") {
+                                            echo "<label class='col-12 m-1 btn border border-2 border-secondary w-100'>This schedule is finished.</label>";
+                                        }
+                                echo "</div>
                             </div>
+                        </div>
                         </div>";
                                 $j++;
                                 }

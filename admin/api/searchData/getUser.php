@@ -44,14 +44,14 @@ $search = $_REQUEST['search'];
               <td>".$rownote['userdistrict']."</td>
               <td>".$rownote['usermunicipality']."</td>
               <td>".$rownote['userprovince']."</td>
-              <td>".$rownote['userbdate']."</td>
+              <td>".date("d/M/Y", strtotime($rownote['userbdate']))."</td>
               <td>".$rownote['usergender']."</td>
               <td>".$rownote['usermobile']."</td>
             </tr>";
             $i++;
             }
           } else {
-            echo "<tr><td colspan-\"7\">No Record!</td></tr>";
+            echo "<tr><td colspan=\"9\" class='text-center'>No Record!</td></tr>";
           }
         ?>
         </tbody>

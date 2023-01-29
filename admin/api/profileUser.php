@@ -22,7 +22,7 @@
                                     <label>Name: ".$row['userfname']." ".$row['usermname']." ".$row['userlname']."</label><br>
                                     <label>Email: ".$row['useremail']."</label><br>
                                     <label>Mobile No.: ".$row['usermobile']."</label><br>
-                                    <label>Birth Date: ".$row['userbdate']."</label><br>
+                                    <label>Birth Date: ".date("M d,Y", strtotime($row['userbdate']))."</label><br>
                                     <label>Gender: ".$row['usergender']."</label><br>
                                     <label>Address: ".$row['userstreet']." ".$row['userdistrict']." ".$row['usermunicipality']." ".$row['userprovince']."</label>
                                   </div>

@@ -1,6 +1,7 @@
 <?php
     require("../connector.php");
 
+    session_start();
     if(isset($_POST['submit'])){
         $type = $_POST['pettype'];
         $part = $_POST['bodypart'];
@@ -26,12 +27,16 @@
         ];
         $resadd = $connect->prepare($add);
         $resadd->execute($valadd);
+
         if($resadd->rowCount()>0) {
+            $_SESSION["trigger"] = "newSymptom";
             echo "<script>window.location='../reportData/symptomDashboard.php'</script>";//Added
         } else {
+            $_SESSION["trigger"] = "newESymptom";
             echo "<script>window.location='../reportData/symptomDashboard.php'</script>";//Unable
         }
       } else {
+        $_SESSION["trigger"] = "newESymptom";
         echo "<script>window.location='../reportData/symptomDashboard.php'</script>";//Unable
       }
 ?>

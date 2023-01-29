@@ -17,9 +17,11 @@ if(isset($_POST["submit"])){
     $mobile = $_POST["mobile"];
 
     session_start();
-    if($_SESSION["newsession"] == ""){
-      echo "<script>window.location='./../index.php'</script>";
-    }
+        $set = md5(strval($id));
+        $_SESSION["newsession"] = $id.$set;
+        if($_SESSION["newsession"] != $_SESSION["setsession"] ){
+          echo "<script>window.location='./../index.php'</script>";
+        }
 
     if($fname=="" || $lname=="" || $bdate=="" || $gender=="" || $district=="" || $municipality=="" || $province ==""){
         echo "<script>window.location='editProfile.php?userid=".$id."'</script>";

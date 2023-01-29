@@ -36,11 +36,15 @@
     if ($uploadOk == 0) {
     // if everything is ok, try to upload file
     } else {
-    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-            echo "<script>window.location='../profile.php?suerid=".$user."'</script>;";
-    } else {
-        echo "<script>window.location='../profile.php?userid=".$user."'</script>;";
-    }
+        session_start();
+        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+            $_SESSION["trigger"] = "editPet";
+            echo "<script>window.location='../profile.php?userid=".$user."'</script>;";
+        } else {
+            session_start();
+            $_SESSION["trigger"] = "editEPet";
+            echo "<script>window.location='../profile.php?userid=".$user."'</script>;";
+        }
     }
 
 } 

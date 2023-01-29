@@ -16,7 +16,7 @@ header("Content-Disposition:attachment;filename=\"$filename\"");
           <tr>USER LISTS <br />
           <label>Number of Users: <?php echo $rowdata['count'];?></label>
             <th>#</th>
-            <th>Email</th>
+            <th>Username</th>
             <th>Name</th>
             <th>Street</th>
             <th>Baranggay</th>

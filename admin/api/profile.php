@@ -1,4 +1,4 @@
-  <?php 
+<?php 
     require("connector.php"); 
     
     session_start();
@@ -46,9 +46,11 @@
       <!-- Bootstrap Icons -->
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
       <!-- Custom CSS -->
+      <link href="./../../bootstrap-5.2.2-dist/css/bootstrap.css" rel="stylesheet">
+    <script src="./../../bootstrap-5.2.2-dist/js/bootstrap.js"></script>
       <link rel="stylesheet" href="../css/styles.css">
   </head>
-  <body class="bg bg-light">
+  <body class="bg bg-light" onload="triggerModal()">
 
 <main class="container-fluid"><div class="row m-auto">
 
@@ -94,6 +96,24 @@
                         </div>
                       </div>
 <!-- Modal Profile -->
+<!---->
+<div class="offcanvas offcanvas-end w-75" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasRightLabel">Pet Name Medical Record</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body" id="pageBody">
+  </div>
+</div>
+<!---->
+<?php
+  include("./modalTrigger.php");
+  include("./modalError.php");
+
+  if($_SESSION["trigger"]!="none"){
+    echo "<input type='text' id='trigger' value='".$_SESSION["trigger"]."' hidden>";
+  } 
+?>
 <div class="col-2 vh-100 bg bg-success"><!--SideBar-->
           <div class="row m-auto text-center my-3"><!--aa-->
             <a class="nav-link text-white nav-brand" href="#"><h1><b>AlagApp</b></h1></a>
@@ -151,3 +171,7 @@
   </script>
   </body>
   </html>
+
+<?php
+  $_SESSION["trigger"]="none";
+?>

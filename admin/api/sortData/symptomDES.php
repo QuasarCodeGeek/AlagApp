@@ -1,4 +1,6 @@
-
+<?php
+  require("../connector.php");
+?>
       <table class="table table-striped m-2">
         <thead class="bg bg-success text-white">
           <tr>
@@ -12,7 +14,6 @@
         </thead>
         <tbody>
         <?php
-        require("../connector.php");
         
         $cnt = "SELECT COUNT(sid) as count FROM alagapp_db.tbl_symptom;";
             $res = $connect->query($cnt);

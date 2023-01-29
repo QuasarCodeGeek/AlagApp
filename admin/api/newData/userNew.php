@@ -1,5 +1,6 @@
 <?php
     require("../connector.php");
+    session_start();
     if(isset($_POST["submit"])){
         $email = $_POST["email"];
         $password = $_POST["password"];
@@ -14,10 +15,12 @@
         $mobile = $_POST["mobile"];
 
         if($fname=="" || $lname=="" || $municipality=="" || $province ==""){
+            $_SESSION["trigger"] = "newEUser";
             echo "<script>window.location='../../account.php'</script>";//Field Required
-        } else if ($email=="" || $password =="") 
+        } else if ($email=="" || $password =="") {
+            $_SESSION["trigger"] = "newEUser";
             echo "<script>window.location='../../account.php'</script>";//Username and Password Required
-        else {
+        } else {
             $sql = "INSERT INTO alagapp_db.tbl_userlist(
                 useremail,
                 userpassword,
@@ -61,9 +64,11 @@
             $result->execute($values);
 
             if($result->rowCount()>0) {
+                $_SESSION["trigger"] = "newUser";
                 echo "<script>window.location='../../account.php'</script>";//Saved
              } else {
-                 echo "<script>window.location='../../account.php'</script>";//Not Saved
+                $_SESSION["trigger"] = "newEUser";
+                echo "<script>window.location='../../account.php'</script>";//Not Saved
              }
         }
     }
@@ -102,8 +107,8 @@ echo "
         <div class='input-group'>
         <span class='input-group-text'>Contact No.</span>
         <input class='form-control' type='text' name='mobile' placeholder=\"Enter User Mobile Number\">
-        <span class='input-group-text'>Email</span>
-        <input class='form-control' type='email' name='email' placeholder=\"Enter User Email\" required>
+        <span class='input-group-text'>Username</span>
+        <input class='form-control' type='text' name='email' placeholder=\"Enter Username\" required>
         <span class='input-group-text'>Password</span>
         <input class='form-control' type='text' name='password' placeholder=\"Enter User Password\" required>
         </div><br>

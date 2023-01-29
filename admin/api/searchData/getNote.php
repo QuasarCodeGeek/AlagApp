@@ -39,12 +39,12 @@ $search = $_REQUEST['search'];
               <td>".$rownote['userfname']." ".$rownote['userlname']."</td>
               <td>".$rownote['ndescription']."</td>
               <td>".$rownote['nvet']."</td>
-              <td>".$rownote['ndate']."</td>
+              <td>".date("d/M/Y", strtotime($rownote['ndate']))."</td>
             </tr>";
             $i++;
             }
           } else {
-            echo "<tr><td colspan-\"7\">No Record!</td></tr>";
+            echo "<tr><td colspan=\"6\" class='text-center'>No Record!</td></tr>";
           }
         ?>
         </tbody>

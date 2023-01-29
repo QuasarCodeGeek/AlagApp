@@ -1,5 +1,16 @@
 const { isEmptyObject } = require("jquery");
 
+const toastElList = document.querySelectorAll('.toast')
+const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl, option))
+
+function getRecord(petid) {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    document.getElementById("pageBody").innerHTML = this.responseText;
+  }
+  xhttp.open("GET", "petHistory.php?petid="+petid);
+  xhttp.send();
+}
 // Add Data Function
 function userNew() {
     const xhttp = new XMLHttpRequest();
@@ -60,6 +71,15 @@ function noteNew(petid) {
       document.getElementById("modalNew").innerHTML = this.responseText;
     }
     xhttp.open("GET", "newData/noteNew.php?petid="+petid);
+    xhttp.send();
+  }
+
+function recordNew(petid){
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function() {
+      document.getElementById("modalNew").innerHTML = this.responseText;
+    }
+    xhttp.open("GET", "newData/recordNew.php?petid="+petid);
     xhttp.send();
   }
 
@@ -156,6 +176,15 @@ function prescriptionEdit(nid) {
     }
     xhttp.open("GET", "editData/prescriptionEdit.php?nid="+nid);
     xhttp.send();
+}
+
+function recordEdit(rid){
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    document.getElementById("modalHere").innerHTML = this.responseText;
+  }
+  xhttp.open("GET", "editData/recordEdit.php?rid="+rid);
+  xhttp.send();
 }
 
 function scheduleEdit(qid) {
@@ -280,23 +309,120 @@ function descSymptom() {
   xhttp.open("GET", "../sortData/symptomDES.php");
   xhttp.send();
 }
+//=======================================================================================================================
 // Additional Functions
 function checkField() {
-  var email = document.getElementById("email").value;
-  var password = document.getElementById("password").value;
+  var email = document.getElementById("code").value;
+  var password = document.getElementById("pass").value;
 
   if(email == "" || password == ""){
-      console.log(email+"" +password);
       const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
 
       const wrapper = document.createElement('div')
       wrapper.innerHTML = [
-          `<div class="alert alert-success alert-dismissible" role="alert">`,
+          `<div class="alert alert-warning alert-dismissible" role="alert">`,
           `   <div>Complete fields required!</div>`,
           '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
           '</div>'
       ].join('')
 
       alertPlaceholder.append(wrapper)
+  }
+}
+
+function checkDate() {
+  var date = document.getElementById("date").value;
+
+  var dateOne = new Date(date);
+  var dateTwo = new Date(); 
+
+  if(dateOne <= dateTwo){
+      const alertPlaceholder = document.getElementById('errorDate')
+
+      const wrapper = document.createElement('div')
+      wrapper.innerHTML = [
+          `<div class="alert alert-warning alert-dismissible" role="alert">`,
+          `   <div>Invalid Date!</div>`,
+          '</div>'
+      ].join('')
+
+      alertPlaceholder.append(wrapper);
+  }
+
+  setTimeout(function(){
+    document.getElementById("errorDate").style.display='none';
+  },5000);
+}
+
+
+//========================================================================================================================
+function triggerModal(){
+  var trigger = document.getElementById('trigger').value;
+  if(trigger == 'newUser'){
+    document.getElementById('triggerNewUser').click(); 
+  } else if(trigger == 'newPet'){
+    document.getElementById('triggerNewPet').click(); 
+  } else if(trigger == 'newSched'){
+    document.getElementById('triggerNewSched').click(); 
+  } else if(trigger == 'newCard'){
+    document.getElementById('triggerNewCard').click(); 
+  } else if(trigger == 'newNote'){
+    document.getElementById('triggerNewNote').click(); 
+  } else if(trigger == 'newVaccine'){
+    document.getElementById('triggerNewVaccine').click(); 
+  } else if(trigger == 'newSymptom'){
+    document.getElementById('triggerNewSymptom').click(); 
+  } else if(trigger == 'newRecord'){
+    document.getElementById('triggerNewRecord').click(); 
+  } else if(trigger == 'editUser'){
+    document.getElementById('triggerEditUser').click(); 
+  } else if(trigger == 'editPet'){
+    document.getElementById('triggerEditPet').click(); 
+  } else if(trigger == 'editSched'){
+    document.getElementById('triggerEditSched').click(); 
+  } else if(trigger == 'editCard'){
+    document.getElementById('triggerEditCard').click(); 
+  } else if(trigger == 'editNote'){
+    document.getElementById('triggerEditNote').click(); 
+  } else if(trigger == 'editVaccine'){
+    document.getElementById('triggerEditVaccine').click(); 
+  } else if(trigger == 'editSymptom'){
+    document.getElementById('triggerEditSymptom').click(); 
+  } else if(trigger == 'editRecord'){
+    document.getElementById('triggerEditRecord').click(); 
+  } 
+  
+    else if(trigger == 'newEUser'){
+    document.getElementById('triggerENewUser').click(); 
+  } else if(trigger == 'newEPet'){
+    document.getElementById('triggerENewPet').click(); 
+  } else if(trigger == 'newESched'){
+    document.getElementById('triggerENewSched').click(); 
+  } else if(trigger == 'newECard'){
+    document.getElementById('triggerENewCard').click(); 
+  } else if(trigger == 'newENote'){
+    document.getElementById('triggerENewNote').click(); 
+  } else if(trigger == 'newEVaccine'){
+    document.getElementById('triggerENewVaccine').click(); 
+  } else if(trigger == 'newESymptom'){
+    document.getElementById('triggerENewSymptom').click(); 
+  } else if(trigger == 'newERecord'){
+    document.getElementById('triggerENewRecord').click(); 
+  } else if(trigger == 'editEUser'){
+    document.getElementById('triggerEEditUser').click(); 
+  } else if(trigger == 'editEPet'){
+    document.getElementById('triggerEEditPet').click(); 
+  } else if(trigger == 'editESched'){
+    document.getElementById('triggerEEditSched').click(); 
+  } else if(trigger == 'editECard'){
+    document.getElementById('triggerEEditCard').click(); 
+  } else if(trigger == 'editENote'){
+    document.getElementById('triggerEEditNote').click(); 
+  } else if(trigger == 'editEVaccine'){
+    document.getElementById('triggerEEditVaccine').click(); 
+  } else if(trigger == 'editESymptom'){
+    document.getElementById('triggerEEditSymptom').click(); 
+  } else if(trigger == 'editERecord'){
+    document.getElementById('triggerEEditRecord').click(); 
   }
 }

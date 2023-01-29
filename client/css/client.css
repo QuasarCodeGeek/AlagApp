@@ -1,4 +1,16 @@
+html, body {min-height: 100%;}
+
 .background {
-    background: linear-gradient(to right, rgba(153, 197, 160, 0.65), rgb(20, 177, 99)), url("../../assets/img/resource/pet3.jpg");
+    background: linear-gradient(to top, rgba(255, 255, 255, 0), rgb(20, 177, 99, 0.75)), url("../../assets/img/resource/pet3.jpg");
+    background-repeat: no-repeat;
     background-size: cover;
+}
+
+@media only screen and (max-width: 768px) {
+  .background {
+    background-image: url("../../assets/img/resource/pet1.jpg");
+    background-repeat: no-repeat;
+    height: 100%;
+    background-size: cover;
+  }
 }

@@ -6,11 +6,13 @@ $search = $_REQUEST['search'];
         <thead class="bg bg-success text-white">
           <tr>
             <th>#</th>
-            <th>User</th>
-            <th>Pets</th>
-            <th>Schedules</th>
-            <th>Chats</th>
-            <th>Calls</th>
+            <th>User <span class="float-end">No. of set</span></th>
+            <th>/Pets</th>
+            <th>/Vaccination</th>
+            <th>/Prescription</th>
+            <th>/Schedules</th>
+            <th>/Chats</th>
+            <th>/Calls</th>
           </tr>
         </thead>
         <tbody>
@@ -31,6 +33,16 @@ $search = $_REQUEST['search'];
                 $respet->execute();
                 $rowpet = $respet->fetch(PDO::FETCH_ASSOC);
 
+                $carddata = "SELECT COUNT(cid) AS ccard FROM alagapp_db.tbl_carddetail WHERE userid = ".$rowdata['userid']."";
+                $rescard = $connect->query($carddata);
+                $rescard->execute();
+                $rowcard = $rescard->fetch(PDO::FETCH_ASSOC);
+
+                $notedata = "SELECT COUNT(nid) AS cnote FROM alagapp_db.tbl_notedetail WHERE userid = ".$rowdata['userid']."";
+                $resnote = $connect->query($notedata);
+                $resnote->execute();
+                $rownote = $resnote->fetch(PDO::FETCH_ASSOC);
+
                 $scheddata = "SELECT COUNT(qid) AS csched FROM alagapp_db.tbl_scheduler WHERE userid = ".$rowdata['userid']."";
                 $ressched = $connect->query($scheddata);
                 $ressched->execute();
@@ -50,6 +62,8 @@ $search = $_REQUEST['search'];
               <td>".$i."</td>
               <td>".$rowdata['userfname']." ".$rowdata['userlname']."</td>
               <td>".$rowpet['cpet']."</td>
+              <td>".$rowcard['ccard']."</td>
+              <td>".$rownote['cnote']."</td>
               <td>".$rowsched['csched']."</td>
               <td>".$rowchat['cchat']."</td>
               <td>".$rowcall['ccall']."</td>

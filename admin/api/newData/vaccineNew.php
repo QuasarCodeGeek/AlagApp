@@ -1,6 +1,6 @@
 <?php
     require("../connector.php");
-
+    session_start();
     if(isset($_POST["submit"])){
         $name = $_POST["name"];
         $type = $_POST["type"];
@@ -8,6 +8,7 @@
         $description = $_POST["description"];
 
         if($name=="" || $type=="" || $brand==""){
+            $_SESSION["trigger"] = "newEVaccine";
             echo "<script>window.location='../reportData/vaccineDashboard.php'</script>";//Field Required
         } else {
             $sql = "INSERT INTO alagapp_db.tbl_vaxxinfo(
@@ -32,9 +33,11 @@
             $result->execute($values);
 
             if($result->rowCount()>0) {
+                $_SESSION["trigger"] = "newVaccine";
                 echo "<script>window.location='../reportData/vaccineDashboard.php'</script>";//Saved
              } else {
-                 echo "<script>window.location='../reportData/vaccineDashboard.php'</script>";//Not Save
+                $_SESSION["trigger"] = "newEVaccine";
+                echo "<script>window.location='../reportData/vaccineDashboard.php'</script>";//Not Save
              }
         }
     }

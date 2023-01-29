@@ -11,7 +11,14 @@ $userid = $_REQUEST['userid'];?>
             $pres->execute();
             $_rowe = $pres->fetch(PDO::FETCH_ASSOC);
           ?>
-          <img class="mb-2 ms-2  me-2 rounded-circle" src="../../assets/uploads/<?php echo $_rowe['userpict']; ?>" alt="" style="width: 3rem; height: 3rem;"> 
+          <?php if($_rowe['userpict']!=""){
+            echo "<img class='mb-2  ms-2  me-2 rounded-circle' src='../../assets/uploads/".$_rowe['userpict']."' alt='' style='width: 3rem; height: 3rem;'>";
+          } else if ($_rowe['usergender'] == 'F'){
+            echo "<img class='mb-2  ms-2  me-2 rounded-circle' src='../../assets/default/female.png' alt='' style='width: 3rem; height: 3rem;'>";
+          } else {
+            echo "<img class='mb-2 ms-2  me-2 rounded-circle' src='../../assets/default/male.png' alt='' style='width: 3rem; height: 3rem;'>";
+          }
+          ?>
           <label><h4><?php echo $_rowe['userfname']." ".$_rowe['userlname']; ?></h4></label>
           <div class="float-end m--auto mx-auto">
             <button class="btn btn-primary fw-bold text-white rounded-pill m-1" onClick='scheduleNew(<?php echo $_rowe['userid']?>)' data-bs-toggle='modal' data-bs-target='#newModal')>
@@ -72,7 +79,7 @@ echo "<div class='row m-auto mt-2'>";
                           echo "<div class='col-6 bg bg-danger rounded-pill p-2 text-center'>";
                         } else if ($row['qstatus'] == "Denied"){
                           echo "<div class='col-6 bg bg-secondary rounded-pill p-2 text-center'>";
-                        }
+                        } 
 
                           echo "<label class='card-text fw-bold text-white' style='font-size: 12px;'>".$row['qstatus']."</label>
                         </div>
@@ -86,8 +93,8 @@ echo "<div class='row m-auto mt-2'>";
                   $i++;
                   }
               }  else {
-                  echo "<div class='card card-body'>
-                  <p>No record<p>
+                  echo "<div class='card p-4'>
+                  <label class='fw-bold text-center text-success'>No record<label>
                   </div>";
               }
                 ?>
