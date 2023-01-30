@@ -141,6 +141,6 @@
 
         <div class='d-grid gap-2 d-md-flex justify-content-md-end'>
             <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
-            <button type='submit' name='submit' class='btn btn-primary')'>Add Record</button>
+            <button type='submit' name='submit' class='btn btn-primary')'>Update Record</button>
         </div>
     </form>";

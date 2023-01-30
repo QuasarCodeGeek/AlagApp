@@ -2,7 +2,7 @@
   include 'export.php';
   include ("../dataAnalytics.php");
   
-      $schedcount = "SELECT COUNT(qid) AS queue FROM alagapp_db.tbl_scheduler ORDER BY qid DESC";
+      $schedcount = "SELECT COUNT(qid) AS queue FROM alagapp_db.tbl_scheduler";
       $resq = $connect->query($schedcount);
       $resq->execute();
       $rowq = $resq->fetch(PDO::FETCH_ASSOC);

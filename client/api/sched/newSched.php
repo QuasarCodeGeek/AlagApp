@@ -9,7 +9,7 @@
         $status = $_POST["status"];
 
         if($user=="" || $pet=="" || $description=="" || $date=="" || $status==""){
-            echo "<script>window.location='../../account.php'</script>";
+            echo "<script>window.location='../../schedPage.php?userid=".$user."'</script>";
         } else {
             $sql = "INSERT INTO alagapp_db.tbl_scheduler(
                 userid,

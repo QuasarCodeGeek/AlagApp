@@ -2,7 +2,7 @@
   include 'export.php';
   include ("../dataAnalytics.php");
   
-      $petdata = "SELECT COUNT(petid) AS count FROM alagapp_db.tbl_petprofile ORDER BY petid DESC";
+      $petdata = "SELECT COUNT(petid) AS count FROM alagapp_db.tbl_petprofile";
       $resdata = $connect->query($petdata);
       $resdata->execute();
       $rowdata = $resdata->fetch(PDO::FETCH_ASSOC);

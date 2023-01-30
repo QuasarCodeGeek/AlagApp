@@ -299,3 +299,21 @@
       </div>
     </div>
   </div>
+
+  <button type="button" class="btn btn-primary" id="triggerFailed" data-bs-toggle="modal" data-bs-target="#toastModalFailed" hidden>
+    modal
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="toastModalFailed" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center text-danger">
+          Unable to send SMS to recipients!
+        </div>
+      </div>
+    </div>
+  </div>

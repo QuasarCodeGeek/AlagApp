@@ -2,7 +2,7 @@
   include 'export.php';
   include ("../dataAnalytics.php");
   
-      $vdata = "SELECT COUNT(vaxid) AS count FROM alagapp_db.tbl_vaxxinfo ORDER BY vaxid DESC";
+      $vdata = "SELECT COUNT(vaxid) AS count FROM alagapp_db.tbl_vaxxinfo";
       $resdata = $connect->query($vdata);
       $resdata->execute();
       $rowdata = $resdata->fetch(PDO::FETCH_ASSOC);

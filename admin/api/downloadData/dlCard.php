@@ -4,7 +4,7 @@
 
 
   
-      $carddata = "SELECT COUNT(cid) AS count FROM alagapp_db.tbl_carddetail ORDER BY cid DESC";
+      $carddata = "SELECT COUNT(cid) AS count FROM alagapp_db.tbl_carddetail";
       $resdata = $connect->query($carddata);
       $resdata->execute();
       $rowdata = $resdata->fetch(PDO::FETCH_ASSOC);

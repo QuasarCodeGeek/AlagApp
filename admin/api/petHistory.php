@@ -2,7 +2,7 @@
     include("./connector.php");
     $pet = $_GET['petid'];
 
-    $sqlrec = "SELECT * FROM alagapp_db.tbl_record WHERE petid = ".$pet."";
+    $sqlrec = "SELECT * FROM alagapp_db.tbl_record WHERE petid = ".$pet." ORDER BY rid DESC";
 
     $reso = $connect->prepare($sqlrec);
     $reso->execute();

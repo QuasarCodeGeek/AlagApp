@@ -2,7 +2,7 @@
   include 'export.php';
   include ("../dataAnalytics.php");
 
-    $userdata = "SELECT COUNT(userid) AS cuser FROM alagapp_db.tbl_userlist ORDER BY userid DESC";
+    $userdata = "SELECT COUNT(userid) AS cuser FROM alagapp_db.tbl_userlist";
     $resuser = $connect->query($userdata);
     $resuser->execute();
     $rowuser = $resuser->fetch(PDO::FETCH_ASSOC);

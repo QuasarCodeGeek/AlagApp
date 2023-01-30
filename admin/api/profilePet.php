@@ -62,7 +62,7 @@
                                             <button type='button' class='btn btn-warning w-100' onClick='petEdit(".$row['petid'].")' data-bs-toggle='modal' data-bs-target='#boxModal'>
                                             <i class='bi bi-pencil-square'></i> Edit</button>
                                           </div>
-                                          <div class='col' hidden>
+                                          <div class='col'>
                                           <button class='btn btn-primary' type='button' onClick='getRecord(".$row['petid'].")' data-bs-toggle='offcanvas' data-bs-target='#offcanvasRight' aria-controls='offcanvasRight'>Medical Record</button>
                                           </div>
                                         </div>

@@ -390,6 +390,8 @@ function triggerModal(){
     document.getElementById('triggerEditSymptom').click(); 
   } else if(trigger == 'editRecord'){
     document.getElementById('triggerEditRecord').click(); 
+  } else if(trigger == 'success'){
+    document.getElementById('triggerSuccess').click(); 
   } 
   
     else if(trigger == 'newEUser'){
@@ -424,5 +426,7 @@ function triggerModal(){
     document.getElementById('triggerEEditSymptom').click(); 
   } else if(trigger == 'editERecord'){
     document.getElementById('triggerEEditRecord').click(); 
-  }
+  } else if(trigger == 'failed'){
+    document.getElementById('triggerFailed').click(); 
+  } 
 }

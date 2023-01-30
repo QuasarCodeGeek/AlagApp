@@ -2,7 +2,7 @@
   include 'export.php';
   include ("../dataAnalytics.php");
   
-      $ddata = "SELECT COUNT(sid) AS count FROM alagapp_db.tbl_symptom OREDR BY sid DESC";
+      $ddata = "SELECT COUNT(sid) AS count FROM alagapp_db.tbl_symptom";
       $resdata = $connect->query($ddata);
       $resdata->execute();
       $rowdata = $resdata->fetch(PDO::FETCH_ASSOC);

@@ -3,7 +3,7 @@
   include ("../dataAnalytics.php");
 
 
-    $notedata = "SELECT COUNT(nid) AS count FROM alagapp_db.tbl_notedetail ORDER BY nid DESC";
+    $notedata = "SELECT COUNT(nid) AS count FROM alagapp_db.tbl_notedetail";
     $resdata = $connect->query($notedata);
     $resdata->execute();
     $rowdata = $resdata->fetch(PDO::FETCH_ASSOC);

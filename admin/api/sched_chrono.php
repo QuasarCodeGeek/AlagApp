@@ -56,6 +56,37 @@ require("./connector.php");
                         </div>
 
 <!-- -->
+<!-- Modal -->
+<div class="modal fade" id="smsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Send SMS for Tomorrow's Clients</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="send.php" method="POST">
+          <p class="form-label">You will be sending sms to clients who have a scheduled appointment for tomorrow. Click 'Send SMS' to send them a message.</p>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" name="sms" class="btn btn-success text-white">Send SMS</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- -->
+<div class="offcanvas offcanvas-end w-75" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title text-center" id="offcanvasRightLabel">SMS Log</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <?php include("./smsLog.php"); ?>
+  </div>
+</div>
+<!-- -->
 <?php
   include("./modalTrigger.php");
   include("./modalError.php");
@@ -147,6 +178,14 @@ require("./connector.php");
             <button type="submit" name="submit" class="btn btn-success">Search</button>
         </div>
       </form>
+      <div class="col">
+        <button type="button" class="btn btn-success text-white rounded" data-bs-toggle="modal" data-bs-target="#smsModal">
+          Send SMS
+        </button>
+        <button class="btn btn-primary rounded" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+          Show SMS Log
+        </button>
+      </div>
     </div></div>
     
     <div class="row m-auto" id="defaultContent">
