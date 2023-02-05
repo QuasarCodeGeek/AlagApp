@@ -6,12 +6,21 @@
 
     $reso = $connect->prepare($sqlrec);
     $reso->execute();
-?>
 
-    <div class='col'>
+    $pet = "SELECT * FROM alagapp_db.tbl_petprofile WHERE petid = ".$pet."";
+
+    $pres = $connect->prepare($pet);
+    $pres->execute();
+    $prow = $pres->fetch(PDO::FETCH_ASSOC);
+?>
+    <div class="row m-auto"><div class="col-6">
+        <label class="fw-bold fs-3">Pet Name: <?php echo $prow['petname'];?></label>
+    </div>
+
+    <div class='col-6'>
         <button type='button' class='p-2 btn btn-info w-100' onClick='recordNew(<?php echo $pet; ?>)' data-bs-toggle='modal' data-bs-target='#newModal')>
         <i class='bi bi-plus-square'></i> Add New Record</button>
-    </div>
+    </div></div>
     <div class="p-2">
         <table class="table table-striped">
         <thead>

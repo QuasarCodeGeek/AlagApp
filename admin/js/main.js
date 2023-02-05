@@ -393,9 +393,9 @@ function triggerModal(){
   } else if(trigger == 'success'){
     document.getElementById('triggerSuccess').click(); 
   } else if(trigger == 'delSCard'){
-    document.getElementById('successDelC').click(); 
+    document.getElementById('successDelCard').click(); 
   } else if(trigger == 'delSNote'){
-    document.getElementById('successDelN').click(); 
+    document.getElementById('successDelNote').click(); 
   } 
   
     else if(trigger == 'newEUser'){
@@ -433,8 +433,8 @@ function triggerModal(){
   } else if(trigger == 'failed'){
     document.getElementById('triggerFailed').click(); 
   } else if(trigger == 'delFCard'){
-    document.getElementById('failedDelC').click(); 
+    document.getElementById('failedDelCard').click(); 
   } else if(trigger == 'delFNote'){
-    document.getElementById('failedDelN').click(); 
+    document.getElementById('failedDelNote').click(); 
   }
 }

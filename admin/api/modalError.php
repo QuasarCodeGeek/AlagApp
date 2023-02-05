@@ -318,12 +318,12 @@
     </div>
   </div>
 
-  <button type="button" class="btn btn-primary" id="failedDelC" data-bs-toggle="modal" data-bs-target="#toastFDelC" hidden>
+  <button type="button" class="btn btn-primary" id="failedDelCard" data-bs-toggle="modal" data-bs-target="#toastFailedCard" hidden>
     modal
   </button>
 
   <!-- Modal -->
-  <div class="modal fade" id="toastFDelC" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="toastFailedCard" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -336,12 +336,12 @@
     </div>
   </div>
 
-  <button type="button" class="btn btn-primary" id="failedDelN" data-bs-toggle="modal" data-bs-target="#toastFDelN" hidden>
+  <button type="button" class="btn btn-primary" id="failedDelNote" data-bs-toggle="modal" data-bs-target="#toastFailedNote" hidden>
     modal
   </button>
 
   <!-- Modal -->
-  <div class="modal fade" id="toastFDelN" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="toastFailedNote" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
