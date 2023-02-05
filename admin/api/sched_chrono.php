@@ -27,7 +27,7 @@ require("./connector.php");
 </head>
 <body class="bg bg-light" onload="triggerModal()">
       <main class="container-fluid">
-      <div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+      <div class="modal fade" data-bs-backdrop="static" id="newModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                           <div class="modal-content">
                             <div class="modal-header">
@@ -41,7 +41,7 @@ require("./connector.php");
                         </div>
                       </div>
                       
-                      <div class="modal fade" id="boxModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+                      <div class="modal fade" data-bs-backdrop="static" id="boxModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                           <div class="modal-content">
                             <div class="modal-header">
@@ -57,7 +57,7 @@ require("./connector.php");
 
 <!-- -->
 <!-- Modal -->
-<div class="modal fade" id="smsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="smsModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">

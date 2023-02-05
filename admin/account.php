@@ -26,7 +26,7 @@ if($_SESSION["adminsession"] == ""){
 <body class="bg bg-light">
 
       <!-- Modal New Data-->
-                    <div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="newModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                       <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                           <div class="modal-header">
@@ -40,7 +40,7 @@ if($_SESSION["adminsession"] == ""){
                     </div>
       <!-- Modal New Data-->
       <!-- Modal Edit Data-->
-                    <div class="modal fade" id="boxModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="boxModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                       <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                           <div class="modal-header">

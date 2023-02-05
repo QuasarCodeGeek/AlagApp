@@ -20,7 +20,7 @@ while($rownote = $resnote->fetch(PDO::FETCH_ASSOC)){
             <button type='button' class='btn btn-danger rounded' data-bs-toggle='modal' data-bs-target='#delNote'>
             <i class='bi bi-trash'></i></button>
                 <!-- Modal Del Note -->
-                      <div class='modal fade' id='delNote' tabindex='-1' aria-labelledby='ModalLabel' aria-hidden='true'>
+                      <div class='modal fade' data-bs-backdrop='static' id='delNote' tabindex='-1' aria-labelledby='ModalLabel' aria-hidden='true'>
                         <div class='modal-dialog'>
                           <div class='modal-content'>
                             <div class='modal-header'>

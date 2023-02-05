@@ -30,7 +30,7 @@ if($_SESSION["adminsession"] == ""){
 </head>
 <body class="bg bg-light" onload="triggerModal()">
       <main class="container-fluid">
-      <div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+      <div class="modal fade" data-bs-backdrop="static" id="newModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                           <div class="modal-content">
                             <div class="modal-header">
@@ -44,7 +44,7 @@ if($_SESSION["adminsession"] == ""){
                         </div>
                       </div>
                       
-                      <div class="modal fade" id="boxModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+                      <div class="modal fade" data-bs-backdrop="static" id="boxModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                           <div class="modal-content">
                             <div class="modal-header">

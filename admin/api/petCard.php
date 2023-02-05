@@ -37,7 +37,7 @@ $j=1;?>
                 <button type='button' class='btn btn-danger rounded' data-bs-toggle='modal' data-bs-target='#delCard'>
                 <i class='bi bi-trash'></i></button>
                 <!-- Modal Del Card -->
-                      <div class='modal fade' id='delCard' tabindex='-1' aria-labelledby='ModalLabel' aria-hidden='true'>
+                      <div class='modal fade' id='delCard' data-bs-backdrop='static' tabindex='-1' aria-labelledby='ModalLabel' aria-hidden='true'>
                         <div class='modal-dialog'>
                           <div class='modal-content'>
                             <div class='modal-header'>
