@@ -392,6 +392,10 @@ function triggerModal(){
     document.getElementById('triggerEditRecord').click(); 
   } else if(trigger == 'success'){
     document.getElementById('triggerSuccess').click(); 
+  } else if(trigger == 'delSCard'){
+    document.getElementById('successDelC').click(); 
+  } else if(trigger == 'delSNote'){
+    document.getElementById('successDelN').click(); 
   } 
   
     else if(trigger == 'newEUser'){
@@ -428,5 +432,9 @@ function triggerModal(){
     document.getElementById('triggerEEditRecord').click(); 
   } else if(trigger == 'failed'){
     document.getElementById('triggerFailed').click(); 
-  } 
+  } else if(trigger == 'delFCard'){
+    document.getElementById('failedDelC').click(); 
+  } else if(trigger == 'delFNote'){
+    document.getElementById('failedDelN').click(); 
+  }
 }

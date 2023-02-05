@@ -159,17 +159,17 @@
                             echo "<img style='height: auto; width:auto; max-width: 15rem;' class='mb-2 mx-auto d-block rounded' src='../assets/pet/".$petrow['petpict']."' alt='profile_picture'>";
                           }
                             //<img class='mb-2 mx-auto d-block rounded' style='width: 18rem;' src='../assets/img/".$petrow['pettype']."/".$petrow['petbreed'].".jpg' alt='petProfile'>
-                        echo "
+                          echo "
                           <div class='card-img-overlay'>
                             <button type='button' class='btn btn-light' onClick='petImg(".$petrow['petid'].")' data-bs-toggle='modal' data-bs-target='#profileModal'>
                             <i class='bi bi-pencil-square'></i></button>
                           </div>
                         </div>
                         <div class='p-2 col-12 col-sm-12 col-md col-lg col-xl-8 rounded bg bg-light'>
-                          <div class='p-2'>
+                            <div class='p-2'>
                                 <div class='col mb-2'>
                                     <label>Name: ".$petrow['petname']."</label>
-                                    <label class='float-end'>Gender: ".$petrow['petgender']."</label>
+                                    <label class='float-end'>Sex: ".$petrow['petgender']."</label>
                                 </div> 
                                 <div class='col-12 col-sm-12 mb-2'>
                                     <label>Species: ".$petrow['pettype']."</label>
@@ -185,7 +185,7 @@
                                     <label class='d-block d-sm-none my-2'>Color/Marking: ".$petrow['petmark']."</label>
                                     <label class='d-none d-sm-block float-end'>Color/Marking: ".$petrow['petmark']."</label>
                                 </div>
-                          </div>      
+                            </div>      
                         </div>
                       </div>
                     </div>";
@@ -193,7 +193,7 @@
                     $cardlist = "SELECT alagapp_db.tbl_carddetail.*, alagapp_db.tbl_vaxxinfo.vaxname
                     FROM alagapp_db.tbl_carddetail
                     INNER JOIN alagapp_db.tbl_vaxxinfo ON alagapp_db.tbl_carddetail.vaxid = alagapp_db.tbl_vaxxinfo.vaxid
-                    WHERE petid = ".$petrow['petid']." ";
+                    WHERE petid = ".$petrow['petid']." ORDER BY cid DESC";
                     $checkcard = $connect->prepare($cardlist);
                     $checkcard->execute();
 
@@ -202,7 +202,8 @@
                         <button class='btn btn-success w-100 mb-2' type='button' data-bs-toggle='collapse' data-bs-target='#collapseCard".$petrow['petid']."' aria-expanded='false' aria-controls='collapseCard".$petrow['petid']."'>
                           E-Vaccine Card
                         </button>
-                        <div class='collapse multi-collapse' id='collapseCard".$petrow['petid']."'>";?>
+                        <div class='collapse multi-collapse' id='collapseCard".$petrow['petid']."'>
+                        <div class='overflow-auto overflow-y oveflow-x' style='height: 35rem;'>";?>
                             
                             <table class="table table-striped bg bg-light rounded">
                               <thead>
@@ -220,9 +221,13 @@
                             if($checkcard->rowCount()>0) {
                                 $j=1;
                                 while($cardrow = $checkcard->fetch(PDO::FETCH_ASSOC)){
+                                  if($j == 1){
+                                    echo "<tr style='color=:white; background-color:#A5D6A7;'>";
+                                  } else {
+                                    echo "<tr>";
+                                  }
     
-                                echo "<tr>
-                                  <td>".date("M d, Y", strtotime($cardrow['cdate']))."</td>
+                                echo "<td>".date("M d, Y", strtotime($cardrow['cdate']))."</td>
                                   <td>".date("M d, Y", strtotime($cardrow['cnext']))."</td>
                                   <td>".$cardrow['cweight']."</td>
                                   <td>".$cardrow['vaxname']."</td>
@@ -231,7 +236,8 @@
                                 $j++;
                                 }
                                 echo "</tbody>
-                              </table>";
+                              </table>
+                              </div>";
                             } else {
                                 echo "<div class='card card-body m-2'>
                                     <label>No Record</label>
@@ -240,7 +246,9 @@
                           echo "</div>
                         </div>";
 
-                        $notelist = "SELECT * FROM alagapp_db.tbl_notedetail WHERE petid = ".$petrow['petid']." ";
+
+
+                        $notelist = "SELECT * FROM alagapp_db.tbl_notedetail WHERE petid = ".$petrow['petid']." ORDER BY nid DESC";
                             $checknote = $connect->prepare($notelist);
                             $checknote->execute();
 
@@ -248,31 +256,39 @@
                             <button class='btn btn-success w-100 mb-2' type='button' data-bs-toggle='collapse' data-bs-target='#collapseNote".$petrow['petid']."' aria-expanded='false' aria-controls='collapseNote".$petrow['petid']."'>
                                     E-Prescription Note
                             </button>
-                              <div class='collapse multi-collapse' id='collapseNote".$petrow['petid']."'>";
-
+                              <div class='collapse multi-collapse' id='collapseNote".$petrow['petid']."'>
+                                <div class='overflow-auto overflow-y' style='height: 35rem;'>";
                             if($checknote->rowCount()>0) {
                                 $k=1;
                                 while($noterow = $checknote->fetch(PDO::FETCH_ASSOC)){
-    
-                            echo "<div class='row m-auto bg bg-light rounded p-2 mb-2'>
-                                  <div class='col-6'>
+                                  if($k == 1){
+                                    echo "<div class='row m-auto bg bg-light rounded p-2 mb-2 border border-3 border-success'>";
+                                  } else {
+                                    echo "<div class='row m-auto bg bg-light rounded p-2 mb-2'>";
+                                  }
+                                  echo "<div class='col-6'>
                                     <label>Date: ".date("M d, Y", strtotime($noterow['ndate']))."</label>
                                   </div>
                                   <div class='col-6'>
                                     <label>Veterinarian: ".$noterow['nvet']."</label>
                                   </div>
                                   <div class='col-12 p-2 border border-1 border-success rounded'>
-                                    <p>Description: ".$noterow['ndescription']."</p>
-                                  </div>
+                                    <p>Description: ".$noterow['ndescription']."</p>";
+                                    if($k == 1){
+                                      echo "<label class='fw-bold text-success'>New</label>";
+                                    }
+                                  echo "</div>
                                 </div>";
+                                $k++;
                                 }
+                                echo "</div>";
                             } else {
                                 echo "<div class='row card card-body m-2'>
                                     <label>No Record</label>
                                 </div>";
                             }
                             echo "</div>
-                      </div>
+                        </div>
                       </div>";
                 }
             } else {

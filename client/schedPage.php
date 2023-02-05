@@ -161,7 +161,7 @@
                 $schedlist = "SELECT alagapp_db.tbl_scheduler.*, alagapp_db.tbl_petprofile.petname
                     FROM alagapp_db.tbl_scheduler
                     INNER JOIN alagapp_db.tbl_petprofile ON alagapp_db.tbl_scheduler.petid = alagapp_db.tbl_petprofile.petid
-                    WHERE tbl_scheduler.userid = ".$user." ORDER BY qdate ASC, qtime ASC";
+                    WHERE tbl_scheduler.userid = ".$user." ORDER BY qdate DESC, qtime DESC";
                     $checksched = $connect->prepare($schedlist);
                     $checksched->execute();
 
@@ -178,9 +178,19 @@
                                         <div class='row m-auto'>
                                             <label class='flex-start fw-bold text-success'>Pet: ".$row['petname']."</label>
                                         </div>
-                                        <div class='row m-auto'>
-                                            <label class='flex-start fw-bold'>Status: ".$row['qstatus']."</label>
-                                        </div>
+                                        <div class='row m-auto'>";
+                                            if($row['qstatus']=='Finished'){
+                                                echo "<label class='flex-start fw-bold text-primary'>Status: ".$row['qstatus']."</label>";
+                                            } else if ($row['qstatus']=='Accepted') {
+                                                echo "<label class='flex-start fw-bold text-success'>Status: ".$row['qstatus']."</label>";
+                                            } else if ($row['qstatus']=='Denied') {
+                                                echo "<label class='flex-start fw-bold text-secondary'>Status: ".$row['qstatus']."</label>";
+                                            } else if ($row['qstatus']=='Cancelled') {
+                                                echo "<label class='flex-start fw-bold text-danger'>Status: ".$row['qstatus']."</label>";
+                                            } else if ($row['qstatus']=='Pending') {
+                                                echo "<label class='flex-start fw-bold text-info'>Status: ".$row['qstatus']."</label>";
+                                            }
+                                        echo "</div>
                                     </div>
                                     <div class='col'>
                                         <div class='row m-auto'>
@@ -202,7 +212,7 @@
                                         if($row['qstatus'] == "Denied"){
                                             echo "<button class='col m-1 btn btn-info w-100' data-bs-toggle='modal' data-bs-target='#ResubmitModal' onClick='resubmitSched(".$row['qid'].")'>Resubmit</button>";
                                         } else if($row['qstatus'] == "Accepted") {
-                                            echo "<button class='col m-1 btn btn-danger w-100' data-bs-toggle='modal' data-bs-target='#CancelModal' onClick='cancelSched(".$row['qid'].")'>Cancel</button>";
+                                            echo "<button class='col-6 m-1 w-100 btn btn-danger' data-bs-toggle='modal' data-bs-target='#CancelModal' onClick='cancelSched(".$row['qid'].")'>Cancel</button>";
                                         } else if($row['qstatus'] == "Pending") {
                                             echo "<button class='col m-1 btn btn-warning w-100' data-bs-toggle='modal' data-bs-target='#EditModal' onClick='editSched(".$row['qid'].")'>Edit</button>";
                                             echo "<button class='col m-1 btn btn-danger w-100' data-bs-toggle='modal' data-bs-target='#CancelModal' onClick='cancelSched(".$row['qid'].")'>Cancel</button>";

@@ -88,8 +88,8 @@ echo "
         <span class='input-group-text'>Birth Date</span>
         <input class='form-control' type='date' name='bdate' required>
         <label class='input-group-text' for='genderSelect'>Sex</label>
-        <select class='form-select' name='gender' id='genderSelect' name='gender' required>
-            <option selected>-- Select Gender --</option>
+        <select class='form-select' id='genderSelect' name='gender' required>
+            <option selected>-- Select Sex --</option>
             <option value='M'>Male</option>
             <option value='F'>Female</option>
         <select>
@@ -108,9 +108,9 @@ echo "
         <span class='input-group-text'>Contact No.</span>
         <input class='form-control' type='text' name='mobile' placeholder=\"Enter User Mobile Number\">
         <span class='input-group-text'>Username</span>
-        <input class='form-control' type='text' name='email' placeholder=\"Enter Username\" required>
+        <input class='form-control' type='text' name='email' placeholder=\"Enter Username\" minlenght='8' maxlength='12' required>
         <span class='input-group-text'>Password</span>
-        <input class='form-control' type='text' name='password' placeholder=\"Enter User Password\" required>
+        <input class='form-control' type='text' name='password' placeholder=\"Enter User Password\" minlenght='8' maxlength='16' required>
         </div><br>
         <div class='d-grid gap-2 d-md-flex justify-content-md-end'>
         <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>

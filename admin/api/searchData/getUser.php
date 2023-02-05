@@ -12,7 +12,7 @@ $search = $_REQUEST['search'];
             <th>Municipality</th>
             <th>Province</th>
             <th>Birth Date</th>
-            <th>Gender</th>
+            <th>Sex</th>
             <th>Mobile No.</th>
           </tr>
           <?php include("./../reportData/userFilter.php");?>

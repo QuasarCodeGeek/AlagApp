@@ -131,7 +131,7 @@
                                     <label>Name: ".$fname." ".$mname." ".$lname."</label>
                                 </div>
                                 <div class='col mb-1'>
-                                    <label>Gender: ".$sex."</label>
+                                    <label>Sex: ".$sex."</label>
                                 </div> 
                                 <div clas='col mb-1'>
                                     <label>B-Day: ".$bdate."</label>

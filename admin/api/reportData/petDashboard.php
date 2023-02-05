@@ -146,7 +146,7 @@
             <th>Color/Marking</th>
             <th>DOB</th>
             <th>Age</th>
-            <th>Gender</th>
+            <th>Sex</th>
           </tr>
           <?php include("./petFilter.php");?>
         </thead>

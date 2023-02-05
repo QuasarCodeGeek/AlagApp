@@ -37,7 +37,7 @@
                                       </div>
                                       <div class='col-4'>
                                         <div class='row-2 m-auto mb-2 w-auto h-auto p-2 rounded bg bg-light'>
-                                          <label>Gender: ".$row['petgender']."</label>
+                                          <label>Sex: ".$row['petgender']."</label>
                                         </div>
                                         <div class='row-2 m-auto mb-2 w-auto h-auto p-2 rounded bg bg-light'>
                                           <label>DOB: ".date("M d,Y", strtotime($row['petbdate']))."</label>
@@ -71,7 +71,7 @@
                                   </div>
                                 </div> 
                                 
-                                <div class='row mx-auto my-2 bg bg-success rounded'>
+                            <div class='row mx-auto my-2 bg bg-success rounded'>
                                 <div class='col-7 pb-2'>
                                   <h4 class='text-white p-2'><b>E-Vaccine Card</b></h4>";
                                   include("./petCard.php");

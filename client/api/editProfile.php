@@ -166,7 +166,7 @@
                                     <input type='date' class='form-control' name='bdate' value='".$bdate."'>
                                 </div><br>
                                 <div class='col mb-2'>
-                                    <label class='form-label'>Gender</label>
+                                    <label class='form-label'>Sex</label>
                                     <input type='char' class='form-control' name='sex' placeholder=\"Enter M or F\" value='".$sex."'>
                                 </div><br>
                                 <div class='col mb-2'>
@@ -182,11 +182,11 @@
                                 </div><br>
                                 <div class='col mb-2'>
                                     <label class='form-label'>Username</label>
-                                    <input type='text' class='form-control' name='email' placeholder=\"Enter Username\"  value='".$email."'>
+                                    <input type='text' class='form-control' name='email' placeholder=\"Enter Username\"  minlenght='8' maxlength='12' value='".$email."'>
                                 </div><br>
                                 <div class='col mb-2'>
                                     <label class='form-label'>Password</label>
-                                    <input type='password' class='form-control' name='password' placeholder=\"Enter Password\"  value='".$pass."'>
+                                    <input type='password' class='form-control' name='password' placeholder=\"Enter Password\"  minlenght='8' maxlength='16' value='".$pass."'>
                                 </div><br>
                                 <div>
                                   <button type='submit' value='Update' name='submit' class='col btn btn-info w-100'>Update</button>

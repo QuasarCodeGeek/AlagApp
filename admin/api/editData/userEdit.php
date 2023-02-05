@@ -122,7 +122,7 @@
         <label class='input-group-text' for='genderSelect'>Sex</label>
         <select class='form-select' name='gender' id='genderSelect'>
             <option selected='".$gender."' value='".$gender."'>".$gender."</option>
-            <option value=''>-- Select Gender --</option>
+            <option value=''>-- Select Sex --</option>
             <option name='gender' value='M'>Male</option>
             <option name='gender' value='F'>Female</option>
         <select>

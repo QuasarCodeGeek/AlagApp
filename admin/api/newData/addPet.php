@@ -82,9 +82,9 @@ require("../connector.php");
             <input class='form-control' type='date' name='petbdate' required>
             <span placeholder=\"Age\" class='input-group-text'>Age</span>
             <input class='form-control' type='text' placeholder='Age' name='petage'>
-            <label class='input-group-text' for='inputGenderSelect'>Gender</label>
+            <label class='input-group-text' for='inputGenderSelect'>Sex</label>
                 <select class='form-select' name='petgender' id='inputGenderSelect' required>
-                    <option selected''>-- Select Gender --</option>
+                    <option selected''>-- Select Sex --</option>
                     <option value='M'>M</option>
                     <option value='F'>F</option>
                 </select>

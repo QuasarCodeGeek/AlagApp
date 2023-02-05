@@ -14,7 +14,7 @@ $search = $_REQUEST['search'];
             <th>Color/Marking</th>
             <th>DOB</th>
             <th>Age</th>
-            <th>Gender</th>
+            <th>Sex</th>
           </tr>
           <?php include("./../reportData/petFilter.php");?>
         </thead>

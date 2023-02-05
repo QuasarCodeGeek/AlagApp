@@ -126,10 +126,10 @@
             <input class='form-control' type='date' name='petbdate' value='".$petbdate."'>
             <span class='input-group-text'>Age</span>
             <input class='form-control' type='text' placeholder=\"Age\" name='petage' value='".$petage."'>
-            <label class='input-group-text' for='inputGenderSelect'>Gender</label>
+            <label class='input-group-text' for='inputGenderSelect'>Sex</label>
                 <select class='form-select' name='petgender' id='inputGenderSelect'>
                     <option selected=".$petgender." value='".$petgender."'>".$petgender."</option>
-                    <option value=''>-- Select Gender --</option>
+                    <option value=''>-- Select Sex --</option>
                     <option value='M'>M</option>
                     <option value='F'>F</option>
                 </select>

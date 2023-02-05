@@ -69,7 +69,7 @@
     </th>
     <th>
         <select class="form-select" aria-label="Default select example" id="gender" onchange="filterPet()">
-            <option selected value="">-Gender-</option>
+            <option selected value="">-Sex-</option>
             <option value="M">M</option>
             <option value="F">F</option>
         </select>
