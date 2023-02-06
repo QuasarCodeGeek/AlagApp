@@ -112,7 +112,7 @@
                   FROM ((alagapp_db.tbl_scheduler
                   INNER JOIN alagapp_db.tbl_userlist ON alagapp_db.tbl_scheduler.userid = alagapp_db.tbl_userlist.userid)
                   INNER JOIN alagapp_db.tbl_petprofile ON alagapp_db.tbl_scheduler.petid = alagapp_db.tbl_petprofile.petid)
-                  WHERE alagapp_db.tbl_scheduler.userid = ".$userid." ";
+                  WHERE alagapp_db.tbl_scheduler.userid = ".$userid."";
               
                   $res = $connect->prepare($sql);
                   $res->execute();

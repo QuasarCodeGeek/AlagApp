@@ -32,7 +32,7 @@ $sql = "SELECT alagapp_db.tbl_scheduler.*, alagapp_db.tbl_userlist.userfname, al
 FROM ((alagapp_db.tbl_scheduler
 INNER JOIN alagapp_db.tbl_userlist ON alagapp_db.tbl_scheduler.userid = alagapp_db.tbl_userlist.userid)
 INNER JOIN alagapp_db.tbl_petprofile ON alagapp_db.tbl_scheduler.petid = alagapp_db.tbl_petprofile.petid)
-WHERE alagapp_db.tbl_scheduler.userid = ".$userid." ORDER BY qdate, qtime ASC";
+WHERE alagapp_db.tbl_scheduler.userid = ".$userid." ORDER BY qdate DESC, qtime DESC";
 
 $res = $connect->prepare($sql);
 $res->execute();
