@@ -2,7 +2,7 @@
         require("../../connector.php");
         $search = $_REQUEST['filter'];
 ?>
-      <table class="table table-striped m-2">
+      <table class="table table-striped m-2" id="tblCard">
         <thead class="bg bg-success text-white">
           <tr>
             <th>#</th>

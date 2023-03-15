@@ -28,7 +28,7 @@ while($rownote = $resnote->fetch(PDO::FETCH_ASSOC)){
                               <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
                             </div>
                             <form action='./deleteData/deleteNote.php' method='POST'><div class='modal-body d-grid gap-2 container-fluid text-danger text-center' id='modalHere'>
-                              Deleting this record will permanently erase the data. Are you sure you want to delete this record?
+                              Are you sure you want to delete this record? Deleting this record will permanently erase the data.
                               <input name='userid' value='".$rownote['userid']."' hidden></input>
                               <input name='nid' value='".$rownote['nid']."' hidden></input>
                             </div>

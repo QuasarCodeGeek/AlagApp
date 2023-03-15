@@ -11,6 +11,7 @@ if($_SESSION["adminsession"] == ""){
     $resdata = $connect->query($carddata);
     $resdata->execute();
     $rowdata = $resdata->fetch(PDO::FETCH_ASSOC);
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -128,13 +129,13 @@ if($_SESSION["adminsession"] == ""){
           <button type="button" class="btn btn-success" onclick="descCard()"><i class="bi bi-sort-up"></i> DES</button>
         </div>
         <div class="col-2">
-        <button class="btn btn-success float-end" onclick="window.location='../downloadData/dlCard.php'" target="_blank"><i class="bi bi-download"></i> Download</button>
+        <button class="btn btn-success float-end" id="ExportTable"><i class="bi bi-download"></i> Download</button>
         </div>
       </div>
       <div class="row m-auto" id="alter">
       </div>
       <div class="row m-auto" id="table">
-      <table class="table table-striped m-2">
+      <table class="table table-striped m-2" id="tblCard">
         <thead class="bg bg-success text-white">
           <tr>
             <th>#</th>
@@ -186,6 +187,7 @@ if($_SESSION["adminsession"] == ""){
 <script src="../../js/main.js"></script>
 <script src="../../js/dashboardFilter.js"></script>
 <script src="../../js/searchInfo.js"></script>
+<script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
 <!-- Ajax Function -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!-- Bootstrap Popper -->
@@ -201,5 +203,14 @@ if($_SESSION["adminsession"] == ""){
   src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
 </script>
 <!-- Chart JS Library -->
+
+<script>
+document.getElementById("ExportTable").addEventListener('click', function() {
+  /* Create worksheet from HTML DOM TABLE */
+  var wb = XLSX.utils.table_to_book(document.getElementById("tblCard"));
+  /* Export to file (start a download) */
+  XLSX.writeFile(wb, "Vaccine Card Summary.xlsx");
+});
+</script>
 </body>
 </html>
