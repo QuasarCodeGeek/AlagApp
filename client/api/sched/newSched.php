@@ -77,7 +77,8 @@
     </div>
     <div class="form-group">
         <label class="form-label">Description</label>
-        <input name="description" class="form-control" placeholder="Enter Description" type="text">
+        <textarea class="form-control" name="description" id="description" cols="30" rows="5"></textarea>
+        <!--<input name="description" class="form-control" placeholder="Enter Description" type="text">-->
     </div>
     <div class="form-group">
         <label class="form-label">Date</label>

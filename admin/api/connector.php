@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "root";
 
     try{
         $connect = new PDO("mysql:host = $servername; dbname = alagapp_db", $username, $password);
