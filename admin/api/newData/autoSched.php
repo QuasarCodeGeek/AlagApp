@@ -17,7 +17,7 @@
 
     $description = "".$petrow['petname']."'s ".$vaxrow['vaxname']." next due date.  ";
     $status = "Pending";
-    $time = "09:30 am";
+    $time = "09:30";
 
     $set = 1;
 

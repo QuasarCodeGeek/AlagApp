@@ -1,5 +1,5 @@
 <?php
-$con=mysqli_connect('localhost', 'root', '', 'alagapp_db');
+$con=mysqli_connect('localhost', 'root', 'root', 'alagapp_db');
 
 if(mysqli_connect_errno())
 {

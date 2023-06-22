@@ -182,6 +182,7 @@ if($_SESSION["adminsession"] == ""){
 <script src="../../js/main.js"></script>
 <script src="../../js/dashboardFilter.js"></script>
 <script src="../../js/searchInfo.js"></script>
+<script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
 <!-- Ajax Function -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!-- Bootstrap Popper -->
@@ -199,5 +200,14 @@ if($_SESSION["adminsession"] == ""){
   src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
 </script>
 <!-- Chart JS Library -->
+
+<script>
+document.getElementById("ExportTable").addEventListener('click', function() {
+  /* Create worksheet from HTML DOM TABLE */
+  var wb = XLSX.utils.table_to_book(document.getElementById("tblVaccince"));
+  /* Export to file (start a download) */
+  XLSX.writeFile(wb, "Vaccine Information Summary.xlsx");
+});
+</script>
 </body>
 </html>
