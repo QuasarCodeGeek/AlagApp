@@ -18,7 +18,7 @@
     </div>
 
     <div class='col-6'>
-        <button type='button' class='p-2 btn btn-info w-100' onClick='recordNew(<?php echo $pet; ?>)' data-bs-toggle='modal' data-bs-target='#newModal')>
+        <button type='button' class='p-2 btn btn-info w-100' onClick='recordNew(<?php echo $prow['petid']; ?>)' data-bs-toggle='modal' data-bs-target='#newModal'>
         <i class='bi bi-plus-square'></i> Add New Record</button>
     </div></div>
     <div class="p-2">

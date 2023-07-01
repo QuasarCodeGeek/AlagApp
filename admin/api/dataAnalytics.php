@@ -24,23 +24,29 @@
     $userratio = "SELECT 
         sum(case when `usergender` = 'M' then 1 else 0 end)/count(*)*100 as maleratio,
         sum(case when `usergender` = 'F' then 1 else 0 end)/count(*)*100 as femaleratio
-        FROM alagapp_db.tbl_userlist";
+    FROM alagapp_db.tbl_userlist";
     $resuserratio = $connect->query($userratio);
     $resuserratio->execute();
     $rowuserratio = $resuserratio->fetch(PDO::FETCH_ASSOC);
     $ratiomale = $rowuserratio["maleratio"];
     $ratiofemale = $rowuserratio["femaleratio"];
 
-    $roundm = "SELECT ROUND(".$ratiomale.", 2) AS RoundM";
-    $roundf = "SELECT ROUND(".$ratiofemale.", 2) AS RoundF;";
-    $resmround = $connect->query($roundm);
-    $resfround = $connect->query($roundf);
-    $resmround->execute();
-    $resfround->execute();
-    $rowmround = $resmround->fetch(PDO::FETCH_ASSOC);
-    $rowfround = $resfround->fetch(PDO::FETCH_ASSOC);
-    $rmale = $rowmround["RoundM"];
-    $rfemale = $rowfround["RoundF"];
+    if($ratiomale != '' || $ratiofemale != '') {
+        $roundm = "SELECT ROUND(".$ratiomale.", 2) AS RoundM";
+        $roundf = "SELECT ROUND(".$ratiofemale.", 2) AS RoundF;";
+        $resmround = $connect->query($roundm);
+        $resfround = $connect->query($roundf);
+        $resmround->execute();
+        $resfround->execute();
+        $rowmround = $resmround->fetch(PDO::FETCH_ASSOC);
+        $rowfround = $resfround->fetch(PDO::FETCH_ASSOC);
+        $rmale = $rowmround["RoundM"];
+        $rfemale = $rowfround["RoundF"];
+    } else {
+        $rmale = 0;
+        $rfemale = 0;
+    }
+
     // Pet Analytics
     // Total Pet Account
     $tpet = "SELECT COUNT(petid) AS totalpet FROM alagapp_db.tbl_petprofile";

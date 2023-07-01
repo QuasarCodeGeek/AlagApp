@@ -29,7 +29,7 @@
     $sender = $_POST["sender"];
     $channel = $_POST["channel"];
     $message = $_POST["message"];
-    $date = date("Y-m-d h:i:sa");
+    $date = date("Y-m-d H:i:s");
 
     if($userid=="" || $sender=="" || $channel=="" || $message==""){
         echo "<script>window.location='chat.php?userid=".$userid."'</script>";//Invalid

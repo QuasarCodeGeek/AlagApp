@@ -149,10 +149,10 @@
               </div>
 </div></main>
 
-  <!-- Main Functions -->
-  <script src="../js/main.js"></script>
+  
   <!-- Ajax Function -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  
   <!-- Bootstrap Popper -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
     integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
@@ -169,6 +169,9 @@
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
   </script>
+
+  <!-- Main Functions -->
+  <script src="../js/main.js"></script>
   </body>
   </html>
 

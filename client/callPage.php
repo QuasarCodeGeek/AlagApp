@@ -22,7 +22,7 @@
 
         if(isset($_POST["submit"])){
             $channel = $user;
-            $date = date("Y-m-d h:i:sa");
+            $date = date("Y-m-d H:i:s");
         
             if($user=="" || $channel=="" || $date==""){
                 echo "<script>window.location='chatPage.php?userid=".$user."'</script>";//Invalid
@@ -46,15 +46,18 @@
                 $result->execute($values);
                 if($result->rowCount()>0) {
                 
-                  $meet = "SELECT gmeet FROM alagapp_db.tbl_admin WHERE adminid = 1";
+                  $meet = "SELECT `gmeet` FROM alagapp_db.tbl_admin WHERE adminid = 1";
                   $checklink = $connect->prepare($meet);
                   $checklink->execute();
                     if($checklink->rowCount()>0){
                       $link = $checklink->fetch(PDO::FETCH_ASSOC);
-                      echo "<script>window.open('".$link['gmeet']."')</script>";
+                      echo "<script>
+                        window.open('".$link['gmeet']."');
+                      </script>";
                     }
                  } else {
-                     echo "<script>window.location='callPage?userid=".$user."'</script>";//Unable to Initiate Call
+                  echo 'failed';
+                     //echo "<script>window.location='callPage?userid=".$user."'</script>";//Unable to Initiate Call
                  }
             }
         }
@@ -161,7 +164,7 @@
             </thead>
             <tbody>
         <?php
-            $call = "SELECT * FROM alagapp_db.tbl_call WHERE userid = ".$user." ORDER BY vid DESC";
+            $call = "SELECT * FROM alagapp_db.tbl_call WHERE userid = ".$user." ORDER BY vid DESC LIMIT 100";
             $checkcall = $connect->prepare($call);
             $checkcall->execute();
     

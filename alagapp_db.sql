@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50718
 File Encoding         : 65001
 
-Date: 2023-06-24 22:32:43
+Date: 2023-06-30 11:49:55
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -76,13 +76,11 @@ CREATE TABLE `tbl_carddetail` (
   `cdate` date NOT NULL,
   `cnext` date DEFAULT NULL,
   PRIMARY KEY (`cid`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of tbl_carddetail
 -- ----------------------------
-INSERT INTO `tbl_carddetail` VALUES ('1', '1', '1', '6', 'Dr. Oak', '12.5', '2023-06-09', '2023-07-10');
-INSERT INTO `tbl_carddetail` VALUES ('2', '1', '1', '5', 'Dr. Oak', '12.5', '2023-06-12', '2023-07-12');
 
 -- ----------------------------
 -- Table structure for tbl_chat
@@ -138,12 +136,11 @@ CREATE TABLE `tbl_petprofile` (
   `petgender` char(1) DEFAULT NULL,
   `petpict` varchar(25) DEFAULT NULL,
   PRIMARY KEY (`petid`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of tbl_petprofile
 -- ----------------------------
-INSERT INTO `tbl_petprofile` VALUES ('1', '1', 'Eric', 'Dog', 'Husky', '12.50', 'Black/White', '2023-05-02', '1 month', 'M', null);
 
 -- ----------------------------
 -- Table structure for tbl_record
@@ -180,12 +177,11 @@ CREATE TABLE `tbl_scheduler` (
   `qtime` time NOT NULL,
   `qset` enum('0','1') NOT NULL,
   PRIMARY KEY (`qid`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of tbl_scheduler
 -- ----------------------------
-INSERT INTO `tbl_scheduler` VALUES ('1', '1', '1', 'Eric\'s Biocan R next due date.  ', '2023-07-12', 'Pending', '09:30:00', '1');
 
 -- ----------------------------
 -- Table structure for tbl_sms
@@ -243,19 +239,11 @@ CREATE TABLE `tbl_userlist` (
   `userstatus` enum('0','1') NOT NULL,
   `usermobile` varchar(12) NOT NULL,
   PRIMARY KEY (`userid`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of tbl_userlist
 -- ----------------------------
-INSERT INTO `tbl_userlist` VALUES ('1', 'user@gmail.com', '12345', 'Andrei Charles', 'Ñona', 'Ford', '2022-10-05', 'M', '', 'Magsaysay', 'Alicia', 'Isabela', '0001.jpg', '0', '09151969668');
-INSERT INTO `tbl_userlist` VALUES ('29', 'jean_gun@sample.com', '12345', 'Jean', '', 'Gunhildr', '1997-12-10', 'F', '', 'Mondstadt City', 'Starfell Valley', 'Mondstadt', 'female.png', '0', '0');
-INSERT INTO `tbl_userlist` VALUES ('30', 'yunjin@sample.com', '12345', 'Yun', '', 'Jin', '1996-12-07', 'F', '', 'Liyue Harbor', 'Sea of Clouds', 'Liyue', 'female.png', '0', '0');
-INSERT INTO `tbl_userlist` VALUES ('31', 'diannacharles@sample.com', '12345', 'Dianna', null, 'Charles', '2022-12-22', 'F', null, null, 'Talavera', 'Neuva Ecija', 'female.png', '0', '0');
-INSERT INTO `tbl_userlist` VALUES ('32', 'diannacharles@sample.com', '12345', 'Dianna', null, 'Charles', '2022-12-22', 'F', null, null, 'Talavera', 'Neuva Ecija', 'female.png', '0', '0');
-INSERT INTO `tbl_userlist` VALUES ('33', 'alan_dominic', '12345', 'Alan', null, 'Dominic', '2022-12-22', 'M', null, null, 'Talavera', 'Neuva Ecija', 'male.png', '0', '0');
-INSERT INTO `tbl_userlist` VALUES ('34', 'user4', '12345', 'Summer', 'Smith', 'Jaeger', '2023-01-05', 'F', '', 'Brng. 143', 'Vigan City', 'Ilocos Sur', '', '0', ' 09754419682');
-INSERT INTO `tbl_userlist` VALUES ('35', 'user4', '12345', 'Jenifer', '', 'Bartolome', '2000-01-08', 'F', '', 'Plaridel', 'Santiago', 'Isabela', '', '0', '09151234567');
 
 -- ----------------------------
 -- Table structure for tbl_vaxxinfo

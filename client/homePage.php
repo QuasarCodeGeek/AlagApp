@@ -31,8 +31,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Bootstrap CSS v5.2.1 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
     <link href="./../bootstrap-5.2.2-dist/css/bootstrap.css" rel="stylesheet">
     <script src="./../bootstrap-5.2.2-dist/js/bootstrap.js"></script>
@@ -202,8 +202,8 @@
                         <button class='btn btn-success w-100 mb-2' type='button' data-bs-toggle='collapse' data-bs-target='#collapseCard".$petrow['petid']."' aria-expanded='false' aria-controls='collapseCard".$petrow['petid']."'>
                           E-Vaccine Card
                         </button>
-                        <div class='collapse multi-collapse' id='collapseCard".$petrow['petid']."'>
-                        <div class='overflow-auto overflow-y oveflow-x' style='height: 35rem;'>";?>
+                        <div class='collapse' id='collapseCard".$petrow['petid']."'>
+                          <div class='overflow-auto overflow-y oveflow-x' style='height: 35rem;'>";?>
                             
                             <table class="table table-striped bg bg-light rounded">
                               <thead>
@@ -236,14 +236,13 @@
                                 $j++;
                                 }
                                 echo "</tbody>
-                              </table>
-                              </div>";
+                              </table>";
                             } else {
                                 echo "<div class='card card-body m-2'>
                                     <label>No Record</label>
                                 </div>";
                             }
-                          echo "</div>
+                          echo "</div></div>
                         </div>";
 
 
@@ -256,7 +255,7 @@
                             <button class='btn btn-success w-100 mb-2' type='button' data-bs-toggle='collapse' data-bs-target='#collapseNote".$petrow['petid']."' aria-expanded='false' aria-controls='collapseNote".$petrow['petid']."'>
                                     E-Prescription Note
                             </button>
-                              <div class='collapse multi-collapse' id='collapseNote".$petrow['petid']."'>
+                              <div class='collapse' id='collapseNote".$petrow['petid']."'>
                                 <div class='overflow-auto overflow-y' style='height: 35rem;'>";
                             if($checknote->rowCount()>0) {
                                 $k=1;
