@@ -89,7 +89,7 @@
     $maler = $rowpetratio["male_ratio"];
     $femaler = $rowpetratio["female_ratio"];
 
-    $roundmale = "SELECT ROUND(".$maler.", 2) AS RoundMale";
+    /*$roundmale = "SELECT ROUND(".$maler.", 2) AS RoundMale";
     $roundfemale = "SELECT ROUND(".$femaler.", 2) AS RoundFemale;";
     $resroundm = $connect->query($roundmale);
     $resroundf = $connect->query($roundfemale);
@@ -98,7 +98,7 @@
     $rowroundm = $resroundm->fetch(PDO::FETCH_ASSOC);
     $rowroundf = $resroundf->fetch(PDO::FETCH_ASSOC);
     $maleratio = $rowroundm["RoundMale"];
-    $femaleratio = $rowroundf["RoundFemale"];
+    $femaleratio = $rowroundf["RoundFemale"];*/
     // Total Vaccine Info
     $tvaxinfo = "SELECT COUNT(vaxid) AS totalvax FROM alagapp_db.tbl_vaxxinfo";
     $resvaxinfo = $connect->query($tvaxinfo);

@@ -29,7 +29,6 @@
     $sender = $_POST["sender"];
     $channel = $_POST["channel"];
     $message = $_POST["message"];
-    $date = date("Y-m-d H:i:s");
 
     if($userid=="" || $sender=="" || $channel=="" || $message==""){
         echo "<script>window.location='chat.php?userid=".$userid."'</script>";//Invalid
@@ -38,13 +37,11 @@
             userid,
             mchannel,
             msender,
-            mcontent,
-            mdatetime) VALUES(
+            mcontent) VALUES(
                 :userid,
                 :mchannel,
                 :msender,
-                :mcontent,
-                :mdatetime)";
+                :mcontent)";
 
         $result = $connect->prepare($sql);
 
@@ -52,8 +49,7 @@
             ":userid"=>$userid,
             ":mchannel"=>$channel,
             ":msender"=>$sender,
-            ":mcontent"=>$message,
-            ":mdatetime"=>$date
+            ":mcontent"=>$message
         );
 
         $result->execute($values);
@@ -171,7 +167,7 @@
                         } else {
                           echo "<label style='font-size: 16px;'>".$rowchat['mcontent']."</label><br>";
                         }
-                        echo "<span style='font-size: 12px;'>".$rowchat['mdatetime']."</span>
+                        echo "<span style='font-size: 12px;'>".date('m-d-Y H:s a', strtotime($rowchat['mdatetime']))."</span>
                         </div>
                         </li>";
                   } else {
@@ -183,7 +179,7 @@
                         } else {
                           echo "<label style='font-size: 16px;'>".$rowchat['mcontent']."</label><br>";
                         }
-                        echo "<span style='font-size: 12px;'>".$rowchat['mdatetime']."</span>
+                        echo "<span style='font-size: 12px;'>".date('m-d-Y H:s a', strtotime($rowchat['mdatetime']))."</span>
                         </div>    
                         </li>"; 
                   }

@@ -8,7 +8,6 @@
         $pet = $_POST["petid"];
         $description = $_POST["description"];
         $date = $_POST["date"];
-        $status = $_POST["status"];
         $vet = $_POST["vet"];
 
         if($user=="" || $pet=="" || $description=="" || $date=="" || $vet==""){
@@ -20,7 +19,6 @@
                 petid = :petid,
                 ndescription = :ndescription,
                 ndate = :ndate,
-                nstatus = :nstatus,
                 nvet = :nvet
 
                 WHERE nid = :nid";
@@ -31,7 +29,6 @@
                 ":petid"=>$pet,
                 ":ndescription"=>$description,
                 ":ndate"=>$date,
-                ":nstatus"=>$status,
                 ":nvet"=>$vet
             );
 
@@ -62,7 +59,6 @@
         $petid = "";
         $description = "";
         $date = "";
-        $status = "";
         $vet = "";
         
         if($note_res->rowCount()==1){
@@ -116,7 +112,6 @@
                     <label class='input-group-text'>Date</label>
                     <input type='date' class='form-control' name='date' value='".$date."'>
                     <label class='input-group-text'>Veterinarian</label>
-                    <input type='text' class='form-control' name='status' value='".$status."' hidden>
                     <input type='text' class='form-control' name='vet' value='".$vet."'>
                 </div><br>
 
